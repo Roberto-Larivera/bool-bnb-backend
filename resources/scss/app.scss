@@ -1,2 +1,7 @@
-@import "~bootstrap/scss/bootstrap"; //importazione bootstrap
+// Import all of Bootstrap's CSS
+@import "node_modules/bootstrap/scss/bootstrap";
 
+body{
+    scroll-behavior: smooth;
+    background-color: $color_light;
+}

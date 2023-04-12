@@ -8,7 +8,9 @@ export default defineConfig({
         laravel({
             input: [
                 'resources/scss/app.scss',
-                'resources/js/app.js',
+                'resources/scss/partials/mixin.scss',
+                'resources/scss/partials/reset.scss',
+                'resources/scss/partials/variables.scss',
             ],
             refresh: true,
         }),
