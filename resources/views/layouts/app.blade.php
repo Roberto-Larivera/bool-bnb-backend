@@ -32,10 +32,13 @@
                     <div class="col d-flex justify-content-between h-100 align-items-center">
 
                         <!-- contenitore per il logo  -->
-                        <a class="navbar-brand d-flex  align-items-center" href="{{ url('/') }}">
-                            <div class="logo_page">
-                                Logo
+                        <a class="logo_site first-letter:navbar-brand d-flex  align-items-center h-100" href="{{ url('login') }}">
+                            <div class=" h-100">
+                                <img src="logo.svg" alt="">
                             </div>
+                            <span>
+                                BollBnB
+                            </span>
                         </a>
 
                         <!-- link per desktop  -->

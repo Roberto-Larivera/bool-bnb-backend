@@ -1,0 +1,19 @@
+@mixin logo_page{
+    & {
+        text-decoration: none;
+        img {
+          height: 100%;
+          aspect-ratio: 1;
+        }
+    
+        span {
+          font-weight: bold;
+          font-size: 1.5rem;
+          background: #FF385C;
+          background: linear-gradient(to right, #FF385C 0%, #8729CF 100%);
+          background-clip: text;
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+        }
+      }
+}
