@@ -1,0 +1,65 @@
+header#header-layout-app {
+  a.logo_site {
+    @include logo_page;
+  }
+
+  .link-header {
+    a {
+      span:first-child {
+        margin-right: 10px;
+      }
+
+      padding: 10px;
+      color: $color_dark;
+      text-decoration: none;
+      transition: 0.5s;
+
+      &:hover {
+        color: $color_primary;
+        text-decoration: underline;
+      }
+
+      //   &.notHover{
+      //     opacity: 0.5;
+      //   }
+    }
+
+  }
+}
+
+main#main-layout-app {
+  .card {
+    background-color: $color_light;
+    border-color: transparent;
+
+    .card-header {
+      text-align: center;
+      border: none;
+      border-bottom: 2px solid $color_light_gray;
+      background-color: $color_light;
+    }
+
+    .card-body {
+      border-color: transparent;
+      background-color: $color_light;
+    }
+
+    button.btn {
+      border-color: $color_dark;
+
+      &:hover {
+        background-color: $color_primary;
+        border-color: $color_primary;
+        color: $color_light;
+      }
+    }
+  }
+}
+
+header#header-layout-app {
+  height: 70px;
+}
+
+main#main-layout-app {
+  height: calc(100vh - 70px);
+}
