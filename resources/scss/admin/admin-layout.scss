@@ -1,0 +1,46 @@
+.aside-navbar {
+    background-color: #ffffff;
+}
+
+.main-admin {
+    background-color: #f2edf3;
+}
+
+.logo-name {
+    font-size: 30px;
+    font-weight: bold;
+    background: #FF385C;
+    background: linear-gradient(to right, #FF385C 0%, #8729CF 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.nav-right-item{
+    font-size: 20px;
+    color: rgb(53, 53, 53);
+}
+
+.nav-item {
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.aside-item .nav-item:hover span,
+.aside-item .nav-item:hover i{
+    color: #FF385C;
+}
+
+.nav-item i {
+    color: rgb(53, 53, 53);
+}
+
+.nav-item span {
+    color: rgb(53, 53, 53);
+    font-weight: 500;
+}
+
+.active-aside-link span,
+.active-aside-link i {
+    color: #FF385C;
+}

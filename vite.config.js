@@ -11,6 +11,7 @@ export default defineConfig({
                 'resources/scss/partials/mixin.scss',
                 'resources/scss/partials/reset.scss',
                 'resources/scss/partials/variables.scss',
+                'resources/scss/admin/admin-layout.scss',
             ],
             refresh: true,
         }),
