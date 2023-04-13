@@ -102,7 +102,7 @@ class ServiceSeeder extends Seeder
         ];
 
         foreach ($services as $key => $service) {
-            service::create($service);
+            Service::create($service);
         }
     }
 }
