@@ -37,7 +37,7 @@
                                 <img src="logo.svg" alt="">
                             </div>
                             <span>
-                                BollBnB
+                                BoolBnB
                             </span>
                         </a>
 
