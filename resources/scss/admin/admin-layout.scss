@@ -1,0 +1,94 @@
+header{
+    height: 70px;
+}
+
+.aside-navbar {
+    background-color: #ffffff;
+}
+
+.main-admin {
+    background-color: #f2edf3;
+}
+
+.admin-h{
+    height: calc(100vh - 70px)
+}
+
+// .logo-name {
+//     font-size: 30px;
+//     font-weight: bold;
+//     background: #FF385C;
+//     background: linear-gradient(to right, #FF385C 0%, #8729CF 100%);
+//     background-clip: text;
+//     -webkit-background-clip: text;
+//     -webkit-text-fill-color: transparent;
+// }
+
+a.logo_site {
+    @include logo_page;
+}
+
+.profile-option{
+    text-decoration: none;
+    color: black;
+}
+
+.profile-option:hover{
+    color: black;
+}
+
+.profile-img img{
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+}
+.profile-img-nav img{
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+}
+
+.online i{
+    color: rgb(33, 201, 33);
+}
+
+.nav-right-item{
+    font-size: 20px;
+    color: rgb(53, 53, 53);
+}
+
+.nav-item {
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.aside-item .nav-item:hover span,
+.aside-item .nav-item:hover i{
+    color: #FF385C;
+}
+
+.nav-item i {
+    color: rgb(155, 155, 155);
+}
+
+.nav-item span {
+    color: rgb(53, 53, 53);
+    font-weight: 500;
+}
+
+.active-aside-link span,
+.active-aside-link i {
+    color: #FF385C;
+}
+
+.burger-menu-admin{
+    right: 10%;
+}
+
+.online-circle{
+    color: rgb(4, 243, 4);
+    position: absolute;
+    bottom: 12%;
+    right: -8%;
+    font-size: 10px;
+}

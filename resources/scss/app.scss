@@ -1,2 +1,19 @@
-@import "~bootstrap/scss/bootstrap"; //importazione bootstrap
+// Import all of Bootstrap's CSS
+@import "node_modules/bootstrap/scss/bootstrap";
 
+// importa il file CSS di Font Awesome
+@import "~fontawesome/fontawesome-free/css/all.css";
+
+// // Import variables
+@import './partials/variables.scss';
+@import './partials/mixin.scss';
+@import './partials/reset.scss';
+@import './admin/appLayout.scss';
+@import './admin/admin-layout.scss';
+
+
+
+body{
+    scroll-behavior: smooth;
+    background-color: $color_light;
+}
