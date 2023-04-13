@@ -16,6 +16,21 @@
     -webkit-text-fill-color: transparent;
 }
 
+.profile-img img{
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+}
+.profile-img-nav img{
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+}
+
+.online i{
+    color: rgb(33, 201, 33);
+}
+
 .nav-right-item{
     font-size: 20px;
     color: rgb(53, 53, 53);
@@ -32,7 +47,7 @@
 }
 
 .nav-item i {
-    color: rgb(53, 53, 53);
+    color: rgb(155, 155, 155);
 }
 
 .nav-item span {
