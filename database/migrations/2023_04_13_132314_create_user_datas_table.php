@@ -21,7 +21,7 @@ return new class extends Migration
             $table->date('date_of_birth');
             // MODIFICARE IL DEFAULT CON LA PATH IMG *********
             $table->string('profile_img')->default('.....');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }

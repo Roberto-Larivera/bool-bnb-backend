@@ -15,13 +15,13 @@ return new class extends Migration
     {
         Schema::create('messages', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('apartment_id');
+            $table->unsignedBigInteger('apartment_id')->nullable();
             $table->string('sender_email');
             $table->string('sender_name',50);
             $table->string('sender_surname',50);
             $table->string('object',50);
             $table->text('sender_text');
-            $table->foreign('apartment_id')->references('id')->on('apartments');
+            $table->foreign('apartment_id')->references('id')->on('apartments')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }

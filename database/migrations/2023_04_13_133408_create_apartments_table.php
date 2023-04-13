@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('apartments', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id');
             $table->string('title',30);
             $table->string('slug',30)->unique();
             $table->text('description');
@@ -29,6 +30,7 @@ return new class extends Migration
             $table->string('longitude',30);
             $table->unsignedDecimal('price',6,2);
             $table->boolean('visible')->default(1);
+            $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }
