@@ -10,3 +10,5 @@
 - fare da terminale: `php artisan migrate --seed`
 - ognuno di noi ha email e password associate: nome@email.it | password // es: `roberto@email.it - password`
 - le icone di FontsAsome in Laravel non si usano con la sintassi di vue ma con `<i class="fa-solid fa-cart-shopping"></i>`
+
+### Per modifiche e aggiunte si lavora con dei brench creati es: `feat/example`, e non su Master e Develop
