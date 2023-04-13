@@ -27,7 +27,7 @@
 
             {{-- Logo / Left Navbar --}}
 
-            <a class="logo_site first-letter:navbar-brand d-flex justify-content-center  px-3 ms-3 align-items-center h-100" href="{{ url('dashboard') }}">
+            <a class="logo_site first-letter:navbar-brand d-flex justify-content-center  px-3 ms-3 align-items-center h-100" href="{{ url('admin/dashboard') }}">
                 <div class="h-100">
                     <img src="../logo.svg" alt="">
                 </div>
@@ -63,14 +63,14 @@
                 </div>
             </div>
             <div class="d-none d-sm-none d-md-flex  align-items-center gap-4 nav-right-item">
-                <i class="fa-regular fa-envelope"></i>
-                <i class="fa-regular fa-bell"></i>
+                <i class="fa-regular fa-envelope" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Messaggi"></i>
+                <i class="fa-regular fa-bell" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Avvisi"></i>
                 <div class="navbar-nav">
                     <div class="text-nowrap">
                         <a class="nav-link" href="{{ route('logout') }}"
                             onclick="event.preventDefault();
                             document.getElementById('logout-form').submit();">
-                            <i class="me-5 fa-solid fa-power-off" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Tooltip on bottom"></i>
+                            <i class="me-5 fa-solid fa-power-off" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Logout"></i>
                         </a>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                             @csrf
