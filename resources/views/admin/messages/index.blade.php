@@ -1,3 +1,4 @@
+
 @extends('layouts.admin')
 
 @section('content')
@@ -21,63 +22,34 @@
     @include('admin.partials.success')
     @include('admin.partials.warning')
 
-    <div class="row">
-        <div class="col">
-            <table class="table my-4 rounded">
-                <thead>
-                  <tr>
-                    <th scope="col">
-                        Titolo
-                    </th>
-                    <th scope="col" class="d-none d-md-table-cell">
-                        Indirizzo
-                    </th>
-                    <th scope="col" class="d-none d-lg-table-cell">
-                        Mq
-                    </th>
-                    <th scope="col" class="d-none d-lg-table-cell">
-                        Prezzo / notte
-                    </th>
-                    <th scope="col">
-                        Azioni
-                    </th>
-                  </tr>
-                </thead>
-
-                    @foreach ($messages as $message)
-                    <tbody>
-                        <tr>
-                        <td>
-                            {{ $message->sender_text }}
-                        </td>
-                        {{-- <td class="d-none d-md-table-cell">
-                            {{ $message->sender_name }}
-                        </td>
-                        <td class="d-none d-lg-table-cell">
-                            {{ $message->sender_surname }}
-                        </td>
-                        <td class="d-none d-lg-table-cell">
-                            {{ $message->user_id }}
-                        </td> --}}
-                        {{-- <td>
-                            <a href="{{ route('admin.messages.show', $message->id) }}" class="my-action rounded">
-                                <i class="fa-solid fa-eye my-color-dark"></i>
-                            </a>
-
-                            <a href="{{ route('admin.messages.edit', $message->id) }}" class="my-action rounded">
-                                <i class="fa-solid fa-pen my-color-dark"></i>
-                            </a>
-
-                            <a href="{{ route('admin.messages.destroy', $message->id) }}" class="my-action rounded">
-                                <i class="fa-solid fa-trash my-color-dark"></i>
-                            </a>
-                        </td> --}}
-                        </tr>
-                    </tbody>
-                    @endforeach
-              </table>
+    <div class="wrapper-messages bg-white py-5 border rounded-4 px-4">
+        @foreach ($messages as $message)
+        <hr class="m-2">
+        <div class="row message">
+            <div class="col-1 message-image text-center">
+                foto
+            </div>
+            <div class="col-1 message-name">
+                {{ $message->sender_name }} 
+            </div>
+            <div class="col-2 message-object">
+                <strong>{{ $message->object }}</strong>
+            </div>
+            <div class="col-6 message-text">
+                <p>{{ Illuminate\Support\Str::limit($message->sender_text , 95) }}</p>
+            </div>
+            <div class="col-1 message-time">
+               <strong>{{ date('H:i', strtotime($message->created_at)); }}</strong> 
+            </div>
         </div>
+        @endforeach
+        <hr class="m-2">
     </div>
+
+    
+
+
+    
 
 </div>
 @endsection
