@@ -25,7 +25,7 @@
                 <form action="{{ route('admin.apartments.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="row">
-                        <div class="col-6">
+                        <div class="col-12 col-lg-6">
                             {{-- titolo  --}}
                             <div class="mb-3">
                                 <label for="title" class="form-label  @error('title') text-danger @enderror ">Titolo
@@ -51,7 +51,7 @@
                                 @enderror
                             </div>
                         </div>
-                        <div class="col-6">
+                        <div class="col-12 col-lg-6">
                             {{-- descrizione  --}}
                             <div class="mb-3">
                                 <label for="description"
@@ -64,7 +64,7 @@
                                 @enderror
                             </div>
                         </div>
-                        <div class="col-4">
+                        <div class="col-12  col-md-6 col-lg-4">
                             {{-- max ospiti --}}
                             <div class="mb-3">
                                 <label for="max_guests"
@@ -92,7 +92,7 @@
                             </div>
 
                         </div>
-                        <div class="col-4">
+                        <div class="col-12 col-md-6 col-lg-4">
 
                             {{-- letti --}}
                             <div class="mb-3">
@@ -120,7 +120,7 @@
 
 
                         </div>
-                        <div class="col-4">
+                        <div class="col-12  col-md-6 col-lg-4">
                             {{-- mq --}}
                             <div class="mb-3">
                                 <label for="mq" class="form-label  @error('mq') text-danger @enderror">Numero mq
@@ -146,67 +146,107 @@
                             </div>
                         </div>
 
-
-
-
-
-
-
-
-                        {{-- address  --}}
-                        <div class="mb-3">
-                            <label for="address" class="form-label  @error('address') text-danger @enderror ">Indirizzo
-                                completo <span class="text-danger fw-bold">*</span></label>
-                            <input type="text" class="form-control @error('address') is-invalid @enderror"
-                                id="address" name="address"
-                                placeholder="Esempio Via Mario Rossi, 74, Milano (MI), Italia" maxlength="98"
-                                value="{{ old('address') }}" required>
-                            @error('address')
-                                <p class="text-danger fw-bold">{{ $message }}</p>
-                            @enderror
-                        </div>
-
-                        {{-- servizi  --}}
-                        @if (count($services) > 0)
+                        <div class="col-12">
+                            {{-- address  --}}
                             <div class="mb-3">
-                                <label class="form-check-label d-block mb-2 @error('technologies') text-danger @enderror">
-                                    Servizi
-                                </label>
-                                @foreach ($services as $technology)
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input  @error('technologies') is-invalid @enderror"
-                                            type="checkbox" id="tech-{{ $technology->id }}" name="technologies[]"
-                                            value="{{ $technology->id }}"
-                                            @if (old('technologies') && is_array(old('technologies')) && count(old('technologies')) > 0) {{ in_array($technology->id, old('technologies', [])) ? 'checked' : '' }} @endif>
-
-                                        <label class="form-check-label @error('technologies') text-danger @enderror"
-                                            for="tech-{{ $technology->id }}">{{ $technology->name }}</label>
-                                    </div>
-                                @endforeach
-                                @error('technologies')
+                                <label for="address"
+                                    class="form-label  @error('address') text-danger @enderror ">Indirizzo
+                                    completo <span class="text-danger fw-bold">*</span></label>
+                                <input type="text" class="form-control @error('address') is-invalid @enderror"
+                                    id="address" name="address"
+                                    placeholder="Esempio Via Mario Rossi, 74, Milano (MI), Italia" maxlength="98"
+                                    value="{{ old('address') }}" required>
+                                @error('address')
                                     <p class="text-danger fw-bold">{{ $message }}</p>
                                 @enderror
                             </div>
-                        @endif
+                        </div>
 
-                        {{-- visibilità online  --}}
-                        <div class="mb-3">
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input  @error('visible') is-invalid @enderror" type="checkbox"
-                                    id="visible" name="visible" value="{{ $technology->id }}"
-                                    @if (old('visible') && is_array(old('visible')) && count(old('visible')) > 0) {{ in_array($technology->id, old('visible', [])) ? 'checked' : '' }} @endif>
+                        <div class="col-6">
+                            {{-- servizi  --}}
+                            @if (count($services) > 0)
+                                <!-- Button trigger modal -->
+                                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                    data-bs-target="#service-model">
+                                    Tutti i servizi
+                                </button>
 
-                                <label class="form-check-label @error('visible') text-danger @enderror"
-                                    for="visible">Pubblico</label>
+                                <!-- Modal -->
+                                <div class="modal fade" id="service-model" tabindex="-1"
+                                    aria-labelledby="exampleModalScrollableTitle" aria-modal="true" role="dialog">
+                                    <div class="modal-dialog modal-dialog-scrollable">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h1 class="modal-title fs-5" id="staticBackdropLabel">Servizi</h1>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+
+                                                <h4>
+                                                    Scegli uno o più servizi
+                                                </h4>
+                                                <div class="mb-3">
+                                                    <label
+                                                        class="form-check-label d-block mb-2 @error('technologies') text-danger @enderror">
+                                                        Servizi
+                                                    </label>
+                                                    <ul>
+                                                        @foreach ($services as $technology)
+                                                            <li>
+                                                                <div class="form-check form-check-inline">
+                                                                    <input
+                                                                        class="form-check-input  @error('technologies') is-invalid @enderror"
+                                                                        type="checkbox" id="tech-{{ $technology->id }}"
+                                                                        name="technologies[]"
+                                                                        value="{{ $technology->id }}"
+                                                                        @if (old('technologies') && is_array(old('technologies')) && count(old('technologies')) > 0) {{ in_array($technology->id, old('technologies', [])) ? 'checked' : '' }} @endif>
+
+                                                                    <label
+                                                                        class="form-check-label @error('technologies') text-danger @enderror"
+                                                                        for="tech-{{ $technology->id }}">{{ $technology->name }}</label>
+                                                                </div>
+                                                            </li>
+                                                        @endforeach
+                                                    </ul>
+                                                    @error('technologies')
+                                                        <p class="text-danger fw-bold">{{ $message }}</p>
+                                                    @enderror
+                                                </div>
+
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary"
+                                                    data-bs-dismiss="modal">Close</button>
+                                                <button type="button" class="btn btn-primary">Understood</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endif
+                        </div>
+
+                        <div class="col-6 d-flex align-items-center">
+                            {{-- visibilità online  --}}
+                            <div>
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input @error('visible') is-invalid @enderror"
+                                        type="checkbox" role="switch" checked id="visible" name="visible"
+                                        value="{{ $technology->id }}"
+                                        @if (old('visible') && is_array(old('visible')) && count(old('visible')) > 0) {{ in_array($technology->id, old('visible', [])) ? 'checked' : '' }} @endif>
+
+                                    <label class="form-check-label @error('visible') text-danger @enderror"
+                                        for="visible">Pubblico</label>
+                                </div>
+                                @error('visible')
+                                    <p class="text-danger fw-bold">{{ $message }}</p>
+                                @enderror
                             </div>
-                            @error('visible')
-                                <p class="text-danger fw-bold">{{ $message }}</p>
-                            @enderror
                         </div>
 
 
 
-                        <div class="mb-5">
+                        <div class="my-5">
                             <p>
                                 I campi contrassegnati con <span class="text-danger fw-bold">*</span> sono <span
                                     class="text-danger fw-bold text-decoration-underline">obbligatori</span>
