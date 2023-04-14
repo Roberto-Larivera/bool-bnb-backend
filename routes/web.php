@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\PageController;
+use App\Http\Controllers\ApartmentController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -19,15 +20,15 @@ Route::get('/', function () {
     return view('auth.register');
 });
 
-Route::prefix('admin')->name('admin.')->middleware(['auth', 'verified'])->group(function (){
-    Route::get('/dashboard', [PageController::class, 'dashboard'] )->name('dashboard');
-});
-
-
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+Route::prefix('admin')->name('admin.')->middleware('auth', 'verified')->group(function () {
+    Route::get('/dashboard', [PageController::class, 'dashboard'] )->name('dashboard');
+    Route::resource('apartments', ApartmentController::class);
 });
 
 require __DIR__.'/auth.php';
