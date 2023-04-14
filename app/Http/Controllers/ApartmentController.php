@@ -6,6 +6,12 @@ use App\Http\Requests\StoreApartmentRequest;
 use App\Http\Requests\UpdateApartmentRequest;
 use App\Models\Apartment;
 
+// Aggiunta Model User
+use App\Models\User;
+
+// Facades
+use Illuminate\Support\Facades\Auth;
+
 class ApartmentController extends Controller
 {
     /**
@@ -15,7 +21,15 @@ class ApartmentController extends Controller
      */
     public function index()
     {
-        //
+
+        // così riconosce utente autenticato
+        $user = Auth::user();
+
+        $apartments = Apartment::where('user_id', $user->id)->get();
+        
+        return view('admin.apartments.index', [
+            'apartments' => $apartments
+        ]);
     }
 
     /**
