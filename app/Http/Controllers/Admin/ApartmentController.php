@@ -1,10 +1,15 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
+
+use App\Http\Controllers\Controller;
 
 use App\Http\Requests\StoreApartmentRequest;
 use App\Http\Requests\UpdateApartmentRequest;
+
+// Models
 use App\Models\Apartment;
+use App\Models\Service;
 
 class ApartmentController extends Controller
 {
@@ -25,7 +30,8 @@ class ApartmentController extends Controller
      */
     public function create()
     {
-        //
+        $services = Service::all();
+        return view('admin.apartments.create', compact('services'));
     }
 
     /**
