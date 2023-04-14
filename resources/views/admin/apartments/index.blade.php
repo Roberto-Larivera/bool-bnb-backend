@@ -24,8 +24,8 @@
     {{-- Bottone crea: Qui responsive su row --}}
     <div class="row">
         <div class="col">
-            <a href="{{ route('admin.apartments.create') }}" class="btn btn-success">
-                Crea nuovo appartamento
+            <a href="{{ route('admin.apartments.create') }}" class="my-btn rounded">
+                <i class="fa-solid fa-plus"></i> Nuovo
             </a>
         </div>
     </div>
@@ -33,22 +33,19 @@
     {{-- Tabella: Qui responsive su row --}}
     <div class="row">
         <div class="col">
-            <table class="table table-striped my-4 rounded">
+            <table class="table my-4 rounded">
                 <thead>
                   <tr>
                     <th scope="col">
-                        #
-                    </th>
-                    <th scope="col">
                         Titolo
                     </th>
-                    <th scope="col">
+                    <th scope="col" class="d-none d-md-table-cell">
                         Indirizzo
                     </th>
-                    <th scope="col">
+                    <th scope="col" class="d-none d-lg-table-cell">
                         Mq
                     </th>
-                    <th scope="col">
+                    <th scope="col" class="d-none d-lg-table-cell">
                         Prezzo / notte
                     </th>
                     <th scope="col">
@@ -60,32 +57,29 @@
                     @foreach ($apartments as $apartment)
                     <tbody>
                         <tr>
-                        <th scope="row">
-                            {{ $apartment->id }}
-                        </th>
                         <td>
                             {{ $apartment->title }}
                         </td>
-                        <td>
+                        <td class="d-none d-md-table-cell">
                             {{ $apartment->address }}
                         </td>
-                        <td>
+                        <td class="d-none d-lg-table-cell">
                             {{ $apartment->mq }}
                         </td>
-                        <td>
+                        <td class="d-none d-lg-table-cell">
                             {{ $apartment->price }}
                         </td>
                         <td>
-                            <a href="{{ route('admin.apartments.show', $apartment->id) }}" class="btn btn-primary">
-                                <i class="fa-solid fa-eye" style="color: #fafcff;"></i>
+                            <a href="{{ route('admin.apartments.show', $apartment->id) }}" class="my-action rounded">
+                                <i class="fa-solid fa-eye my-color-dark"></i>
                             </a>
 
-                            <a href="{{ route('admin.apartments.edit', $apartment->id) }}" class="btn btn-warning">
-                                <i class="fa-solid fa-pen" style="color: #fafcff;"></i>
+                            <a href="{{ route('admin.apartments.edit', $apartment->id) }}" class="my-action rounded">
+                                <i class="fa-solid fa-pen my-color-dark"></i>
                             </a>
 
-                            <a href="{{ route('admin.apartments.destroy', $apartment->id) }}" class="btn btn-danger">
-                                <i class="fa-solid fa-trash" style="color: #fafcff;"></i>
+                            <a href="{{ route('admin.apartments.destroy', $apartment->id) }}" class="my-action rounded">
+                                <i class="fa-solid fa-trash my-color-dark"></i>
                             </a>
                         </td>
                         </tr>
