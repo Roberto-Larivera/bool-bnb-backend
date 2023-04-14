@@ -21,20 +21,18 @@ class MessageSeeder extends Seeder
     public function run(Faker $faker)
     {
         
-        for ($i = 0; $i  < 30; $i++) {
-            $apartment_id = null;
-            if (rand(0, 1)) $apartment_id = Apartment::inRandomOrder()->first()->id; 
+        for ($i = 0; $i  < 50; $i++) {
+            $apartment_id = Apartment::inRandomOrder()->first()->id; 
             $message = [
-                [
-                    "apartment_id"=> "$apartment_id",
-                    "sender_email"=> "$faker->safeEmail()",
-                    "sender_name"=> "$faker->sfirstName())",
-                    "sender_surname"=> "$faker->lastName()",
-                    "object"=> "$faker->sentence(3)",
-                    "sender_text"=> "$faker->realTextBetween()",
-                ],
+                
+                    "apartment_id"=> $apartment_id,
+                    "sender_email"=> $faker->email(),
+                    "sender_name"=> $faker->firstName(),
+                    "sender_surname"=> $faker->lastName(),
+                    "object"=> $faker->sentence(3),
+                    "sender_text"=> $faker->realTextBetween(),
+                
             ];
-            
             Message::create($message);
         } 
     }
