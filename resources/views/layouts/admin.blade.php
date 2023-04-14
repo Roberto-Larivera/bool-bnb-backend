@@ -146,7 +146,7 @@
                                 </li>
                                 <li class="nav-item">
                                     <a class="p-0 nav-link d-flex justify-content-between align-items-center {{ Route::currentRouteName() == 'admin.appartamenti' ? 'active-aside-link' : '' }}"
-                                        href="{{ route('admin.dashboard') }}">
+                                        href="{{ route('admin.apartments.index') }}">
                                         <span>Appartamenti</span> <i class="fa-solid fa-house fa-lg fa-fw"></i>
                                     </a>
                                 </li>
