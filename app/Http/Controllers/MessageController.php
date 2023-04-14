@@ -15,7 +15,9 @@ class MessageController extends Controller
      */
     public function index()
     {
-        //
+
+        
+        // SELECT sender_text FROM `messages` JOIN apartments ON messages.apartment_id= apartments.id JOIN users ON users.id = apartments.user_id WHERE users.id = 2;
     }
 
     /**
