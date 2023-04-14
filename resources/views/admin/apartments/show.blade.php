@@ -25,10 +25,10 @@
     <div class="container-fluid mt-4">
         <div class="row row-cols-1 mb-5 align-items-center">
             {{-- Info generali appartamento --}}
-            <div class="img-container col-6">
+            <div class="img-container col col-sm-6">
                 <img class="img-fluid rounded" src="{{ $apartment->main_img }}" alt="{{ $apartment->title }}">
             </div>
-            <div class="info-container col-6">
+            <div class="info-container col col-sm-6 py-3 py-sm-0">
                 <h2>
                     {{ $apartment->title }}
                 </h2>
@@ -36,9 +36,12 @@
                     {{ $apartment->address }}
                 </h4>
 
-               <div>
-                    Visibile online: {{ $apartment->visible }}
-               </div>
+                @if ($apartment->visible == 1)
+                    Visibile online: <strong>si</strong>
+                @elseif ($apartment->visible == 0)
+                    Visibile online: <strong>no</strong>
+                @endif
+
                 <div>
                     Prezzo: &euro; {{ $apartment->price }}
                 </div>
@@ -68,17 +71,17 @@
                     Dettagli
                 </h2>
                 <ul>
-                    <li>
-                        {{ $apartment->mq }} mq
+                    <li class="ps-2">
+                        - {{ $apartment->mq }} mq
                     </li>
-                    <li>
-                       Numero stanze: {{ $apartment->max_rooms }}
+                    <li class="ps-2">
+                        - Numero stanze: {{ $apartment->max_rooms }}
                     </li>
-                    <li>
-                        Numero letti: {{ $apartment->max_beds }}
+                    <li class="ps-2">
+                        - Numero letti: {{ $apartment->max_beds }}
                      </li>
-                     <li>
-                        Numero bagni: {{ $apartment->max_baths }}
+                     <li class="ps-2">
+                        - Numero bagni: {{ $apartment->max_baths }}
                      </li>
                 </ul>
             </div>
@@ -87,7 +90,7 @@
 
     <div class="container-fluid mt-4">
         <div class="row row-cols-1 mb-5 align-items-center">
-            {{-- Descrizione appartamento --}}
+            {{-- Quando ci saranno servizi mettere condizione se non ci sono servizi / ora no per vedere badge --}}
             <div class="col">
                 <h2>
                     Servizi
@@ -106,7 +109,7 @@
             <div class="col-3">
                 {{-- Aggiungere rotta messaggi index --}}
                 <a href="#" class="my-btn rounded">
-                    Messaggi ricevuti
+                    Messaggi
                 </a>
             </div>
             <div class="col-2">
