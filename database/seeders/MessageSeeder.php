@@ -31,6 +31,7 @@ class MessageSeeder extends Seeder
                     "sender_surname"=> $faker->lastName(),
                     "object"=> $faker->sentence(3),
                     "sender_text"=> $faker->realTextBetween(),
+                    "read"=> "0",
                 
             ];
             Message::create($message);
