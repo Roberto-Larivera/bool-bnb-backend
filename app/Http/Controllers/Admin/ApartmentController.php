@@ -48,7 +48,7 @@ class ApartmentController extends Controller
     public function create()
     {
         $services = Service::all();
-        
+
         return view('admin.apartments.create', compact('services'));
     }
 
@@ -102,16 +102,13 @@ class ApartmentController extends Controller
         // salviamo il nuovo apartamento dentro una variabile per poterla utilizzare per inserirla nella tabella ponte
         $newApartment = Apartment::create($data);
         if (array_key_exists('services', $data)) {
-            
+
             foreach ($data['services'] as $service) {
                 $newApartment->services()->attach($service);
             }
         }
 
         return redirect()->route('admin.apartments.show', $newApartment)->with('success', 'Appartamento aggiunto con successo');
-
-
-
     }
 
     /**
@@ -126,15 +123,13 @@ class ApartmentController extends Controller
 
         if ($apartment->user_id == $user->id) {
             $services = Service::all();
-            
+
             return view('admin.apartments.show', [
                 'apartment' => $apartment,
                 'services' => $services
             ]);
-        }
-        else {
+        } else {
             return redirect()->route('admin.apartments.index', $apartment->id)->with('warning', 'Ci dispiace, non abbiamo trovato questo appartamento.');
-
         }
     }
 
@@ -146,12 +141,11 @@ class ApartmentController extends Controller
      */
     public function edit(Apartment $apartment)
     {
-        $user= Auth::user();
-        if($apartment->user_id == $user->id){
+        $user = Auth::user();
+        if ($apartment->user_id == $user->id) {
             $services = Service::all();
-            dd($apartment);
-            return view('admin.apartments.edit', compact('apartment','services'));
-        }else{
+            return view('admin.apartments.edit', compact('apartment', 'services'));
+        } else {
             return redirect()->route('admin.apartments.index', $apartment->id)->with('warning', 'Ci dispiace, non abbiamo trovato questo appartamento. Ci hai provato pezzo di m**** !!! 💀');
         }
     }
@@ -165,7 +159,72 @@ class ApartmentController extends Controller
      */
     public function update(UpdateApartmentRequest $request, Apartment $apartment)
     {
-        //
+        $data = $request->validated();
+        // dd($data);
+        $titleOld = $apartment->title;
+        $descriptionOld = $apartment->description;
+        $main_imgOld = $apartment->main_img;
+        $servicesOld = $apartment->services()->pluck('id')->toArray();
+        $max_guestsOld = $apartment->max_guests;
+        $roomsOld = $apartment->rooms;
+        $bedsOld = $apartment->beds;
+        $bathsOld = $apartment->baths;
+        $mqOld = $apartment->mq;
+        $addressOld = $apartment->address;
+        $priceOld = $apartment->price;
+        $visibleOld = $apartment->visible;
+
+        // richiesta di rimozione o modifica img file
+        // $featuredDeleteImage = false;
+
+        if (
+            $titleOld == $data['title'] &&
+            $descriptionOld == $data['description'] &&
+            $main_imgOld == $data['main_img'] &&
+            $servicesOld == $data['services'] &&
+            $max_guestsOld == $data['max_guests'] &&
+            $roomsOld == $data['rooms'] &&
+            $bedsOld == $data['beds'] &&
+            $bathsOld == $data['baths'] &&
+            $mqOld == $data['mq'] &&
+            $addressOld == $data['address'] &&
+            $priceOld == $data['price'] &&
+            $visibleOld == $data['visible']
+        ) {
+            return redirect()->route('admin.apartments.edit', $apartment)->with('warning', 'Non hai effettuato nessuna modifica');
+        } else {
+            // verifica eliminazione o modifica img file
+            // if (array_key_exists('delete_main_img', $data) || array_key_exists('main_img', $data))
+            // $featuredDeleteImage = true;
+
+            // verifica se è stato modificato il titolo e in caso viene agiornato lo slug
+            if ($titleOld != $data['title']) {
+                // crea uno slug dal titolo e e lo ricerca nel db per controllare che non esiste, in caso esiste la variabile $existSlug ritorna un true e attiva il ciclo while
+                $data['slug'] = Str::slug($data['title']);
+                $existSlug = Apartment::where('slug', $data['slug'])->first();
+
+                $counter = 1;
+                $dataSlug = $data['slug'];
+
+                // questa funzione controlla se lo slag esiste già nel database, e in caso esista con questo ciclo while li viene inserito un numero di continuazione 
+                while ($existSlug) {
+                    if (strlen($data['slug']) >= 60) {
+                        substr($data['slug'], 0, strlen($data['slug']) - 3);
+                    }
+                    $data['slug'] = $dataSlug . '-' . $counter;
+                    $counter++;
+                    $existSlug = Apartment::where('slug', $data['slug'])->first();
+                }
+            } // fine creazione slug
+
+            // verifica se siste l'array di dati della tabella ponte da sincronizzare
+            if (array_key_exists('services', $data)) {
+
+                $apartment->services()->sync($data['services']);
+            }
+            $apartment->update($data);
+            return redirect()->route('admin.apartments.show', $apartment)->with('success', 'Appartamento aggiornato con successo');
+        }
     }
 
     /**
