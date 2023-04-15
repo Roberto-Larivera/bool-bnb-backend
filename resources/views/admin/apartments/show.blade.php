@@ -45,6 +45,30 @@
                 <div>
                     Prezzo: &euro; {{ $apartment->price }}
                 </div>
+
+                {{-- Bottoni Mobile messaggi / sponsor --}}
+                <div class="buttons d-lg-none mt-3">
+                    <a href="{{ route('admin.messages.index') }}" class="my-action rounded me-3">
+                        <i class="fa-regular fa-envelope"></i>
+                    </a>
+
+                    {{-- Aggiungere rotta sponsor --}}
+                    <a href="#" class="my-action rounded">
+                        <i class="fa-solid fa-sack-dollar"></i>
+                    </a>
+                </div>
+
+                {{-- Bottoni Tablet messaggi / sponsor --}}
+                <div class="buttons d-none d-lg-block mt-3">
+                   <a href="{{ route('admin.messages.index') }}" class="my-action rounded me-3">
+                       Leggi messaggi
+                   </a>
+
+                   {{-- Aggiungere rotta sponsor --}}
+                   <a href="#" class="my-action rounded">
+                       Sponsorizza
+                   </a>
+               </div>
             </div>
         </div>
     </div>
@@ -75,13 +99,13 @@
                         - {{ $apartment->mq }} mq
                     </li>
                     <li class="ps-2">
-                        - Numero stanze: {{ $apartment->max_rooms }}
+                        - Numero stanze: {{ $apartment->rooms }}
                     </li>
                     <li class="ps-2">
-                        - Numero letti: {{ $apartment->max_beds }}
+                        - Numero letti: {{ $apartment->beds }}
                      </li>
                      <li class="ps-2">
-                        - Numero bagni: {{ $apartment->max_baths }}
+                        - Numero bagni: {{ $apartment->baths }}
                      </li>
                 </ul>
             </div>
@@ -95,30 +119,73 @@
                 <h2>
                     Servizi
                 </h2>
-                <div class="services-container">
-                    <span class="badge bg-secondary me-3">
-                        Wi-fi
-                    </span>
-                </div>
+                @if (count($apartment->services) > 0)
+                    <div class="services-container">
+                        @foreach ($apartment->services as $service)
+                            <span class="badge bg-secondary me-3">
+                                {{ $service->name }}
+                            </span>
+                        @endforeach
+                    </div>
+                @else
+                    Nessun servizio aggiunto
+                @endif
+
             </div>
         </div>
     </div>
 
     <div class="container-fluid mt-4">
-        <div class="row row-cols-1 mb-5 align-items-center justify-content-start">
-            <div class="col-3">
-                {{-- Aggiungere rotta messaggi index --}}
-                <a href="#" class="my-btn rounded">
-                    Messaggi
-                </a>
-            </div>
-            <div class="col-2">
-                {{-- Aggiungere rotta sponsor --}}
-                <a href="#" class="my-btn rounded">
-                    Sponsorizza
-                </a>
+        <div class="row row-cols-1 mb-5 align-items-center">
+            <div class="col">
+                <h3>
+                    Azioni
+                </h3>
+                 <div class="actions mt-3">
+                    <a href="{{ route('admin.apartments.edit', $apartment->id) }}" class="my-action rounded me-2">
+                        <i class="fa-solid fa-pen my-color-dark"></i>
+                    </a>
+
+                    <form action="{{ route('admin.apartments.destroy', $apartment->id) }}" method="POST" class="d-inline">
+                        @csrf
+                        @method('DELETE')
+                    
+                        <button type="button" class="btn-modal my-action rounded" data-bs-toggle="modal" data-bs-target="#modal-delete">
+                            <i class="fa-solid fa-trash my-color-dark"></i>
+                        </button>
+                    
+                        <!-- Modal -->
+                        <div class="modal fade" id="modal-delete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">
+                                    Cancella appartamento
+                                </h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <p>
+                                        Ricorda che se cancelli questo appartamento <strong>tutti i messaggi ricevuti</strong> verranno cancellati.
+                                        <br>
+                                        Vuoi procedere alla cancellazione?
+                                    </p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                        Chiudi
+                                    </button>
+                                    <button type="submit" class="my-btn rounded">
+                                        Cancella
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </form> 
+               </div>
             </div>
         </div>
     </div>
+
 
 @endsection
