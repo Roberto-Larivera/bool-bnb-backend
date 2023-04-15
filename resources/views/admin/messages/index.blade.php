@@ -79,8 +79,8 @@
             <table class="table my-4 rounded">
                 <thead>
                     <tr>
-                        <th scope="col">Appartamento</th>
-                        <th scope="col" class="d-none d-md-table-cell">Mittente</th>
+                        <th scope="col" class="d-none d-sm-table-cell">Appartamento</th>
+                        <th scope="col">Mittente</th>
                         <th scope="col" class="d-none d-lg-table-cell">Oggetto</th>
                         <th scope="col" class="d-none d-lg-table-cell">Messaggio</th>
                         <th scope="col">Orario</th>
@@ -88,9 +88,9 @@
                 </thead>
                 <tbody>
                     @forelse ($messages as $message)
-                        <tr>
-                            <td>{{ $message->apartment->title }}</td>
-                            <td class="d-none d-md-table-cell">{!! str_ireplace(
+                        <tr data-bs-toggle="modal" data-bs-target="#message-{{ $message->id }}" class="cursor-pointer-message">
+                            <td class="d-none d-sm-table-cell">{{ $message->apartment->title }}</td>
+                            <td>{!! str_ireplace(
                                 request('search'),
                                 '<span class="highlight">' . request('search') . '</span>',
                                 $message->sender_name,
@@ -99,21 +99,41 @@
                                 '<span class="highlight">' . request('search') . '</span>',
                                 $message->sender_surname,
                             ) !!}</td>
-                            <td class="d-none d-lg-table-cell">{!! str_ireplace(
+                            <td class="d-none d-lg-table-cell"><strong>{!! str_ireplace(
                                 request('search'),
                                 '<span class="highlight">' . request('search') . '</span>',
                                 $message->object,
-                            ) !!}</td>
-                            <td>
-                                <p class="d-none d-lg-block m-0">
-                                    {!! Illuminate\Support\Str::limit(
-                                        str_ireplace(request('search'), '<span class="highlight">' . request('search') . '</span>', $message->sender_text),
-                                        80,
-                                    ) !!}
-                                </p>
+                            ) !!}</strong></td>
+                            <td class="d-none d-lg-table-cell">
+                                <p class="d-none d-lg-block m-0">{!! Illuminate\Support\Str::limit(
+                                    str_ireplace(request('search'), '<span class="highlight">' . request('search') . '</span>', $message->sender_text),
+                                    80,
+                                ) !!}</p>
                             </td>
                             <td><strong>{{ date('H:i', strtotime($message->created_at)) }}</strong></td>
                         </tr>
+
+                        {{-- Modal --}}
+                        <div class="modal fade" id="message-{{ $message->id }}" tabindex="-1"
+                            aria-labelledby="message-{{ $message->id }}-label" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="message-{{ $message->id }}-label">
+                                            {{ $message->object }}</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p><strong>Appartamento:</strong> {{ $message->apartment->title }}</p>
+                                        <p><strong>Mittente:</strong> {{ $message->sender_name }}
+                                            {{ $message->sender_surname }}</p>
+                                        <p><strong>Messaggio:</strong> {{ $message->sender_text }}</p>
+                                        <p><strong>Giorno:</strong> {{ date('Y/m/d H:i', strtotime($message->created_at)) }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     @empty
                     @endforelse
                 </tbody>
@@ -124,6 +144,10 @@
                 <p class="m-0">Non ci sono messaggi da visualizzare...</p>
             </div>
         @endif
+
+
+
+
 
 
 
