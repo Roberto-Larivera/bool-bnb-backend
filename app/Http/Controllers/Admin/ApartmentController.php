@@ -108,7 +108,7 @@ class ApartmentController extends Controller
             }
         }
 
-        return redirect()->route('admin.projects.show', $newApartment)->with('success', 'Progetto aggiunto con successo');
+        return redirect()->route('admin.apartments.show', $newApartment)->with('success', 'Appartamento aggiunto con successo');
 
 
 
