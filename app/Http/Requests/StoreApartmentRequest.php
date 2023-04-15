@@ -36,7 +36,8 @@ class StoreApartmentRequest extends FormRequest
             'mq' => 'required|numeric|max:65535',
             'andress' => 'required|string|max:50',
             'price' => 'required|numeric|decimal:0,2|max:9999.99',
-            'visible' => 'required|boolean',
+            'visible' => 'nullable|boolean',
+
             // 'type_id' => 'nullable|exists:types,id',
             // 'name_repo' => 'required|unique:projects,name_repo|max:98',
             

@@ -40,13 +40,13 @@
 
                             {{-- Immagine principale  --}}
                             <div class="mb-3">
-                                <label for="featured_image"
-                                    class="form-label  @error('featured_image') text-danger @enderror">Immagine in
+                                <label for="main_img"
+                                    class="form-label  @error('main_img') text-danger @enderror">Immagine in
                                     evidenzia <span class="text-danger fw-bold">*</span></label>
-                                <input type="file" class="form-control @error('featured_image') is-invalid @enderror"
-                                    id="featured_image" name="featured_image" {{-- validazione frontend da aggiungere --}} {{-- si usa per i file --}}
-                                    accept="image/*">
-                                @error('featured_image')
+                                <input type="file" class="form-control @error('main_img') is-invalid @enderror"
+                                    id="main_img" name="main_img" {{-- validazione frontend da aggiungere --}} {{-- si usa per i file --}}
+                                    accept="image/*" required>
+                                @error('main_img')
                                     <p class="text-danger fw-bold">{{ $message }}</p>
                                 @enderror
                             </div>
@@ -147,16 +147,16 @@
                         </div>
 
                         <div class="col-12">
-                            {{-- address  --}}
+                            {{-- andress  --}}
                             <div class="mb-3">
-                                <label for="address"
-                                    class="form-label  @error('address') text-danger @enderror ">Indirizzo
+                                <label for="andress"
+                                    class="form-label  @error('andress') text-danger @enderror ">Indirizzo
                                     completo <span class="text-danger fw-bold">*</span></label>
-                                <input type="text" class="form-control @error('address') is-invalid @enderror"
-                                    id="address" name="address"
+                                <input type="text" class="form-control @error('andress') is-invalid @enderror"
+                                    id="andress" name="andress"
                                     placeholder="Esempio Via Mario Rossi, 74, Milano (MI), Italia" maxlength="98"
-                                    value="{{ old('address') }}" required>
-                                @error('address')
+                                    value="{{ old('andress') }}" >
+                                @error('andress')
                                     <p class="text-danger fw-bold">{{ $message }}</p>
                                 @enderror
                             </div>
@@ -198,8 +198,7 @@
                                                                     <input
                                                                         class="form-check-input  @error('services') is-invalid @enderror"
                                                                         type="checkbox" id="tech-{{ $service->id }}"
-                                                                        name="services[]"
-                                                                        value="{{ $service->id }}"
+                                                                        name="services[]" value="{{ $service->id }}"
                                                                         @if (old('services') && is_array(old('services')) && count(old('services')) > 0) {{ in_array($service->id, old('services', [])) ? 'checked' : '' }} @endif>
 
                                                                     <label
@@ -228,10 +227,23 @@
 
                         <div class="col-6 d-flex align-items-center">
                             {{-- visibilità online  --}}
-                            <div class="form-check form-switch">
-                                <input class="form-check-input @error('services') is-invalid @enderror" type="checkbox" role="switch" id="flexSwitchCheckChecked" @if (old('services') && is_array(old('services')) && count(old('services')) > 0) {{ in_array($service->id, old('services', [])) ? 'checked' : '' }} @endif>
-                                <label class="form-check-label  @error('services') text-danger @enderror" for="flexSwitchCheckChecked">Checked switch checkbox input</label>
+                            <div class="form-check">
+                                <input class="form-check-input  @error('services') is-invalid @enderror" type="radio" name="visible" id="visible1"
+                                    value="1" {{ old('visible') == 1 ? 'checked' : '' }}>
+                                <label class="form-check-label  @error('visible') text-danger @enderror" for="visible1">
+                                    Pubblico
+                                </label>
                             </div>
+                            <div class="form-check">
+                                <input class="form-check-input  @error('services') is-invalid @enderror" type="radio" name="visible" id="visible2"
+                                    value="0" {{ old('visible') == 0 ? 'checked' : '' }}>
+                                <label class="form-check-label  @error('visible') text-danger @enderror" for="visible2">
+                                    Privato
+                                </label>
+                            </div>
+                            @error('visible')
+                                <span class="text-danger fw-bold">{{ $message }}</span>
+                            @enderror
                         </div>
 
 
