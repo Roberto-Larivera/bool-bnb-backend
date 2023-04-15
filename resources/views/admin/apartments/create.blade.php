@@ -3,7 +3,7 @@
 @section('title', ' | Create')
 
 @section('content')
-    <div class="container-fluid mt-4">
+    <div id="apartments_create" class="container-fluid mt-4">
         <div class="row row-cols-1 mb-5">
             <div class="col">
                 <h1>
@@ -182,7 +182,7 @@
                             {{-- servizi  --}}
                             @if (count($services) > 0)
                                 <!-- Button trigger modal -->
-                                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                <button type="button" class="primary-btn" data-bs-toggle="modal"
                                     data-bs-target="#service-model">
                                     Tutti i servizi
                                 </button>
@@ -231,8 +231,8 @@
 
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary"
-                                                    data-bs-dismiss="modal">Close</button>
+                                                <button type="button" class="primary-btn"
+                                                    data-bs-dismiss="modal">Chiudi e conferma</button>
                                             </div>
                                         </div>
                                     </div>
