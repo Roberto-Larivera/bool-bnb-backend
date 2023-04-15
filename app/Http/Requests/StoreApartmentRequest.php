@@ -34,7 +34,7 @@ class StoreApartmentRequest extends FormRequest
             'max_beds' => 'required|numeric|max:30',
             'max_baths' => 'required|numeric|max:30',
             'mq' => 'required|numeric|max:65535',
-            'andress' => 'required|string|max:50',
+            'address' => 'required|string|max:50',
             'price' => 'required|numeric|decimal:0,2|max:9999.99',
             'visible' => 'nullable|boolean',
 

@@ -147,16 +147,16 @@
                         </div>
 
                         <div class="col-12">
-                            {{-- andress  --}}
+                            {{-- address  --}}
                             <div class="mb-3">
-                                <label for="andress"
-                                    class="form-label  @error('andress') text-danger @enderror ">Indirizzo
+                                <label for="address"
+                                    class="form-label  @error('address') text-danger @enderror ">Indirizzo
                                     completo <span class="text-danger fw-bold">*</span></label>
-                                <input type="text" class="form-control @error('andress') is-invalid @enderror"
-                                    id="andress" name="andress"
+                                <input type="text" class="form-control @error('address') is-invalid @enderror"
+                                    id="address" name="address"
                                     placeholder="Esempio Via Mario Rossi, 74, Milano (MI), Italia" maxlength="98"
-                                    value="{{ old('andress') }}" >
-                                @error('andress')
+                                    value="{{ old('address') }}" >
+                                @error('address')
                                     <p class="text-danger fw-bold">{{ $message }}</p>
                                 @enderror
                             </div>
