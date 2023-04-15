@@ -1,10 +1,17 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
+
+use App\Http\Controllers\Controller;
 
 use App\Http\Requests\StoreMessageRequest;
 use App\Http\Requests\UpdateMessageRequest;
+
+//Models
 use App\Models\Message;
+
+// Facades
+use Illuminate\Support\Facades\Auth;
 
 class MessageController extends Controller
 {
@@ -15,7 +22,19 @@ class MessageController extends Controller
      */
     public function index()
     {
-        //
+
+        $user = Auth::user();
+
+        $messages = Message::whereHas('apartment', function ($query) use ($user) {
+            $query->where('user_id', '=',  $user->id);
+        })->get();
+
+        return view('admin.messages.index', [
+            'messages' => $messages
+        ]);
+
+        // SELECT * FROM `messages` JOIN apartments ON messages.apartment_id= apartments.id JOIN users ON users.id = apartments.user_id WHERE users.id = 2;
+
     }
 
     /**

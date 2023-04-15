@@ -19,6 +19,7 @@ use App\Models\User;
 use App\Models\Apartment;
 use App\Models\Service;
 
+
 class ApartmentController extends Controller
 {
     /**
@@ -28,7 +29,15 @@ class ApartmentController extends Controller
      */
     public function index()
     {
-        //
+
+        // così riconosce utente autenticato
+        $user = Auth::user();
+
+        $apartments = Apartment::where('user_id', $user->id)->get();
+        
+        return view('admin.apartments.index', [
+            'apartments' => $apartments
+        ]);
     }
 
     /**
@@ -84,7 +93,9 @@ class ApartmentController extends Controller
      */
     public function show(Apartment $apartment)
     {
-        //
+        return view('admin.apartments.show', [
+            'apartment' => $apartment
+        ]);
     }
 
     /**
