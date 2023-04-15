@@ -1,6 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
+
+use App\Http\Controllers\Controller;
 
 use App\Http\Requests\StoreUser_dataRequest;
 use App\Http\Requests\UpdateUser_dataRequest;

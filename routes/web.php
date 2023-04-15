@@ -1,12 +1,12 @@
 <?php
 
 use App\Http\Controllers\Admin\PageController;
-use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\MessageController;
+use App\Http\Controllers\Admin\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 // Controllers
 use App\Http\Controllers\Admin\ApartmentController;
+use App\Http\Controllers\Admin\MessageController;
 
 /*
 |--------------------------------------------------------------------------

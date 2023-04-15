@@ -19,11 +19,6 @@ use App\Models\User;
 use App\Models\Apartment;
 use App\Models\Service;
 
-// Aggiunta Model User
-use App\Models\User;
-
-// Facades
-use Illuminate\Support\Facades\Auth;
 
 class ApartmentController extends Controller
 {
