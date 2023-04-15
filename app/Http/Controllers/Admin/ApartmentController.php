@@ -65,10 +65,12 @@ class ApartmentController extends Controller
         /* 
         salva l'immagine all'interno di public/storage/apartments
         */
+        /*
         if (array_key_exists('main_img', $data)) {
             $imgPath = Storage::put('apartments', $data['main_img']);
             $data['main_img'] = $imgPath;
         }
+        */
 
         // crea uno slug dal titolo e e lo ricerca nel db per controllare che non esiste, in caso esiste la variabile $existSlug ritorna un true e attiva il ciclo while
         $data['slug'] = Str::slug($data['title']);
@@ -96,8 +98,17 @@ class ApartmentController extends Controller
 
         // inseriamo la forekey
         $data['user_id'] = $user->id;
-        // dd($user, $user->id, $data);
-        Apartment::create($data);
+
+        // salviamo il nuovo apartamento dentro una variabile per poterla utilizzare per inserirla nella tabella ponte
+        $newApartment = Apartment::create($data);
+        if (array_key_exists('services', $data)) {
+            
+            foreach ($data['services'] as $service) {
+                $newApartment->services()->attach($service);
+            }
+        }
+
+        return redirect()->route('admin.projects.show', $newApartment)->with('success', 'Progetto aggiunto con successo');
 
 
 

@@ -21,9 +21,9 @@ return new class extends Migration
             $table->text('description');
             $table->string('main_img');
             $table->unsignedTinyInteger('max_guests');
-            $table->unsignedTinyInteger('max_rooms');
-            $table->unsignedTinyInteger('max_beds');
-            $table->unsignedTinyInteger('max_baths');
+            $table->unsignedTinyInteger('rooms');
+            $table->unsignedTinyInteger('beds');
+            $table->unsignedTinyInteger('baths');
             $table->unsignedSmallInteger('mq');
             $table->string('address',50);
             $table->string('latitude',30);
