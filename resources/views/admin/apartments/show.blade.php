@@ -146,38 +146,42 @@
                         <i class="fa-solid fa-pen my-color-dark"></i>
                     </a>
 
-                   <button type="button" class="btn-modal my-action rounded" data-bs-toggle="modal" data-bs-target="#modal-delete">
-                        <i class="fa-solid fa-trash my-color-dark"></i>
-                    </button>
-
-                    <!-- Modal -->
-                    <div class="modal fade" id="modal-delete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="exampleModalLabel">
-                                Cancella appartamento
-                            </h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <p>
-                                    Ricorda che se cancelli questo appartamento <strong>tutti i messaggi ricevuti</strong> verranno cancellati.
-                                    <br>
-                                    Vuoi procedere alla cancellazione?
-                                </p>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-                                    Chiudi
-                                </button>
-                                <a href="{{ route('admin.apartments.destroy', $apartment->id) }}" class="my-btn rounded">
-                                    Cancella
-                                </a>
+                    <form action="{{ route('admin.apartments.destroy', $apartment->id) }}" method="POST" class="d-inline">
+                        @csrf
+                        @method('DELETE')
+                    
+                        <button type="button" class="btn-modal my-action rounded" data-bs-toggle="modal" data-bs-target="#modal-delete">
+                            <i class="fa-solid fa-trash my-color-dark"></i>
+                        </button>
+                    
+                        <!-- Modal -->
+                        <div class="modal fade" id="modal-delete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">
+                                    Cancella appartamento
+                                </h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <p>
+                                        Ricorda che se cancelli questo appartamento <strong>tutti i messaggi ricevuti</strong> verranno cancellati.
+                                        <br>
+                                        Vuoi procedere alla cancellazione?
+                                    </p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                        Chiudi
+                                    </button>
+                                    <button type="submit" class="my-btn rounded">
+                                        Cancella
+                                    </button>
+                                </div>
                             </div>
                         </div>
-                        </div>
-                    </div>
+                    </form> 
                </div>
             </div>
         </div>
