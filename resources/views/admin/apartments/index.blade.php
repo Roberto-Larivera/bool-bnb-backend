@@ -54,7 +54,7 @@
                   </tr>
                 </thead>
 
-                    @foreach ($apartments as $apartment)
+                    @foreach ($apartments as $index => $apartment)
                     <tbody>
                         <tr>
                         <td>
@@ -78,15 +78,58 @@
                                 <i class="fa-solid fa-pen my-color-dark"></i>
                             </a>
 
-                            <a href="{{ route('admin.apartments.destroy', $apartment->id) }}" class="my-action rounded">
+                            {{-- <a href="{{ route('admin.apartments.destroy', $apartment->id) }}" class="my-action rounded">
                                 <i class="fa-solid fa-trash my-color-dark"></i>
-                            </a>
+                            </a> --}}
+
+
+                            {{-- bottone per delete --}}
+                            <button type="button" class="btn-modal my-action rounded" data-toggle="modal" data-target="myModal{{ $index }}">
+                                <i class="fa-solid fa-trash my-color-dark"></i>
+                            </button>
                         </td>
                         </tr>
                     </tbody>
                     @endforeach
-              </table>
+                </table>
+
+              {{-- Modale delete senza ripetizione --}}
+                <div class="modal fade" id="myModal{{ $index }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">
+                                    Modal Title
+                                </h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                Modal Body
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                                    Chiudi
+                                </button>
+                                <button type="button" class="btn btn-primary">
+                                    Cancella
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
 @endsection
+
+<script>
+     (function() {
+        $('btn-modal').click(function() {
+            var index = $(this).data('index');
+            $('myModal' + index).modal('show');
+        });
+    });
+</script>

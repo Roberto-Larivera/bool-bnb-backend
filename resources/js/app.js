@@ -12,6 +12,7 @@ var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
   return new bootstrap.Tooltip(tooltipTriggerEl);
 }); 
 
+
 // Istruiamo Vite e Blade affinchè processino correttamente i nostri assets
 import.meta.glob([
     '../img/**'

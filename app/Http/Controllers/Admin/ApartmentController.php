@@ -129,6 +129,14 @@ class ApartmentController extends Controller
      */
     public function destroy(Apartment $apartment)
     {
-        //
+        // Se esiste già apartment->main_img allora cancella l'immagine
+        if ($apartment->main_img) {
+            Storage::delete($apartment->main_img);
+        }
+
+        // Cancella tutto appartamento
+        $apartment->delete();
+
+        return redirect()->route('admin.apartments.index')->with('success', 'L/appartamento è stato cancellato con successo!');
     }
 }
