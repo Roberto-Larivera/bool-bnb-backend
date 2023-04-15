@@ -48,7 +48,7 @@ class ApartmentController extends Controller
     public function create()
     {
         $services = Service::all();
-        // $user= Auth::user();
+        
         return view('admin.apartments.create', compact('services'));
     }
 
@@ -122,9 +122,20 @@ class ApartmentController extends Controller
      */
     public function show(Apartment $apartment)
     {
-        return view('admin.apartments.show', [
-            'apartment' => $apartment
-        ]);
+        $user = Auth::user();
+
+        if ($apartment->user_id == $user->id) {
+            $services = Service::all();
+            
+            return view('admin.apartments.show', [
+                'apartment' => $apartment,
+                'services' => $services
+            ]);
+        }
+        else {
+            return redirect()->route('admin.apartments.index', $apartment->id)->with('warning', 'Ci dispiace, non abbiamo trovato questo appartamento.');
+
+        }
     }
 
     /**
@@ -135,7 +146,14 @@ class ApartmentController extends Controller
      */
     public function edit(Apartment $apartment)
     {
-        //
+        $user= Auth::user();
+        if($apartment->user_id == $user->id){
+            $services = Service::all();
+            dd($apartment);
+            return view('admin.apartments.edit', compact('apartment','services'));
+        }else{
+            return redirect()->route('admin.apartments.index', $apartment->id)->with('warning', 'Ci dispiace, non abbiamo trovato questo appartamento. Ci hai provato pezzo di m**** !!! 💀');
+        }
     }
 
     /**
@@ -158,6 +176,14 @@ class ApartmentController extends Controller
      */
     public function destroy(Apartment $apartment)
     {
-        //
+        // Se esiste già apartment->main_img allora cancella l'immagine
+        if ($apartment->main_img) {
+            Storage::delete($apartment->main_img);
+        }
+
+        // Cancella tutto appartamento
+        $apartment->delete();
+
+        return redirect()->route('admin.apartments.index')->with('success', 'L/appartamento è stato cancellato con successo!');
     }
 }

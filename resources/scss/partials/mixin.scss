@@ -17,3 +17,30 @@
         }
       }
 }
+
+@mixin inputData{
+    &:focus {
+        border-color: $color_primary;
+        box-shadow: 0 0 0 0.25rem rgb(255, 56, 92, 0.25);
+      }
+}
+
+@mixin buttonPrimary{
+  & {
+    padding: 0.5rem;
+    display: inline-block;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    background-color: $color_light_gray;
+    border: 1px solid $color_dark;
+    color: $color_dark;
+    border-radius: 0.375rem;
+
+  }
+  &:hover {
+      color: $color_light;
+      background-color: $color_primary;
+      border: 1px solid $color_primary;
+  }
+
+}
