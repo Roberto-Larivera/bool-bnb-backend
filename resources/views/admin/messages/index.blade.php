@@ -90,20 +90,24 @@
                     @forelse ($messages as $message)
                         <tr>
                             <td>{{ $message->apartment->title }}</td>
-                            <td class="d-none d-md-table-cell">{!! str_replace(
+                            <td class="d-none d-md-table-cell">{!! str_ireplace(
                                 request('search'),
                                 '<span class="highlight">' . request('search') . '</span>',
                                 $message->sender_name,
-                            ) !!} {!! str_replace(
+                            ) !!} {!! str_ireplace(
                                 request('search'),
                                 '<span class="highlight">' . request('search') . '</span>',
                                 $message->sender_surname,
                             ) !!}</td>
-                            <td class="d-none d-lg-table-cell">{!! str_replace(request('search'), '<span class="highlight">' . request('search') . '</span>', $message->object) !!}</td>
+                            <td class="d-none d-lg-table-cell">{!! str_ireplace(
+                                request('search'),
+                                '<span class="highlight">' . request('search') . '</span>',
+                                $message->object,
+                            ) !!}</td>
                             <td>
                                 <p class="d-none d-lg-block m-0">
                                     {!! Illuminate\Support\Str::limit(
-                                        str_replace(request('search'), '<span class="highlight">' . request('search') . '</span>', $message->sender_text),
+                                        str_ireplace(request('search'), '<span class="highlight">' . request('search') . '</span>', $message->sender_text),
                                         80,
                                     ) !!}
                                 </p>
@@ -120,6 +124,8 @@
                 <p class="m-0">Non ci sono messaggi da visualizzare...</p>
             </div>
         @endif
+
+
 
 
     </div>
