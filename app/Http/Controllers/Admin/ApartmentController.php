@@ -48,7 +48,7 @@ class ApartmentController extends Controller
     public function create()
     {
         $services = Service::all();
-        // $user= Auth::user();
+        
         return view('admin.apartments.create', compact('services'));
     }
 
@@ -146,7 +146,14 @@ class ApartmentController extends Controller
      */
     public function edit(Apartment $apartment)
     {
-        //
+        $user= Auth::user();
+        if($apartment->user_id == $user->id){
+            $services = Service::all();
+            dd($apartment);
+            return view('admin.apartments.edit', compact('apartment','services'));
+        }else{
+            return redirect()->route('admin.apartments.index', $apartment->id)->with('warning', 'Ci dispiace, non abbiamo trovato questo appartamento. Ci hai provato pezzo di m**** !!! 💀');
+        }
     }
 
     /**

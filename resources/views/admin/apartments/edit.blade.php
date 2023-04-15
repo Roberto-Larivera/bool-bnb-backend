@@ -1,13 +1,13 @@
 @extends('layouts.admin')
 
-@section('title', ' | Aggiungi')
+@section('title', ' | Modifica')
 
 @section('content')
     <div id="apartments_create" class="container-fluid my-5">
         <div class="row row-cols-1 mb-5">
             <div class="col">
                 <h1>
-                    Aggiungi appartamento
+                    Modifica appartamento
                 </h1>
 
             </div>

@@ -12,6 +12,7 @@
 @import './admin/admin-layout.scss';
 // aggiunta franci per stile index
 @import './admin/apartments/index.scss';
+@import './admin/apartments/create.scss';
 
 // Style per messages
 @import './admin/messages/index.scss';
@@ -21,4 +22,8 @@
 body{
     scroll-behavior: smooth;
     background-color: $color_light;
+}
+
+.primary-btn{
+    @include buttonPrimary
 }

@@ -1,0 +1,13 @@
+#apartments_create{
+    input{
+        @include inputData
+    }
+    textarea{
+        @include inputData
+    }
+    input[type="radio"]:checked {
+        background-color: $color_primary;
+        border-color: $color_primary;
+      }
+    
+}
