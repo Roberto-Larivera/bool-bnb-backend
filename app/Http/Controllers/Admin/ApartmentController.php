@@ -93,11 +93,20 @@ class ApartmentController extends Controller
      */
     public function show(Apartment $apartment)
     {
-        $services = Service::all();
-        return view('admin.apartments.show', [
-            'apartment' => $apartment,
-            'services' => $services
-        ]);
+        $user = Auth::user();
+
+        if ($apartment->user_id == $user->id) {
+            $services = Service::all();
+            
+            return view('admin.apartments.show', [
+                'apartment' => $apartment,
+                'services' => $services
+            ]);
+        }
+        else {
+            return redirect()->route('admin.apartments.index', $apartment->id)->with('warning', 'Ci dispiace, non abbiamo trovato questo appartamento.');
+
+        }
     }
 
     /**
