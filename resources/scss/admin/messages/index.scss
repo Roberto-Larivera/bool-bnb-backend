@@ -1,0 +1,100 @@
+.form-container-large {
+    width: 85%;
+    border: 1px solid $color_gray;
+
+    .form-floating>label {
+        padding: 0 0.5rem;
+        overflow: visible;
+        top: -2px;
+    }
+
+    input {
+        border-top-style: hidden;
+        border-right-style: hidden;
+        border-left-style: hidden;
+        border-bottom-style: hidden;
+        background-color: $color_light;
+        margin-left: 4rem;
+
+        &:focus {
+            outline: none;
+        }
+    }
+
+    .form-select {
+        display: inline;
+        width: auto;
+        background-color: $color_light;
+        border: 0;
+        border-radius: 0;
+        height: auto;
+    }
+}
+
+.filter{
+    border:  1px solid black;
+}
+
+.no-outline:focus {
+    outline: none;
+}
+
+input[type="date"]::-webkit-inner-spin-button,
+input[type="date"]::-webkit-calendar-picker-indicator {
+    display: none;
+    -webkit-appearance: none;
+}
+
+
+.my-submit {
+    padding: 0.5rem;
+    display: inline-block;
+    background-color: $color_primary;
+    color: $color_light;
+    text-decoration: none;
+    border: 1px solid $color_primary;
+
+}
+
+
+
+.modal-content {
+    background-color: $color_light;
+    border-radius: 0.5rem 0.5rem 0 0;
+    border: none;
+
+    .modal-body {
+        border-radius: 0.5rem 0.5rem 0 0;
+
+        .form-check-input {
+
+            &:checked {
+                background-color: $color_primary;
+            }
+        }
+    }
+
+}
+
+.modal-footer {
+    background-color: $color_light;
+
+    .my-btn {
+        padding: 0.5rem;
+        display: inline-block;
+        background-color: $color_light_gray;
+        color: $color_dark;
+        text-decoration: none;
+        border: 1px solid $color_gray;
+    }
+
+    .my-submit {
+        padding: 0.5rem;
+        display: inline-block;
+        background-color: $color_primary;
+        color: $color_light;
+        text-decoration: none;
+        border: 1px solid $color_primary;
+
+    }
+}
