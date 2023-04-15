@@ -188,28 +188,28 @@
                                                 </h4>
                                                 <div class="mb-3">
                                                     <label
-                                                        class="form-check-label d-block mb-2 @error('technologies') text-danger @enderror">
+                                                        class="form-check-label d-block mb-2 @error('services') text-danger @enderror">
                                                         Servizi
                                                     </label>
                                                     <ul>
-                                                        @foreach ($services as $technology)
+                                                        @foreach ($services as $service)
                                                             <li>
                                                                 <div class="form-check form-check-inline">
                                                                     <input
-                                                                        class="form-check-input  @error('technologies') is-invalid @enderror"
-                                                                        type="checkbox" id="tech-{{ $technology->id }}"
-                                                                        name="technologies[]"
-                                                                        value="{{ $technology->id }}"
-                                                                        @if (old('technologies') && is_array(old('technologies')) && count(old('technologies')) > 0) {{ in_array($technology->id, old('technologies', [])) ? 'checked' : '' }} @endif>
+                                                                        class="form-check-input  @error('services') is-invalid @enderror"
+                                                                        type="checkbox" id="tech-{{ $service->id }}"
+                                                                        name="services[]"
+                                                                        value="{{ $service->id }}"
+                                                                        @if (old('services') && is_array(old('services')) && count(old('services')) > 0) {{ in_array($service->id, old('services', [])) ? 'checked' : '' }} @endif>
 
                                                                     <label
-                                                                        class="form-check-label @error('technologies') text-danger @enderror"
-                                                                        for="tech-{{ $technology->id }}">{{ $technology->name }}</label>
+                                                                        class="form-check-label @error('services') text-danger @enderror"
+                                                                        for="tech-{{ $service->id }}">{{ $service->name }}</label>
                                                                 </div>
                                                             </li>
                                                         @endforeach
                                                     </ul>
-                                                    @error('technologies')
+                                                    @error('services')
                                                         <p class="text-danger fw-bold">{{ $message }}</p>
                                                     @enderror
                                                 </div>
@@ -228,19 +228,9 @@
 
                         <div class="col-6 d-flex align-items-center">
                             {{-- visibilità online  --}}
-                            <div>
-                                <div class="form-check form-switch">
-                                    <input class="form-check-input @error('visible') is-invalid @enderror"
-                                        type="checkbox" role="switch" checked id="visible" name="visible"
-                                        value="{{ $technology->id }}"
-                                        @if (old('visible') && is_array(old('visible')) && count(old('visible')) > 0) {{ in_array($technology->id, old('visible', [])) ? 'checked' : '' }} @endif>
-
-                                    <label class="form-check-label @error('visible') text-danger @enderror"
-                                        for="visible">Pubblico</label>
-                                </div>
-                                @error('visible')
-                                    <p class="text-danger fw-bold">{{ $message }}</p>
-                                @enderror
+                            <div class="form-check form-switch">
+                                <input class="form-check-input @error('services') is-invalid @enderror" type="checkbox" role="switch" id="flexSwitchCheckChecked" @if (old('services') && is_array(old('services')) && count(old('services')) > 0) {{ in_array($service->id, old('services', [])) ? 'checked' : '' }} @endif>
+                                <label class="form-check-label  @error('services') text-danger @enderror" for="flexSwitchCheckChecked">Checked switch checkbox input</label>
                             </div>
                         </div>
 
