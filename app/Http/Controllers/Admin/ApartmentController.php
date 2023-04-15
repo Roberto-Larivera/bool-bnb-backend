@@ -62,15 +62,15 @@ class ApartmentController extends Controller
     {
         $data = $request->validated();
 
-        /* 
-        salva l'immagine all'interno di public/storage/apartments
-        */
-        /*
+        // /* 
+        // salva l'immagine all'interno di public/storage/apartments
+        // */
+
         if (array_key_exists('main_img', $data)) {
             $imgPath = Storage::put('apartments', $data['main_img']);
             $data['main_img'] = $imgPath;
         }
-        */
+
 
         // crea uno slug dal titolo e e lo ricerca nel db per controllare che non esiste, in caso esiste la variabile $existSlug ritorna un true e attiva il ciclo while
         $data['slug'] = Str::slug($data['title']);
@@ -175,12 +175,20 @@ class ApartmentController extends Controller
         $visibleOld = $apartment->visible;
 
         // richiesta di rimozione o modifica img file
-        // $featuredDeleteImage = false;
+        $featuredDeleteImage = false;
+
+        // verifica eliminazione o modifica img file
+        if (array_key_exists('main_img', $data))
+            $featuredDeleteImage = true;
+
 
         if (
             $titleOld == $data['title'] &&
             $descriptionOld == $data['description'] &&
-            $main_imgOld == $data['main_img'] &&
+            // img file
+            $featuredDeleteImage == false &&
+            // img url
+            // $main_imgOld == $data['main_img'] &&
             $servicesOld == $data['services'] &&
             $max_guestsOld == $data['max_guests'] &&
             $roomsOld == $data['rooms'] &&
@@ -193,9 +201,16 @@ class ApartmentController extends Controller
         ) {
             return redirect()->route('admin.apartments.edit', $apartment)->with('warning', 'Non hai effettuato nessuna modifica');
         } else {
-            // verifica eliminazione o modifica img file
-            // if (array_key_exists('delete_main_img', $data) || array_key_exists('main_img', $data))
-            // $featuredDeleteImage = true;
+
+            if (array_key_exists('main_img', $data)){
+                $imgPath = Storage::put('apartments', $data['main_img']);
+                $data['featured_image'] = $imgPath;
+                if ($main_imgOld) {
+                    // Controllo se ce un immagine vecchia è la cancello
+                    Storage::delete($main_imgOld);
+                }
+            }
+            
 
             // verifica se è stato modificato il titolo e in caso viene agiornato lo slug
             if ($titleOld != $data['title']) {

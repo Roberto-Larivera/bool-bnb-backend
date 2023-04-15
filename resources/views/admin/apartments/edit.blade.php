@@ -3,7 +3,7 @@
 @section('title', ' | Modifica')
 
 @section('content')
-    <div id="apartments_create" class="container-fluid my-5">
+    <div id="apartments_update" class="container-fluid my-5">
         <div class="row row-cols-1 mb-5">
             <div class="col">
                 <h1>
@@ -24,7 +24,8 @@
         <div class="row">
             <div class="col">
 
-                <form action="{{ route('admin.apartments.update',$apartment) }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('admin.apartments.update', $apartment) }}" method="POST"
+                    enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
                     <div class="row">
@@ -35,28 +36,26 @@
                                     <span class="text-danger fw-bold">*</span></label>
                                 <input type="text" class="form-control @error('title') is-invalid @enderror"
                                     id="title" name="title" placeholder="Esempio titolo" maxlength="98"
-                                    value="{{ old('title',$apartment->title) }}" required>
+                                    value="{{ old('title', $apartment->title) }}" required>
                                 @error('title')
                                     <p class="text-danger fw-bold">{{ $message }}</p>
                                 @enderror
                             </div>
 
                             {{-- Immagine principale file --}}
-                            {{-- <div class="mb-3">
-                                <label for="main_img"
-                                    class="form-label  @error('main_img') text-danger @enderror">Immagine in
+                            <div class="mb-3">
+                                <label for="main_img" class="form-label  @error('main_img') text-danger @enderror">Immagine
+                                    in
                                     evidenza <span class="text-danger fw-bold">*</span></label>
                                 <input type="file" class="form-control @error('main_img') is-invalid @enderror"
-                                    id="main_img" name="main_img"
-                                    accept="image/*" required>
+                                    id="main_img" name="main_img" accept="image/*">
                                 @error('main_img')
                                     <p class="text-danger fw-bold">{{ $message }}</p>
                                 @enderror
-                            </div> 
-                            --}}
+                            </div>
 
                             {{-- Immagine principale url --}}
-                            <div class="mb-3">
+                            {{-- <div class="mb-3">
                                 <label for="main_img"
                                     class="form-label  @error('main_img') text-danger @enderror">Immagine in
                                     evidenza <span class="text-danger fw-bold">*</span></label>
@@ -66,7 +65,7 @@
                                 @error('main_img')
                                     <p class="text-danger fw-bold">{{ $message }}</p>
                                 @enderror
-                            </div>
+                            </div> --}}
                         </div>
                         <div class="col-12 col-lg-6">
                             {{-- descrizione  --}}
@@ -75,7 +74,7 @@
                                     class="form-label  @error('description') text-danger @enderror">Descrizione <span
                                         class="text-danger fw-bold">*</span></label>
                                 <textarea class="form-control @error('description') is-invalid @enderror" id="description" name="description"
-                                    placeholder="Esempio descrizione; Lorem ipsum dolor sit amet ..." rows="5" maxlength="4096">{{ old('description',$apartment->description) }}</textarea>
+                                    placeholder="Esempio descrizione; Lorem ipsum dolor sit amet ..." rows="5" maxlength="4096">{{ old('description', $apartment->description) }}</textarea>
                                 @error('description')
                                     <p class="text-danger fw-bold">{{ $message }}</p>
                                 @enderror
@@ -89,7 +88,7 @@
                                     numero ospiti <span class="text-danger fw-bold">*</span></label>
                                 <input type="number" class="form-control @error('max_guests') is-invalid @enderror"
                                     id="max_guests" name="max_guests" placeholder="Esempio 5" min="0" max="30"
-                                    value="{{ old('max_guests',$apartment->max_guests) }}" required>
+                                    value="{{ old('max_guests', $apartment->max_guests) }}" required>
                                 @error('max_guests')
                                     <p class="text-danger fw-bold">{{ $message }}</p>
                                 @enderror
@@ -101,7 +100,7 @@
                                     da letto <span class="text-danger fw-bold">*</span></label>
                                 <input type="number" class="form-control @error('rooms') is-invalid @enderror"
                                     id="rooms" name="rooms" placeholder="Esempio 2" min="0" max="30"
-                                    value="{{ old('rooms',$apartment->rooms) }}" required>
+                                    value="{{ old('rooms', $apartment->rooms) }}" required>
                                 @error('rooms')
                                     <p class="text-danger fw-bold">{{ $message }}</p>
                                 @enderror
@@ -117,7 +116,7 @@
                                     <span class="text-danger fw-bold">*</span></label>
                                 <input type="number" class="form-control @error('beds') is-invalid @enderror"
                                     id="beds" name="beds" placeholder="Esempio 3" min="0" max="30"
-                                    value="{{ old('beds',$apartment->beds) }}" required>
+                                    value="{{ old('beds', $apartment->beds) }}" required>
                                 @error('beds')
                                     <p class="text-danger fw-bold">{{ $message }}</p>
                                 @enderror
@@ -128,7 +127,7 @@
                                     bagni <span class="text-danger fw-bold">*</span></label>
                                 <input type="number" class="form-control @error('baths') is-invalid @enderror"
                                     id="baths" name="baths" placeholder="Esempio 1" min="0" max="30"
-                                    value="{{ old('baths',$apartment->baths) }}" required>
+                                    value="{{ old('baths', $apartment->baths) }}" required>
                                 @error('baths')
                                     <p class="text-danger fw-bold">{{ $message }}</p>
                                 @enderror
@@ -143,7 +142,7 @@
                                     <span class="text-danger fw-bold">*</span></label>
                                 <input type="number" class="form-control @error('mq') is-invalid @enderror"
                                     id="mq" name="mq" placeholder="Esempio 40" min="0"
-                                    max="65535" value="{{ old('mq',$apartment->mq) }}" required>
+                                    max="65535" value="{{ old('mq', $apartment->mq) }}" required>
                                 @error('mq')
                                     <p class="text-danger fw-bold">{{ $message }}</p>
                                 @enderror
@@ -155,7 +154,7 @@
                                     notte <span class="text-danger fw-bold">*</span></label>
                                 <input type="number" class="form-control @error('price') is-invalid @enderror"
                                     id="price" name="price" placeholder="Esempio 55" step="0.01"
-                                    min="0.01" max="9999.99" value="{{ old('price',$apartment->price) }}" required>
+                                    min="0.01" max="9999.99" value="{{ old('price', $apartment->price) }}" required>
                                 @error('price')
                                     <p class="text-danger fw-bold">{{ $message }}</p>
                                 @enderror
@@ -171,7 +170,7 @@
                                 <input type="text" class="form-control @error('address') is-invalid @enderror"
                                     id="address" name="address"
                                     placeholder="Esempio Via Mario Rossi, 74, Milano (MI), Italia" maxlength="98"
-                                    value="{{ old('address',$apartment->address) }}" >
+                                    value="{{ old('address', $apartment->address) }}">
                                 @error('address')
                                     <p class="text-danger fw-bold">{{ $message }}</p>
                                 @enderror
@@ -215,12 +214,9 @@
                                                                         class="form-check-input  @error('services') is-invalid @enderror"
                                                                         type="checkbox" id="tech-{{ $service->id }}"
                                                                         name="services[]" value="{{ $service->id }}"
-                                                                        @if ( old('services') && is_array(old('services')) && count(old('services')) > 0) 
-                                                                        {{ in_array($service->id, old('services')) ? 'checked' : '' }} 
+                                                                        @if (old('services') && is_array(old('services')) && count(old('services')) > 0) {{ in_array($service->id, old('services')) ? 'checked' : '' }} 
                                                                         @elseif($apartment->services->contains($service->id))
-                                                                        checked
-                                                                        @endif
-                                                                        >
+                                                                        checked @endif>
 
                                                                     <label
                                                                         class="form-check-label @error('services') text-danger @enderror"
@@ -236,8 +232,8 @@
 
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="button" class="primary-btn"
-                                                    data-bs-dismiss="modal">Chiudi e conferma</button>
+                                                <button type="button" class="primary-btn" data-bs-dismiss="modal">Chiudi
+                                                    e conferma</button>
                                             </div>
                                         </div>
                                     </div>
@@ -248,15 +244,17 @@
                         <div class="col-12 d-flex align-items-center">
                             {{-- visibilità online  --}}
                             <div class="form-check me-3">
-                                <input class="form-check-input  @error('visible') is-invalid @enderror" type="radio" name="visible" id="visible1"
-                                    value="1" {{ old('visible',$apartment->visible) == 1 ? 'checked' : '' }}>
+                                <input class="form-check-input  @error('visible') is-invalid @enderror" type="radio"
+                                    name="visible" id="visible1" value="1"
+                                    {{ old('visible', $apartment->visible) == 1 ? 'checked' : '' }}>
                                 <label class="form-check-label  @error('visible') text-danger @enderror" for="visible1">
                                     Pubblico
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input  @error('visible') is-invalid @enderror" type="radio" name="visible" id="visible2"
-                                    value="0" {{ old('visible',$apartment->visible) == 0 ? 'checked' : '' }}>
+                                <input class="form-check-input  @error('visible') is-invalid @enderror" type="radio"
+                                    name="visible" id="visible2" value="0"
+                                    {{ old('visible', $apartment->visible) == 0 ? 'checked' : '' }}>
                                 <label class="form-check-label  @error('visible') text-danger @enderror" for="visible2">
                                     Privato
                                 </label>

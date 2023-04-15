@@ -1,11 +1,11 @@
-#apartments_create{
+#apartments_create, #apartments_update{
     input{
         @include inputData
     }
     textarea{
         @include inputData
     }
-    input[type="radio"]:checked {
+    input[type="radio"]:checked, input[type="checkbox"]:checked {
         background-color: $color_primary;
         border-color: $color_primary;
       }
