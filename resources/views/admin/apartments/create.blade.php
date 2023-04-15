@@ -1,5 +1,7 @@
 @extends('layouts.admin')
 
+@section('title', ' | Create')
+
 @section('content')
     <div class="container-fluid mt-4">
         <div class="row row-cols-1 mb-5">
@@ -38,14 +40,28 @@
                                 @enderror
                             </div>
 
-                            {{-- Immagine principale  --}}
-                            <div class="mb-3">
+                            {{-- Immagine principale file --}}
+                            {{-- <div class="mb-3">
                                 <label for="main_img"
                                     class="form-label  @error('main_img') text-danger @enderror">Immagine in
                                     evidenzia <span class="text-danger fw-bold">*</span></label>
                                 <input type="file" class="form-control @error('main_img') is-invalid @enderror"
-                                    id="main_img" name="main_img" {{-- validazione frontend da aggiungere --}} {{-- si usa per i file --}}
+                                    id="main_img" name="main_img"
                                     accept="image/*" required>
+                                @error('main_img')
+                                    <p class="text-danger fw-bold">{{ $message }}</p>
+                                @enderror
+                            </div> 
+                            --}}
+
+                            {{-- Immagine principale url --}}
+                            <div class="mb-3">
+                                <label for="main_img"
+                                    class="form-label  @error('main_img') text-danger @enderror">Immagine in
+                                    evidenzia <span class="text-danger fw-bold">*</span></label>
+                                <input type="string" class="form-control @error('main_img') is-invalid @enderror"
+                                    id="main_img" name="main_img"
+                                    maxlength="255" required>
                                 @error('main_img')
                                     <p class="text-danger fw-bold">{{ $message }}</p>
                                 @enderror
@@ -80,13 +96,13 @@
 
                             {{-- stanze da letto --}}
                             <div class="mb-3">
-                                <label for="max_rooms" class="form-label  @error('max_rooms') text-danger @enderror">Stanze
+                                <label for="rooms" class="form-label  @error('rooms') text-danger @enderror">Stanze
                                     da
                                     letto <span class="text-danger fw-bold">*</span></label>
-                                <input type="number" class="form-control @error('max_rooms') is-invalid @enderror"
-                                    id="max_rooms" name="max_rooms" placeholder="Esempio 2" min="0" max="30"
-                                    value="{{ old('max_rooms') }}" required>
-                                @error('max_rooms')
+                                <input type="number" class="form-control @error('rooms') is-invalid @enderror"
+                                    id="rooms" name="rooms" placeholder="Esempio 2" min="0" max="30"
+                                    value="{{ old('rooms') }}" required>
+                                @error('rooms')
                                     <p class="text-danger fw-bold">{{ $message }}</p>
                                 @enderror
                             </div>
@@ -96,24 +112,24 @@
 
                             {{-- letti --}}
                             <div class="mb-3">
-                                <label for="max_beds" class="form-label  @error('max_beds') text-danger @enderror">Numero
+                                <label for="beds" class="form-label  @error('beds') text-danger @enderror">Numero
                                     letti
                                     <span class="text-danger fw-bold">*</span></label>
-                                <input type="number" class="form-control @error('max_beds') is-invalid @enderror"
-                                    id="max_beds" name="max_beds" placeholder="Esempio 3" min="0" max="30"
-                                    value="{{ old('max_beds') }}" required>
-                                @error('max_beds')
+                                <input type="number" class="form-control @error('beds') is-invalid @enderror"
+                                    id="beds" name="beds" placeholder="Esempio 3" min="0" max="30"
+                                    value="{{ old('beds') }}" required>
+                                @error('beds')
                                     <p class="text-danger fw-bold">{{ $message }}</p>
                                 @enderror
                             </div>
                             {{-- bagni --}}
                             <div class="mb-3">
-                                <label for="max_baths" class="form-label  @error('max_baths') text-danger @enderror">Numero
+                                <label for="baths" class="form-label  @error('baths') text-danger @enderror">Numero
                                     bagni <span class="text-danger fw-bold">*</span></label>
-                                <input type="number" class="form-control @error('max_baths') is-invalid @enderror"
-                                    id="max_baths" name="max_baths" placeholder="Esempio 1" min="0" max="30"
-                                    value="{{ old('max_baths') }}" required>
-                                @error('max_baths')
+                                <input type="number" class="form-control @error('baths') is-invalid @enderror"
+                                    id="baths" name="baths" placeholder="Esempio 1" min="0" max="30"
+                                    value="{{ old('baths') }}" required>
+                                @error('baths')
                                     <p class="text-danger fw-bold">{{ $message }}</p>
                                 @enderror
                             </div>
@@ -147,22 +163,22 @@
                         </div>
 
                         <div class="col-12">
-                            {{-- andress  --}}
+                            {{-- address  --}}
                             <div class="mb-3">
-                                <label for="andress"
-                                    class="form-label  @error('andress') text-danger @enderror ">Indirizzo
+                                <label for="address"
+                                    class="form-label  @error('address') text-danger @enderror ">Indirizzo
                                     completo <span class="text-danger fw-bold">*</span></label>
-                                <input type="text" class="form-control @error('andress') is-invalid @enderror"
-                                    id="andress" name="andress"
+                                <input type="text" class="form-control @error('address') is-invalid @enderror"
+                                    id="address" name="address"
                                     placeholder="Esempio Via Mario Rossi, 74, Milano (MI), Italia" maxlength="98"
-                                    value="{{ old('andress') }}" >
-                                @error('andress')
+                                    value="{{ old('address') }}" >
+                                @error('address')
                                     <p class="text-danger fw-bold">{{ $message }}</p>
                                 @enderror
                             </div>
                         </div>
 
-                        <div class="col-6">
+                        <div class="col-6 mb-5">
                             {{-- servizi  --}}
                             @if (count($services) > 0)
                                 <!-- Button trigger modal -->
@@ -217,7 +233,6 @@
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary"
                                                     data-bs-dismiss="modal">Close</button>
-                                                <button type="button" class="btn btn-primary">Understood</button>
                                             </div>
                                         </div>
                                     </div>
@@ -225,9 +240,9 @@
                             @endif
                         </div>
 
-                        <div class="col-6 d-flex align-items-center">
+                        <div class="col-12 d-flex align-items-center">
                             {{-- visibilità online  --}}
-                            <div class="form-check">
+                            <div class="form-check me-3">
                                 <input class="form-check-input  @error('services') is-invalid @enderror" type="radio" name="visible" id="visible1"
                                     value="1" {{ old('visible') == 1 ? 'checked' : '' }}>
                                 <label class="form-check-label  @error('visible') text-danger @enderror" for="visible1">

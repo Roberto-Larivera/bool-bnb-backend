@@ -27,14 +27,17 @@ class StoreApartmentRequest extends FormRequest
 
             'title' => 'required|string|max:30',
             'description' => 'required|string|max:4096',
-            'main_img' => 'required|image|max:2048',
-            'technologies' => 'nullable|array|exists:technologies,id',
+            // img file
+            // 'main_img' => 'required|image|max:2048',
+            // img url
+            'main_img' => 'required|url|max:255',
+            'services' => 'nullable|array|exists:services,id',
             'max_guests' => 'required|numeric|max:30',
-            'max_rooms' => 'required|numeric|max:30',
-            'max_beds' => 'required|numeric|max:30',
-            'max_baths' => 'required|numeric|max:30',
+            'rooms' => 'required|numeric|max:30',
+            'beds' => 'required|numeric|max:30',
+            'baths' => 'required|numeric|max:30',
             'mq' => 'required|numeric|max:65535',
-            'andress' => 'required|string|max:50',
+            'address' => 'required|string|max:50',
             'price' => 'required|numeric|decimal:0,2|max:9999.99',
             'visible' => 'nullable|boolean',
 
