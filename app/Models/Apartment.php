@@ -11,13 +11,14 @@ class Apartment extends Model
     
     protected $fillable = [
         'title',
+        'user_id',
         'slug',
         'description',
         'main_img',
         'max_guests',
-        'max_rooms',
-        'max_beds',
-        'max_baths',
+        'rooms',
+        'beds',
+        'baths',
         'mq',
         'address',
         'latitude',

@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Mail;
 use App\Models\User;
 use App\Models\Apartment;
 use App\Models\Service;
-
+use Termwind\Components\Dd;
 
 class ApartmentController extends Controller
 {
@@ -34,7 +34,7 @@ class ApartmentController extends Controller
         $user = Auth::user();
 
         $apartments = Apartment::where('user_id', $user->id)->get();
-        
+
         return view('admin.apartments.index', [
             'apartments' => $apartments
         ]);
@@ -61,18 +61,23 @@ class ApartmentController extends Controller
     public function store(StoreApartmentRequest $request)
     {
         $data = $request->validated();
+
+        /* 
+        salva l'immagine all'interno di public/storage/apartments
+        */
+        /*
         if (array_key_exists('main_img', $data)) {
             $imgPath = Storage::put('apartments', $data['main_img']);
             $data['main_img'] = $imgPath;
         }
+        */
 
+        // crea uno slug dal titolo e e lo ricerca nel db per controllare che non esiste, in caso esiste la variabile $existSlug ritorna un true e attiva il ciclo while
         $data['slug'] = Str::slug($data['title']);
         $existSlug = Apartment::where('slug', $data['slug'])->first();
 
         $counter = 1;
         $dataSlug = $data['slug'];
-
-        // Aggiungere la possibilità di rimuovere gli spazzi se ci sono e inserire dei trattini, name-repo
 
         // questa funzione controlla se lo slag esiste già nel database, e in caso esista con questo ciclo while li viene inserito un numero di continuazione 
         while ($existSlug) {
@@ -83,6 +88,30 @@ class ApartmentController extends Controller
             $counter++;
             $existSlug = Apartment::where('slug', $data['slug'])->first();
         }
+
+        // vengono realizate delle cordinate fake per il momento
+        $data['latitude'] = '00000';
+        $data['longitude'] = '00000';
+
+        // così riconosce utente autenticato
+        $user = Auth::user();
+
+        // inseriamo la forekey
+        $data['user_id'] = $user->id;
+
+        // salviamo il nuovo apartamento dentro una variabile per poterla utilizzare per inserirla nella tabella ponte
+        $newApartment = Apartment::create($data);
+        if (array_key_exists('services', $data)) {
+            
+            foreach ($data['services'] as $service) {
+                $newApartment->services()->attach($service);
+            }
+        }
+
+        return redirect()->route('admin.apartments.show', $newApartment)->with('success', 'Appartamento aggiunto con successo');
+
+
+
     }
 
     /**
