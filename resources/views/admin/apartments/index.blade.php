@@ -71,37 +71,28 @@
                         </td>
                         <td>
                             <a href="{{ route('admin.apartments.show', $apartment->id) }}" class="my-action rounded">
-                                <i class="fa-solid fa-eye my-color-dark"></i>
+                                Dettagli
                             </a>
 
-                            <a href="{{ route('admin.apartments.edit', $apartment->id) }}" class="my-action rounded">
-                                <i class="fa-solid fa-pen my-color-dark"></i>
-                            </a>
-
-                            {{-- <a href="{{ route('admin.apartments.destroy', $apartment->id) }}" class="my-action rounded">
+                            {{-- bottone per delete DA TOGLIERE SE RESTA IN SHOW --}}
+                            {{-- <button type="button" class="btn-modal my-action rounded" data-bs-toggle="modal" data-bs-target="#modal-delete" onclick="openModal({{ $index }})">
                                 <i class="fa-solid fa-trash my-color-dark"></i>
-                            </a> --}}
-
-
-                            {{-- bottone per delete --}}
-                            <button type="button" class="btn-modal my-action rounded" data-toggle="modal" data-target="myModal{{ $index }}">
-                                <i class="fa-solid fa-trash my-color-dark"></i>
-                            </button>
+                            </button> --}}
                         </td>
                         </tr>
                     </tbody>
                     @endforeach
                 </table>
 
-              {{-- Modale delete senza ripetizione --}}
-                <div class="modal fade" id="myModal{{ $index }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                {{-- Prova modale senza ripetizione DA TOGLIERE --}}
+                {{-- <div class="modal fade" id="modal-delete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" query="modal-delete">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h5 class="modal-title" id="exampleModalLabel">
-                                    Modal Title
+                                    Cancellare appartamento {{ $index }}?
                                 </h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="deleteItem()">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
@@ -118,18 +109,38 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
             </div>
         </div>
     </div>
 </div>
 @endsection
 
-<script>
-     (function() {
-        $('btn-modal').click(function() {
-            var index = $(this).data('index');
-            $('myModal' + index).modal('show');
-        });
-    });
-</script>
+
+{{-- Prove per NON ciclare anche modale di delete --}}
+{{-- <script>
+    function openModal(index) {
+
+        const myInput = document.getElementByAttribute('data-bs-target', 'myModal' + index);
+        const myModal = document.getElementByAttribute('query', 'modal-delete');
+
+        myModal.id = 'myModal' + index;
+    }
+
+</script> --}}
+
+{{-- <script>
+    function openModal(index) {
+        const modal = document.getElementById('modal-delete');
+        modal.id = 'myModal' + index;
+        const myModal = new bootstrap.Modal(modal);
+        myModal.show();
+    }
+
+    function deleteItem() {
+        // Code to delete item goes here
+        const modal = document.querySelector('.modal');
+        const myModal = new bootstrap.Modal.getInstance(modal);
+        myModal.hide();
+    }
+</script> --}}
