@@ -1,10 +1,23 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
+
+use App\Http\Controllers\Controller;
 
 use App\Http\Requests\StoreApartmentRequest;
 use App\Http\Requests\UpdateApartmentRequest;
+
+// Facades
+// Helpers
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Mail;
+
+// Models
+use App\Models\User;
 use App\Models\Apartment;
+use App\Models\Service;
 
 // Aggiunta Model User
 use App\Models\User;
@@ -39,7 +52,9 @@ class ApartmentController extends Controller
      */
     public function create()
     {
-        //
+        $services = Service::all();
+        // $user= Auth::user();
+        return view('admin.apartments.create', compact('services'));
     }
 
     /**
@@ -50,7 +65,29 @@ class ApartmentController extends Controller
      */
     public function store(StoreApartmentRequest $request)
     {
-        //
+        $data = $request->validated();
+        if (array_key_exists('main_img', $data)) {
+            $imgPath = Storage::put('apartments', $data['main_img']);
+            $data['main_img'] = $imgPath;
+        }
+
+        $data['slug'] = Str::slug($data['title']);
+        $existSlug = Apartment::where('slug', $data['slug'])->first();
+
+        $counter = 1;
+        $dataSlug = $data['slug'];
+
+        // Aggiungere la possibilità di rimuovere gli spazzi se ci sono e inserire dei trattini, name-repo
+
+        // questa funzione controlla se lo slag esiste già nel database, e in caso esista con questo ciclo while li viene inserito un numero di continuazione 
+        while ($existSlug) {
+            if (strlen($data['slug']) >= 60) {
+                substr($data['slug'], 0, strlen($data['slug']) - 3);
+            }
+            $data['slug'] = $dataSlug . '-' . $counter;
+            $counter++;
+            $existSlug = Apartment::where('slug', $data['slug'])->first();
+        }
     }
 
     /**
