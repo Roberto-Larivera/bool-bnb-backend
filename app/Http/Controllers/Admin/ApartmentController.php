@@ -93,8 +93,10 @@ class ApartmentController extends Controller
      */
     public function show(Apartment $apartment)
     {
+        $services = Service::all();
         return view('admin.apartments.show', [
-            'apartment' => $apartment
+            'apartment' => $apartment,
+            'services' => $services
         ]);
     }
 

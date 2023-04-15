@@ -119,11 +119,18 @@
                 <h2>
                     Servizi
                 </h2>
-                <div class="services-container">
-                    <span class="badge bg-secondary me-3">
-                        Wi-fi
-                    </span>
-                </div>
+                @if (count($apartment->services) > 0)
+                    <div class="services-container">
+                        @foreach ($apartment->services as $service)
+                            <span class="badge bg-secondary me-3">
+                                {{ $service->name }}
+                            </span>
+                        @endforeach
+                    </div>
+                @else
+                    Nessun servizio aggiunto
+                @endif
+
             </div>
         </div>
     </div>
