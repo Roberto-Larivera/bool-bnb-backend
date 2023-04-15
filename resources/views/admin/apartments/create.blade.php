@@ -1,138 +1,265 @@
 @extends('layouts.admin')
 
 @section('content')
-<div class="container-fluid mt-4">
-    <div class="row row-cols-1 mb-5">
-        <div class="col">
-            <h1>
-                Aggiungi Progetto
-            </h1>
+    <div class="container-fluid mt-4">
+        <div class="row row-cols-1 mb-5">
+            <div class="col">
+                <h1>
+                    Aggiungi appartamento
+                </h1>
 
+            </div>
+            <div class="col">
+                <a href="{{ route('admin.apartments.index') }}" class="btn btn-outline-primary">
+                    Torna Indietro
+                    <i class="fa-solid fa-rotate-left"></i>
+                </a>
+            </div>
         </div>
-        <div class="col">
-            <a href="{{ route('admin.projects.index') }}" class="btn btn-outline-primary">
-                Torna Indietro
-                <i class="fa-solid fa-rotate-left"></i>
-            </a>
-        </div>
-    </div>
-    @include('admin.partials.errors')
-    @include('admin.partials.success')
-    @include('admin.partials.warning')
-    <div class="row">
-        <div class="col">
+        @include('admin.partials.errors')
+        @include('admin.partials.success')
+        @include('admin.partials.warning')
+        <div class="row">
+            <div class="col">
 
-            <form action="{{ route('admin.projects.store') }}" method="POST" enctype="multipart/form-data">
-                @csrf
-                <div class="mb-3">
-                    <label for="title" class="form-label  @error('title') text-danger @enderror ">Titolo <span
-                            class="text-danger fw-bold">*</span></label>
-                    <input type="text" class="form-control @error('title') is-invalid @enderror" id="title"
-                        name="title" placeholder="Example Title" maxlength="98" value="{{ old('title') }}" required>
-                    @error('title')
-                        <p class="text-danger fw-bold">{{ $message }}</p>
-                    @enderror
-                </div>
-                <div class="mb-3">
-                    <label for="name_repo" class="form-label  @error('name_repo') text-danger @enderror">Nome
-                        Repo <span class="text-danger fw-bold">*</span></label>
-                    <input type="text" class="form-control @error('name_repo') is-invalid @enderror" id="name_repo"
-                        name="name_repo" placeholder="example-name-repo" maxlength="98" value="{{ old('name_repo') }}"
-                        required>
-                    @error('name_repo')
-                        <p class="text-danger fw-bold">{{ $message }}</p>
-                    @enderror
-                </div>
-                <div class="mb-3">
-                    <label for="link_repo" class="form-label  @error('link_repo') text-danger @enderror">Link
-                        Repo <span class="text-danger fw-bold">*</span></label>
-                    <input type="text" class="form-control @error('link_repo') is-invalid @enderror" id="link_repo"
-                        name="link_repo" placeholder="https://github.com/Example-link/name-repo" maxlength="255"
-                        value="{{ old('link_repo') }}" required>
-                    @error('link_repo')
-                        <p class="text-danger fw-bold">{{ $message }}</p>
-                    @enderror
-                </div>
-
-                @if (count($types) > 0)
-
-                    <div class="mb-3">
-                        <label for="type_id"
-                            class="form-label  @error('type_id') text-danger @enderror">Tipologia</label>
-                        <select class="form-select @error('type_id') is-invalid @enderror" name="type_id">
-                            <option value="">Nessuna Tipologia</option>
-                            @foreach ($types as $type)
-                                <option value="{{ $type->id }}" {{ old('type_id') == $type->id ? 'selected' : '' }}>
-                                    {{ $type->name }}</option>
-                            @endforeach
-                        </select>
-                        @error('type_id')
-                            <p class="text-danger fw-bold">{{ $message }}</p>
-                        @enderror
-                    </div>
-
-                @endif
-
-                @if (count($technologies) > 0)
-
-                    <div class="mb-3">
-                        <label class="form-check-label d-block mb-2 @error('technologies') text-danger @enderror">
-                            Tecnologie
-                        </label>
-                        @foreach ($technologies as $technology)
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input  @error('technologies') is-invalid @enderror"
-                                    type="checkbox" id="tech-{{ $technology->id }}" name="technologies[]"
-                                    value="{{ $technology->id }}" 
-                                    
-                                    @if (old('technologies') && is_array(old('technologies')) && count(old('technologies')) > 0) 
-                                    {{ in_array($technology->id,old('technologies',[])) ? 'checked': '' }}
-                                    @endif
-                                    
-                                    >
-
-                                <label class="form-check-label @error('technologies') text-danger @enderror"
-                                    for="tech-{{ $technology->id }}">{{ $technology->name }}</label>
+                <form action="{{ route('admin.apartments.store') }}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    <div class="row">
+                        <div class="col-12 col-lg-6">
+                            {{-- titolo  --}}
+                            <div class="mb-3">
+                                <label for="title" class="form-label  @error('title') text-danger @enderror ">Titolo
+                                    <span class="text-danger fw-bold">*</span></label>
+                                <input type="text" class="form-control @error('title') is-invalid @enderror"
+                                    id="title" name="title" placeholder="Esempio titolo" maxlength="98"
+                                    value="{{ old('title') }}" required>
+                                @error('title')
+                                    <p class="text-danger fw-bold">{{ $message }}</p>
+                                @enderror
                             </div>
-                        @endforeach
-                        @error('technologies')
-                            <p class="text-danger fw-bold">{{ $message }}</p>
-                        @enderror
+
+                            {{-- Immagine principale  --}}
+                            <div class="mb-3">
+                                <label for="main_img"
+                                    class="form-label  @error('main_img') text-danger @enderror">Immagine in
+                                    evidenzia <span class="text-danger fw-bold">*</span></label>
+                                <input type="file" class="form-control @error('main_img') is-invalid @enderror"
+                                    id="main_img" name="main_img" {{-- validazione frontend da aggiungere --}} {{-- si usa per i file --}}
+                                    accept="image/*" required>
+                                @error('main_img')
+                                    <p class="text-danger fw-bold">{{ $message }}</p>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-6">
+                            {{-- descrizione  --}}
+                            <div class="mb-3">
+                                <label for="description"
+                                    class="form-label  @error('description') text-danger @enderror">Descrizione <span
+                                        class="text-danger fw-bold">*</span></label>
+                                <textarea class="form-control @error('description') is-invalid @enderror" id="description" name="description"
+                                    placeholder="Esempio descrizione; Lorem ipsum dolor sit amet ..." rows="5" maxlength="4096">{{ old('description') }}</textarea>
+                                @error('description')
+                                    <p class="text-danger fw-bold">{{ $message }}</p>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="col-12  col-md-6 col-lg-4">
+                            {{-- max ospiti --}}
+                            <div class="mb-3">
+                                <label for="max_guests"
+                                    class="form-label  @error('max_guests') text-danger @enderror">Massimo
+                                    numero ospiti <span class="text-danger fw-bold">*</span></label>
+                                <input type="number" class="form-control @error('max_guests') is-invalid @enderror"
+                                    id="max_guests" name="max_guests" placeholder="Esempio 5" min="0" max="30"
+                                    value="{{ old('max_guests') }}" required>
+                                @error('max_guests')
+                                    <p class="text-danger fw-bold">{{ $message }}</p>
+                                @enderror
+                            </div>
+
+                            {{-- stanze da letto --}}
+                            <div class="mb-3">
+                                <label for="max_rooms" class="form-label  @error('max_rooms') text-danger @enderror">Stanze
+                                    da
+                                    letto <span class="text-danger fw-bold">*</span></label>
+                                <input type="number" class="form-control @error('max_rooms') is-invalid @enderror"
+                                    id="max_rooms" name="max_rooms" placeholder="Esempio 2" min="0" max="30"
+                                    value="{{ old('max_rooms') }}" required>
+                                @error('max_rooms')
+                                    <p class="text-danger fw-bold">{{ $message }}</p>
+                                @enderror
+                            </div>
+
+                        </div>
+                        <div class="col-12 col-md-6 col-lg-4">
+
+                            {{-- letti --}}
+                            <div class="mb-3">
+                                <label for="max_beds" class="form-label  @error('max_beds') text-danger @enderror">Numero
+                                    letti
+                                    <span class="text-danger fw-bold">*</span></label>
+                                <input type="number" class="form-control @error('max_beds') is-invalid @enderror"
+                                    id="max_beds" name="max_beds" placeholder="Esempio 3" min="0" max="30"
+                                    value="{{ old('max_beds') }}" required>
+                                @error('max_beds')
+                                    <p class="text-danger fw-bold">{{ $message }}</p>
+                                @enderror
+                            </div>
+                            {{-- bagni --}}
+                            <div class="mb-3">
+                                <label for="max_baths" class="form-label  @error('max_baths') text-danger @enderror">Numero
+                                    bagni <span class="text-danger fw-bold">*</span></label>
+                                <input type="number" class="form-control @error('max_baths') is-invalid @enderror"
+                                    id="max_baths" name="max_baths" placeholder="Esempio 1" min="0" max="30"
+                                    value="{{ old('max_baths') }}" required>
+                                @error('max_baths')
+                                    <p class="text-danger fw-bold">{{ $message }}</p>
+                                @enderror
+                            </div>
+
+
+                        </div>
+                        <div class="col-12  col-md-6 col-lg-4">
+                            {{-- mq --}}
+                            <div class="mb-3">
+                                <label for="mq" class="form-label  @error('mq') text-danger @enderror">Numero mq
+                                    <span class="text-danger fw-bold">*</span></label>
+                                <input type="number" class="form-control @error('mq') is-invalid @enderror"
+                                    id="mq" name="mq" placeholder="Esempio 40" min="0"
+                                    max="65535" value="{{ old('mq') }}" required>
+                                @error('mq')
+                                    <p class="text-danger fw-bold">{{ $message }}</p>
+                                @enderror
+                            </div>
+
+                            {{-- prezzo a notte --}}
+                            <div class="mb-3">
+                                <label for="price" class="form-label  @error('price') text-danger @enderror">Prezzo a
+                                    notte <span class="text-danger fw-bold">*</span></label>
+                                <input type="number" class="form-control @error('price') is-invalid @enderror"
+                                    id="price" name="price" placeholder="Esempio 55" step="0.01"
+                                    min="0.01" max="9999.99" value="{{ old('price') }}" required>
+                                @error('price')
+                                    <p class="text-danger fw-bold">{{ $message }}</p>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="col-12">
+                            {{-- andress  --}}
+                            <div class="mb-3">
+                                <label for="andress"
+                                    class="form-label  @error('andress') text-danger @enderror ">Indirizzo
+                                    completo <span class="text-danger fw-bold">*</span></label>
+                                <input type="text" class="form-control @error('andress') is-invalid @enderror"
+                                    id="andress" name="andress"
+                                    placeholder="Esempio Via Mario Rossi, 74, Milano (MI), Italia" maxlength="98"
+                                    value="{{ old('andress') }}" >
+                                @error('andress')
+                                    <p class="text-danger fw-bold">{{ $message }}</p>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="col-6">
+                            {{-- servizi  --}}
+                            @if (count($services) > 0)
+                                <!-- Button trigger modal -->
+                                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                    data-bs-target="#service-model">
+                                    Tutti i servizi
+                                </button>
+
+                                <!-- Modal -->
+                                <div class="modal fade" id="service-model" tabindex="-1"
+                                    aria-labelledby="exampleModalScrollableTitle" aria-modal="true" role="dialog">
+                                    <div class="modal-dialog modal-dialog-scrollable">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h1 class="modal-title fs-5" id="staticBackdropLabel">Servizi</h1>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+
+                                                <h4>
+                                                    Scegli uno o più servizi
+                                                </h4>
+                                                <div class="mb-3">
+                                                    <label
+                                                        class="form-check-label d-block mb-2 @error('services') text-danger @enderror">
+                                                        Servizi
+                                                    </label>
+                                                    <ul>
+                                                        @foreach ($services as $service)
+                                                            <li>
+                                                                <div class="form-check form-check-inline">
+                                                                    <input
+                                                                        class="form-check-input  @error('services') is-invalid @enderror"
+                                                                        type="checkbox" id="tech-{{ $service->id }}"
+                                                                        name="services[]" value="{{ $service->id }}"
+                                                                        @if (old('services') && is_array(old('services')) && count(old('services')) > 0) {{ in_array($service->id, old('services', [])) ? 'checked' : '' }} @endif>
+
+                                                                    <label
+                                                                        class="form-check-label @error('services') text-danger @enderror"
+                                                                        for="tech-{{ $service->id }}">{{ $service->name }}</label>
+                                                                </div>
+                                                            </li>
+                                                        @endforeach
+                                                    </ul>
+                                                    @error('services')
+                                                        <p class="text-danger fw-bold">{{ $message }}</p>
+                                                    @enderror
+                                                </div>
+
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary"
+                                                    data-bs-dismiss="modal">Close</button>
+                                                <button type="button" class="btn btn-primary">Understood</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endif
+                        </div>
+
+                        <div class="col-6 d-flex align-items-center">
+                            {{-- visibilità online  --}}
+                            <div class="form-check">
+                                <input class="form-check-input  @error('services') is-invalid @enderror" type="radio" name="visible" id="visible1"
+                                    value="1" {{ old('visible') == 1 ? 'checked' : '' }}>
+                                <label class="form-check-label  @error('visible') text-danger @enderror" for="visible1">
+                                    Pubblico
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input  @error('services') is-invalid @enderror" type="radio" name="visible" id="visible2"
+                                    value="0" {{ old('visible') == 0 ? 'checked' : '' }}>
+                                <label class="form-check-label  @error('visible') text-danger @enderror" for="visible2">
+                                    Privato
+                                </label>
+                            </div>
+                            @error('visible')
+                                <span class="text-danger fw-bold">{{ $message }}</span>
+                            @enderror
+                        </div>
+
+
+
+                        <div class="my-5">
+                            <p>
+                                I campi contrassegnati con <span class="text-danger fw-bold">*</span> sono <span
+                                    class="text-danger fw-bold text-decoration-underline">obbligatori</span>
+                            </p>
+                        </div>
+                        <div>
+                            <button type="submit" class="btn btn-success mb-3">Conferma</button>
+                        </div>
                     </div>
-
-                @endif
-
-                <div class="mb-3">
-                    <label for="featured_image"
-                        class="form-label  @error('featured_image') text-danger @enderror">Immagine in
-                        evidenzia</label>
-                    <input type="file" class="form-control @error('featured_image') is-invalid @enderror"
-                        id="featured_image" name="featured_image" {{-- validazione frontend da aggiungere --}} {{-- si usa per i file --}}
-                        accept="image/*">
-                    @error('featured_image')
-                        <p class="text-danger fw-bold">{{ $message }}</p>
-                    @enderror
-                </div>
-                <div class="mb-3">
-                    <label for="description"
-                        class="form-label  @error('description') text-danger @enderror">Descrizione</label>
-                    <textarea class="form-control @error('description') is-invalid @enderror" id="description" name="description"
-                        placeholder="Lorem ipsum dolor sit amet ..." rows="3" maxlength="4096"> {{ old('description') }}</textarea>
-                    @error('description')
-                        <p class="text-danger fw-bold">{{ $message }}</p>
-                    @enderror
-                </div>
-                <div class="mb-5">
-                    <p>
-                        I campi contrassegnati con <span class="text-danger fw-bold">*</span> sono <span
-                            class="text-danger fw-bold text-decoration-underline">obbligatori</span>
-                    </p>
-                </div>
-                <div>
-                    <button type="submit" class="btn btn-success mb-3">Conferma</button>
-                </div>
-            </form>
+                </form>
+            </div>
         </div>
     </div>
-</div>
 @endsection

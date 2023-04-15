@@ -1,12 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\StoreUser_dataRequest;
-use App\Http\Requests\UpdateUser_dataRequest;
-use App\Models\User_data;
+use App\Http\Controllers\Controller;
 
-class UserDataController extends Controller
+use App\Http\Requests\StoreViewRequest;
+use App\Http\Requests\UpdateViewRequest;
+use App\Models\View;
+
+class ViewController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -31,10 +33,10 @@ class UserDataController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreUser_dataRequest  $request
+     * @param  \App\Http\Requests\StoreViewRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreUser_dataRequest $request)
+    public function store(StoreViewRequest $request)
     {
         //
     }
@@ -42,10 +44,10 @@ class UserDataController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\User_data  $user_data
+     * @param  \App\Models\View  $view
      * @return \Illuminate\Http\Response
      */
-    public function show(User_data $user_data)
+    public function show(View $view)
     {
         //
     }
@@ -53,10 +55,10 @@ class UserDataController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\User_data  $user_data
+     * @param  \App\Models\View  $view
      * @return \Illuminate\Http\Response
      */
-    public function edit(User_data $user_data)
+    public function edit(View $view)
     {
         //
     }
@@ -64,11 +66,11 @@ class UserDataController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateUser_dataRequest  $request
-     * @param  \App\Models\User_data  $user_data
+     * @param  \App\Http\Requests\UpdateViewRequest  $request
+     * @param  \App\Models\View  $view
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateUser_dataRequest $request, User_data $user_data)
+    public function update(UpdateViewRequest $request, View $view)
     {
         //
     }
@@ -76,10 +78,10 @@ class UserDataController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\User_data  $user_data
+     * @param  \App\Models\View  $view
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User_data $user_data)
+    public function destroy(View $view)
     {
         //
     }
