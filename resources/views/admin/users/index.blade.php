@@ -14,14 +14,14 @@
         <div class="row justify-content-center">
           <div class="col-md-8">
             <div class="card">
-              <div class="card-header bg-primary text-white">Il mio profilo</div>
+              <div class="card-header bg-profile-header text-white">Il mio profilo</div>
               <div class="card-body">
                 <div class="row align-items-center">
-                  <div class="col-md-4 text-center">
+                  <div class="col-xl-4 text-center">
                     <img src="{{ $profile->profile_img }}" alt="Foto profilo" class="rounded-circle img-fluid mb-3" style="max-width: 200px;">
                     <h4>{{ $profile->name }} {{ $profile->surname }}</h4>
                   </div>
-                  <div class="col-md-8">
+                  <div class="col-xl-8">
                     <h5>Informazioni personali</h5>
                     <table class="table table-bordered">
                       <tbody>
@@ -37,10 +37,19 @@
                     </table>
                   </div>
                 </div>
+                <div class="row justify-content-end">
+                  <div class="col-auto">
+                    <form action="{{ route('logout') }}" method="POST">
+                      @csrf
+                      <button type="submit" class="btn btn-danger">Logout</button>
+                    </form>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
+      
 
 @endsection
