@@ -135,7 +135,7 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="p-0 nav-link d-flex justify-content-between align-items-center {{ Route::currentRouteName() == 'admin.apartment' ? 'active-aside-link' : '' }}"
+                                    <a class="p-0 nav-link d-flex justify-content-between align-items-center {{ Route::currentRouteName() == 'admin.apartments' ? 'active-aside-link' : '' }}"
                                         href="{{ route('admin.apartments.index') }}">
                                         <span>Appartamenti</span> <i class="fa-solid fa-house fa-lg fa-fw"></i>
                                     </a>
@@ -148,7 +148,7 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="p-0 nav-link d-flex justify-content-between align-items-center {{ Route::currentRouteName() == 'admin.messaggi' ? 'active-aside-link' : '' }}"
+                                    <a class="p-0 nav-link d-flex justify-content-between align-items-center {{ Route::currentRouteName() == 'admin.messages' ? 'active-aside-link' : '' }}"
                                         href="{{ route('admin.messages.index') }}">
                                         <span>Messaggi</span><i class="fa-solid fa-message fa-lg fa-fw"></i>
                                     </a>
@@ -160,8 +160,8 @@
                                     </a>
                                 </li>
                                 <li class="nav-item mb-4">
-                                    <a class="p-0 nav-link d-flex justify-content-between align-items-center {{ Route::currentRouteName() == 'admin.profilo' ? 'active-aside-link' : '' }}"
-                                        href="{{ route('admin.dashboard') }}">
+                                    <a class="p-0 nav-link d-flex justify-content-between align-items-center {{ Route::currentRouteName() == 'admin.users' ? 'active-aside-link' : '' }}"
+                                        href="{{ route('admin.users.index') }}">
                                         <span>Profilo</span> <i class="fa-solid fa-user fa-lg fa-fw"></i>
                                     </a>
                                 </li>

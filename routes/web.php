@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 // Controllers
 use App\Http\Controllers\Admin\ApartmentController;
 use App\Http\Controllers\Admin\MessageController;
+use App\Http\Controllers\Admin\UserDataController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,6 +38,11 @@ Route::prefix('admin')->name('admin.')->middleware('auth', 'verified')->group(fu
 Route::prefix('admin')->name('admin.')->middleware('auth', 'verified')->group(function () {
     Route::get('/dashboard', [PageController::class, 'dashboard'] )->name('dashboard');
     Route::resource('messages', MessageController::class);
+});
+
+Route::prefix('admin')->name('admin.')->middleware('auth', 'verified')->group(function () {
+    Route::get('/dashboard', [PageController::class, 'dashboard'] )->name('dashboard');
+    Route::resource('users', UserDataController::class);
 });
 
 require __DIR__.'/auth.php';
