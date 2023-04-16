@@ -28,9 +28,9 @@ class StoreApartmentRequest extends FormRequest
             'title' => 'required|string|max:30',
             'description' => 'required|string|max:4096',
             // img file
-            'main_img' => 'required|image|max:2048',
+            // 'main_img' => 'required|image|max:2048',
             // img url
-            // 'main_img' => 'required|url|max:255',
+            'main_img' => 'required|url|max:255',
             'services' => 'nullable|array|exists:services,id',
             'max_guests' => 'required|numeric|max:30',
             'rooms' => 'required|numeric|max:30',
