@@ -8,6 +8,9 @@ use App\Http\Requests\StoreUser_dataRequest;
 use App\Http\Requests\UpdateUser_dataRequest;
 use App\Models\User_data;
 
+// Facades
+use Illuminate\Support\Facades\Auth;
+
 class UserDataController extends Controller
 {
     /**
@@ -17,7 +20,12 @@ class UserDataController extends Controller
      */
     public function index()
     {
-        //
+        $user = Auth::user();
+        $profile = User_data::where('user_id', $user->id)->first();
+
+        return view('admin.users.index', [
+            'profile' => $profile,
+        ]);
     }
 
     /**

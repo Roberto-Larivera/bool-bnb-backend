@@ -120,15 +120,35 @@
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <h5 class="modal-title" id="message-{{ $message->id }}-label">
-                                            {{ $message->object }}</h5>
+                                            {!! str_ireplace(
+                                                request('search'),
+                                                '<span class="highlight">' . request('search') . '</span>',
+                                                $message->object,
+                                            ) !!}</h5>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                                             aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
                                         <p><strong>Appartamento:</strong> {{ $message->apartment->title }}</p>
-                                        <p><strong>Mittente:</strong> {{ $message->sender_name }}
-                                            {{ $message->sender_surname }}</p>
-                                        <p><strong>Messaggio:</strong> {{ $message->sender_text }}</p>
+                                        <p><strong>Mittente:</strong> 
+                                            {!! str_ireplace(
+                                                request('search'),
+                                                '<span class="highlight">' . request('search') . '</span>',
+                                                $message->sender_name,
+                                            ) !!} {!! str_ireplace(
+                                                request('search'),
+                                                '<span class="highlight">' . request('search') . '</span>',
+                                                $message->sender_surname,
+                                            ) !!}
+                                        </p>
+                                        <p><strong>Messaggio:</strong>
+                                            {!! str_ireplace(
+                                                request('search'),
+                                                '<span class="highlight">' . request('search') . '</span>',
+                                                $message->sender_text,
+                                            ) !!}
+                                            
+                                        </p>
                                         <p><strong>Giorno:</strong> {{ date('Y/m/d H:i', strtotime($message->created_at)) }}</p>
                                     </div>
                                 </div>
