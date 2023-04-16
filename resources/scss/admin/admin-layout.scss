@@ -8,6 +8,7 @@ header{
 
 .main-admin {
     background-color: #f2edf3;
+    overflow: auto;
 }
 
 .admin-h{
@@ -62,16 +63,24 @@ a.logo_site {
     cursor: pointer;
 }
 
+#sidebarMenu{
+overflow: hidden;
+}
+
+
+
 .aside-item .nav-item:hover span,
 .aside-item .nav-item:hover i{
     color: #FF385C;
 }
 
 .nav-item i {
+    transition: 0.5s;
     color: rgb(155, 155, 155);
 }
 
 .nav-item span {
+    transition: 0.5s;
     color: rgb(53, 53, 53);
     font-weight: 500;
 }
