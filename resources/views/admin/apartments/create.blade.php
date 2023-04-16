@@ -51,8 +51,8 @@
                                 @error('main_img')
                                     <p class="text-danger fw-bold">{{ $message }}</p>
                                 @enderror
-                            </div> 
-                            --}}
+                            </div>  --}}
+                           
 
                             {{-- Immagine principale url --}}
                             <div class="mb-3">
