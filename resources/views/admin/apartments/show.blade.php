@@ -26,7 +26,10 @@
         <div class="row row-cols-1 mb-5 align-items-center">
             {{-- Info generali appartamento --}}
             <div class="img-container col col-sm-6">
-                <img class="img-fluid rounded" src="{{ $apartment->main_img }}" alt="{{ $apartment->title }}">
+                {{-- img url  --}}
+                <img class="img-fluid rounded" src="{{ $apartment->main_img }}">
+                {{-- img file  --}}
+                {{-- <img class="img-fluid rounded" src="{{ $apartment->getFullPathMainImgAttribute() }}"> --}}
             </div>
             <div class="info-container col col-sm-6 py-3 py-sm-0">
                 <h2>

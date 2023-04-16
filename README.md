@@ -11,5 +11,11 @@
 - ognuno di noi ha email e password associate: nome@email.it | password // es: `roberto@email.it - password`
 - le icone di FontsAsome in Laravel non si usano con la sintassi di vue ma con `<i class="fa-solid fa-cart-shopping"></i>`
 - scrivere al terminale: `php artisan storage:link`
-- per utilizzare l'input del file bisogna fare lo switch in `create.blade`, `StoreApartmentRequest`, e nel `ApartmentController`
+- Switch input main_img:
+    - create.blade
+    - update.blade
+    - show.blade
+    - StoreApartmentRequest
+    - UpdateApartmentRequest
+    - ApartmentController`
 ### Per modifiche e aggiunte si lavora con dei brench creati es: `feat/example`, e non su Master e Develop

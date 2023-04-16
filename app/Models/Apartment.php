@@ -27,7 +27,13 @@ class Apartment extends Model
         'visible',
     ];
 
-
+    public function getFullPathMainImgAttribute(){
+        $fullPath = null;
+        if($this->main_img)
+            $fullPath = asset('storage/'.$this->main_img);
+        return $fullPath;
+    }
+    
     public function user(){
         return $this->belongsTo(User::class);
     }

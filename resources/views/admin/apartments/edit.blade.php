@@ -266,7 +266,7 @@
 
 
 
-                        <div class="my-5">
+                        <div class=" col my-5">
                             <p>
                                 I campi contrassegnati con <span class="text-danger fw-bold">*</span> sono <span
                                     class="text-danger fw-bold text-decoration-underline">obbligatori</span>

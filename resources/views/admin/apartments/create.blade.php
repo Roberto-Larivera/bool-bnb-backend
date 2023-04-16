@@ -41,7 +41,7 @@
                             </div>
 
                             {{-- Immagine principale file --}}
-                            {{-- <div class="mb-3">
+                            <div class="mb-3">
                                 <label for="main_img"
                                     class="form-label  @error('main_img') text-danger @enderror">Immagine in
                                     evidenza <span class="text-danger fw-bold">*</span></label>
@@ -52,10 +52,10 @@
                                     <p class="text-danger fw-bold">{{ $message }}</p>
                                 @enderror
                             </div> 
-                            --}}
+                           
 
                             {{-- Immagine principale url --}}
-                            <div class="mb-3">
+                            {{-- <div class="mb-3">
                                 <label for="main_img"
                                     class="form-label  @error('main_img') text-danger @enderror">Immagine in
                                     evidenza <span class="text-danger fw-bold">*</span></label>
@@ -65,7 +65,7 @@
                                 @error('main_img')
                                     <p class="text-danger fw-bold">{{ $message }}</p>
                                 @enderror
-                            </div>
+                            </div> --}}
                         </div>
                         <div class="col-12 col-lg-6">
                             {{-- descrizione  --}}
