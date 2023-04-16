@@ -33,15 +33,7 @@ Route::middleware('auth')->group(function () {
 Route::prefix('admin')->name('admin.')->middleware('auth', 'verified')->group(function () {
     Route::get('/dashboard', [PageController::class, 'dashboard'] )->name('dashboard');
     Route::resource('apartments', ApartmentController::class);
-});
-
-Route::prefix('admin')->name('admin.')->middleware('auth', 'verified')->group(function () {
-    Route::get('/dashboard', [PageController::class, 'dashboard'] )->name('dashboard');
     Route::resource('messages', MessageController::class);
-});
-
-Route::prefix('admin')->name('admin.')->middleware('auth', 'verified')->group(function () {
-    Route::get('/dashboard', [PageController::class, 'dashboard'] )->name('dashboard');
     Route::resource('users', UserDataController::class);
 });
 
