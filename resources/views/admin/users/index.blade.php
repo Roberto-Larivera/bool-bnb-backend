@@ -38,13 +38,21 @@
                   </div>
                 </div>
                 <div class="row justify-content-end">
-                  <div class="col-auto">
+                  <div class="col-auto d-flex gap-3">
+                    <a href="{{ route('profile.edit') }}" class="btn btn-primary">
+                      <i class="fa-solid fa-pen"></i>
+                      Modifica
+                    </a>
                     <form action="{{ route('logout') }}" method="POST">
                       @csrf
-                      <button type="submit" class="btn btn-danger">Logout</button>
+                      <button type="submit" class="btn btn-danger">
+                        <i class="fa-solid fa-right-from-bracket"></i>
+                        Logout
+                      </button>
                     </form>
                   </div>
                 </div>
+                
               </div>
             </div>
           </div>
