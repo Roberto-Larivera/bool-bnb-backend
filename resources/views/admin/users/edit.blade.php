@@ -7,6 +7,9 @@
     <div class="row row-cols-1 mb-5 my-4 mx-2">
         <div class="col py-3">
             <h1>
+                <span class="icon-section">
+                    <i class="fa-solid fa-user fa-sm"></i>
+                </span>
                 Modifica profilo
             </h1>
         </div>
