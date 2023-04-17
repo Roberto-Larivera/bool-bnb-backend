@@ -17,9 +17,9 @@
                     <div class="card-body">
                         <div class="row align-items-center">
                             <div class="col-xl-4 text-center">
-                                <img src="{{ $profile->profile_img }}" alt="Foto profilo"
+                                <img src="{{ $users->profile_img }}" alt="Foto profilo"
                                     class="rounded-circle img-fluid mb-3" style="max-width: 200px;">
-                                <h4>{{ $profile->name }} {{ $profile->surname }}</h4>
+                                <h4>{{ $users->name }} {{ $users->surname }}</h4>
                             </div>
                             <div class="col-xl-8">
                                 <h5>Informazioni personali</h5>
@@ -31,7 +31,7 @@
                                         </tr>
                                         <tr>
                                             <td>Data di nascita:</td>
-                                            <td>{{ date('d/m/Y', strtotime($profile->date_of_birth)) }}</td>
+                                            <td>{{ date('d/m/Y', strtotime($users->date_of_birth)) }}</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -39,7 +39,7 @@
                         </div>
                         <div class="row justify-content-end">
                             <div class="col-auto d-flex gap-3">
-                                <a href="{{ route('profile.edit') }}" class="btn btn-primary">
+                                <a href="{{ route('admin.users.edit', $users->id)}}" class="btn btn-primary">
                                     <i class="fa-solid fa-pen"></i>
                                     Modifica
                                 </a>
