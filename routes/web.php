@@ -35,7 +35,7 @@ Route::prefix('admin')->name('admin.')->middleware('auth', 'verified')->group(fu
     Route::get('/dashboard', [PageController::class, 'dashboard'] )->name('dashboard');
     Route::resource('apartments', ApartmentController::class);
     Route::resource('messages', MessageController::class);
-    Route::resource('users', UserDataController::class);
+    Route::resource('user_datas', UserDataController::class);
     Route::resource('sponsors', SponsorController::class);
 
 });

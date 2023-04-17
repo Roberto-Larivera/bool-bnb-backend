@@ -126,7 +126,7 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link d-flex justify-content-between align-items-center {{ Route::currentRouteName() == 'admin.profilo' ? 'active-aside-link' : '' }}"
-                                href="{{ route('admin.users.index') }}">
+                                href="{{ route('admin.user_datas.index') }}">
                                 <span>Profilo</span> <i class="fa-solid fa-user fa-lg fa-fw"></i>
                             </a>
                         </li>

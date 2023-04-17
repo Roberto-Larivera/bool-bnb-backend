@@ -33,9 +33,9 @@
                     <div class="card-body">
                         <div class="row align-items-center">
                             <div class="col-xl-4 text-center">
-                                <img src="{{ $users->profile_img }}" alt="Foto profilo"
+                                <img src="{{ asset($user_data->profile_img) }}" alt="Foto profilo"
                                     class="rounded-circle img-fluid mb-3" style="max-width: 200px;">
-                                <h4>{{ $users->name }} {{ $users->surname }}</h4>
+                                <h4>{{ $user_data->name }} {{ $user_data->surname }}</h4>
                             </div>
                             <div class="col-xl-8">
                                 <h5>Informazioni personali</h5>
@@ -47,7 +47,7 @@
                                         </tr>
                                         <tr>
                                             <td>Data di nascita:</td>
-                                            <td>{{ date('d/m/Y', strtotime($users->date_of_birth)) }}</td>
+                                            <td>{{ date('d/m/Y', strtotime($user_data->date_of_birth)) }}</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -55,7 +55,7 @@
                         </div>
                         <div class="row justify-content-end">
                             <div class="col-auto d-flex gap-3">
-                                <a href="{{ route('admin.users.edit', $users->id)}}" class="secondary-btn">
+                                <a href="{{ route('admin.user_datas.edit', $user_data->id)}}" class="secondary-btn">
                                     <i class="fa-solid fa-pen"></i>
                                     Modifica
                                 </a>
