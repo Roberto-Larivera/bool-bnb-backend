@@ -12,7 +12,7 @@
 
             </div>
             <div class="col">
-                <a href="{{ route('admin.apartments.index') }}" class="btn btn-outline-primary">
+                <a href="{{ route('admin.apartments.index') }}" class="back">
                     Torna Indietro
                     <i class="fa-solid fa-rotate-left"></i>
                 </a>
@@ -183,7 +183,7 @@
                                 <!-- Button trigger modal -->
                                 <button type="button" class="primary-btn" data-bs-toggle="modal"
                                     data-bs-target="#service-model">
-                                    Tutti i servizi
+                                    + Servizi
                                 </button>
 
                                 <!-- Modal -->

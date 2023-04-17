@@ -2,25 +2,6 @@
     width: 85%;
     border: 1px solid $color_gray;
 
-    .form-floating>label {
-        padding: 0 0.5rem;
-        overflow: visible;
-        top: -2px;
-    }
-
-    input {
-        border-top-style: hidden;
-        border-right-style: hidden;
-        border-left-style: hidden;
-        border-bottom-style: hidden;
-        background-color: $color_light;
-        margin-left: 4rem;
-
-        &:focus {
-            outline: none;
-        }
-    }
-
     .form-select {
         display: inline;
         width: auto;
@@ -33,30 +14,12 @@
 
 .filter{
     border:  1px solid black;
+    background-color: transparent;
 }
 
 .no-outline:focus {
     outline: none;
 }
-
-input[type="date"]::-webkit-inner-spin-button,
-input[type="date"]::-webkit-calendar-picker-indicator {
-    display: none;
-    -webkit-appearance: none;
-}
-
-
-.my-submit {
-    padding: 0.5rem;
-    display: inline-block;
-    background-color: $color_primary;
-    color: $color_light;
-    text-decoration: none;
-    border: 1px solid $color_primary;
-
-}
-
-
 
 .modal-content {
     background-color: $color_light;
@@ -79,24 +42,6 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 .modal-footer {
     background-color: $color_light;
 
-    .my-btn {
-        padding: 0.5rem;
-        display: inline-block;
-        background-color: $color_light_gray;
-        color: $color_dark;
-        text-decoration: none;
-        border: 1px solid $color_gray;
-    }
-
-    .my-submit {
-        padding: 0.5rem;
-        display: inline-block;
-        background-color: $color_primary;
-        color: $color_light;
-        text-decoration: none;
-        border: 1px solid $color_primary;
-
-    }
 }
 
 .message-img-house img{
