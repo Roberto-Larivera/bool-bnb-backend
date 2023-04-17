@@ -8,7 +8,7 @@
     @include('admin.partials.success')
     @include('admin.partials.warning')
 
-    <div class="container my-5">
+    <div class="container my-5" id="user-edit">
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
@@ -41,51 +41,52 @@
                                                 </div>
                                                 <div class="modal-body">
                                                     <div class="row row-cols-2 row-cols-sm-3 row-cols-md-3 row-cols-lg-4 row-cols-xl-6">
-                                                        <div class="col">
-                                                            <a href="#" class="d-block mb-4 h-100">
-                                                                <img class="img-fluid img-thumbnail"
-                                                                    src="https://wallpapers.com/images/hd/netflix-profile-pictures-1000-x-1000-dyrp6bw6adbulg5b.jpg"
-                                                                    alt="">
-                                                            </a>
-                                                        </div>
-                                                        <div class="col">
-                                                            <a href="#" class="d-block mb-4 h-100">
-                                                                <img class="img-fluid img-thumbnail"
-                                                                    src="https://wallpapers.com/images/hd/netflix-profile-pictures-1000-x-1000-88wkdmjrorckekha.jpg"
-                                                                    alt="">
-                                                            </a>
-                                                        </div>
-                                                        <div class="col">
-                                                            <a href="#" class="d-block mb-4 h-100">
-                                                                <img class="img-fluid img-thumbnail"
-                                                                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgkg-qvEdE_G0UqfM3gE_PIb7gHIFi1OtAgnSyIWG9Df2ar6BBYVeTM-UULzeWYooBLyc&usqp=CAU"
-                                                                    alt="">
-                                                            </a>
-                                                        </div>
-                                                        <div class="col">
-                                                            <a href="#" class="d-block mb-4 h-100">
-                                                                <img class="img-fluid img-thumbnail"
-                                                                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSi8q9hCPqI0SKGM0_WHuuqWtvUPpN43m_Zkpr2M6k6-ty5wq9VNKtOUurNc0UyQ-bQbE0&usqp=CAU"
-                                                                    alt="">
-                                                            </a>
-                                                        </div>
-                                                        <div class="col">
-                                                            <a href="#" class="d-block mb-4 h-100">
-                                                                <img class="img-fluid img-thumbnail"
-                                                                    src="https://i.redd.it/ty54wbejild91.jpg"
-                                                                    alt="">
-                                                            </a>
-                                                        </div>
-                                                        <div class="col">
-                                                            <a href="#" class="d-block mb-4 h-100">
-                                                                <img class="img-fluid img-thumbnail"
-                                                                    src="https://pbs.twimg.com/profile_images/1498164684935286785/yAUKiD8V_400x400.jpg"
-                                                                    alt="">
-                                                            </a>
-                                                        </div>
-                                                        <!-- altri elementi immagine -->
+                                                      <div class="col">
+                                                        <label class="d-block mb-4 h-100">
+                                                          <input type="radio" name="profile_img" value="https://wallpapers.com/images/hd/netflix-profile-pictures-1000-x-1000-dyrp6bw6adbulg5b.jpg">
+                                                          <img class="img-fluid img-thumbnail selected"
+                                                            src="https://wallpapers.com/images/hd/netflix-profile-pictures-1000-x-1000-dyrp6bw6adbulg5b.jpg"
+                                                            alt="">
+                                                        </label>
+                                                      </div>
+                                                      <div class="col">
+                                                        <label class="d-block mb-4 h-100">
+                                                          <input type="radio" name="profile_img" value="https://wallpapers.com/images/hd/netflix-profile-pictures-1000-x-1000-88wkdmjrorckekha.jpg">
+                                                          <img class="img-fluid img-thumbnail"
+                                                            src="https://wallpapers.com/images/hd/netflix-profile-pictures-1000-x-1000-88wkdmjrorckekha.jpg"
+                                                            alt="">
+                                                        </label>
+                                                      </div>
+                                                      <div class="col">
+                                                        <label class="d-block mb-4 h-100">
+                                                          <input type="radio" name="profile_img" value="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgkg-qvEdE_G0UqfM3gE_PIb7gHIFi1OtAgnSyIWG9Df2ar6BBYVeTM-UULzeWYooBLyc&usqp=CAU">
+                                                          <img class="img-fluid img-thumbnail"
+                                                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgkg-qvEdE_G0UqfM3gE_PIb7gHIFi1OtAgnSyIWG9Df2ar6BBYVeTM-UULzeWYooBLyc&usqp=CAU"
+                                                            alt="">
+                                                        </label>
+                                                      </div>
+                                                      <div class="col">
+                                                        <label class="d-block mb-4 h-100">
+                                                          <input type="radio" name="profile_img" value="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSi8q9hCPqI0SKGM0_WHuuqWtvUPpN43m_Zkpr2M6k6-ty5wq9VNKtOUurNc0UyQ-bQbE0&usqp=CAU">
+                                                          <img class="img-fluid img-thumbnail"
+                                                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSi8q9hCPqI0SKGM0_WHuuqWtvUPpN43m_Zkpr2M6k6-ty5wq9VNKtOUurNc0UyQ-bQbE0&usqp=CAU"
+                                                            alt="">
+                                                        </label>
+                                                      </div>
+                                                      <div class="col">
+                                                        <label class="d-block mb-4 h-100">
+                                                          <input type="radio" name="profile_img" value="https://i.redd.it/ty54wbejild91.jpg">
+                                                          <img class="img-fluid img-thumbnail" src="https://i.redd.it/ty54wbejild91.jpg"alt="">
+                                                        </label>
+                                                      </div>
+                                                      <div class="col">
+                                                        <label class="d-block mb-4 h-100">
+                                                          <input type="radio" name="profile_img" value="https://pbs.twimg.com/profile_images/1498164684935286785/yAUKiD8V_400x400.jpg">
+                                                          <img class="img-fluid img-thumbnail" src="https://pbs.twimg.com/profile_images/1498164684935286785/yAUKiD8V_400x400.jpg"alt="">
+                                                        </label>
+                                                      </div>
                                                     </div>
-                                                </div>
+                                                  </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-secondary"
                                                         data-bs-dismiss="modal">Annulla</button>
@@ -117,11 +118,11 @@
                                     </div>
                                 </div>
                             </div>
+                        </div>
                     </div>
                 </div>
-            </div>
+             </div>
         </div>
-    </div>
     </div>
 
     <script>

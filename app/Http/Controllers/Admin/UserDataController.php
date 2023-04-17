@@ -86,7 +86,7 @@ class UserDataController extends Controller
      */
     public function update(UpdateUser_dataRequest $request, User_data $user_data)
     {
-        //
+            
     }
 
     /**
