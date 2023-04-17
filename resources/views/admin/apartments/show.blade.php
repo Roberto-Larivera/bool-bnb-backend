@@ -1,5 +1,7 @@
 @extends('layouts.admin')
 
+
+@section('title', ' | Il mio appartamento')
 @section('content')
     <div class="container-fluid mt-4">
         <div class="row row-cols-1 mb-5">
@@ -63,7 +65,7 @@
 
                 {{-- Bottoni Tablet messaggi / sponsor --}}
                 <div class="buttons d-none d-lg-block mt-3">
-                   <a href="{{ route('admin.messages.index') }}" class="my-action rounded me-3">
+                   <a href="{{ route('admin.messages.index',  ['apartment_id' => $apartment->id]) }}" class="my-action rounded me-3">
                        Leggi messaggi
                    </a>
 
@@ -91,9 +93,9 @@
     </div>
 
     <div class="container-fluid mt-4">
-        <div class="row row-cols-1 mb-5 align-items-center">
+        <div class="row row-cols-1 mb-5">
             {{-- Descrizione appartamento --}}
-            <div class="col">
+            <div class="col-12 col-sm-6">
                 <h2>
                     Dettagli
                 </h2>
@@ -112,20 +114,15 @@
                      </li>
                 </ul>
             </div>
-        </div>
-    </div>
 
-    <div class="container-fluid mt-4">
-        <div class="row row-cols-1 mb-5 align-items-center">
-            {{-- Quando ci saranno servizi mettere condizione se non ci sono servizi / ora no per vedere badge --}}
-            <div class="col">
+            <div class="col-12 mt-4 col-sm-6 mt-sm-0">
                 <h2>
                     Servizi
                 </h2>
                 @if (count($apartment->services) > 0)
                     <div class="services-container">
                         @foreach ($apartment->services as $service)
-                            <span class="badge bg-secondary me-3">
+                            <span class="badge bg-secondary me-2">
                                 {{ $service->name }}
                             </span>
                         @endforeach
