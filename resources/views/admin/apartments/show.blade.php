@@ -12,7 +12,7 @@
             </div>
 
             <div class="col">
-                <a href="{{ route('admin.apartments.index') }}" class="btn btn-outline-primary">
+                <a href="{{ route('admin.apartments.index') }}" class="back">
                     Torna Indietro
                     <i class="fa-solid fa-rotate-left"></i>
                 </a>
@@ -53,24 +53,24 @@
 
                 {{-- Bottoni Mobile messaggi / sponsor --}}
                 <div class="buttons d-lg-none mt-3">
-                    <a href="{{ route('admin.messages.index') }}" class="my-action rounded me-3">
+                    <a href="{{ route('admin.messages.index') }}" class="secondary-btn me-3">
                         <i class="fa-regular fa-envelope"></i>
                     </a>
 
                     {{-- Aggiungere rotta sponsor --}}
-                    <a href="#" class="my-action rounded">
+                    <a href="#" class="secondary-btn">
                         <i class="fa-solid fa-sack-dollar"></i>
                     </a>
                 </div>
 
                 {{-- Bottoni Tablet messaggi / sponsor --}}
                 <div class="buttons d-none d-lg-block mt-3">
-                   <a href="{{ route('admin.messages.index',  ['apartment_id' => $apartment->id]) }}" class="my-action rounded me-3">
+                   <a href="{{ route('admin.messages.index',  ['apartment_id' => $apartment->id]) }}" class="secondary-btn me-3">
                        Leggi messaggi
                    </a>
 
                    {{-- Aggiungere rotta sponsor --}}
-                   <a href="#" class="my-action rounded">
+                   <a href="#" class="secondary-btn">
                        Sponsorizza
                    </a>
                </div>
@@ -142,7 +142,7 @@
                     Azioni
                 </h3>
                  <div class="actions mt-3">
-                    <a href="{{ route('admin.apartments.edit', $apartment->id) }}" class="my-action rounded me-2">
+                    <a href="{{ route('admin.apartments.edit', $apartment->id) }}" class="primary-btn me-2">
                         <i class="fa-solid fa-pen my-color-dark"></i>
                     </a>
 
@@ -150,7 +150,7 @@
                         @csrf
                         @method('DELETE')
                     
-                        <button type="button" class="btn-modal my-action rounded" data-bs-toggle="modal" data-bs-target="#modal-delete">
+                        <button type="button" class="btn-modal primary-btn" data-bs-toggle="modal" data-bs-target="#modal-delete">
                             <i class="fa-solid fa-trash my-color-dark"></i>
                         </button>
                     
@@ -172,10 +172,10 @@
                                     </p>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                    <button type="button" class="primary-btn" data-bs-dismiss="modal">
                                         Chiudi
                                     </button>
-                                    <button type="submit" class="my-btn rounded">
+                                    <button type="submit" class="secondary-btn">
                                         Cancella
                                     </button>
                                 </div>

@@ -12,7 +12,7 @@
             </div>
 
             <div class="col">
-                <a href="{{ route('admin.dashboard') }}" class="btn btn-outline-primary">
+                <a href="{{ route('admin.dashboard') }}" class="back">
                     Torna Indietro
                     <i class="fa-solid fa-rotate-left"></i>
                 </a>
@@ -40,7 +40,7 @@
                     <div class="modal-body">
                         <form action="{{ route('admin.messages.index') }}" method="GET" class="form-container-small">
                             <div class="mb-3">
-                                <select class="form-select" aria-label="Default select example" name="apartment_id">
+                                <select class="form-select input-data" aria-label="Default select example" name="apartment_id">
                                     <option value="">Tutti gli Appartamenti</option>
                                     @foreach ($apartments as $apartment)
                                         <option value="{{ $apartment->id }}"
@@ -53,15 +53,15 @@
                             <div class="">
                                 <div class="form-group">
                                     <label for="search">Cerca messaggio/mittente:</label>
-                                    <input type="text" class="form-control" name="search" id="search"
+                                    <input type="text" class="form-control input-data" name="search" id="search"
                                         value="{{ $search }}" placeholder="Cerca messaggi...">
                                 </div>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="my-btn rounded" data-bs-dismiss="modal">
+                                <button type="button" class="primary-btn" data-bs-dismiss="modal">
                                     Esci
                                 </button>
-                                <button type="submit" class="my-submit rounded">
+                                <button type="submit" class="secondary-btn">
                                     <i class="fa-solid fa-magnifying-glass mx-2"></i><span class="fw-bold fs-6">Cerca</span>
                                 </button>
                             </div>

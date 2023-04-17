@@ -4,30 +4,52 @@
 // importa il file CSS di Font Awesome
 @import "~fontawesome/fontawesome-free/css/all.css";
 
-// // Import variables
+// // Import partials
 @import './partials/variables.scss';
 @import './partials/mixin.scss';
 @import './partials/reset.scss';
+
+// Import file style
 @import './admin/appLayout.scss';
 @import './admin/admin-layout.scss';
-// aggiunta franci per stile index
 @import './admin/apartments/index.scss';
 @import './admin/apartments/createUpdate.scss';
-
-// Style per messages
 @import './admin/messages/index.scss';
-
-// Style per users
 @import './admin/users/index.scss';
 @import './admin/users/edit.scss';
 
 
-
+// REGOLE GENERALI
 body{
     scroll-behavior: smooth;
     background-color: $color_light;
 }
 
+// Bottone chiaro + hover fucsia
 .primary-btn{
     @include buttonPrimary
+}
+
+// Bottone fucsia
+.secondary-btn{
+    @include buttonSecondary
+}
+
+// Link per tornare a pagina precedente
+.back {
+    @include back
+}
+
+// Bottone "conferma" si usa classe Bootstrap: btn btn-success
+
+
+// Input bordo in focus
+.input-data {
+    @include inputData
+}
+
+
+// Input checks e radio
+.input-check {
+    @include inputCheck
 }
