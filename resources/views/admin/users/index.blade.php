@@ -8,6 +8,7 @@
   @include('admin.partials.success')
   @include('admin.partials.warning')
 
+
     {{-- SHOW PROFILE INFO --}}
     <div class="container profile-info my-5" id="user-index">
         <div class="row justify-content-center">
@@ -39,7 +40,7 @@
                         </div>
                         <div class="row justify-content-end">
                             <div class="col-auto d-flex gap-3">
-                                <a href="{{ route('admin.users.edit', $users->id)}}" class="btn btn-primary">
+                                <a href="{{ route('admin.users.edit', $users->id)}}" class="secondary-btn">
                                     <i class="fa-solid fa-pen"></i>
                                     Modifica
                                 </a>

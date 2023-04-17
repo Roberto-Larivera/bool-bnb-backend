@@ -14,7 +14,7 @@
             <div class="col">
                 <a href="{{ route('admin.apartments.index') }}" class="back">
                     Torna Indietro
-                    <i class="fa-solid fa-rotate-left"></i>
+                    <i class="fa-solid fa-arrow-rotate-left fa-spin fa-spin-reverse"></i>
                 </a>
             </div>
         </div>
