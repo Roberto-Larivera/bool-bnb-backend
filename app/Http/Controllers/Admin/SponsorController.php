@@ -8,6 +8,7 @@ use App\Http\Requests\StoreSponsorRequest;
 use App\Http\Requests\UpdateSponsorRequest;
 use App\Models\Sponsor;
 
+
 class SponsorController extends Controller
 {
     /**
@@ -17,7 +18,10 @@ class SponsorController extends Controller
      */
     public function index()
     {
-        //
+        $sponsors = Sponsor::all();
+        return view('admin.sponsors.index', [
+            'sponsors' => $sponsors
+        ]);
     }
 
     /**
