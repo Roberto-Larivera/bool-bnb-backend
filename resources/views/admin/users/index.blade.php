@@ -4,9 +4,24 @@
 
 @section('content')
 
-  @include('admin.partials.errors')
-  @include('admin.partials.success')
-  @include('admin.partials.warning')
+    <div class="row row-cols-1 mb-5 my-4 mx-2">
+        <div class="col py-3">
+            <h1>
+                Il mio profilo
+            </h1>
+        </div>
+
+        <div class="col">
+            <a href="{{ route('admin.dashboard') }}" class="back">
+                Torna indietro
+                <i class="fa-solid fa-rotate-left"></i>
+            </a>
+        </div>
+    </div>
+
+    @include('admin.partials.errors')
+    @include('admin.partials.success')
+    @include('admin.partials.warning')
 
 
     {{-- SHOW PROFILE INFO --}}
@@ -46,7 +61,7 @@
                                 </a>
                                 <form action="{{ route('logout') }}" method="POST">
                                     @csrf
-                                    <button type="submit" class="primary-btn">
+                                    <button type="submit" class="primary-btn logout-btn-user">
                                         <i class="fa-solid fa-right-from-bracket"></i>
                                         Logout
                                     </button>
