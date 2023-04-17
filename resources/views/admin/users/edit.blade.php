@@ -40,21 +40,47 @@
                                                         aria-label="Close"></button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 g-3">
+                                                    <div class="row row-cols-2 row-cols-sm-3 row-cols-md-3 row-cols-lg-4 row-cols-xl-6">
                                                         <div class="col">
                                                             <a href="#" class="d-block mb-4 h-100">
                                                                 <img class="img-fluid img-thumbnail"
-                                                                    src="https://dummyimage.com/600x400/000/fff"
+                                                                    src="https://wallpapers.com/images/hd/netflix-profile-pictures-1000-x-1000-dyrp6bw6adbulg5b.jpg"
                                                                     alt="">
-                                                                <span class="checkmark"></span>
                                                             </a>
                                                         </div>
                                                         <div class="col">
                                                             <a href="#" class="d-block mb-4 h-100">
                                                                 <img class="img-fluid img-thumbnail"
-                                                                    src="https://dummyimage.com/600x400/000/fff"
+                                                                    src="https://wallpapers.com/images/hd/netflix-profile-pictures-1000-x-1000-88wkdmjrorckekha.jpg"
                                                                     alt="">
-                                                                <span class="checkmark"></span>
+                                                            </a>
+                                                        </div>
+                                                        <div class="col">
+                                                            <a href="#" class="d-block mb-4 h-100">
+                                                                <img class="img-fluid img-thumbnail"
+                                                                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgkg-qvEdE_G0UqfM3gE_PIb7gHIFi1OtAgnSyIWG9Df2ar6BBYVeTM-UULzeWYooBLyc&usqp=CAU"
+                                                                    alt="">
+                                                            </a>
+                                                        </div>
+                                                        <div class="col">
+                                                            <a href="#" class="d-block mb-4 h-100">
+                                                                <img class="img-fluid img-thumbnail"
+                                                                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSi8q9hCPqI0SKGM0_WHuuqWtvUPpN43m_Zkpr2M6k6-ty5wq9VNKtOUurNc0UyQ-bQbE0&usqp=CAU"
+                                                                    alt="">
+                                                            </a>
+                                                        </div>
+                                                        <div class="col">
+                                                            <a href="#" class="d-block mb-4 h-100">
+                                                                <img class="img-fluid img-thumbnail"
+                                                                    src="https://i.redd.it/ty54wbejild91.jpg"
+                                                                    alt="">
+                                                            </a>
+                                                        </div>
+                                                        <div class="col">
+                                                            <a href="#" class="d-block mb-4 h-100">
+                                                                <img class="img-fluid img-thumbnail"
+                                                                    src="https://pbs.twimg.com/profile_images/1498164684935286785/yAUKiD8V_400x400.jpg"
+                                                                    alt="">
                                                             </a>
                                                         </div>
                                                         <!-- altri elementi immagine -->
