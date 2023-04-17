@@ -22,21 +22,21 @@ use App\Http\Controllers\Admin\SponsorController;
 */
 
 Route::get('/', function () {
-    return view('auth.register');
+    return redirect()->route('admin.dashboard');
 });
 
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
+// Route::middleware('auth')->group(function () {
+//     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+//     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+//     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+// });
 
 Route::prefix('admin')->name('admin.')->middleware('auth', 'verified')->group(function () {
     Route::get('/dashboard', [PageController::class, 'dashboard'] )->name('dashboard');
     Route::resource('apartments', ApartmentController::class);
-    Route::resource('messages', MessageController::class);
-    Route::resource('user_datas', UserDataController::class);
-    Route::resource('sponsors', SponsorController::class);
+    Route::resource('messages', MessageController::class)->only(['index']);
+    Route::resource('user_datas', UserDataController::class)->only(['update','edit','index']);
+    Route::resource('sponsors', SponsorController::class)->only(['index','show']);
 
 });
 
