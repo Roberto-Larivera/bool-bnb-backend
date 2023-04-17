@@ -33,7 +33,7 @@
                         <a class="logo_site first-letter:navbar-brand d-flex justify-content-center  px-3 align-items-center h-100"
                             href="{{ url('admin/dashboard') }}">
                             <div class="h-100">
-                                <img src="{{ asset('assets/logo.svg') }}" alt="">
+                                <img src="{{ asset('assets/logo.svg') }}">
                             </div>
                             <span class="fs-3">
                                 BoolBnB
@@ -52,7 +52,7 @@
                                 class="text-decoration-none d-flex align-items-center gap-4 h-100">
                                 <div class="profile-img-nav position-relative">
                                     <img src="{{ asset(Auth::user()->user_data->profile_img) }}" alt="">
-                                    <i class="online-circle fa-solid fa-circle"></i>
+                                    {{-- <i class="online-circle fa-solid fa-circle"></i> --}}
                                 </div>
                                 <span class="profile-text">
                                     {{-- @dd(Auth::user()->user_data->name); --}}
