@@ -9,7 +9,7 @@
   @include('admin.partials.warning')
 
     {{-- SHOW PROFILE INFO --}}
-    <div class="container profile-info my-5">
+    <div class="container profile-info my-5" id="user-index">
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
