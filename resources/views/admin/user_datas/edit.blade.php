@@ -64,7 +64,7 @@
                                                             <label class="d-block mb-4 h-100">
                                                                 <input type="radio" name="profile_img"
                                                                     value="assets/face-profile/green.png">
-                                                                <img class="img-fluid img-thumbnail selected"
+                                                                <img class="img-fluid img-thumbnail @if($user_data->profile_img == 'assets/face-profile/green.png') selected @endif"
                                                                     src="{{ asset('assets/face-profile/green.png') }}"
                                                                     alt="">
                                                             </label>
@@ -73,7 +73,7 @@
                                                             <label class="d-block mb-4 h-100">
                                                                 <input type="radio" name="profile_img"
                                                                     value="assets/face-profile/blue.jpg">
-                                                                <img class="img-fluid img-thumbnail"
+                                                                <img class="img-fluid img-thumbnail @if($user_data->profile_img == 'assets/face-profile/blue.jpg') selected @endif"
                                                                     src="{{ asset('assets/face-profile/blue.jpg') }}"
                                                                     alt="">
                                                             </label>
@@ -82,7 +82,7 @@
                                                             <label class="d-block mb-4 h-100">
                                                                 <input type="radio" name="profile_img"
                                                                     value="assets/face-profile/red.jpg">
-                                                                <img class="img-fluid img-thumbnail"
+                                                                <img class="img-fluid img-thumbnail @if($user_data->profile_img == 'assets/face-profile/red.jpg') selected @endif"
                                                                 src="{{ asset('assets/face-profile/red.jpg') }}"
                                                                     alt="">
                                                             </label>
@@ -91,7 +91,7 @@
                                                             <label class="d-block mb-4 h-100">
                                                                 <input type="radio" name="profile_img"
                                                                     value="assets/face-profile/viola.jpg">
-                                                                <img class="img-fluid img-thumbnail"
+                                                                <img class="img-fluid img-thumbnail @if($user_data->profile_img == 'assets/face-profile/viola.jpg') selected @endif"
                                                                 src="{{ asset('assets/face-profile/viola.jpg') }}"
                                                                     alt="">
                                                             </label>
@@ -100,7 +100,7 @@
                                                             <label class="d-block mb-4 h-100">
                                                                 <input type="radio" name="profile_img"
                                                                     value="assets/face-profile/celeste.png">
-                                                                <img class="img-fluid img-thumbnail"
+                                                                <img class="img-fluid img-thumbnail @if($user_data->profile_img == 'assets/face-profile/celeste.png') selected @endif"
                                                                 src="{{ asset('assets/face-profile/celeste.png') }}">
                                                             </label>
                                                         </div>
@@ -108,7 +108,7 @@
                                                             <label class="d-block mb-4 h-100">
                                                                 <input type="radio" name="profile_img"
                                                                     value="assets/face-profile/yellow.jpg">
-                                                                <img class="img-fluid img-thumbnail"
+                                                                <img class="img-fluid img-thumbnail @if($user_data->profile_img == 'assets/face-profile/yellow.jpg') selected @endif"
                                                                 src="{{ asset('assets/face-profile/yellow.jpg') }}" alt="">
                                                             </label>
                                                         </div>
