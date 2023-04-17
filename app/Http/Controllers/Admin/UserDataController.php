@@ -22,10 +22,10 @@ class UserDataController extends Controller
     public function index()
     {
         $user = Auth::user();
-        $users = User_data::where('user_id', $user->id)->first();
+        $user_data = User_data::where('user_id', $user->id)->first();
 
-        return view('admin.users.index', [
-            'users' => $users,
+        return view('admin.user_datas.index', [
+            'user_data' => $user_data,
         ]);
     }
 
@@ -70,10 +70,10 @@ class UserDataController extends Controller
     public function edit(User_data $user_data)
     {
         $user = Auth::user();
-        $users = User_data::where('user_id', $user->id)->first();
+        $user_data = User_data::where('user_id', $user->id)->first();
 
-        return view('admin.users.edit', [
-            'users' => $users,
+        return view('admin.user_datas.edit', [
+            'user_data' => $user_data,
         ]);
     }
 
@@ -86,8 +86,25 @@ class UserDataController extends Controller
      */
     public function update(UpdateUser_dataRequest $request, User_data $user_data)
     {
-            
+        $user = Auth::user();
+
+        if ($request->has('profile_img')) {
+            // Aggiornamento dell'immagine del profilo
+            if ($user->id == $user_data->user->id) {
+                $user_data->profile_img = $request->input('profile_img');
+                $user_data->save();
+                return redirect()->route('admin.user_datas.index')->with('success', 'Immagine di profilo caricata con successo!');
+            } else {
+                return redirect()->route('admin.user_datas.index', $user_data->id)->with('warning', 'Ci dispiace, ci hai provato pezzo di m**** !!! 💀');
+            }
+        } else {
+            // Aggiornamento delle informazioni personali
+            $user_data->fill($request->all());
+            $user_data->save();
+            return redirect()->route('admin.user_datas.index')->with('success', 'Informazioni personali aggiornate con successo!');
+        }
     }
+
 
     /**
      * Remove the specified resource from storage.

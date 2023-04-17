@@ -7,12 +7,15 @@
     <div class="row row-cols-1 mb-5 my-4 mx-2">
         <div class="col py-3">
             <h1>
+                <span class="icon-section">
+                    <i class="fa-solid fa-user fa-sm"></i>
+                </span>
                 Modifica profilo
             </h1>
         </div>
 
         <div class="col">
-            <a href="{{ route('admin.users.index') }}" class="back">
+            <a href="{{ route('admin.user_datas.index') }}" class="back">
                 Torna indietro
                 <i class="fa-solid fa-rotate-left"></i>
             </a>
@@ -29,14 +32,14 @@
                 <div class="card">
                     <div class="card-header bg-profile-header text-white">Modifica profilo</div>
                     <div class="card-body">
-                        <form action="{{ route('admin.users.update', $users->id) }}" method="POST"
+                        <form action="{{ route('admin.user_datas.update', $user_data->id) }}" method="POST"
                             enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
                             <div class="row align-items-center">
                                 <div class="col-xl-4 text-center">
                                     <div class="mb-3">
-                                        <img src="{{ $users->profile_img }}" alt="Foto profilo"
+                                        <img src="{{ asset($user_data->profile_img) }}" alt="Foto profilo"
                                             class="rounded-circle img-fluid mb-3" style="max-width: 200px;">
                                         <button type="button" class="primary-btn" data-bs-toggle="modal"
                                             data-bs-target="#exampleModal">
@@ -60,53 +63,53 @@
                                                         <div class="col">
                                                             <label class="d-block mb-4 h-100">
                                                                 <input type="radio" name="profile_img"
-                                                                    value="https://wallpapers.com/images/hd/netflix-profile-pictures-1000-x-1000-dyrp6bw6adbulg5b.jpg">
-                                                                <img class="img-fluid img-thumbnail selected"
-                                                                    src="https://wallpapers.com/images/hd/netflix-profile-pictures-1000-x-1000-dyrp6bw6adbulg5b.jpg"
+                                                                    value="assets/face-profile/green.png">
+                                                                <img class="img-fluid img-thumbnail @if($user_data->profile_img == 'assets/face-profile/green.png') selected @endif"
+                                                                    src="{{ asset('assets/face-profile/green.png') }}"
                                                                     alt="">
                                                             </label>
                                                         </div>
                                                         <div class="col">
                                                             <label class="d-block mb-4 h-100">
                                                                 <input type="radio" name="profile_img"
-                                                                    value="https://wallpapers.com/images/hd/netflix-profile-pictures-1000-x-1000-88wkdmjrorckekha.jpg">
-                                                                <img class="img-fluid img-thumbnail"
-                                                                    src="https://wallpapers.com/images/hd/netflix-profile-pictures-1000-x-1000-88wkdmjrorckekha.jpg"
+                                                                    value="assets/face-profile/blue.jpg">
+                                                                <img class="img-fluid img-thumbnail @if($user_data->profile_img == 'assets/face-profile/blue.jpg') selected @endif"
+                                                                    src="{{ asset('assets/face-profile/blue.jpg') }}"
                                                                     alt="">
                                                             </label>
                                                         </div>
                                                         <div class="col">
                                                             <label class="d-block mb-4 h-100">
                                                                 <input type="radio" name="profile_img"
-                                                                    value="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgkg-qvEdE_G0UqfM3gE_PIb7gHIFi1OtAgnSyIWG9Df2ar6BBYVeTM-UULzeWYooBLyc&usqp=CAU">
-                                                                <img class="img-fluid img-thumbnail"
-                                                                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgkg-qvEdE_G0UqfM3gE_PIb7gHIFi1OtAgnSyIWG9Df2ar6BBYVeTM-UULzeWYooBLyc&usqp=CAU"
+                                                                    value="assets/face-profile/red.jpg">
+                                                                <img class="img-fluid img-thumbnail @if($user_data->profile_img == 'assets/face-profile/red.jpg') selected @endif"
+                                                                src="{{ asset('assets/face-profile/red.jpg') }}"
                                                                     alt="">
                                                             </label>
                                                         </div>
                                                         <div class="col">
                                                             <label class="d-block mb-4 h-100">
                                                                 <input type="radio" name="profile_img"
-                                                                    value="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSi8q9hCPqI0SKGM0_WHuuqWtvUPpN43m_Zkpr2M6k6-ty5wq9VNKtOUurNc0UyQ-bQbE0&usqp=CAU">
-                                                                <img class="img-fluid img-thumbnail"
-                                                                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSi8q9hCPqI0SKGM0_WHuuqWtvUPpN43m_Zkpr2M6k6-ty5wq9VNKtOUurNc0UyQ-bQbE0&usqp=CAU"
+                                                                    value="assets/face-profile/viola.jpg">
+                                                                <img class="img-fluid img-thumbnail @if($user_data->profile_img == 'assets/face-profile/viola.jpg') selected @endif"
+                                                                src="{{ asset('assets/face-profile/viola.jpg') }}"
                                                                     alt="">
                                                             </label>
                                                         </div>
                                                         <div class="col">
                                                             <label class="d-block mb-4 h-100">
                                                                 <input type="radio" name="profile_img"
-                                                                    value="https://i.redd.it/ty54wbejild91.jpg">
-                                                                <img class="img-fluid img-thumbnail"
-                                                                    src="https://i.redd.it/ty54wbejild91.jpg"alt="">
+                                                                    value="assets/face-profile/celeste.png">
+                                                                <img class="img-fluid img-thumbnail @if($user_data->profile_img == 'assets/face-profile/celeste.png') selected @endif"
+                                                                src="{{ asset('assets/face-profile/celeste.png') }}">
                                                             </label>
                                                         </div>
                                                         <div class="col">
                                                             <label class="d-block mb-4 h-100">
                                                                 <input type="radio" name="profile_img"
-                                                                    value="https://pbs.twimg.com/profile_images/1498164684935286785/yAUKiD8V_400x400.jpg">
-                                                                <img class="img-fluid img-thumbnail"
-                                                                    src="https://pbs.twimg.com/profile_images/1498164684935286785/yAUKiD8V_400x400.jpg"alt="">
+                                                                    value="assets/face-profile/yellow.jpg">
+                                                                <img class="img-fluid img-thumbnail @if($user_data->profile_img == 'assets/face-profile/yellow.jpg') selected @endif"
+                                                                src="{{ asset('assets/face-profile/yellow.jpg') }}" alt="">
                                                             </label>
                                                         </div>
                                                     </div>
@@ -125,17 +128,17 @@
                                     <div class="mb-3">
                                         <label for="name" class="form-label">Nome</label>
                                         <input type="text" class="form-control" id="name" name="name"
-                                            value="{{ $users->name }}" required>
+                                            value="{{ $user_data->name }}" required>
                                     </div>
                                     <div class="mb-3">
                                         <label for="surname" class="form-label">Cognome</label>
                                         <input type="text" class="form-control" id="surname" name="surname"
-                                            value="{{ $users->surname }}" required>
+                                            value="{{ $user_data->surname }}" required>
                                     </div>
                                     <div class="mb-3">
                                         <label for="date_of_birth" class="form-label">Data di nascita</label>
                                         <input type="date" class="form-control" id="date_of_birth"
-                                            name="date_of_birth" value="{{ $users->date_of_birth }}" required>
+                                            name="date_of_birth" value="{{ $user_data->date_of_birth }}" required>
                                     </div>
                                     <div class="d-flex justify-content-end">
                                         <button type="submit" class="secondary-btn me-1">Aggiorna</button>

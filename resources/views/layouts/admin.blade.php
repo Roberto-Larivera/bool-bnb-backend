@@ -48,10 +48,10 @@
                         </button>
 
                         <div class="d-none d-sm-none d-md-flex align-items-center gap-4  ms-auto me-4">
-                            <a href="{{ route('admin.users.index') }}"
+                            <a href="{{ route('admin.user_datas.index') }}"
                                 class="text-decoration-none d-flex align-items-center gap-4 h-100">
                                 <div class="profile-img-nav position-relative">
-                                    <img src="{{ asset('assets/face-profile/red.jpg') }}" alt="">
+                                    <img src="{{ asset(Auth::user()->user_data->profile_img) }}" alt="">
                                     <i class="online-circle fa-solid fa-circle"></i>
                                 </div>
                                 <span class="profile-text">
@@ -99,8 +99,8 @@
                     </div>
                     <div class="modal-body">
                         <div class="text-center">
-                            <img src="#nogo" alt="Foto profilo"
-                                class="rounded-circle img-fluid mb-3" style="max-width: 200px;">
+                            <img src="{{ asset(Auth::user()->user_data->profile_img) }}" alt="Foto profilo"
+                                class="rounded-circle img-fluid mb-3" style="max-width: 100px;">
                             <h4>
                                 @if (Auth::user()->user_data->name != null)
                                     {{ Auth::user()->user_data->name }}
@@ -153,10 +153,10 @@
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link d-flex justify-content-between align-items-center 
-                                    {{ Route::currentRouteName() == 'admin.users.index' ? 'active-aside-link' : '' }}
-                                    {{ Route::currentRouteName() == 'admin.users.edit' ? 'active-aside-link' : '' }}
+                                    {{ Route::currentRouteName() == 'admin.user_datas.index' ? 'active-aside-link' : '' }}
+                                    {{ Route::currentRouteName() == 'admin.user_datas.show' ? 'active-aside-link' : '' }}
                                     "
-                                        href="{{ route('admin.users.index') }}">
+                                        href="{{ route('admin.user_datas.index') }}">
                                         <span>Profilo</span> <i class="fa-solid fa-user fa-lg fa-fw"></i>
                                     </a>
                                 </li>
@@ -222,10 +222,10 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link d-flex justify-content-between align-items-center 
-                            {{ Route::currentRouteName() == 'admin.users.index' ? 'active-aside-link' : '' }}
-                            {{ Route::currentRouteName() == 'admin.users.edit' ? 'active-aside-link' : '' }}
+                            {{ Route::currentRouteName() == 'admin.user_datas.index' ? 'active-aside-link' : '' }}
+                            {{ Route::currentRouteName() == 'admin.user_datas.show' ? 'active-aside-link' : '' }}
                             "
-                                href="{{ route('admin.users.index') }}">
+                                href="{{ route('admin.user_datas.index') }}">
                                 <span>Profilo</span> <i class="fa-solid fa-user fa-lg fa-fw"></i>
                             </a>
                         </li>
