@@ -1,5 +1,6 @@
 @extends('layouts.admin')
 
+@section('title', ' | Appartamenti')
 @section('content')
 <div class="container-fluid mt-4">
     <div class="row row-cols-1 mb-5">
@@ -10,9 +11,9 @@
         </div>
 
         <div class="col">
-            <a href="{{ route('admin.dashboard') }}" class="btn btn-outline-primary">
-                Torna Indietro
-                <i class="fa-solid fa-rotate-left"></i>
+            <a href="{{ route('admin.dashboard') }}" class="back">
+                    Torna indietro
+                    <i class="fa-solid fa-rotate-left"></i>
             </a>
         </div>
     </div>
@@ -24,7 +25,7 @@
     {{-- Bottone crea: Qui responsive su row --}}
     <div class="row">
         <div class="col">
-            <a href="{{ route('admin.apartments.create') }}" class="my-btn rounded">
+            <a href="{{ route('admin.apartments.create') }}" class="secondary-btn">
                 <i class="fa-solid fa-plus"></i> Nuovo
             </a>
         </div>
@@ -70,7 +71,7 @@
                             {{ $apartment->price }}
                         </td>
                         <td>
-                            <a href="{{ route('admin.apartments.show', $apartment->id) }}" class="my-action rounded">
+                            <a href="{{ route('admin.apartments.show', $apartment->id) }}" class="primary-btn">
                                 Dettagli
                             </a>
 

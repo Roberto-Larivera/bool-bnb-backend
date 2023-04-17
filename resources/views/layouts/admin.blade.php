@@ -120,19 +120,20 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link d-flex justify-content-between align-items-center {{ Route::currentRouteName() == 'admin.sponsor' ? 'active-aside-link' : '' }}"
-                                href="{{ route('admin.dashboard') }}">
+                                href="{{ route('admin.sponsors.index') }}">
                                 <span>Sponsor</span> <i class="fa-solid fa-sack-dollar fa-lg fa-fw"></i>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link d-flex justify-content-between align-items-center {{ Route::currentRouteName() == 'admin.profilo' ? 'active-aside-link' : '' }}"
-                                href="{{ route('admin.dashboard') }}">
+                                href="{{ route('admin.users.index') }}">
                                 <span>Profilo</span> <i class="fa-solid fa-user fa-lg fa-fw"></i>
                             </a>
                         </li>
                         <li class="my-home mt-5">
+                            {{-- collegamento frontend --}}
                             <a class="btn d-flex justify-content-center align-items-center {{ Route::currentRouteName() == 'admin.apartment' ? 'active-aside-link' : '' }}"
-                                href="{{ route('admin.apartments.index') }}">
+                                href="http://localhost:5174/" target="_blank" >
                                 <span>Home Page</span> <i class="fa-solid fa-house fa-lg fa-fw ms-3"></i>
                             </a>
                         </li>

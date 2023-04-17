@@ -1,0 +1,23 @@
+
+#user-edit{
+    
+    .selected {
+    border-color: $color_primary;
+    box-shadow: 0 0 10px $color_primary;
+    background-color: $color_primary;
+    }
+    
+    
+    .modal-body img{
+        height: 150px;
+        width: 150px;
+    }
+    
+    
+    .modal-body input{
+        opacity: 0;
+    }
+
+
+}
+

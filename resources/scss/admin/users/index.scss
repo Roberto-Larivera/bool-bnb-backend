@@ -1,0 +1,49 @@
+
+.card-header {
+    font-size: 25px;
+  }
+
+.bg-profile-header{
+    background-color: rgb(#FF385C,0.9);
+    font-weight: bold;
+}
+
+  .card-body {
+    background-color: #f9f9f9;
+  }
+  
+  .card-body table td:first-child {
+    font-weight: bold;
+  }
+  
+  .card-body table td {
+    padding: 5px 10px;
+    vertical-align: middle;
+  }
+
+  .profile-info{
+    margin-top: 8vh !important;
+  }
+
+  .logout-btn-user{
+    color: #FCFAFF !important;
+    background-color: #FF385C !important;
+    border: 1px solid #FF385C !important;
+  }
+
+  .logout-btn-user i{
+    color: #FCFAFF !important;
+  }
+
+
+  
+  @media (max-width: 767px) {
+    .card-body {
+      padding: 20px;
+    }
+    
+    .col-md-4.text-center {
+      margin-bottom: 20px;
+    }
+  }
+  

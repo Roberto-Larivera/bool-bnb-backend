@@ -7,6 +7,10 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreUser_dataRequest;
 use App\Http\Requests\UpdateUser_dataRequest;
 use App\Models\User_data;
+use App\Models\User;
+
+// Facades
+use Illuminate\Support\Facades\Auth;
 
 class UserDataController extends Controller
 {
@@ -17,7 +21,12 @@ class UserDataController extends Controller
      */
     public function index()
     {
-        //
+        $user = Auth::user();
+        $users = User_data::where('user_id', $user->id)->first();
+
+        return view('admin.users.index', [
+            'users' => $users,
+        ]);
     }
 
     /**
@@ -60,7 +69,12 @@ class UserDataController extends Controller
      */
     public function edit(User_data $user_data)
     {
-        //
+        $user = Auth::user();
+        $users = User_data::where('user_id', $user->id)->first();
+
+        return view('admin.users.edit', [
+            'users' => $users,
+        ]);
     }
 
     /**
@@ -72,7 +86,7 @@ class UserDataController extends Controller
      */
     public function update(UpdateUser_dataRequest $request, User_data $user_data)
     {
-        //
+            
     }
 
     /**
