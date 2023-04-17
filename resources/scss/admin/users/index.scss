@@ -22,8 +22,20 @@
   }
 
   .profile-info{
-    margin-top: 15vh !important;
+    margin-top: 8vh !important;
   }
+
+  .logout-btn-user{
+    color: #FCFAFF !important;
+    background-color: #FF385C !important;
+    border: 1px solid #FF385C !important;
+  }
+
+  .logout-btn-user i{
+    color: #FCFAFF !important;
+  }
+
+
   
   @media (max-width: 767px) {
     .card-body {
