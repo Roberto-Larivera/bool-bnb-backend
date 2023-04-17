@@ -23,7 +23,7 @@
                                     <div class="mb-3">
                                         <img src="{{ $users->profile_img }}" alt="Foto profilo"
                                             class="rounded-circle img-fluid mb-3" style="max-width: 200px;">
-                                        <button type="button" class="btn btn-secondary" data-bs-toggle="modal"
+                                        <button type="button" class="primary-btn" data-bs-toggle="modal"
                                             data-bs-target="#exampleModal">
                                             Cambia foto profilo
                                         </button>
@@ -88,9 +88,9 @@
                                                     </div>
                                                   </div>
                                                 <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary"
+                                                    <button type="button" class="primary-btn"
                                                         data-bs-dismiss="modal">Annulla</button>
-                                                    <button type="submit" class="btn btn-primary">Conferma</button>
+                                                    <button type="submit" class="secondary-btn">Conferma</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -114,7 +114,7 @@
                                             value="{{ $users->date_of_birth }}" required>
                                     </div>
                                     <div class="d-flex justify-content-end">
-                                        <button type="submit" class="btn btn-primary me-1">Aggiorna</button>
+                                        <button type="submit" class="secondary-btn me-1">Aggiorna</button>
                                     </div>
                                 </div>
                             </div>
