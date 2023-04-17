@@ -49,7 +49,7 @@ header {
 }
 
 // bg aside e header
-.aside-navbar {
+.aside-navbar, #sidebarMenu {
     background-color: #ffffff;
 }
 
@@ -66,12 +66,12 @@ header {
 
 
 // sider menu laterale - parte inferiore
-#sidebarMenu {
+#sidebarMenu, #sidebarMenu2 {
     overflow: hidden;
 
     // link rotte: dashboard , appartamenti ...
     .nav-item:not(.my-home) {
-        font-size: 0.9rem;
+        font-size: 1rem;
         cursor: pointer;
 
         a {
@@ -132,3 +132,9 @@ header {
         }
     }
 }
+
+// #navBarModal{
+//     .btn-close{
+//         color: $color_primary;
+//     }
+// }
