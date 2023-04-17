@@ -155,7 +155,7 @@
                                 </li>
                                 <li class="nav-item">
                                     <a class="p-0 nav-link d-flex justify-content-between align-items-center {{ Route::currentRouteName() == 'admin.sponsor' ? 'active-aside-link' : '' }}"
-                                        href="{{ route('admin.dashboard') }}">
+                                        href="{{ route('admin.sponsors.index') }}">
                                         <span>Sponsor</span> <i class="fa-solid fa-sack-dollar fa-lg fa-fw"></i>
                                     </a>
                                 </li>

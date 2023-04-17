@@ -20,13 +20,16 @@
 // Style per users
 @import './admin/users/index.scss';
 
+// Style per sponsors
+@import './admin/sponsors/index.scss';
 
 
-body{
+
+body {
     scroll-behavior: smooth;
     background-color: $color_light;
 }
 
-.primary-btn{
+.primary-btn {
     @include buttonPrimary
 }

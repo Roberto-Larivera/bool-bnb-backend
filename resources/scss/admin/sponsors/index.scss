@@ -1,0 +1,50 @@
+.my-card {
+    border-radius: 20px;
+    border: 1px solid lightgrey;
+    background-color: $color_light;
+    transition: background-color 0.5s ease-in;
+
+    h6,
+    h5,
+    p,
+    h2 {
+        transition: 0.5s;
+
+    }
+
+    h2 {
+        color: $color_primary;
+    }
+
+
+    &:hover {
+        background: $color_light;
+        background: linear-gradient(150deg, $color_light 82%, rgb(231, 231, 231) 100%);
+        cursor: pointer;
+
+        h6,
+        h5,
+        p {
+            color: $color_primary;
+        }
+
+        .silver {
+            background: -webkit-linear-gradient(#eee, #333);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .gold {
+            background: -webkit-radial-gradient(#FEDB37, #8A6E2F);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+
+        }
+
+        .platinum {
+            background: -webkit-radial-gradient(rgb(78, 215, 169), rgb(57, 185, 70));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    }
+}

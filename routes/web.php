@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\ApartmentController;
 use App\Http\Controllers\Admin\MessageController;
 use App\Http\Controllers\Admin\UserDataController;
+use App\Http\Controllers\Admin\SponsorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,6 +36,8 @@ Route::prefix('admin')->name('admin.')->middleware('auth', 'verified')->group(fu
     Route::resource('apartments', ApartmentController::class);
     Route::resource('messages', MessageController::class);
     Route::resource('users', UserDataController::class);
+    Route::resource('sponsors', SponsorController::class);
+
 });
 
 require __DIR__.'/auth.php';
