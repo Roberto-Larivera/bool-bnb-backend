@@ -34,97 +34,70 @@
         </div>
     </div>
 
-    {{-- Tabella: Qui responsive su row --}}
-    <div class="row">
-        <div class="col">
-            <table class="table my-4 rounded">
-                <thead>
-                  <tr>
-                    <th scope="col" class="d-none d-md-table-cell">
-                        Foto
-                    </th>
-                    <th scope="col">
-                        Titolo
-                    </th>
-                    <th scope="col" class="d-none d-md-table-cell">
-                        Indirizzo
-                    </th>
-                    <th scope="col" class="d-none d-lg-table-cell">
-                        Mq
-                    </th>
-                    <th scope="col" class="d-none d-lg-table-cell">
-                        Prezzo / notte
-                    </th>
-                    <th scope="col">
-                        Azioni
-                    </th>
-                  </tr>
-                </thead>
+    @if (count($apartments) > 0)
+        {{-- Tabella: Qui responsive su row --}}
+        <div class="row">
+            <div class="col">
+                <table class="table my-4 rounded">
+                    <thead>
+                    <tr>
+                        <th scope="col" class="d-none d-md-table-cell">
+                            Foto
+                        </th>
+                        <th scope="col">
+                            Titolo
+                        </th>
+                        <th scope="col" class="d-none d-md-table-cell">
+                            Indirizzo
+                        </th>
+                        <th scope="col" class="d-none d-lg-table-cell">
+                            Mq
+                        </th>
+                        <th scope="col" class="d-none d-lg-table-cell">
+                            Prezzo / notte
+                        </th>
+                        <th scope="col">
+                            Azioni
+                        </th>
+                    </tr>
+                    </thead>
 
-                    @foreach ($apartments as $index => $apartment)
-                    <tbody>
-                        <tr>
-                            <td class="d-none d-md-table-cell align-middle">
-                                <div class="apartment-img-container">
-                                    <img src="{{ $apartment->main_img }}" alt=" {{ $apartment->title }}" class="img-fluid">
-                                </div>
-                            </td>
-                            <td class="align-middle">
-                                {{ $apartment->title }}
-                            </td>
-                            <td class="d-none d-md-table-cell align-middle">
-                                {{ $apartment->address }}
-                            </td>
-                            <td class="d-none d-lg-table-cell align-middle">
-                                {{ $apartment->mq }}
-                            </td>
-                            <td class="d-none d-lg-table-cell align-middle">
-                                {{ $apartment->price }}
-                            </td>
-                            <td class="align-middle">
-                                <a href="{{ route('admin.apartments.show', $apartment->id) }}" class="primary-btn">
-                                    Dettagli
-                                </a>
-
-                                {{-- bottone per delete DA TOGLIERE SE RESTA IN SHOW --}}
-                                {{-- <button type="button" class="btn-modal my-action rounded" data-bs-toggle="modal" data-bs-target="#modal-delete" onclick="openModal({{ $index }})">
-                                    <i class="fa-solid fa-trash my-color-dark"></i>
-                                </button> --}}
-                            </td>
-                        </tr>
-                    </tbody>
-                    @endforeach
-                </table>
-
-                {{-- Prova modale senza ripetizione DA TOGLIERE --}}
-                {{-- <div class="modal fade" id="modal-delete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" query="modal-delete">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">
-                                    Cancellare appartamento {{ $index }}?
-                                </h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="deleteItem()">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                Modal Body
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">
-                                    Chiudi
-                                </button>
-                                <button type="button" class="btn btn-primary">
-                                    Cancella
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div> --}}
+                        @foreach ($apartments as $index => $apartment)
+                        <tbody>
+                            <tr>
+                                <td class="d-none d-md-table-cell align-middle">
+                                    <div class="apartment-img-container">
+                                        <img src="{{ $apartment->main_img }}" alt=" {{ $apartment->title }}" class="img-fluid">
+                                    </div>
+                                </td>
+                                <td class="align-middle">
+                                    {{ $apartment->title }}
+                                </td>
+                                <td class="d-none d-md-table-cell align-middle">
+                                    {{ $apartment->address }}
+                                </td>
+                                <td class="d-none d-lg-table-cell align-middle">
+                                    {{ $apartment->mq }}
+                                </td>
+                                <td class="d-none d-lg-table-cell align-middle">
+                                    {{ $apartment->price }}
+                                </td>
+                                <td class="align-middle">
+                                    <a href="{{ route('admin.apartments.show', $apartment->id) }}" class="primary-btn">
+                                        Dettagli
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                        @endforeach
+                    </table>
+                </div>
             </div>
         </div>
-    </div>
+    @else
+        Nessun appartamento inserito
+    @endif
+    
 </div>
 @endsection
 
