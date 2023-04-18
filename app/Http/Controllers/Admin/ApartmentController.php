@@ -161,7 +161,6 @@ class ApartmentController extends Controller
     public function update(UpdateApartmentRequest $request, Apartment $apartment)
     {
         $data = $request->validated();
-        // dd($data);
         $titleOld = $apartment->title;
         $descriptionOld = $apartment->description;
         $main_imgOld = $apartment->main_img;
@@ -182,12 +181,16 @@ class ApartmentController extends Controller
         // if (array_key_exists('main_img', $data))
         //     $featuredDeleteImage = true;
 
+        if(!array_key_exists('services', $data)){
+            $data['services']=[];
+        }
 
         if (
             $titleOld == $data['title'] &&
             $descriptionOld == $data['description'] &&
             // img file
             // $featuredDeleteImage == false &&
+            
             // img url
             $main_imgOld == $data['main_img'] &&
             $servicesOld == $data['services'] &&
