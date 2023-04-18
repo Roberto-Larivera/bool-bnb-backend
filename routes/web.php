@@ -37,6 +37,7 @@ Route::prefix('admin')->name('admin.')->middleware('auth', 'verified')->group(fu
     Route::resource('messages', MessageController::class);
     Route::resource('users', UserDataController::class);
     Route::resource('sponsors', SponsorController::class);
+    Route::get('sponsors/{id}', 'App\Http\Controllers\SponsorController@show')->name('admin.sponsors.show');
 
 });
 

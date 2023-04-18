@@ -53,7 +53,9 @@ class SponsorController extends Controller
      */
     public function show(Sponsor $sponsor)
     {
-        //
+        $sponsor = Sponsor::findOrFail($sponsor->id);
+
+        return view('admin.sponsors.show', compact('sponsor'));
     }
 
     /**
