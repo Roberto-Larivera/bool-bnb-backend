@@ -18,6 +18,10 @@
     {{-- fontawesome  --}}
     <link rel="stylesheet" href="{{ asset('node_modules/@fortawesome/fontawesome-free/css/all.min.css') }}">
 
+    {{-- Import api TomTom --}}
+    <link rel="stylesheet" type="text/css" href="https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.14.0/maps/maps.css">
+    <script src="https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.14.0/maps/maps-web.min.js"></script>
+
     <!-- Usando Vite -->
     @vite(['resources/js/app.js'])
 </head>
