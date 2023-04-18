@@ -7,7 +7,7 @@
 <div class="row row-cols-1 mb-5 my-4 mx-2">
     <div class="col py-3">
         <h1>
-            <span class="icon-section">
+            <span class="icon-section me-2">
                 <i class="fa-solid fa-sack-dollar fa-sm"></i>
             </span>
             Sponsorships

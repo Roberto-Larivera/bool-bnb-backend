@@ -7,7 +7,7 @@
         <div class="row row-cols-1 mb-5">
             <div class="col py-3">
                 <h1>
-                    <span class="icon-section">
+                    <span class="icon-section me-2">
                         <i class="fa-solid fa-message fa-sm"></i>
                     </span>
                     I miei messaggi
