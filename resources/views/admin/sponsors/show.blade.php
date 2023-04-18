@@ -1,10 +1,10 @@
 @extends('layouts.admin')
 
-@section('title', ' | Sponsor')
+@section('title', ' | Selezione sponsor e appartamento')
 
 @section('content')
-<div class="container h-100 d-flex align-items-center justify-space-between">
-    <div class="row w-100 gy-5 mt-5 mt-md-0">
+<div class="container h-100">
+    <div class="row gy-5 mt-5 mt-md-0 d-flex justify-content-center mb-3">
         <div class="col-12 col-lg-4 d-flex justify-content-center">
             <div class="my-card  p-4">
                 <h2 class="card-title text-center fw-bold {{ strtolower(explode(' ', $sponsor->title)[1]) }} px-2 py-3 ">{{ explode(' ', $sponsor->title)[1] }}</h2>
@@ -15,4 +15,5 @@
         </div>
     </div>
 </div>
+
 @endsection
