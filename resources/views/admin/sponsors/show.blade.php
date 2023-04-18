@@ -16,11 +16,12 @@
     </div>
     <div class="row gy-5 mt-5 mt-md-0 d-flex justify-content-center mb-3">
         <div class="col-12 col-lg-4 d-flex justify-content-center">
-            @if ($apartments->count() > 1)
+            @if (isset($apartments))
                 @foreach ($apartments as $apartment)
                     {{ $apartment->title }}
                 @endforeach
-            @else {{ $apartments->title }}
+            @else 
+                {{ $apartment->title }}
             @endif
 
         </div>
