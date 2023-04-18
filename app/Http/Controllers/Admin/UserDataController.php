@@ -6,10 +6,13 @@ use App\Http\Controllers\Controller;
 
 use App\Http\Requests\StoreUser_dataRequest;
 use App\Http\Requests\UpdateUser_dataRequest;
+
+// Models
 use App\Models\User_data;
 use App\Models\User;
-
 // Facades
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 
 class UserDataController extends Controller
@@ -84,8 +87,23 @@ class UserDataController extends Controller
      * @param  \App\Models\User_data  $user_data
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateUser_dataRequest $request, User_data $user_data)
+    public function update(Request $request, User_data $user_data)
     {
+                // calcolo data attuale meno 18 anni per controllare se sei maggiorenne
+        // $currentDateMin = Carbon::now()->subYears(-18)->format('Y-m-d');
+        $currentDate = date('Y-m-d');
+        $currentDateMin = date('Y-m-d', strtotime('-18 years', strtotime($currentDate)));
+
+        $validator = Validator::make($request->all(), [
+            'name' => ['required', 'string', 'max:50'],
+            'surname' => ['required', 'string', 'max:50'],
+            'date_of_birth' => ['required', 'date_format:Y-m-d', 'before_or_equal:' . $currentDateMin]
+        ], [
+            'date_of_birth.before_or_equal' => 'Devi avere almeno 18 anni per registrarti.'
+        ]);
+
+        $validated = $validator->validated();
+
         $user = Auth::user();
 
         if ($request->has('profile_img')) {
@@ -99,7 +117,7 @@ class UserDataController extends Controller
             }
         } else {
             // Aggiornamento delle informazioni personali
-            $user_data->fill($request->all());
+            $user_data->fill($validated);
             $user_data->save();
             return redirect()->route('admin.user_datas.index')->with('success', 'Informazioni personali aggiornate con successo!');
         }
