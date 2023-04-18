@@ -6,10 +6,10 @@
     <div class="row row-cols-1 mb-5">
         <div class="col py-3">
             <h1>
-                <span class="icon-section">
+                <span class="icon-section me-2">
                     <i class="fa-solid fa-building fa-sm"></i>
                 </span>
-                I miei appartamenti
+                Appartamenti
             </h1>
         </div>
 
@@ -40,6 +40,9 @@
             <table class="table my-4 rounded">
                 <thead>
                   <tr>
+                    <th scope="col" class="d-none d-md-table-cell">
+                        Foto
+                    </th>
                     <th scope="col">
                         Titolo
                     </th>
@@ -61,28 +64,33 @@
                     @foreach ($apartments as $index => $apartment)
                     <tbody>
                         <tr>
-                        <td>
-                            {{ $apartment->title }}
-                        </td>
-                        <td class="d-none d-md-table-cell">
-                            {{ $apartment->address }}
-                        </td>
-                        <td class="d-none d-lg-table-cell">
-                            {{ $apartment->mq }}
-                        </td>
-                        <td class="d-none d-lg-table-cell">
-                            {{ $apartment->price }}
-                        </td>
-                        <td>
-                            <a href="{{ route('admin.apartments.show', $apartment->id) }}" class="primary-btn">
-                                Dettagli
-                            </a>
+                            <td class="d-none d-md-table-cell align-middle">
+                                <div class="apartment-img-container">
+                                    <img src="{{ $apartment->main_img }}" alt=" {{ $apartment->title }}" class="img-fluid">
+                                </div>
+                            </td>
+                            <td class="align-middle">
+                                {{ $apartment->title }}
+                            </td>
+                            <td class="d-none d-md-table-cell align-middle">
+                                {{ $apartment->address }}
+                            </td>
+                            <td class="d-none d-lg-table-cell align-middle">
+                                {{ $apartment->mq }}
+                            </td>
+                            <td class="d-none d-lg-table-cell align-middle">
+                                {{ $apartment->price }}
+                            </td>
+                            <td class="align-middle">
+                                <a href="{{ route('admin.apartments.show', $apartment->id) }}" class="primary-btn">
+                                    Dettagli
+                                </a>
 
-                            {{-- bottone per delete DA TOGLIERE SE RESTA IN SHOW --}}
-                            {{-- <button type="button" class="btn-modal my-action rounded" data-bs-toggle="modal" data-bs-target="#modal-delete" onclick="openModal({{ $index }})">
-                                <i class="fa-solid fa-trash my-color-dark"></i>
-                            </button> --}}
-                        </td>
+                                {{-- bottone per delete DA TOGLIERE SE RESTA IN SHOW --}}
+                                {{-- <button type="button" class="btn-modal my-action rounded" data-bs-toggle="modal" data-bs-target="#modal-delete" onclick="openModal({{ $index }})">
+                                    <i class="fa-solid fa-trash my-color-dark"></i>
+                                </button> --}}
+                            </td>
                         </tr>
                     </tbody>
                     @endforeach
