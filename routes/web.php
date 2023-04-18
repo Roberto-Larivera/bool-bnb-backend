@@ -37,7 +37,6 @@ Route::prefix('admin')->name('admin.')->middleware('auth', 'verified')->group(fu
     Route::resource('messages', MessageController::class)->only(['index']);
     Route::resource('user_datas', UserDataController::class)->only(['update','edit','index']);
     Route::resource('sponsors', SponsorController::class)->only(['index','show']);
-
 });
 
 require __DIR__.'/auth.php';

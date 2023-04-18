@@ -4,9 +4,13 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 
+use Illuminate\Support\Facades\Auth;
+
 use App\Http\Requests\StoreSponsorRequest;
 use App\Http\Requests\UpdateSponsorRequest;
 use App\Models\Sponsor;
+use App\Models\User;
+use App\Models\Apartment;
 
 
 class SponsorController extends Controller
@@ -53,7 +57,14 @@ class SponsorController extends Controller
      */
     public function show(Sponsor $sponsor)
     {
-        //
+        $sponsor = Sponsor::findOrFail($sponsor->id);
+
+        $user = Auth::user();
+        
+        $apartments = Apartment::where('user_id', $user->id)->get();
+
+        return view('admin.sponsors.show', compact('sponsor', 'apartments'));
+
     }
 
     /**
