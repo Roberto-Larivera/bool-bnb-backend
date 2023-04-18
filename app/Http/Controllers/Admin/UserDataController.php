@@ -89,11 +89,15 @@ class UserDataController extends Controller
      */
     public function update(Request $request, User_data $user_data)
     {
-                // calcolo data attuale meno 18 anni per controllare se sei maggiorenne
-        // $currentDateMin = Carbon::now()->subYears(-18)->format('Y-m-d');
+        $nameOld = $user_data->name;
+        $surnameOld = $user_data->surname;
+        $date_of_birthOld = $user_data->date_of_birth;
+
+        // calcolo data attuale meno 18 anni per controllare se sei maggiorenne
         $currentDate = date('Y-m-d');
         $currentDateMin = date('Y-m-d', strtotime('-18 years', strtotime($currentDate)));
 
+        // Validazione dati
         $validator = Validator::make($request->all(), [
             'name' => ['required', 'string', 'max:50'],
             'surname' => ['required', 'string', 'max:50'],
@@ -106,6 +110,8 @@ class UserDataController extends Controller
 
         $user = Auth::user();
 
+        
+
         if ($request->has('profile_img')) {
             // Aggiornamento dell'immagine del profilo
             if ($user->id == $user_data->user->id) {
@@ -116,10 +122,19 @@ class UserDataController extends Controller
                 return redirect()->route('admin.user_datas.index', $user_data->id)->with('warning', 'Ci dispiace, ci hai provato pezzo di m**** !!! 💀');
             }
         } else {
+            if(
+                $nameOld == $validated['name'] &&
+            $surnameOld == $validated['surname'] &&
+            $date_of_birthOld == $validated['date_of_birth']
+            ){
+                return redirect()->route('admin.user_datas.index', $user_data)->with('warning', 'Non hai effettuato nessuna modifica');
+            }else{
+
             // Aggiornamento delle informazioni personali
             $user_data->fill($validated);
             $user_data->save();
             return redirect()->route('admin.user_datas.index')->with('success', 'Informazioni personali aggiornate con successo!');
+            }
         }
     }
 
