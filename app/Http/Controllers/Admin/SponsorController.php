@@ -88,7 +88,7 @@ class SponsorController extends Controller
             }
 
             return view('admin.sponsors.show', [
-                'apartments' => $apartments,
+                'apartment' => $apartments,
                 'sponsor' => $sponsor,
             ]);
 
