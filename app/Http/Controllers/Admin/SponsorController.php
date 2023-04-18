@@ -61,23 +61,40 @@ class SponsorController extends Controller
      */
     public function show(Apartment $apartment, Sponsor $sponsor, Request $request)
     {
-        
-        $id = $apartment->id;
 
-        $apartment = Apartment::findOrFail($id);
+        $id = $request->query('apartment_id');
 
-        dd($request); 
+        $user = Auth::user();
 
-        $sponsor = Sponsor::findOrFail($sponsor->id);
+        if ($id == null) {
 
-        if (Auth::user()->id !== $apartment->user_id) {
-            return redirect()->back()->withErrors(['message' => 'Non sei autorizzato a visualizzare questa pagina']);
+            $apartments = Apartment::where('user_id', $user->id)->get();
+
+            return view('admin.sponsors.show', [
+                'apartments' => $apartments,
+                'sponsor' => $sponsor,
+            ]);
+
+            
+        }
+        else{
+
+            $apartments = Apartment::findOrFail($id);
+
+            $sponsor = Sponsor::findOrFail($sponsor->id);
+
+            if (Auth::user()->id !== $apartments->user_id) {
+                return redirect()->back()->withErrors(['message' => 'Non sei autorizzato a visualizzare questa pagina']);
+            }
+
+            return view('admin.sponsors.show', [
+                'apartments' => $apartments,
+                'sponsor' => $sponsor,
+            ]);
+
         }
 
-        return view('admin.sponsors.show', [
-            'apartment' => $apartment,
-            'sponsor' => $sponsor,
-        ]);
+        
     }
 
     /**
