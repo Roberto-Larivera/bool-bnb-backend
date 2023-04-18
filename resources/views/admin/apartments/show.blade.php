@@ -7,7 +7,10 @@
         <div class="row row-cols-1 mb-5">
             <div class="col py-3">
                 <h1>
-                    IL mio appartamento
+                    <span class="icon-section">
+                        <i class="fa-solid fa-building fa-sm"></i>
+                    </span>
+                    Il mio appartamento
                 </h1>
             </div>
 
@@ -70,7 +73,7 @@
                    </a>
 
                    {{-- Aggiungere rotta sponsor --}}
-                   <a href="#" class="secondary-btn">
+                   <a href="{{ route('admin.sponsors.index',  ['apartment_id' => $apartment->id]) }}" class="secondary-btn">
                        Sponsorizza
                    </a>
                </div>

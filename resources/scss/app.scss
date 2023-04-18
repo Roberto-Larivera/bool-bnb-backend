@@ -15,8 +15,8 @@
 @import './admin/apartments/index.scss';
 @import './admin/apartments/createUpdate.scss';
 @import './admin/messages/index.scss';
-@import './admin/users/index.scss';
-@import './admin/users/edit.scss';
+@import './admin/user_datas/index.scss';
+@import './admin/user_datas/edit.scss';
 
 // Style per sponsors
 @import './admin/sponsors/index.scss';
@@ -54,4 +54,9 @@ body{
 // Input checks e radio
 .input-check {
     @include inputCheck
+}
+
+// Icona titoli
+.icon-section {
+    @include iconSection
 }

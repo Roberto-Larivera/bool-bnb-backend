@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('surname',50);
             $table->date('date_of_birth');
             // MODIFICARE IL DEFAULT CON LA PATH IMG *********
-            $table->string('profile_img')->default('.....');
+            $table->string('profile_img')->default('assets/face-profile/red.jpg');
             $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });

@@ -7,6 +7,9 @@
         <div class="row row-cols-1 mb-5">
             <div class="col">
                 <h1>
+                    <span class="icon-section">
+                        <i class="fa-solid fa-building fa-sm"></i>
+                    </span>
                     Aggiungi appartamento
                 </h1>
 
@@ -14,7 +17,7 @@
             <div class="col">
                 <a href="{{ route('admin.apartments.index') }}" class="back">
                     Torna Indietro
-                    <i class="fa-solid fa-arrow-rotate-left fa-spin fa-spin-reverse"></i>
+                    <i class="fa-solid fa-rotate-left"></i>
                 </a>
             </div>
         </div>

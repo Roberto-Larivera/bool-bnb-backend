@@ -7,6 +7,9 @@
         <div class="row row-cols-1 mb-5">
             <div class="col">
                 <h1>
+                    <span class="icon-section">
+                        <i class="fa-solid fa-building fa-sm"></i>
+                    </span>
                     Modifica appartamento
                 </h1>
 
