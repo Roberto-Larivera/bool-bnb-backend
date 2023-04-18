@@ -22,16 +22,19 @@ class SponsorSeeder extends Seeder
                 "title"=> "Abbonamento Silver",
                 "price"=> "2.99",
                 "duration"=> "24",
+                "description" => "Sponsorizza in modo esclusivo il tuo appartamento: sarà visibile in homepage per 1 giorno nella sezione dedicata"
             ],
             [
                 "title"=> "Abbonamento Gold",
                 "price"=> "5.99",
                 "duration"=> "72",
+                "description" => "Sponsorizza in modo esclusivo il tuo appartamento: sarà visibile in homepage per 3 giorni nella sezione dedicata"
             ],
             [
                 "title"=> "Abbonamento Platinum",
                 "price"=> "9.99",
                 "duration"=> "144",
+                "description" => "Sponsorizza in modo esplosivo il tuo appartamento: sarà visibile in homepage per 6 giorni nella sezione dedicata"
             ],
         ];
 
