@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 
 use App\Http\Requests\StoreSponsorRequest;
 use App\Http\Requests\UpdateSponsorRequest;
@@ -20,11 +21,14 @@ class SponsorController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        $id = $request->query('apartment_id');
+
         $sponsors = Sponsor::all();
         return view('admin.sponsors.index', [
-            'sponsors' => $sponsors
+            'sponsors' => $sponsors,
+            'apartment_id' => $id
         ]);
     }
 
@@ -55,16 +59,25 @@ class SponsorController extends Controller
      * @param  \App\Models\Sponsor  $sponsor
      * @return \Illuminate\Http\Response
      */
-    public function show(Sponsor $sponsor)
+    public function show(Apartment $apartment, Sponsor $sponsor, Request $request)
     {
+        
+        $id = $apartment->id;
+
+        $apartment = Apartment::findOrFail($id);
+
+        dd($request); 
+
         $sponsor = Sponsor::findOrFail($sponsor->id);
 
-        $user = Auth::user();
-        
-        $apartments = Apartment::where('user_id', $user->id)->get();
+        if (Auth::user()->id !== $apartment->user_id) {
+            return redirect()->back()->withErrors(['message' => 'Non sei autorizzato a visualizzare questa pagina']);
+        }
 
-        return view('admin.sponsors.show', compact('sponsor', 'apartments'));
-
+        return view('admin.sponsors.show', [
+            'apartment' => $apartment,
+            'sponsor' => $sponsor,
+        ]);
     }
 
     /**

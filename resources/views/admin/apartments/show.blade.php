@@ -73,7 +73,7 @@
                    </a>
 
                    {{-- Aggiungere rotta sponsor --}}
-                   <a href="#" class="secondary-btn">
+                   <a href="{{ route('admin.sponsors.index',  ['apartment_id' => $apartment->id]) }}" class="secondary-btn">
                        Sponsorizza
                    </a>
                </div>
