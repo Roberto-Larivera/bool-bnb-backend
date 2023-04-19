@@ -51,9 +51,14 @@ body{
 }
 
 
-// Input checks e radio
+// Input checks
 .input-check {
     @include inputCheck
+}
+
+// Input radio
+.input-radio {
+    @include inputRadio
 }
 
 // Icona titoli

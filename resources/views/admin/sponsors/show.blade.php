@@ -74,7 +74,7 @@
                                 </td>
                                 <td class="align-middle">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                                        <input class="form-check-input input-radio" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
                                     </div>
                                 </td>
                             </tr>
@@ -103,7 +103,7 @@
                 
         @endif
     </div>
-    
+
     <div class="row row-cols-1">
         <div class="col-12 d-flex justify-content-center">
             <div class="button mt-3">
