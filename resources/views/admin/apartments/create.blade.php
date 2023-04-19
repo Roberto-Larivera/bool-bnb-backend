@@ -286,34 +286,30 @@
 
 @section('javascript')
 
-<script>
+    <script>
+        console.log('ok')
 
-    console.log('ok')
+        const keyApi = 'zYPEasZvEN9Do06ieftila5uHNmiGZtG';
+        const lat = '45.4642';
+        const lon = '9.1900';
+        const radius = '10000';
 
-    var search = document.getElementById('address')
+        var search = document.getElementById('address')
 
-    search.addEventListener('input', function(){
+        search.addEventListener('input', function() {
+            getApiProjects(search.value);
 
-        getApiProjects(search.value);
+        })
 
-    })
-
-    function getApiProjects(adress) {
-        axios.get(`https://api.tomtom.com/search/2/search/${adress}.json`, {
-                params: {
-                    'key': 'zYPEasZvEN9Do06ieftila5uHNmiGZtG',
-                    'countrySet': 'IT',
-                    'lat': '45.4642',
-                    'lon': '9.1900',
-                    'radius': '10000',
-                    'limit': 3,
-                }
-            })
-            .then(response => {
-                console.log(response.data);
-            });
-    }
-
-</script>
+        function getApiProjects(adress) {
+            fetch(
+                    `https://api.tomtom.com/search/2/search/${adress}.json?key=${keyApi}&countrySet=IT&lat=${lat}&lon=${lon}&radius=${radius}`
+                    )
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data);
+                });
+        }
+    </script>
 
 @endsection
