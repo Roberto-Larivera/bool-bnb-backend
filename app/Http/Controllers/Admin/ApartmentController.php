@@ -90,10 +90,6 @@ class ApartmentController extends Controller
             $existSlug = Apartment::where('slug', $data['slug'])->first();
         }
 
-        // vengono realizate delle cordinate fake per il momento
-        $data['latitude'] = '00000';
-        $data['longitude'] = '00000';
-
         // così riconosce utente autenticato
         $user = Auth::user();
 

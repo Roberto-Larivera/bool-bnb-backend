@@ -185,6 +185,11 @@
                             </div>
                         </div>
 
+                        <div class="d-none">
+                            <input type="text" id="latitude" name="latitude">
+                            <input type="text" id="longitude" name="longitude">
+                        </div>
+
                         <div class="col-6 mb-5">
                             {{-- servizi  --}}
                             @if (count($services) > 0)
@@ -303,7 +308,9 @@
         const menuAutoComplete = document.getElementById('menuAutoComplete');
         const menuAutoCompleteClass = menuAutoComplete.classList;
         const ulList = document.querySelector('ul.list');
-
+        
+        const latitude = document.getElementById('latitude');
+        const longitude = document.getElementById('longitude');
 
         search.addEventListener('input', function() {
             if (search.value != '')
@@ -347,6 +354,10 @@
                                     search.value = currentValue.address.freeformAddress;
                                     menuAutoCompleteClass.add('d-none');
                                     ulList.innerHTML = '';
+                                    latitude.value = currentValue.position.lat;
+                                    longitude.value = currentValue.position.lon;
+                                    console.log(latitude.value, 'lat');
+                                    console.log(longitude.value, 'lon');
                                 }
                             )
 
