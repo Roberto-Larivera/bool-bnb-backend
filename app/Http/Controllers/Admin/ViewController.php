@@ -4,6 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 
+// Facades
+// Helpers
+use Illuminate\Support\Facades\Auth;
+
 use App\Http\Requests\StoreViewRequest;
 use App\Http\Requests\UpdateViewRequest;
 use App\Models\View;
@@ -17,7 +21,12 @@ class ViewController extends Controller
      */
     public function index()
     {
-        //
+        $user = Auth::user();
+        $views = View::all();
+
+        return view('admin.dashboard', [
+            'views' => $views
+        ]);
     }
 
     /**
