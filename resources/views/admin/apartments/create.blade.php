@@ -306,7 +306,7 @@
 
 
         search.addEventListener('input', function() {
-            if(search.value != '')
+            if (search.value != '')
                 getApiProjects(search.value);
             addRemoveClass();
 
@@ -332,13 +332,27 @@
 
                     ulList.innerHTML = '';
                     if (data.results != undefined)
-                        for (let index = 0; index < data.results.length; index++) {
+                        // for (let index = 0; index < data.results.length; index++) {
+                        //     const li = document.createElement('li');
+                        //     li.append(data.results[index].address.freeformAddress);
+                        //     ulList.appendChild(li);
+                        //     // const element = `<li>${data.results[index].address.freeformAddress}</li>`;
+                        //     // ulList.innerHTML += element;
+                        // }
+                        data.results.forEach(function(currentValue, index, array) {
                             const li = document.createElement('li');
-                            li.append(data.results[index].address.freeformAddress);
+                            li.append(currentValue.address.freeformAddress);
+                            li.addEventListener('click',
+                                () => {
+                                    search.value = currentValue.address.freeformAddress;
+                                    menuAutoCompleteClass.add('d-none');
+                                    ulList.innerHTML = '';
+                                }
+                            )
+
+                            // fine
                             ulList.appendChild(li);
-                            // const element = `<li>${data.results[index].address.freeformAddress}</li>`;
-                            // ulList.innerHTML += element;
-                        }
+                        });
                 });
         }
     </script>
