@@ -166,7 +166,7 @@
 
                         <div class="col-12">
                             {{-- address  --}}
-                            <div class="mb-3">
+                            <div class="mb-3 position-relative">
                                 <label for="address"
                                     class="form-label  @error('address') text-danger @enderror ">Indirizzo
                                     completo <span class="text-danger fw-bold">*</span></label>
@@ -177,7 +177,7 @@
                                 @error('address')
                                     <p class="text-danger fw-bold">{{ $message }}</p>
                                 @enderror
-                                <div id="menuAutoComplete" class="card radius d-none">
+                                <div id="menuAutoComplete" class="card position-absolute w-100 radius d-none">
                                     <ul class="list">
 
                                     </ul>
@@ -312,6 +312,7 @@
         const latitude = document.getElementById('latitude');
         const longitude = document.getElementById('longitude');
 
+
         search.addEventListener('input', function() {
             if (search.value != '')
                 getApiProjects(search.value);
@@ -319,6 +320,7 @@
 
         })
 
+        // aggiunge e rimuove classi 
         function addRemoveClass() {
             console.log(menuAutoCompleteClass);
             if (search.value == '')
