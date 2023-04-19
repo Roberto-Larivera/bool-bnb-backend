@@ -169,6 +169,8 @@ class ApartmentController extends Controller
         $addressOld = $apartment->address;
         $priceOld = $apartment->price;
         $visibleOld = $apartment->visible;
+        $latitudeOld = $apartment->latitude;
+        $longitudeOld = $apartment->longitude;
 
         // richiesta di rimozione o modifica img file
         // $featuredDeleteImage = false;
@@ -211,6 +213,11 @@ class ApartmentController extends Controller
             //         Storage::delete($main_imgOld);
             //     }
             // }
+
+            if (!isset($data['latitude']) && !isset($data['longitude'])) {
+                $data['latitude'] = $latitudeOld;
+                $data['longitude'] = $longitudeOld;
+            }
             
 
             // verifica se è stato modificato il titolo e in caso viene agiornato lo slug

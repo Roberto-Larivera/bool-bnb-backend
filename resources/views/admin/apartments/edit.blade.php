@@ -177,7 +177,17 @@
                                 @error('address')
                                     <p class="text-danger fw-bold">{{ $message }}</p>
                                 @enderror
+                                <div id="menuAutoComplete" class="card radius d-none">
+                                    <ul class="list">
+
+                                    </ul>
+                                </div>
                             </div>
+                        </div>
+
+                        <div class="d-none">
+                            <input type="text" id="latitude" name="latitude">
+                            <input type="text" id="longitude" name="longitude">
                         </div>
 
                         <div class="col-6 mb-5">
@@ -283,4 +293,82 @@
             </div>
         </div>
     </div>
+@endsection
+
+
+
+@section('javascript')
+
+    <script>
+        console.log('ok')
+
+        const keyApi = 'zYPEasZvEN9Do06ieftila5uHNmiGZtG';
+        const lat = '45.4642';
+        const lon = '9.1900';
+        const radius = '10000';
+
+        const search = document.getElementById('address');
+        const menuAutoComplete = document.getElementById('menuAutoComplete');
+        const menuAutoCompleteClass = menuAutoComplete.classList;
+        const ulList = document.querySelector('ul.list');
+        
+        const latitude = document.getElementById('latitude');
+        const longitude = document.getElementById('longitude');
+
+        search.addEventListener('input', function() {
+            if (search.value != '')
+                getApiProjects(search.value);
+            addRemoveClass();
+
+        })
+
+        function addRemoveClass() {
+            console.log(menuAutoCompleteClass);
+            if (search.value == '')
+                menuAutoCompleteClass.add('d-none');
+            else
+                menuAutoCompleteClass.remove('d-none');
+        }
+
+        function getApiProjects(adress) {
+            fetch(
+                    `https://api.tomtom.com/search/2/search/${adress}.json?key=${keyApi}&countrySet=IT&limit=5&lat=${lat}&lon=${lon}&radius=${radius}`
+                )
+                .then(response => response.json())
+                .then(data => {
+
+                    console.log(data.results);
+
+
+                    ulList.innerHTML = '';
+                    if (data.results != undefined)
+                        // for (let index = 0; index < data.results.length; index++) {
+                        //     const li = document.createElement('li');
+                        //     li.append(data.results[index].address.freeformAddress);
+                        //     ulList.appendChild(li);
+                        //     // const element = `<li>${data.results[index].address.freeformAddress}</li>`;
+                        //     // ulList.innerHTML += element;
+                        // }
+                        data.results.forEach(function(currentValue, index, array) {
+                            const li = document.createElement('li');
+                            li.append(currentValue.address.freeformAddress);
+                            li.addEventListener('click',
+                                () => {
+                                    search.value = currentValue.address.freeformAddress;
+                                    menuAutoCompleteClass.add('d-none');
+                                    ulList.innerHTML = '';
+                                    latitude.value = currentValue.position.lat;
+                                    longitude.value = currentValue.position.lon;
+                                    console.log(latitude.value, 'lat');
+                                    console.log(longitude.value, 'lon');
+                                }
+                            )
+
+                            // fine
+                            ulList.appendChild(li);
+                        });
+                });
+        }
+    </script>
+
 @endsection
