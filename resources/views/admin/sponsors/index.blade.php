@@ -7,7 +7,7 @@
 <div class="row row-cols-1 mb-5 my-4 mx-2">
     <div class="col py-3">
         <h1>
-            <span class="icon-section">
+            <span class="icon-section me-2">
                 <i class="fa-solid fa-sack-dollar fa-sm"></i>
             </span>
             Sponsorships
@@ -32,7 +32,7 @@
                         <h2 class="card-title text-center fw-bold {{ strtolower(explode(' ', $sponsor->title)[1]) }} px-2 py-3 ">{{ explode(' ', $sponsor->title)[1] }}</h2>
                         <h5 class="px-2 py-3 py-xxl-5 text-center">Prezzo: {{ $sponsor->price }} €</h5>
                         <h6 class="px-2 py-3 py-xxl-5 text-center">Durata: {{ $sponsor->duration }} h</h6>
-                        <p class="card-text p-2">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <p class="card-text p-2 text-center">{{ $sponsor->description }}</p>
                    </div>
                 </a>
             </div>
