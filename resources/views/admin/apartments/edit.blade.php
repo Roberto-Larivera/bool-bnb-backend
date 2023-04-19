@@ -369,6 +369,16 @@
                         });
                 });
         }
+
+        document.addEventListener('click', function(event) {
+            // Verifica se il clic è avvenuto all'interno del menu
+            const isClickInsideMenu = menuAutoComplete.contains(event.target);
+
+            // Se il clic non è avvenuto all'interno del menu, chiudi il menu
+            if (!isClickInsideMenu) {
+                menuAutoCompleteClass.add('d-none');
+            }
+        });
     </script>
 
 @endsection
