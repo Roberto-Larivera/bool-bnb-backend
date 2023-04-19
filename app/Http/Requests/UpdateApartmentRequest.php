@@ -39,6 +39,8 @@ class UpdateApartmentRequest extends FormRequest
             'address' => 'required|string|max:50',
             'price' => 'required|numeric|decimal:0,2|max:9999.99',
             'visible' => 'nullable|boolean',
+            'latitude' => 'nullable',
+            'longitude' => 'nullable',
         ];
     }
 }
