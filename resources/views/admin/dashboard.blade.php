@@ -103,7 +103,7 @@
                         Visualizzazioni
                     </h5>
                     <h2 class="card-subtitle mb-2 text-body-secondary mb-3 fw-bold">
-                        {{ $view }}
+                        {{-- {{ $view }} --}}
                     </h2>
                     <p class="card-text mb-4">
                         Lorem ipsum dolor sit.
