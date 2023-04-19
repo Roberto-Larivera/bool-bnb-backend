@@ -55,16 +55,16 @@
                                     <p class="text-danger fw-bold">{{ $message }}</p>
                                 @enderror
                             </div>  --}}
-                           
+
 
                             {{-- Immagine principale url --}}
                             <div class="mb-3">
-                                <label for="main_img"
-                                    class="form-label  @error('main_img') text-danger @enderror">Immagine in
+                                <label for="main_img" class="form-label  @error('main_img') text-danger @enderror">Immagine
+                                    in
                                     evidenza <span class="text-danger fw-bold">*</span></label>
                                 <input type="string" class="form-control @error('main_img') is-invalid @enderror"
-                                    id="main_img" name="main_img" value="{{ old('main_img') }}"
-                                    maxlength="255" placeholder="https://bollbnb.com/img-default"  required>
+                                    id="main_img" name="main_img" value="{{ old('main_img') }}" maxlength="255"
+                                    placeholder="https://bollbnb.com/img-default" required>
                                 @error('main_img')
                                     <p class="text-danger fw-bold">{{ $message }}</p>
                                 @enderror
@@ -173,7 +173,7 @@
                                 <input type="text" class="form-control @error('address') is-invalid @enderror"
                                     id="address" name="address"
                                     placeholder="Esempio Via Mario Rossi, 74, Milano (MI), Italia" maxlength="98"
-                                    value="{{ old('address') }}" >
+                                    value="{{ old('address') }}">
                                 @error('address')
                                     <p class="text-danger fw-bold">{{ $message }}</p>
                                 @enderror
@@ -233,8 +233,8 @@
 
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="button" class="primary-btn"
-                                                    data-bs-dismiss="modal">Chiudi e conferma</button>
+                                                <button type="button" class="primary-btn" data-bs-dismiss="modal">Chiudi
+                                                    e conferma</button>
                                             </div>
                                         </div>
                                     </div>
@@ -245,15 +245,17 @@
                         <div class="col-12 d-flex align-items-center">
                             {{-- visibilità online  --}}
                             <div class="form-check me-3">
-                                <input class="form-check-input  @error('services') is-invalid @enderror" type="radio" name="visible" id="visible1"
-                                    value="1" {{ old('visible') == 1 ? 'checked' : '' }}>
+                                <input class="form-check-input  @error('services') is-invalid @enderror" type="radio"
+                                    name="visible" id="visible1" value="1"
+                                    {{ old('visible') == 1 ? 'checked' : '' }}>
                                 <label class="form-check-label  @error('visible') text-danger @enderror" for="visible1">
                                     Pubblico
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input  @error('services') is-invalid @enderror" type="radio" name="visible" id="visible2"
-                                    value="0" {{ old('visible') == 0 ? 'checked' : '' }}>
+                                <input class="form-check-input  @error('services') is-invalid @enderror" type="radio"
+                                    name="visible" id="visible2" value="0"
+                                    {{ old('visible') == 0 ? 'checked' : '' }}>
                                 <label class="form-check-label  @error('visible') text-danger @enderror" for="visible2">
                                     Privato
                                 </label>
@@ -279,4 +281,39 @@
             </div>
         </div>
     </div>
+@endsection
+
+
+@section('javascript')
+
+<script>
+
+    console.log('ok')
+
+    var search = document.getElementById('address')
+
+    search.addEventListener('input', function(){
+
+        getApiProjects(search.value);
+
+    })
+
+    function getApiProjects(adress) {
+        axios.get(`https://api.tomtom.com/search/2/search/${adress}.json`, {
+                params: {
+                    'key': 'zYPEasZvEN9Do06ieftila5uHNmiGZtG',
+                    'countrySet': 'IT',
+                    'lat': '45.4642',
+                    'lon': '9.1900',
+                    'radius': '10000',
+                    'limit': 3,
+                }
+            })
+            .then(response => {
+                console.log(response.data);
+            });
+    }
+
+</script>
+
 @endsection
