@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 // Models
 use App\Models\Apartment;
-use App\Models\Service;
+
 
 use Exception;
 
@@ -29,7 +29,7 @@ class PageController extends Controller
     {
 
         try {
-            $apartment = Apartment::where('slug', $slug)->with('services')->firstOrFail();
+            $apartment = Apartment::where('slug', $slug)->with('services' , 'user.user_data')->firstOrFail();
     
             $response = [
                 'success' => true,
