@@ -19,7 +19,7 @@ class PageController extends Controller
     {
 
         $apartments = Apartment::whereHas('sponsors', function($query) {
-            $query->where('end_date', '>=', date('Y-m-d'));
+            $query->where('deadline', '>=', Date('Y-m-d H:m:s'));
         })->get();
         
         $response = [
