@@ -21,7 +21,7 @@ class DatabaseSeeder extends Seeder
             MessageSeeder::class,
             ServiceSeeder::class,
             SponsorSeeder::class,
-            // ViewSeeder::class,
+            ViewSeeder::class,
         ]);
     }
 }
