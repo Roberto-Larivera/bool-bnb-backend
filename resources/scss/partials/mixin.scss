@@ -86,6 +86,13 @@
       }
 }
 
+@mixin inputRadio{
+  &:checked{
+      background-color: $color_primary;
+      border-color: $color_primary;
+    }
+}
+
 @mixin iconSection{
   & {
     padding: 0.5rem;
