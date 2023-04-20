@@ -143,7 +143,7 @@ class ApartmentController extends Controller
             $services = Service::all();
             return view('admin.apartments.edit', compact('apartment', 'services'));
         } else {
-            return redirect()->route('admin.apartments.index', $apartment->id)->with('warning', 'Ci dispiace, non abbiamo trovato questo appartamento. Ci hai provato pezzo di m**** !!! 💀');
+            return redirect()->route('admin.apartments.index', $apartment->id)->with('warning', 'Ci dispiace, non abbiamo trovato questo appartamento.');
         }
     }
 

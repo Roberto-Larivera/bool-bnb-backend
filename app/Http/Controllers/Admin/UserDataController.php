@@ -119,7 +119,7 @@ class UserDataController extends Controller
                 $user_data->save();
                 return redirect()->route('admin.user_datas.index')->with('success', 'Immagine di profilo caricata con successo!');
             } else {
-                return redirect()->route('admin.user_datas.index', $user_data->id)->with('warning', 'Ci dispiace, ci hai provato pezzo di m**** !!! 💀');
+                return redirect()->route('admin.user_datas.index', $user_data->id)->with('warning', 'Ci dispiace, si è verificato un problema.');
             }
         } else {
             if(
