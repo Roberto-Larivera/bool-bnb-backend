@@ -85,7 +85,7 @@ class PageController extends Controller
                 'success' => true,
                 'code' => 200,
                 'message' => 'OK',
-                'apartments' => $apartment
+                'apartment' => $apartment
             ];
         } catch (Exception $e) {
             $response = [
