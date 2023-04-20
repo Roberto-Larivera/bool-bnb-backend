@@ -22,9 +22,9 @@ class PageController extends Controller
     // index apartments 
     public function index()
     {
-        $apartments = Apartment::all();
-
-        // $itemsPerPage = 20;
+        $itemsPerPage = 5;
+        
+        $apartments = Apartment::paginate($itemsPerPage);
         // if (
         //     request()->input('items_per_page')
         //     &&
@@ -32,7 +32,7 @@ class PageController extends Controller
         //         request()->input('items_per_page') == 20
         //     )
         // )
-        //     $itemsPerPage = request()->input('items_per_page');
+        // $itemsPerPage = request()->input('items_per_page');
 
         if (count($apartments) > 0)
             $response = [
