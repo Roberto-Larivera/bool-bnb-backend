@@ -21,15 +21,6 @@ use App\Http\Controllers\Api\PageController;
 //     return $request->user();
 // });
 
-// Route::prefix('/apartments')->name('api.apartments.')->group(function (){
-//     // Route::resource('apartments', PageController::class)->only([
-//     //     'index','show','home'
-//     // ]);
-//     Route::get('/home', [PageController::class, 'home'])->name('home');
-//     Route::get('/index', [PageController::class, 'index'])->name('index');
-//     Route::get('/{slug}', [PageController::class, 'show'])->name('show');
-// });
-
 Route::name('api.')->group(function (){
     // Route::resource('apartments', PageController::class)->only([
     //     'index','show','home'
