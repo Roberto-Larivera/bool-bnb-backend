@@ -51,7 +51,7 @@
                 @endif
 
                 <div>
-                    <i class="fa-solid fa-sack-dollar"></i> : &euro; {{ $apartment->price }}
+                    &euro; {{ $apartment->price }} <i class="fa-solid fa-sack-dollar"></i>
                 </div>
 
                 {{-- Bottoni Mobile messaggi / sponsor --}}
