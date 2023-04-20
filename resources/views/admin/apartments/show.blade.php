@@ -40,9 +40,10 @@
                 <h2>
                     {{ $apartment->title }}
                 </h2>
-                <h4>
+                <h5>
+                    <i class="fa-solid fa-location-dot"></i>
                     {{ $apartment->address }}
-                </h4>
+                </h5>
 
                 @if ($apartment->visible == 1)
                     Visibile online: <i class="fa-solid fa-check"></i>
@@ -51,7 +52,7 @@
                 @endif
 
                 <div>
-                    <i class="fa-solid fa-sack-dollar"></i> : &euro; {{ $apartment->price }}
+                    &euro; {{ $apartment->price }} <i class="fa-solid fa-sack-dollar"></i>
                 </div>
 
                 {{-- Bottoni Mobile messaggi / sponsor --}}
