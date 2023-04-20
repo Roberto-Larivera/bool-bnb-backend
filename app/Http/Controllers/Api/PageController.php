@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 
 // Models
 use App\Models\Apartment;
+use App\Models\Service;
 
 
 use Exception;
