@@ -25,14 +25,6 @@ class PageController extends Controller
         $itemsPerPage = 5;
         
         $apartments = Apartment::paginate($itemsPerPage);
-        // if (
-        //     request()->input('items_per_page')
-        //     &&
-        //     (request()->input('items_per_page') == 10 ||
-        //         request()->input('items_per_page') == 20
-        //     )
-        // )
-        // $itemsPerPage = request()->input('items_per_page');
 
         if (count($apartments) > 0)
             $response = [
