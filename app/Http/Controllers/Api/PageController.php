@@ -17,6 +17,20 @@ class PageController extends Controller
     // home page
     public function home()
     {
+
+        $apartments = Apartment::whereHas('sponsors', function($query) {
+            $query->where('end_date', '>=', date('Y-m-d'));
+        })->get();
+        
+        $response = [
+            'success' => true,
+            'code' => 200,
+            'message' => 'OK',
+            'apartments' => $apartments
+        ];
+
+        return response()->json($response);
+
     }
 
     // index apartments 
