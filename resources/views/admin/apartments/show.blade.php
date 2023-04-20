@@ -45,13 +45,13 @@
                 </h4>
 
                 @if ($apartment->visible == 1)
-                    Visibile online: <strong>si</strong>
+                    Visibile online: <i class="fa-solid fa-check"></i>
                 @elseif ($apartment->visible == 0)
-                    Visibile online: <strong>no</strong>
+                    Visibile online: <i class="fa-solid fa-xmark"></i>
                 @endif
 
                 <div>
-                    Prezzo: &euro; {{ $apartment->price }}
+                    <i class="fa-solid fa-sack-dollar"></i> : &euro; {{ $apartment->price }}
                 </div>
 
                 {{-- Bottoni Mobile messaggi / sponsor --}}
@@ -99,27 +99,31 @@
         <div class="row row-cols-1 mb-5">
             {{-- Descrizione appartamento --}}
             <div class="col-12 col-sm-6">
-                <h2>
+                <h2 class="mb-3">
                     Dettagli
                 </h2>
                 <ul>
-                    <li class="ps-2">
-                        - {{ $apartment->mq }} mq
+                    <li class="ps-2 mb-1">
+                        <i class="fa-solid fa-house"></i> 
+                        {{ $apartment->mq }} mq
                     </li>
-                    <li class="ps-2">
-                        - Numero stanze: {{ $apartment->rooms }}
+                    <li class="ps-2 mb-1">
+                        <i class="fa-solid fa-door-closed"></i>
+                        {{ $apartment->rooms }} stanze
                     </li>
-                    <li class="ps-2">
-                        - Numero letti: {{ $apartment->beds }}
+                    <li class="ps-2 mb-1">
+                        <i class="fa-solid fa-bed"></i> 
+                        {{ $apartment->beds }} letti
                      </li>
-                     <li class="ps-2">
-                        - Numero bagni: {{ $apartment->baths }}
+                     <li class="ps-2 mb-1">
+                        <i class="fa-solid fa-toilet-paper"></i> 
+                        {{ $apartment->baths }} bagni
                      </li>
                 </ul>
             </div>
 
             <div class="col-12 mt-4 col-sm-6 mt-sm-0">
-                <h2>
+                <h2 class="mb-3">
                     Servizi
                 </h2>
                 @if (count($apartment->services) > 0)
