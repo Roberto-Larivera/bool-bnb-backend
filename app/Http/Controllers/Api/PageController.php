@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 // Models
 use App\Models\Apartment;
-use App\Models\Service;
+
 
 use Exception;
 
@@ -17,6 +17,20 @@ class PageController extends Controller
     // home page
     public function home()
     {
+
+        $apartments = Apartment::whereHas('sponsors', function($query) {
+            $query->where('end_date', '>=', date('Y-m-d'));
+        })->get();
+        
+        $response = [
+            'success' => true,
+            'code' => 200,
+            'message' => 'OK',
+            'apartments' => $apartments
+        ];
+
+        return response()->json($response);
+
     }
 
     // index apartments 
@@ -29,7 +43,7 @@ class PageController extends Controller
     {
 
         try {
-            $apartment = Apartment::where('slug', $slug)->with('services')->firstOrFail();
+            $apartment = Apartment::where('slug', $slug)->with('services' , 'user.user_data')->firstOrFail();
     
             $response = [
                 'success' => true,
