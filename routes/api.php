@@ -27,5 +27,6 @@ Route::name('api.')->group(function (){
     // ]);
     Route::get('/home', [PageController::class, 'home'])->name('home');
     Route::get('/apartments', [PageController::class, 'index'])->name('apartments.index');
+    Route::get('/apartments/services', [PageController::class, 'services'])->name('apartments.services');
     Route::get('/apartments/{slug}', [PageController::class, 'show'])->name('apartments.show');
 });

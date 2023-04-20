@@ -23,12 +23,23 @@ class PageController extends Controller
     public function index()
     {
         $apartments = Apartment::all();
+
+        // $itemsPerPage = 20;
+        // if (
+        //     request()->input('items_per_page')
+        //     &&
+        //     (request()->input('items_per_page') == 10 ||
+        //         request()->input('items_per_page') == 20
+        //     )
+        // )
+        //     $itemsPerPage = request()->input('items_per_page');
+
         if (count($apartments) > 0)
             $response = [
                 'success' => true,
                 'code' => 200,
                 'message' => 'OK',
-                'apartment' => $apartments
+                'apartments' => $apartments
             ];
         else
             $response = [
@@ -67,7 +78,7 @@ class PageController extends Controller
                 'success' => true,
                 'code' => 200,
                 'message' => 'OK',
-                'apartment' => $apartment
+                'apartments' => $apartment
             ];
         } catch (Exception $e) {
             $response = [
@@ -79,7 +90,33 @@ class PageController extends Controller
 
         return response()->json($response);
     }
+
+    // home page
+    public function services()
+    {
+        $services = Service::all();
+
+        
+
+        if (count($services) > 0)
+            $response = [
+                'success' => true,
+                'code' => 200,
+                'message' => 'OK',
+                'services' => $services
+            ];
+        else
+            $response = [
+                'success' => false,
+                'code' => 404,
+                'message' => 'Non ci sono servizi da visualizzare'
+            ];
+
+        return response()->json($response);
+    }
 }
+
+
 
 // format
 /*
