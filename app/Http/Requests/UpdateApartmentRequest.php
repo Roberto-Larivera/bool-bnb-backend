@@ -24,7 +24,7 @@ class UpdateApartmentRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|string|max:30',
+            'title' => 'required|string|max:70',
             'description' => 'required|string|max:4096',
             // img file
             // 'main_img' => 'nullable|image|max:2048',
@@ -36,7 +36,7 @@ class UpdateApartmentRequest extends FormRequest
             'beds' => 'required|numeric|max:30',
             'baths' => 'required|numeric|max:30',
             'mq' => 'required|numeric|max:65535',
-            'address' => 'required|string|max:50',
+            'address' => 'required|string|max:255',
             'price' => 'required|numeric|decimal:0,2|max:9999.99',
             'visible' => 'nullable|boolean',
             'latitude' => 'nullable',
