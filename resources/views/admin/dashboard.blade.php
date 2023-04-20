@@ -102,7 +102,7 @@
                     <h5 class="card-title my-4">
                         Visualizzazioni
                     </h5>
-                    <h2 class="card-subtitle mb-2 text-body-secondary mb-3 fw-bold">
+                    <h2 class="card-subtitle  text-body-secondary mb-3 fw-bold">
                         {{-- {{ $view }} --}}
                     </h2>
                     <p class="card-text mb-4">
@@ -134,7 +134,7 @@
                     <h5 class="card-title my-4">
                         Guadagno
                     </h5>
-                    <h2 class="card-subtitle mb-2 text-body-secondary mb-3 fw-bold">
+                    <h2 class="card-subtitle text-body-secondary mb-3 fw-bold">
                         200.000 &euro;
                     </h2>
                     <p class="card-text mb-4">
