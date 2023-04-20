@@ -173,7 +173,7 @@
                                 <input type="text" class="form-control @error('address') is-invalid @enderror"
                                     id="address" name="address"
                                     placeholder="Esempio Via Mario Rossi, 74, Milano (MI), Italia" maxlength="255"
-                                    value="{{ old('address', $apartment->address) }}">
+                                    value="{{ old('address', $apartment->address) }}" autocomplete="off">
                                 @error('address')
                                     <p class="text-danger fw-bold">{{ $message }}</p>
                                 @enderror
