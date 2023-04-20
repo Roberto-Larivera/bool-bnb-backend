@@ -36,7 +36,7 @@
                                 <label for="title" class="form-label  @error('title') text-danger @enderror ">Titolo
                                     <span class="text-danger fw-bold">*</span></label>
                                 <input type="text" class="form-control @error('title') is-invalid @enderror"
-                                    id="title" name="title" placeholder="Esempio titolo" maxlength="98"
+                                    id="title" name="title" placeholder="Esempio titolo" maxlength="70"
                                     value="{{ old('title') }}" required>
                                 @error('title')
                                     <p class="text-danger fw-bold">{{ $message }}</p>
@@ -172,7 +172,7 @@
                                     completo <span class="text-danger fw-bold">*</span></label>
                                 <input type="text" class="form-control @error('address') is-invalid @enderror"
                                     id="address" name="address"
-                                    placeholder="Esempio Via Mario Rossi, 74, Milano (MI), Italia" maxlength="98"
+                                    placeholder="Esempio Via Mario Rossi, 74, Milano (MI), Italia" maxlength="255"
                                     value="{{ old('address') }}">
                                 @error('address')
                                     <p class="text-danger fw-bold">{{ $message }}</p>
