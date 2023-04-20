@@ -100,6 +100,7 @@
             <div class="card">
                 <div class="card-body statistics rounded p-3">
                     <h5 class="card-title my-4">
+                        <i class="fa-solid fa-eye"></i>
                         Visualizzazioni
                     </h5>
                     <h2 class="card-subtitle  text-body-secondary mb-3 fw-bold">
@@ -116,6 +117,7 @@
             <div class="card">
                 <div class="card-body statistics rounded p-3">
                     <h5 class="card-title my-4">
+                        <i class="fa-solid fa-envelope"></i>
                         Messaggi
                     </h5>
                     <h2 class="card-subtitle mb-2 text-body-secondary mb-3 fw-bold">
@@ -132,6 +134,7 @@
             <div class="card">
                 <div class="card-body statistics rounded p-3">
                     <h5 class="card-title my-4">
+                        <i class="fa-solid fa-sack-dollar"></i>
                         Guadagno
                     </h5>
                     <h2 class="card-subtitle text-body-secondary mb-3 fw-bold">
