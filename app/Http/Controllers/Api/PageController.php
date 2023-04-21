@@ -83,7 +83,7 @@ class PageController extends Controller
     {
 
         try {
-            $apartment = Apartment::where('slug', $slug)->with('services' , 'user.user_data')->firstOrFail();
+            $apartment = Apartment::where('slug', $slug)->with('services' , 'user.user_data', 'views')->withCount('views')->firstOrFail();
     
             $response = [
                 'success' => true,
