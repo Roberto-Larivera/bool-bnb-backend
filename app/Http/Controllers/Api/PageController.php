@@ -62,7 +62,7 @@ class PageController extends Controller
         )
         $itemsPerPage = request()->input('items_per_page');
 
-        try {
+       
 
             // query per prendere tutti gli id dei appartamenti sponsorizzati
             $idSponsor = Apartment::whereHas('sponsors', function ($query) {
@@ -112,18 +112,18 @@ class PageController extends Controller
                     $value['sponsored'] = false;
             }
 
-
+        if(count($data) > 0) {
             $response = [
                 'success' => true,
                 'code' => 200,
                 'message' => 'OK',
                 'apartments' => $data
             ];
-        } catch (Exception $e) {
+        } else {
             $response = [
                 'success' => false,
-                'code' => $e->getCode(),
-                'message' => $e->getMessage()
+                'code' => 400,
+                'message' => 'Non ci sono sono appartamenti'
             ];
         }
 
