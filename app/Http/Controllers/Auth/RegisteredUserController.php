@@ -75,7 +75,8 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
-        return redirect(RouteServiceProvider::HOME);
+        return redirect(env('APP_FRONTEND_URL'))->with('login', true);
+        // return redirect(RouteServiceProvider::HOME);
         
     }
 }

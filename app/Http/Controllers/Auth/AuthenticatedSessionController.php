@@ -29,7 +29,8 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect()->intended(RouteServiceProvider::HOME);
+        return redirect('http://localhost:5174?login=true');
+        // return redirect()->intended(RouteServiceProvider::HOME);
     }
 
     /**
@@ -43,6 +44,7 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerateToken();
 
-        return redirect('/');
+        return redirect('http://localhost:5174?login=false');
+        // return redirect('/');
     }
 }
