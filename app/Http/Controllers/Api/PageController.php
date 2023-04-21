@@ -49,6 +49,19 @@ class PageController extends Controller
         // apartamenti per pagina
         $itemsPerPage = 20;
 
+
+
+        // controllo se arriva il valore per la paginazione
+        if(request()->input('items_per_page')
+            &&
+            (
+                request()->input('items_per_page') == 5 ||
+                request()->input('items_per_page') == 10 ||
+                request()->input('items_per_page') == 20 
+            )
+        )
+        $itemsPerPage = request()->input('items_per_page');
+
         try {
 
             // query per prendere tutti gli id dei appartamenti sponsorizzati
@@ -66,6 +79,18 @@ class PageController extends Controller
             // usoo di carbon per prendere la data attuale
             $oggi = Carbon::today();
 
+           if(request()->input('address')){
+            $address = request()->input('address');
+            $data = Apartment::leftJoin('apartment_sponsor', 'apartments.id', '=', 'apartment_sponsor.apartment_id')
+            ->select('apartments.*')
+            ->where('apartments.address', 'like', '%'.$address.'%')
+            ->with(['sponsors' => function ($query) use ($oggi) {
+                $query->where('deadline', '>=', $oggi)
+                    ->orderBy('deadline', 'asc');
+            }])
+            ->orderByRaw('CASE WHEN apartment_sponsor.deadline >= ? THEN 0 ELSE 1 END, apartment_sponsor.deadline ASC', [$oggi])
+            ->paginate($itemsPerPage);
+           }else{
             // funzione che prende prima tutti gli apppartamenti con la sponsor attiva e poi tutti gli altri grazie al leftjoin, ordinando come valoree 0 gli sponsor e il resto valore 1
             $data = Apartment::leftJoin('apartment_sponsor', 'apartments.id', '=', 'apartment_sponsor.apartment_id')
                 ->select('apartments.*')
@@ -75,6 +100,9 @@ class PageController extends Controller
                 }])
                 ->orderByRaw('CASE WHEN apartment_sponsor.deadline >= ? THEN 0 ELSE 1 END, apartment_sponsor.deadline ASC', [$oggi])
                 ->paginate($itemsPerPage);
+           }
+
+            
 
             // aggiunto parametro true e false per sponsored
             foreach ($data as $key => $value) {
