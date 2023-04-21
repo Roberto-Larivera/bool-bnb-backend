@@ -29,7 +29,8 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect('http://localhost:5174?login=true');
+        $user= Auth::user();
+        return redirect('http://localhost:5174?login=true&auth='.$user->id);
         // return redirect()->intended(RouteServiceProvider::HOME);
     }
 
