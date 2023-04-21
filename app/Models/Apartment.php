@@ -29,7 +29,7 @@ class Apartment extends Model
 
     protected $appends = [
         'full_path_main_img',
-        'sponsored',
+        // 'sponsored',
     ];
 
     public function getFullPathMainImgAttribute(){
@@ -39,10 +39,10 @@ class Apartment extends Model
         return $fullPath;
     }
     
-    public function getSponsoredAttribute(){
-        $elemento= 'stringa';
-        return $elemento;
-    }
+    // public function getSponsoredAttribute(){
+    //     $elemento= 'stringa';
+    //     return $elemento;
+    // }
     
     public function user(){
         return $this->belongsTo(User::class);
