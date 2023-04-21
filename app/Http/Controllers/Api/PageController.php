@@ -24,8 +24,12 @@ class PageController extends Controller
 
         $apartments = Apartment::whereHas('sponsors', function ($query) {
             $query->where('deadline', '>=', Date('Y-m-d H:m:s'));
-        })->get();
+        })->limit(4)->get();
 
+        foreach ($apartments as $key => $value) {
+            $value['sponsored']= true;
+        }
+        
         $response = [
             'success' => true,
             'code' => 200,
@@ -97,8 +101,8 @@ class PageController extends Controller
     {
 
         try {
-            $apartment = Apartment::where('slug', $slug)->with('services', 'user.user_data')->firstOrFail();
-
+            $apartment = Apartment::where('slug', $slug)->with('services' , 'user.user_data', 'views')->withCount('views')->firstOrFail();
+    
             $response = [
                 'success' => true,
                 'code' => 200,
