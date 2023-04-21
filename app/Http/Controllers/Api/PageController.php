@@ -27,9 +27,9 @@ class PageController extends Controller
         })->limit(4)->get();
 
         foreach ($apartments as $key => $value) {
-            $value['sponsored']= true;
+            $value['sponsored'] = true;
         }
-        
+
         $response = [
             'success' => true,
             'code' => 200,
@@ -42,57 +42,63 @@ class PageController extends Controller
 
 
 
-// prova merge roberto api
-// prova merge roberto api2
 
-    
     // index apartments 
     public function index()
     {
+        // apartamenti per pagina
         $itemsPerPage = 20;
 
+        try {
 
-        $idSponsor = Apartment::whereHas('sponsors', function ($query) {
-            $query->where('deadline', '>=', Date('Y-m-d H:m:s'));
-        })->pluck('id')->toArray();
+            // query per prendere tutti gli id dei appartamenti sponsorizzati
+            $idSponsor = Apartment::whereHas('sponsors', function ($query) {
+                $query->where('deadline', '>=', Date('Y-m-d H:m:s'));
+            })->pluck('id')->toArray();
 
-        $array = [];
-        foreach ($idSponsor as $key => $value) {
-            $array[] = $value;
-        }
+            // creazione array senza chiavi con gli id all'intenro (serve per poter utilizzare 
+            // la funzione array dentro il foreach che inserisce il valore true e false ad ogni appartamento)
+            $array = [];
+            foreach ($idSponsor as $key => $value) {
+                $array[] = $value;
+            }
 
-        $oggi = Carbon::today();
+            // usoo di carbon per prendere la data attuale
+            $oggi = Carbon::today();
 
-        $data = Apartment::leftJoin('apartment_sponsor', 'apartments.id', '=', 'apartment_sponsor.apartment_id')
-            ->select('apartments.*')
-            ->with(['sponsors' => function ($query) use ($oggi) {
-                $query->where('deadline', '>=', $oggi)
-                    ->orderBy('deadline', 'asc');
-            }])
-            ->orderByRaw('CASE WHEN apartment_sponsor.deadline >= ? THEN 0 ELSE 1 END, apartment_sponsor.deadline ASC', [$oggi])
-            ->paginate(20);
+            // funzione che prende prima tutti gli apppartamenti con la sponsor attiva e poi tutti gli altri grazie al leftjoin, ordinando come valoree 0 gli sponsor e il resto valore 1
+            $data = Apartment::leftJoin('apartment_sponsor', 'apartments.id', '=', 'apartment_sponsor.apartment_id')
+                ->select('apartments.*')
+                ->with(['sponsors' => function ($query) use ($oggi) {
+                    $query->where('deadline', '>=', $oggi)
+                        ->orderBy('deadline', 'asc');
+                }])
+                ->orderByRaw('CASE WHEN apartment_sponsor.deadline >= ? THEN 0 ELSE 1 END, apartment_sponsor.deadline ASC', [$oggi])
+                ->paginate($itemsPerPage);
 
-        // aggiunto parametro 
-        foreach ($data as $key => $value) {
-            if (in_array($value['id'], $array))
-                $value['sponsored'] = true;
-            else
-                $value['sponsored'] = false;
-        }
+            // aggiunto parametro true e false per sponsored
+            foreach ($data as $key => $value) {
+                if (in_array($value['id'], $array))
+                    $value['sponsored'] = true;
+                else
+                    $value['sponsored'] = false;
+            }
 
-        if (count($data) > 0)
+
             $response = [
                 'success' => true,
                 'code' => 200,
                 'message' => 'OK',
                 'apartments' => $data
             ];
-        else
+        } catch (Exception $e) {
             $response = [
                 'success' => false,
-                'code' => 404,
-                'message' => 'Non ci sono appartamenti da visualizzare'
+                'code' => $e->getCode(),
+                'message' => $e->getMessage()
             ];
+        }
+
 
         return response()->json($response);
     }
@@ -102,8 +108,8 @@ class PageController extends Controller
     {
 
         try {
-            $apartment = Apartment::where('slug', $slug)->with('services' , 'user.user_data', 'views')->withCount('views')->firstOrFail();
-    
+            $apartment = Apartment::where('slug', $slug)->with('services', 'user.user_data', 'views')->withCount('views')->firstOrFail();
+
             $response = [
                 'success' => true,
                 'code' => 200,
