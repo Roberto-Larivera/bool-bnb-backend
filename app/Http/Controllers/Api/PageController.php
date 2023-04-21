@@ -9,9 +9,10 @@ use Illuminate\Http\Request;
 // Models
 use App\Models\Apartment;
 use App\Models\Service;
-
+use Database\Seeders\ApartmentSeeder;
 // Facades
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 use Exception;
 
@@ -74,18 +75,39 @@ class PageController extends Controller
         // })->get();
 
 
-        // $dataS = Apartment::whereHas('sponsors', function ($query) {
-        //     $query->where('deadline', '>=', Date('Y-m-d H:m:s'));
-        // })->get();
+        $idSponsor = Apartment::whereHas('sponsors', function ($query) {
+            $query->where('deadline', '>=', Date('Y-m-d H:m:s'));
+        })->pluck('id')->toArray();
         // $data = Apartment::whereDoesntHave('sponsors', function ($query) {
-        //     $query->where('deadline', '>=', Date('Y-m-d H:m:s'));
+        //     $query ->where('deadline', '>=', Date('Y-m-d H:m:s'));
         // })->get();
 
 
+        // $apartments = Apartment::whereHas('sponsors', function ($query) {
+        //     $query->where('deadline', '>=', Date('Y-m-d H:m:s'));
+        // })->get();
 
+        
+        
+        // $apartments = Apartment::whereHas('sponsors', function($query) {
+        //     $query->where('deadline', '>=', now());
+        // })
+        // ->orWhereDoesntHave('sponsors')->get();
+        // $excludedApartments = $apartments->pluck('id')->toArray();
+        // $data = Apartment::whereNotIn('id', $excludedApartments)->paginate(20);
+        $oggi = Carbon::today();
+        
+        $data = Apartment::leftJoin('apartment_sponsor', 'apartments.id', '=', 'apartment_sponsor.apartment_id')
+        ->select('apartments.*')
+        ->with(['sponsors' => function ($query) use ($oggi) {
+            $query->where('deadline', '>=', $oggi)
+                  ->orderBy('deadline', 'asc');
+        }])
+        ->orderByRaw('CASE WHEN apartment_sponsor.deadline >= ? THEN 0 ELSE 1 END, apartment_sponsor.deadline ASC', [$oggi])
+        ->paginate(20);
 
+        //  dd($appartamenti);
 
-        dd($data);
 
 
         // $data = Apartment::whereHas('sponsors', function($query) {
