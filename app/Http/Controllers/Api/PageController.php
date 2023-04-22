@@ -100,7 +100,7 @@ class PageController extends Controller
                         ->orderBy('deadline', 'asc');
                 }
                 ])
-                ->orderByRaw('CASE WHEN apartment_sponsor.deadline >= ? THEN 0 ELSE 1 END, apartment_sponsor.deadline ASC', [$oggi])
+                ->orderByRaw('CASE WHEN apartment_sponsor.deadline >= ? THEN 0 ELSE 1 END', [$oggi])
                 ->paginate($itemsPerPage);
         }
 
