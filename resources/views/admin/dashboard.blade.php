@@ -55,12 +55,12 @@
 <div class="container-fluid">
     <div class="row row-cols-2 mb-5">
         <div class="col py-3">
-            <form action="">
-                <select class="form-select" aria-label="Default select example">
+            <form action="{{ route('admin.dashboard') }}" method="GET" id="formApartment">
+                <select class="form-select" aria-label="Default select example" name="selectApartment"  onchange="document.getElementById('formApartment').submit()">
                     <option selected>
                         Seleziona appartamento
                     </option>
-                    @foreach ($apartments as $apartment)
+                    @foreach ($allApartments as $apartment)
                         <option value="{{ $apartment->id }}">
                             {{ $apartment->title }}
                         </option>
@@ -70,20 +70,21 @@
         </div>
 
         <div class="col py-3">
-            <form action="">
-                <select class="form-select" aria-label="Default select example">
-                    <option selected>
-                        Seleziona periodo
-                    </option>
-                    <option value="1">
-                        Gennaio
-                    </option>
-                    <option value="2">
-                        Febbraio
-                    </option>
-                    <option value="3">
-                        Marzo
-                    </option>
+            <form action="{{ route('admin.dashboard') }}" method="GET" id="dateFilterForm">
+                <select class="form-select" aria-label="Default select example" name="month" onchange="document.getElementById('dateFilterForm').submit()">
+                    <option selected>Seleziona periodo</option>
+                    <option value="01">Gennaio</option>
+                    <option value="02">Febbraio</option>
+                    <option value="03">Marzo</option>
+                    <option value="04">Aprile</option>
+                    <option value="05">Maggio</option>
+                    <option value="06">Giugno</option>
+                    <option value="07">Luglio</option>
+                    <option value="08">Agosto</option>
+                    <option value="09">Settembre</option>
+                    <option value="10">Ottobre</option>
+                    <option value="11">Novembre</option>
+                    <option value="12">Dicembre</option>
                 </select>
             </form>
         </div>
@@ -152,21 +153,21 @@
             <div>
                 Visualizzazioni statistiche
             </div>
-            <canvas id="myChart"></canvas>
+            <canvas id="viewsChart"></canvas>
         </div>  
     </div>
 </div>
 
 <script>
 
-var ctx = document.getElementById('myChart').getContext('2d');
-var myChart = new Chart(ctx, {
+var ctx = document.getElementById('viewsChart').getContext('2d');
+var viewsChart = new Chart(ctx, {
     type: 'bar',
     data: {
-        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+        labels: ['Gennaio', 'Febbraio', 'Marzo', 'Aprile', 'Maggio', 'Giugno', 'Luglio', 'Agosto', 'Settembre', 'Ottobre', 'Novembre', 'Dicembre'],
         datasets: [{
-            label: '# of Votes',
-            data: [12, 19, 3, 5, 2, 3],
+            label: 'Visualizzazioni Totali',
+            data: {!! json_encode($viewsByMonth) !!},
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',
@@ -183,7 +184,7 @@ var myChart = new Chart(ctx, {
                 'rgba(153, 102, 255, 1)',
                 'rgba(255, 159, 64, 1)'
             ],
-            borderWidth: 1
+            borderWidth: 5
         }]
     },
     options: {
