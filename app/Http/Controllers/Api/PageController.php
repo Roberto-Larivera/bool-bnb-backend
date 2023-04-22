@@ -90,16 +90,6 @@ class PageController extends Controller
             }])
             ->orderByRaw('CASE WHEN apartment_sponsor.deadline >= ? THEN 0 ELSE 1 END, apartment_sponsor.deadline ASC', [$oggi])
             ->paginate($itemsPerPage);
-            // $data = Apartment::leftJoin('apartment_sponsor', 'apartments.id', '=', 'apartment_sponsor.apartment_id')
-            // ->leftJoin('apartment_service', 'apartments.id', '=', 'apartment_service.apartment_id')
-            // ->select('apartments.*')
-            // ->where('apartments.address', 'like', '%'.$address.'%')
-            // ->with(['sponsors' => function ($query) use ($oggi) {
-            //     $query->where('deadline', '>=', $oggi)
-            //         ->orderBy('deadline', 'asc');
-            // }, 'services'])
-            // ->orderByRaw('CASE WHEN apartment_sponsor.deadline >= ? THEN 0 ELSE 1 END, apartment_sponsor.deadline ASC', [$oggi])
-            // ->paginate($itemsPerPage);
            }else{
             // funzione che prende prima tutti gli apppartamenti con la sponsor attiva e poi tutti gli altri grazie al leftjoin, ordinando come valoree 0 gli sponsor e il resto valore 1
             $data = Apartment::leftJoin('apartment_sponsor', 'apartments.id', '=', 'apartment_sponsor.apartment_id')
@@ -112,15 +102,6 @@ class PageController extends Controller
                 ])
                 ->orderByRaw('CASE WHEN apartment_sponsor.deadline >= ? THEN 0 ELSE 1 END, apartment_sponsor.deadline ASC', [$oggi])
                 ->paginate($itemsPerPage);
-        //     $data = Apartment::leftJoin('apartment_sponsor', 'apartments.id', '=', 'apartment_sponsor.apartment_id')
-        //     ->leftJoin('apartment_service', 'apartments.id', '=', 'apartment_service.apartment_id')
-        //     ->select('apartments.*')
-        //     ->with(['sponsors' => function ($query) use ($oggi) {
-        //         $query->where('deadline', '>=', $oggi)
-        //             ->orderBy('deadline', 'asc');
-        //     }, 'services'])
-        //     ->orderByRaw('CASE WHEN apartment_sponsor.deadline >= ? THEN 0 ELSE 1 END, apartment_sponsor.deadline ASC', [$oggi])
-        //     ->paginate($itemsPerPage);
         }
 
             
@@ -131,23 +112,24 @@ class PageController extends Controller
                     $value['sponsored'] = true;
                 else
                     $value['sponsored'] = false;
+
+                $value['services'] = $value->services;
             }
-
-        if(count($data) > 0) {
-            $response = [
-                'success' => true,
-                'code' => 200,
-                'message' => 'OK',
-                'apartments' => $data
-            ];
-        } else {
-            $response = [
-                'success' => false,
-                'code' => 400,
-                'message' => 'Non ci sono sono appartamenti'
-            ];
-        }
-
+            
+            if(count($data) > 0) {
+                $response = [
+                    'success' => true,
+                    'code' => 200,
+                    'message' => 'OK',
+                    'apartments' => $data
+                ];
+            } else {
+                $response = [
+                    'success' => false,
+                    'code' => 400,
+                    'message' => 'Non ci sono sono appartamenti'
+                ];
+            }
 
         return response()->json($response);
     }
