@@ -60,15 +60,11 @@
                     <option selected>
                         Seleziona appartamento
                     </option>
-                    <option value="1">
-                        Apt 1
-                    </option>
-                    <option value="2">
-                        Apt 2
-                    </option>
-                    <option value="3">
-                        Apt 3
-                    </option>
+                    @foreach ($apartments as $apartment)
+                        <option value="{{ $apartment->id }}">
+                            {{ $apartment->title }}
+                        </option>
+                    @endforeach
                 </select>
             </form>
         </div>
@@ -104,7 +100,7 @@
                         Visualizzazioni
                     </h5>
                     <h2 class="card-subtitle  text-body-secondary mb-3 fw-bold">
-                        {{-- {{ $view }} --}}
+                        {{ $totalViews }}
                     </h2>
                     <p class="card-text mb-4">
                         Lorem ipsum dolor sit.
@@ -120,8 +116,8 @@
                         <i class="fa-solid fa-envelope"></i>
                         Messaggi
                     </h5>
-                    <h2 class="card-subtitle mb-2 text-body-secondary mb-3 fw-bold">
-                        50
+                    <h2 class="card-subtitle text-body-secondary mb-3 fw-bold">
+                        {{ $totalMessages }}
                     </h2>
                     <p class="card-text mb-4">
                         Lorem ipsum dolor sit.
