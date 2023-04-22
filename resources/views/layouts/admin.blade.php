@@ -17,7 +17,7 @@
     {{-- fontawesome  --}}
     <link rel="stylesheet" href="{{ asset('node_modules/@fortawesome/fontawesome-free/css/all.min.css') }}">
 
-
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <!-- Usando Vite -->
     @vite(['resources/js/app.js'])
