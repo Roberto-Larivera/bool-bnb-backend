@@ -305,7 +305,7 @@
         const keyApi = 'zYPEasZvEN9Do06ieftila5uHNmiGZtG';
         const lat = '45.4642';
         const lon = '9.1900';
-        const radius = '10000';
+        const radius = '20000';
 
         const search = document.getElementById('address');
         const menuAutoComplete = document.getElementById('menuAutoComplete');
