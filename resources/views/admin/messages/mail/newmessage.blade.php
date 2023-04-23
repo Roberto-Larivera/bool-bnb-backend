@@ -46,6 +46,8 @@
     p {
         margin-top: 0;
         margin-bottom: 10px;
+        word-break: break-all;
+        white-space: normal;
     }
 
     a {
