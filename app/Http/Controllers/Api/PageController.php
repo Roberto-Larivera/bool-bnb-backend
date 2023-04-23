@@ -120,12 +120,12 @@ class PageController extends Controller
             $data = Apartment::leftJoin('apartment_sponsor', 'apartments.id', '=', 'apartment_sponsor.apartment_id')
                 ->select('apartments.*')
                 ->whereRaw("(6371 * acos(cos(radians(".$lat.")) * cos(radians(latitude)) * cos(radians(longitude) - radians(".$lon.")) + sin(radians(".$lat.")) * sin(radians(latitude)))) <= 2")
-                ->orderByRaw("(6371 * acos(cos(radians(".$lat.")) * cos(radians(latitude)) * cos(radians(longitude) - radians(".$lon.")) + sin(radians(".$lat.")) * sin(radians(latitude)))) asc")
                 ->with(['sponsors' => function ($query) use ($oggi) {
                     $query->where('deadline', '>=', $oggi)
                         ->orderBy('deadline', 'asc');
                 }])
                 ->orderByRaw('CASE WHEN apartment_sponsor.deadline >= ? THEN 0 ELSE 1 END, apartment_sponsor.deadline ASC', [$oggi])
+                ->orderByRaw("(6371 * acos(cos(radians(".$lat.")) * cos(radians(latitude)) * cos(radians(longitude) - radians(".$lon.")) + sin(radians(".$lat.")) * sin(radians(latitude)))) asc")
                 ->paginate($itemsPerPage);
 
 
