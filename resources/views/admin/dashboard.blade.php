@@ -159,7 +159,7 @@
             <div class="row row-cols-1">
                 <div class="col">
                     <div>
-                        Visualizzazioni statistiche
+                        <h3>Statistiche generali</h3>
                     </div>
                     <canvas id="viewsChart"></canvas>
                 </div>
