@@ -60,7 +60,8 @@
                                     @if (Auth::user()->user_data->name != null)
                                         {{ Auth::user()->user_data->name }}
                                     @else
-                                        {{ Auth::user()->email }}
+                                        {{-- {{ Auth::user()->email }} --}}
+                                        profilo personale
                                     @endif
                                 </span>
                             </a>
