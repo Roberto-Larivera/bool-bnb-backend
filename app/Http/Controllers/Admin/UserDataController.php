@@ -99,9 +99,9 @@ class UserDataController extends Controller
 
         // Validazione dati
         $validator = Validator::make($request->all(), [
-            'name' => ['required', 'string', 'max:50'],
-            'surname' => ['required', 'string', 'max:50'],
-            'date_of_birth' => ['required', 'date_format:Y-m-d', 'before_or_equal:' . $currentDateMin]
+            'name' => ['nullable', 'string', 'max:50'],
+            'surname' => ['nullable', 'string', 'max:50'],
+            'date_of_birth' => ['nullable', 'date_format:Y-m-d', 'before_or_equal:' . $currentDateMin]
         ], [
             'date_of_birth.before_or_equal' => 'Devi avere almeno 18 anni per registrarti.'
         ]);

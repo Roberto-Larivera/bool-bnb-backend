@@ -17,7 +17,7 @@
     {{-- fontawesome  --}}
     <link rel="stylesheet" href="{{ asset('node_modules/@fortawesome/fontawesome-free/css/all.min.css') }}">
 
-
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <!-- Usando Vite -->
     @vite(['resources/js/app.js'])
@@ -60,7 +60,8 @@
                                     @if (Auth::user()->user_data->name != null)
                                         {{ Auth::user()->user_data->name }}
                                     @else
-                                        {{ Auth::user()->email }}
+                                        {{-- {{ Auth::user()->email }} --}}
+                                        profilo personale
                                     @endif
                                 </span>
                             </a>
