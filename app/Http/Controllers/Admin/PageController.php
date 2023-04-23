@@ -81,6 +81,15 @@ class PageController extends Controller
             }
         }
 
+        //Tutti i messaggi per mese
+        $messagesByMonth = array_fill(0, 12, 0);
+        foreach ($apartments as $apartment) {
+            $messages = $apartment->messages()->whereYear('created_at', '=', date('Y'))->get();
+            foreach ($messages as $message) {
+                $month = $message->created_at->format('m') - 1;
+                $messagesByMonth[$month]++;
+            }
+        }
 
 
         return view('admin.dashboard', [
@@ -88,6 +97,7 @@ class PageController extends Controller
             'totalViews' => $totalViews,
             'totalMessages' => $totalMessages,
             'viewsByMonth' => $viewsByMonth,
+            'messagesByMonth' => $messagesByMonth,
             'allApartments' => $allApartments,
             'request' => $request
         ]);

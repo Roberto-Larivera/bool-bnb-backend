@@ -22,9 +22,6 @@
     </div>
 </div> --}}
 
-    <?php
-    use Illuminate\Http\Request;
-    ?>
     <div class="container-fluid mt-4">
         <div class="row row-cols-1 mb-5">
             <div class="col py-3">
@@ -62,7 +59,8 @@
                     @csrf
                     <select class="form-select" aria-label="Default select example" name="selectApartment"
                         onchange="document.getElementById('formApartment').submit()">
-                        <option value="tutti" {{ $request->input('selectApartment') == 'tutti' ? 'selected' : '' }}>Tutti gli appartamenti</option>
+                        <option value="tutti" {{ $request->input('selectApartment') == 'tutti' ? 'selected' : '' }}>Tutti
+                            gli appartamenti</option>
                         @foreach ($allApartments as $apartment)
                             <option value="{{ $apartment->id }}"
                                 {{ $apartment->id == $request->input('selectApartment') ? 'selected' : '' }}>
@@ -73,13 +71,14 @@
                     <input type="hidden" name="month" value="{{ $request->input('month') }}">
                 </form>
             </div>
-        
+
             <div class="col py-3">
                 <form action="{{ route('admin.dashboard') }}" method="POST" id="dateFilterForm">
                     @csrf
                     <select class="form-select" aria-label="Default select example" name="month"
                         onchange="document.getElementById('dateFilterForm').submit()">
-                        <option value="tutti" {{ $request->input('month') == 'tutti' ? 'selected' : '' }}>Tutti i mesi</option>
+                        <option value="tutti" {{ $request->input('month') == 'tutti' ? 'selected' : '' }}>Tutti i mesi
+                        </option>
                         <option value="01" {{ $request->input('month') == '01' ? 'selected' : '' }}>Gennaio</option>
                         <option value="02" {{ $request->input('month') == '02' ? 'selected' : '' }}>Febbraio</option>
                         <option value="03" {{ $request->input('month') == '03' ? 'selected' : '' }}>Marzo</option>
@@ -97,7 +96,7 @@
                 </form>
             </div>
         </div>
-        
+
 
 
         <div class="container-fluid mt-4">
@@ -176,26 +175,20 @@
                         'Settembre', 'Ottobre', 'Novembre', 'Dicembre'
                     ],
                     datasets: [{
-                        label: 'Visualizzazioni Totali',
-                        data: {!! json_encode($viewsByMonth) !!},
-                        backgroundColor: [
-                            'rgba(255, 99, 132, 0.2)',
-                            'rgba(54, 162, 235, 0.2)',
-                            'rgba(255, 206, 86, 0.2)',
-                            'rgba(75, 192, 192, 0.2)',
-                            'rgba(153, 102, 255, 0.2)',
-                            'rgba(255, 159, 64, 0.2)'
-                        ],
-                        borderColor: [
-                            'rgba(255, 99, 132, 1)',
-                            'rgba(54, 162, 235, 1)',
-                            'rgba(255, 206, 86, 1)',
-                            'rgba(75, 192, 192, 1)',
-                            'rgba(153, 102, 255, 1)',
-                            'rgba(255, 159, 64, 1)'
-                        ],
-                        borderWidth: 5
-                    }]
+                            label: 'Visualizzazioni Totali',
+                            data: {!! json_encode($viewsByMonth) !!},
+                            backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                            borderColor: 'rgba(255, 99, 132, 1)',
+                            borderWidth: 5
+                        },
+                        {
+                            label: 'Messaggi Totali',
+                            data: {!! json_encode($messagesByMonth) !!},
+                            backgroundColor: 'rgba(27, 130, 209, 0.3)',
+                            borderColor: 'rgba(27, 130, 209, 1)',
+                            borderWidth: 5
+                        }
+                    ]
                 },
                 options: {
                     scales: {
@@ -206,6 +199,7 @@
                         }]
                     }
                 }
+
             });
         </script>
     @endsection
