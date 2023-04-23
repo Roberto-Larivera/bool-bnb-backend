@@ -96,12 +96,22 @@ class PageController extends Controller
         $oggi = Carbon::today();
 
         // NON SI TOCCA, SENNNNNO VIENE ...? ********
-        if (request()->input('address')) {
-            $address = request()->input('address');
+
+        $lat = 45.46362;
+        $lon = 9.18812;
+        $range = 20;
+
+        if (
+            request()->input('lat') &&
+            request()->input('lon')
+        ) {
             $lat = request()->input('lat');
             $lon = request()->input('lon');
-            /*
-
+        }
+        if (request()->input('range'))
+            $range = request()->input('range');
+            
+        /*
                 SELECT * 
                 FROM apartments 
                 WHERE (6371 * acos(cos(radians(45.483743)) * cos(radians(latitude)) * cos(radians(longitude) 
@@ -112,46 +122,46 @@ class PageController extends Controller
 
             */
 
-            // $prova= Apartment::select('*')
-            // ->whereRaw("(6371 * acos(cos(radians(".$lat.")) * cos(radians(latitude)) * cos(radians(longitude) - radians(".$lon.")) + sin(radians(".$lat.")) * sin(radians(latitude)))) <= 20")
-            // ->orderByRaw("(6371 * acos(cos(radians(".$lat.")) * cos(radians(latitude)) * cos(radians(longitude) - radians(".$lon.")) + sin(radians(".$lat.")) * sin(radians(latitude)))) asc")
-            // ->get();
+        // $prova= Apartment::select('*')
+        // ->whereRaw("(6371 * acos(cos(radians(".$lat.")) * cos(radians(latitude)) * cos(radians(longitude) - radians(".$lon.")) + sin(radians(".$lat.")) * sin(radians(latitude)))) <= 20")
+        // ->orderByRaw("(6371 * acos(cos(radians(".$lat.")) * cos(radians(latitude)) * cos(radians(longitude) - radians(".$lon.")) + sin(radians(".$lat.")) * sin(radians(latitude)))) asc")
+        // ->get();
 
-            $data = Apartment::leftJoin('apartment_sponsor', 'apartments.id', '=', 'apartment_sponsor.apartment_id')
-                ->select('apartments.*')
-                ->whereRaw("(6371 * acos(cos(radians(".$lat.")) * cos(radians(latitude)) * cos(radians(longitude) - radians(".$lon.")) + sin(radians(".$lat.")) * sin(radians(latitude)))) <= 2")
-                ->with(['sponsors' => function ($query) use ($oggi) {
-                    $query->where('deadline', '>=', $oggi)
-                        ->orderBy('deadline', 'asc');
-                }])
-                ->orderByRaw('CASE WHEN apartment_sponsor.deadline >= ? THEN 0 ELSE 1 END, apartment_sponsor.deadline ASC', [$oggi])
-                ->orderByRaw("(6371 * acos(cos(radians(".$lat.")) * cos(radians(latitude)) * cos(radians(longitude) - radians(".$lon.")) + sin(radians(".$lat.")) * sin(radians(latitude)))) asc")
-                ->paginate($itemsPerPage);
+        $data = Apartment::leftJoin('apartment_sponsor', 'apartments.id', '=', 'apartment_sponsor.apartment_id')
+            ->select('apartments.*')
+            ->whereRaw("(6371 * acos(cos(radians(" . $lat . ")) * cos(radians(latitude)) * cos(radians(longitude) - radians(" . $lon . ")) + sin(radians(" . $lat . ")) * sin(radians(latitude)))) <=" . $range)
+            ->with(['sponsors' => function ($query) use ($oggi) {
+                $query->where('deadline', '>=', $oggi)
+                    ->orderBy('deadline', 'asc');
+            }])
+            ->orderByRaw('CASE WHEN apartment_sponsor.deadline >= ? THEN 0 ELSE 1 END, apartment_sponsor.deadline ASC', [$oggi])
+            ->orderByRaw("(6371 * acos(cos(radians(" . $lat . ")) * cos(radians(latitude)) * cos(radians(longitude) - radians(" . $lon . ")) + sin(radians(" . $lat . ")) * sin(radians(latitude)))) asc")
+            ->paginate($itemsPerPage);
 
 
-            // solo adddress
-            // $data = Apartment::leftJoin('apartment_sponsor', 'apartments.id', '=', 'apartment_sponsor.apartment_id')
-            // ->select('apartments.*')
-            // ->where('apartments.address', 'like', '%'.$address.'%')
-            // ->with(['sponsors' => function ($query) use ($oggi) {
-            //     $query->where('deadline', '>=', $oggi)
-            //         ->orderBy('deadline', 'asc');
-            // }])
-            // ->orderByRaw('CASE WHEN apartment_sponsor.deadline >= ? THEN 0 ELSE 1 END, apartment_sponsor.deadline ASC', [$oggi])
-            // ->paginate($itemsPerPage);
-        } else {
-            // funzione che prende prima tutti gli apppartamenti con la sponsor attiva e poi tutti gli altri grazie al leftjoin, ordinando come valoree 0 gli sponsor e il resto valore 1
-            $data = Apartment::leftJoin('apartment_sponsor', 'apartments.id', '=', 'apartment_sponsor.apartment_id')
-                ->select('apartments.*')
-                ->with([
-                    'sponsors' => function ($query) use ($oggi) {
-                        $query->where('deadline', '>=', $oggi)
-                            ->orderBy('deadline', 'asc');
-                    }
-                ])
-                ->orderByRaw('CASE WHEN apartment_sponsor.deadline >= ? THEN 0 ELSE 1 END', [$oggi])
-                ->paginate($itemsPerPage);
-        }
+        // solo adddress
+        // $data = Apartment::leftJoin('apartment_sponsor', 'apartments.id', '=', 'apartment_sponsor.apartment_id')
+        // ->select('apartments.*')
+        // ->where('apartments.address', 'like', '%'.$address.'%')
+        // ->with(['sponsors' => function ($query) use ($oggi) {
+        //     $query->where('deadline', '>=', $oggi)
+        //         ->orderBy('deadline', 'asc');
+        // }])
+        // ->orderByRaw('CASE WHEN apartment_sponsor.deadline >= ? THEN 0 ELSE 1 END, apartment_sponsor.deadline ASC', [$oggi])
+        // ->paginate($itemsPerPage);
+        // } else {
+        //     // funzione che prende prima tutti gli apppartamenti con la sponsor attiva e poi tutti gli altri grazie al leftjoin, ordinando come valoree 0 gli sponsor e il resto valore 1
+        //     $data = Apartment::leftJoin('apartment_sponsor', 'apartments.id', '=', 'apartment_sponsor.apartment_id')
+        //         ->select('apartments.*')
+        //         ->with([
+        //             'sponsors' => function ($query) use ($oggi) {
+        //                 $query->where('deadline', '>=', $oggi)
+        //                     ->orderBy('deadline', 'asc');
+        //             }
+        //         ])
+        //         ->orderByRaw('CASE WHEN apartment_sponsor.deadline >= ? THEN 0 ELSE 1 END', [$oggi])
+        //         ->paginate($itemsPerPage);
+        // }
 
 
 
