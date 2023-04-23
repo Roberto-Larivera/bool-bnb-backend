@@ -58,7 +58,8 @@
     <div class="container-fluid">
         <div class="row row-cols-2 mb-5">
             <div class="col py-3">
-                <form action="{{ route('admin.dashboard') }}" method="GET" id="formApartment">
+                <form action="{{ route('admin.dashboard') }}" method="POST" id="formApartment">
+                    @csrf
                     <select class="form-select" aria-label="Default select example" name="selectApartment"
                         onchange="document.getElementById('formApartment').submit()">
                         <option value="tutti" {{ $request->input('selectApartment') == 'tutti' ? 'selected' : '' }}>Tutti gli appartamenti</option>
@@ -74,7 +75,8 @@
             </div>
         
             <div class="col py-3">
-                <form action="{{ route('admin.dashboard') }}" method="GET" id="dateFilterForm">
+                <form action="{{ route('admin.dashboard') }}" method="POST" id="dateFilterForm">
+                    @csrf
                     <select class="form-select" aria-label="Default select example" name="month"
                         onchange="document.getElementById('dateFilterForm').submit()">
                         <option value="tutti" {{ $request->input('month') == 'tutti' ? 'selected' : '' }}>Tutti i mesi</option>
