@@ -79,7 +79,7 @@ class PageController extends Controller
             // usoo di carbon per prendere la data attuale
             $oggi = Carbon::today();
 
-            /*      // NON SI TOCCA, SENNNNNO VIENE ...? 
+                  // NON SI TOCCA, SENNNNNO VIENE ...? 
            if(request()->input('address')){
             $address = request()->input('address');
             $data = Apartment::leftJoin('apartment_sponsor', 'apartments.id', '=', 'apartment_sponsor.apartment_id')
@@ -104,7 +104,7 @@ class PageController extends Controller
                 ->orderByRaw('CASE WHEN apartment_sponsor.deadline >= ? THEN 0 ELSE 1 END', [$oggi])
                 ->paginate($itemsPerPage);
         }
-        */ 
+        
             
 
             // aggiunto parametro true e false per sponsored
