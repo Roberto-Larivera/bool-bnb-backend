@@ -68,87 +68,117 @@ class PageController extends Controller
 
 
         // controllo se arriva il valore per la paginazione
-        if(request()->input('items_per_page')
+        if (
+            request()->input('items_per_page')
             &&
-            (
-                request()->input('items_per_page') == 5 ||
+            (request()->input('items_per_page') == 5 ||
                 request()->input('items_per_page') == 10 ||
-                request()->input('items_per_page') == 20 
+                request()->input('items_per_page') == 20
             )
         )
-        $itemsPerPage = request()->input('items_per_page');
+            $itemsPerPage = request()->input('items_per_page');
 
-       
 
-            // query per prendere tutti gli id dei appartamenti sponsorizzati
-            $idSponsor = Apartment::whereHas('sponsors', function ($query) {
-                $query->where('deadline', '>=', Date('Y-m-d H:m:s'));
-            })->pluck('id')->toArray();
 
-            // creazione array senza chiavi con gli id all'intenro (serve per poter utilizzare 
-            // la funzione array dentro il foreach che inserisce il valore true e false ad ogni appartamento)
-            $array = [];
-            foreach ($idSponsor as $key => $value) {
-                $array[] = $value;
-            }
+        // query per prendere tutti gli id dei appartamenti sponsorizzati
+        $idSponsor = Apartment::whereHas('sponsors', function ($query) {
+            $query->where('deadline', '>=', Date('Y-m-d H:m:s'));
+        })->pluck('id')->toArray();
 
-            // usoo di carbon per prendere la data attuale
-            $oggi = Carbon::today();
+        // creazione array senza chiavi con gli id all'intenro (serve per poter utilizzare 
+        // la funzione array dentro il foreach che inserisce il valore true e false ad ogni appartamento)
+        $array = [];
+        foreach ($idSponsor as $key => $value) {
+            $array[] = $value;
+        }
 
-            dd(request()->input('lat'));
+        // usoo di carbon per prendere la data attuale
+        $oggi = Carbon::today();
 
-                  // NON SI TOCCA, SENNNNNO VIENE ...? 
-           if(request()->input('address')){
+        // NON SI TOCCA, SENNNNNO VIENE ...? ********
+        if (request()->input('address')) {
             $address = request()->input('address');
+            $lat = request()->input('lat');
+            $lon = request()->input('lon');
+            /*
+
+                SELECT * 
+                FROM apartments 
+                WHERE (6371 * acos(cos(radians(45.483743)) * cos(radians(latitude)) * cos(radians(longitude) 
+                - radians(9.172375)) + sin(radians(45.483743)) * sin(radians(latitude)))) <= 20 
+
+                order by (6371 * acos(cos(radians(45.483743)) * cos(radians(latitude)) * cos(radians(longitude) 
+                - radians(9.172375)) + sin(radians(45.483743)) * sin(radians(latitude)))) asc;
+
+            */
+
+            // $prova= Apartment::select('*')
+            // ->whereRaw("(6371 * acos(cos(radians(".$lat.")) * cos(radians(latitude)) * cos(radians(longitude) - radians(".$lon.")) + sin(radians(".$lat.")) * sin(radians(latitude)))) <= 20")
+            // ->orderByRaw("(6371 * acos(cos(radians(".$lat.")) * cos(radians(latitude)) * cos(radians(longitude) - radians(".$lon.")) + sin(radians(".$lat.")) * sin(radians(latitude)))) asc")
+            // ->get();
+
             $data = Apartment::leftJoin('apartment_sponsor', 'apartments.id', '=', 'apartment_sponsor.apartment_id')
-            ->select('apartments.*')
-            ->where('apartments.address', 'like', '%'.$address.'%')
-            ->with(['sponsors' => function ($query) use ($oggi) {
-                $query->where('deadline', '>=', $oggi)
-                    ->orderBy('deadline', 'asc');
-            }])
-            ->orderByRaw('CASE WHEN apartment_sponsor.deadline >= ? THEN 0 ELSE 1 END, apartment_sponsor.deadline ASC', [$oggi])
-            ->paginate($itemsPerPage);
-           }else{
+                ->select('apartments.*')
+                ->whereRaw("(6371 * acos(cos(radians(".$lat.")) * cos(radians(latitude)) * cos(radians(longitude) - radians(".$lon.")) + sin(radians(".$lat.")) * sin(radians(latitude)))) <= 2")
+                ->orderByRaw("(6371 * acos(cos(radians(".$lat.")) * cos(radians(latitude)) * cos(radians(longitude) - radians(".$lon.")) + sin(radians(".$lat.")) * sin(radians(latitude)))) asc")
+                ->with(['sponsors' => function ($query) use ($oggi) {
+                    $query->where('deadline', '>=', $oggi)
+                        ->orderBy('deadline', 'asc');
+                }])
+                ->orderByRaw('CASE WHEN apartment_sponsor.deadline >= ? THEN 0 ELSE 1 END, apartment_sponsor.deadline ASC', [$oggi])
+                ->paginate($itemsPerPage);
+
+
+            // solo adddress
+            // $data = Apartment::leftJoin('apartment_sponsor', 'apartments.id', '=', 'apartment_sponsor.apartment_id')
+            // ->select('apartments.*')
+            // ->where('apartments.address', 'like', '%'.$address.'%')
+            // ->with(['sponsors' => function ($query) use ($oggi) {
+            //     $query->where('deadline', '>=', $oggi)
+            //         ->orderBy('deadline', 'asc');
+            // }])
+            // ->orderByRaw('CASE WHEN apartment_sponsor.deadline >= ? THEN 0 ELSE 1 END, apartment_sponsor.deadline ASC', [$oggi])
+            // ->paginate($itemsPerPage);
+        } else {
             // funzione che prende prima tutti gli apppartamenti con la sponsor attiva e poi tutti gli altri grazie al leftjoin, ordinando come valoree 0 gli sponsor e il resto valore 1
             $data = Apartment::leftJoin('apartment_sponsor', 'apartments.id', '=', 'apartment_sponsor.apartment_id')
                 ->select('apartments.*')
                 ->with([
                     'sponsors' => function ($query) use ($oggi) {
-                    $query->where('deadline', '>=', $oggi)
-                        ->orderBy('deadline', 'asc');
-                }
+                        $query->where('deadline', '>=', $oggi)
+                            ->orderBy('deadline', 'asc');
+                    }
                 ])
                 ->orderByRaw('CASE WHEN apartment_sponsor.deadline >= ? THEN 0 ELSE 1 END', [$oggi])
                 ->paginate($itemsPerPage);
         }
-        
-            
 
-            // aggiunto parametro true e false per sponsored
-            foreach ($data as $key => $value) {
-                if (in_array($value['id'], $array))
-                    $value['sponsored'] = true;
-                else
-                    $value['sponsored'] = false;
 
-                $value['services'] = $value->services;
-            }
-            
-            if(count($data) > 0) {
-                $response = [
-                    'success' => true,
-                    'code' => 200,
-                    'message' => 'OK',
-                    'apartments' => $data
-                ];
-            } else {
-                $response = [
-                    'success' => false,
-                    'code' => 400,
-                    'message' => 'Non ci sono sono appartamenti'
-                ];
-            }
+
+        // aggiunto parametro true e false per sponsored
+        foreach ($data as $key => $value) {
+            if (in_array($value['id'], $array))
+                $value['sponsored'] = true;
+            else
+                $value['sponsored'] = false;
+
+            $value['services'] = $value->services;
+        }
+
+        if (count($data) > 0) {
+            $response = [
+                'success' => true,
+                'code' => 200,
+                'message' => 'OK',
+                'apartments' => $data
+            ];
+        } else {
+            $response = [
+                'success' => false,
+                'code' => 400,
+                'message' => 'Non ci sono sono appartamenti'
+            ];
+        }
 
         return response()->json($response);
     }
