@@ -144,6 +144,7 @@ class ApartmentController extends Controller
         $user = Auth::user();
         if ($apartment->user_id == $user->id) {
             $services = Service::all();
+            $apartment['full_path_main_img'] = asset('storage/'.$apartment->main_img);
             return view('admin.apartments.edit', compact('apartment', 'services'));
         } else {
             return redirect()->route('admin.apartments.index', $apartment->id)->with('warning', 'Ci dispiace, non abbiamo trovato questo appartamento.');
