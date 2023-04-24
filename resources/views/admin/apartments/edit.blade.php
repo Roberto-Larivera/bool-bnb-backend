@@ -46,7 +46,7 @@
                             </div>
 
                             {{-- Immagine principale file --}}
-                            {{-- <div class="mb-3">
+                            <div class="mb-3">
                                 <label for="main_img" class="form-label  @error('main_img') text-danger @enderror">Immagine
                                     in
                                     evidenza <span class="text-danger fw-bold">*</span></label>
@@ -55,10 +55,10 @@
                                 @error('main_img')
                                     <p class="text-danger fw-bold">{{ $message }}</p>
                                 @enderror
-                            </div> --}}
+                            </div>
 
                             {{-- Immagine principale url --}}
-                            <div class="mb-3">
+                            {{-- <div class="mb-3">
                                 <label for="main_img"
                                     class="form-label  @error('main_img') text-danger @enderror">Immagine in
                                     evidenza <span class="text-danger fw-bold">*</span></label>
@@ -68,7 +68,7 @@
                                 @error('main_img')
                                     <p class="text-danger fw-bold">{{ $message }}</p>
                                 @enderror
-                            </div>
+                            </div> --}}
                         </div>
                         <div class="col-12 col-lg-6">
                             {{-- descrizione  --}}
@@ -342,13 +342,6 @@
 
                     ulList.innerHTML = '';
                     if (data.results != undefined)
-                        // for (let index = 0; index < data.results.length; index++) {
-                        //     const li = document.createElement('li');
-                        //     li.append(data.results[index].address.freeformAddress);
-                        //     ulList.appendChild(li);
-                        //     // const element = `<li>${data.results[index].address.freeformAddress}</li>`;
-                        //     // ulList.innerHTML += element;
-                        // }
                         data.results.forEach(function(currentValue, index, array) {
                             const li = document.createElement('li');
                             li.append(currentValue.address.freeformAddress);

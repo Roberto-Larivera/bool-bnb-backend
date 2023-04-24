@@ -67,7 +67,8 @@
                             <tr>
                                 <td class="d-none d-md-table-cell align-middle">
                                     <div class="apartment-img-container">
-                                        <img src="{{ $apartment->main_img }}" alt=" {{ $apartment->title }}" class="img-fluid">
+                                        <img src="{{ $apartment->full_path_main_img }}" alt=" {{ $apartment->title }}" class="img-fluid">
+                                        {{-- <img src="{{ $apartment->main_img }}" alt=" {{ $apartment->title }}" class="img-fluid"> --}}
                                     </div>
                                 </td>
                                 <td class="align-middle">
