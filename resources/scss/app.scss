@@ -65,3 +65,8 @@ body{
 .icon-section {
     @include iconSection
 }
+
+// colore principale
+.color-primary{
+    color: $color_primary;
+}
