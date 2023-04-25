@@ -9,10 +9,11 @@
         background-color: $color_primary;
         border-color: $color_primary;
       }
-    
-      .radius {
-        
+      
+    .color-personale{
+        color: $color_primary;
     }
+
     #menuAutoComplete{
         border-radius: 0 0 5px 5px;
         border-left: 1px solid $color_primary;

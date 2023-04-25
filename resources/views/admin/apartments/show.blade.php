@@ -32,9 +32,9 @@
             {{-- Info generali appartamento --}}
             <div class="img-container col col-sm-6">
                 {{-- img url  --}}
-                <img class="img-fluid rounded" src="{{ $apartment->main_img }}">
+                {{-- <img class="img-fluid rounded" src="{{ $apartment->main_img }}"> --}}
                 {{-- img file  --}}
-                {{-- <img class="img-fluid rounded" src="{{ $apartment->getFullPathMainImgAttribute() }}"> --}}
+                <img class="img-fluid rounded" src="{{ $apartment->full_path_main_img }}">
             </div>
             <div class="info-container col col-sm-6 py-3 py-sm-0">
                 <h2>

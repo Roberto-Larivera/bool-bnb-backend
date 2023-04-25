@@ -27,9 +27,9 @@ class UpdateApartmentRequest extends FormRequest
             'title' => 'required|string|max:70',
             'description' => 'required|string|max:4096',
             // img file
-            // 'main_img' => 'nullable|image|max:2048',
+            'main_img' => 'nullable|image|max:5000',
             // img url
-            'main_img' => 'required|url|max:255',
+            // 'main_img' => 'required|url|max:255',
             'services' => 'nullable|array|exists:services,id',
             'max_guests' => 'required|numeric|min:0|max:30',
             'rooms' => 'required|numeric|min:0|max:30',

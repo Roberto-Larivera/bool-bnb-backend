@@ -28,9 +28,9 @@ class StoreApartmentRequest extends FormRequest
             'title' => 'required|string|max:70',
             'description' => 'required|string|max:4096',
             // img file
-            // 'main_img' => 'required|image|max:2048',
+            'main_img' => 'required|image|max:5000',
             // img url
-            'main_img' => 'required|url|max:255',
+            // 'main_img' => 'required|url|max:255',
             'services' => 'nullable|array|exists:services,id',
             'max_guests' => 'required|numeric|min:0|max:30',
             'rooms' => 'required|numeric|min:0|max:30',
@@ -41,10 +41,7 @@ class StoreApartmentRequest extends FormRequest
             'price' => 'required|numeric|decimal:0,2|min:0|max:9999.99',
             'visible' => 'nullable|boolean',
             'latitude' => 'required',
-            'longitude' => 'required',
-
-            // 'type_id' => 'nullable|exists:types,id',
-            // 'name_repo' => 'required|unique:projects,name_repo|max:98',
+            'longitude' => 'required'
             
             // validazione img
             // image|max:2048
