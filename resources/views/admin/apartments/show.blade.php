@@ -74,9 +74,15 @@
                    </a>
 
                    {{-- Aggiungere rotta sponsor --}}
+                   @if($apartment->sponsored == false)
                    <a href="{{ route('admin.sponsors.index',  ['apartment_id' => $apartment->id]) }}" class="secondary-btn">
                        Sponsorizza
                    </a>
+                   @else
+                   <button class="secondary-btn">
+                    Già Sponsorizzato
+                   </button>
+                @endif
                </div>
             </div>
         </div>

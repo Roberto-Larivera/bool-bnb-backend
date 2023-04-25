@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Mail;
+use Carbon\Carbon;
 
 // Models
 use App\Models\User;
@@ -120,6 +121,16 @@ class ApartmentController extends Controller
     public function show(Apartment $apartment)
     {
         $user = Auth::user();
+        $oggi = Carbon::today();
+
+
+        $apartment['sponsored'] = false;
+        
+        $boll = $apartment->sponsors()->where('deadline', '>', $oggi)->first();
+
+        if($boll)
+            $apartment['sponsored'] = true;
+
 
         if ($apartment->user_id == $user->id) {
             $services = Service::all();

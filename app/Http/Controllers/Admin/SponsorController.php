@@ -12,6 +12,7 @@ use App\Http\Requests\UpdateSponsorRequest;
 use App\Models\Sponsor;
 use App\Models\User;
 use App\Models\Apartment;
+use Carbon\Carbon;
 
 
 class SponsorController extends Controller
@@ -62,13 +63,21 @@ class SponsorController extends Controller
     public function show(Apartment $apartment, Sponsor $sponsor, Request $request)
     {
 
+        // usoo di carbon per prendere la data attuale
+        $oggi = Carbon::today();
+
         $id = $request->query('apartment_id');
 
         $user = Auth::user();
 
         if ($id == null) {
 
-            $apartments = Apartment::where('user_id', $user->id)->get();
+            $apartments = Apartment::where('user_id', $user->id)
+            ->whereDoesntHave('sponsors', function ($query)  use ($oggi) {
+                $query->where('deadline', '>', $oggi)
+                      ->orWhereNull('deadline');
+            })
+            ->get();
 
             return view('admin.sponsors.show', [
                 'apartments' => $apartments,
