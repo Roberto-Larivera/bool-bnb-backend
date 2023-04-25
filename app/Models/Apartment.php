@@ -27,6 +27,7 @@ class Apartment extends Model
         'visible',
     ];
 
+    // colonna fantasma 
     protected $appends = [
         'full_path_main_img',
         // 'sponsored',
@@ -53,6 +54,9 @@ class Apartment extends Model
     }
     public function views(){
         return $this->hasMany(View::class);
+    }
+    public function imageGallery(){
+        return $this->hasMany(ImageGallery::class);
     }
     public function sponsors(){
         return $this->belongsToMany(Sponsor::class);

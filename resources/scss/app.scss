@@ -65,3 +65,30 @@ body{
 .icon-section {
     @include iconSection
 }
+
+// colore principale
+.color-primary{
+    color: $color_primary;
+}
+
+// cursor copy
+.cursor-copy{
+    cursor: copy;
+}
+
+// btn destroy gallery show
+.preview-hover-hidden{
+
+    &:hover img{
+        filter: grayscale(.5);
+    }
+    
+    & form button{
+        display: none;
+
+    }
+    
+    &:hover button{
+        display: block;
+    }
+}

@@ -180,7 +180,7 @@
                                 @enderror
                             </div>
 
-                            <p id="textPreviewImg" class="text-center mt-5 color-personale fw-bold">
+                            <p id="textPreviewImg" class="text-center mt-5 color-primary fw-bold">
                                 Anteprima
                             </p>
 

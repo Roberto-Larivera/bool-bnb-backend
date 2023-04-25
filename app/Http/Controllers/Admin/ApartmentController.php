@@ -123,9 +123,12 @@ class ApartmentController extends Controller
 
         if ($apartment->user_id == $user->id) {
             $services = Service::all();
+            $gallery = $apartment->imageGallery;
+            // dd($gallery);
 
             return view('admin.apartments.show', [
                 'apartment' => $apartment,
+                'imageGallery' => $gallery,
                 'services' => $services
             ]);
         } else {
