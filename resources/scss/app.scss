@@ -37,6 +37,11 @@ body{
     @include buttonSecondary
 }
 
+// Bottone disabilitato
+.disabled-btn{
+    @include buttonDisabled
+}
+
 // Link per tornare a pagina precedente
 .back {
     @include back
@@ -64,4 +69,10 @@ body{
 // Icona titoli
 .icon-section {
     @include iconSection
+}
+
+// Immagine quadrata
+.my-img {
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
 }

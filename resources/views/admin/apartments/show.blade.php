@@ -31,9 +31,6 @@
         <div class="row row-cols-1 mb-5 align-items-center">
             {{-- Info generali appartamento --}}
             <div class="img-container col col-sm-6">
-                {{-- img url  --}}
-                {{-- <img class="img-fluid rounded" src="{{ $apartment->main_img }}"> --}}
-                {{-- img file  --}}
                 <img class="img-fluid rounded" src="{{ $apartment->full_path_main_img }}">
             </div>
             <div class="info-container col col-sm-6 py-3 py-sm-0">
@@ -52,7 +49,8 @@
                 @endif
 
                 <div>
-                    &euro; {{ $apartment->price }} <i class="fa-solid fa-sack-dollar"></i>
+                    &euro; {{ $apartment->price }} 
+                    {{-- <i class="fa-solid fa-sack-dollar"></i> --}}
                 </div>
 
                 {{-- Bottoni Mobile messaggi / sponsor --}}
@@ -62,9 +60,16 @@
                     </a>
 
                     {{-- Aggiungere rotta sponsor --}}
-                    <a href="#" class="secondary-btn">
-                        <i class="fa-solid fa-sack-dollar"></i>
-                    </a>
+                    @if($apartment->sponsored == false)
+                        <a href="{{ route('admin.sponsors.index',  ['apartment_id' => $apartment->id]) }}" class="secondary-btn">
+                            <i class="fa-solid fa-sack-dollar"></i>
+                        </a>
+                    @else
+                        <button class="disabled-btn">
+                            <i class="fa-solid fa-sack-dollar"></i>
+                    </button>
+                    @endif
+
                 </div>
 
                 {{-- Bottoni Tablet messaggi / sponsor --}}
@@ -79,8 +84,8 @@
                        Sponsorizza
                    </a>
                    @else
-                   <button class="secondary-btn">
-                    Già Sponsorizzato
+                   <button class="disabled-btn">
+                        Sponsorizzato
                    </button>
                 @endif
                </div>

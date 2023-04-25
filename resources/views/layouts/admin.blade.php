@@ -17,6 +17,9 @@
     
     {{-- fontawesome  --}}
     <link rel="stylesheet" href="{{ asset('node_modules/@fortawesome/fontawesome-free/css/all.min.css') }}">
+
+     {{-- prevent Braintree stylesheet  --}}
+     {{-- <link rel="stylesheet" id="braintree-dropin-stylesheet"> --}}
     
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     
