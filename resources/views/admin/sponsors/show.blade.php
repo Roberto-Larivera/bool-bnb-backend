@@ -21,7 +21,9 @@
         </a>
     </div>
 </div>
-
+@include('admin.partials.errors')
+        @include('admin.partials.success')
+        @include('admin.partials.warning')
 <div class="container h-100">
     <div class="row gy-5 mt-5 mt-md-0 d-flex justify-content-center mb-5">
         @if (isset($apartments))
@@ -73,9 +75,12 @@
                                     {{ $apartment->price }}
                                 </td>
                                 <td class="align-middle">
-                                    <div class="form-check">
+                                    {{-- <div class="form-check">
                                         <input class="form-check-input input-radio" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                                    </div>
+                                    </div> --}}
+                                    <a href="{{ route('admin.payment.token', ['sponsor_id'=>$sponsor->id, 'apartment_id' =>  $apartment->id ]) }}" class="secondary-btn me-3">
+                                        Procedi al pagamento
+                                    </a>
                                 </td>
                             </tr>
                         </tbody>
@@ -98,13 +103,16 @@
                     <div class="p-5">
                         <img class="img-fluid rounded" src="{{ $apartment->main_img }}">
                     </div>
+                    <a href="{{ route('admin.payment.token', ['sponsor_id'=>$sponsor->id, 'apartment_id' =>  $apartment->id ]) }}" class="secondary-btn me-3">
+                        Procedi al pagamento
+                    </a>
                 </div>
             </div>
                 
         @endif
     </div>
 
-    <div class="row row-cols-1">
+    {{-- <div class="row row-cols-1">
         <div class="col-12 d-flex justify-content-center">
             <div class="button mt-3">
                 <a href="{{ route('admin.payment.token') }}" class="secondary-btn me-3">
@@ -112,7 +120,7 @@
                 </a>
             </div>
         </div>
-    </div>
+    </div> --}}
 </div>
 
 @endsection

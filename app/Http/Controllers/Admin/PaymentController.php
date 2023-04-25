@@ -13,6 +13,10 @@ class PaymentController extends Controller
 
     public function token(Request $request)
     {
+        if( request()->input('apartment_id') && request()->input('sponsor_id'))
+        {
+            $apartmentId = request()->input('apartment_id');
+        $sponsorId = request()->input('sponsor_id');
 
         $gateway = new \Braintree\Gateway([
             'environment' => env("BRAINTREE_ENV"),
@@ -22,12 +26,16 @@ class PaymentController extends Controller
         ]);
         $clientToken = $gateway->clientToken()->generate();
         return view('admin.payment.payment', ['token' => $clientToken]);
+        }else{
+            return redirect()->route('admin.sponsors.index')->with('warning', 'Ci dispiace, la pagina non esiste, riprova di nuovo.');
+        }
+        
     }
 
 
     public function process(Request $request)
     {
-        
+
         $payload = $request->input('payload', false);
         $nonce = $payload['nonce'];
 

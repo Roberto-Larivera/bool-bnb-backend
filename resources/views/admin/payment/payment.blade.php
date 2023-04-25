@@ -52,7 +52,7 @@
         var button = document.querySelector('#submit-button');
         var instance; // define instance variable outside the function
     
-        // controllo carta
+        // controllo carta + pagamento
         braintree.dropin.create({
             authorization: '{{ $token }}',
             container: '#dropin-container'
@@ -74,35 +74,6 @@
                         }
                     }, 'json');
                 });
-            });
-        });
-    
-        // evento per il pagamento
-        button.addEventListener('click', function() {
-            instance.requestPaymentMethod(function(err, payload) {
-                (function($) {
-                    $(function() {
-                        $.ajaxSetup({
-                            headers: {
-                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr(
-                                    'content')
-                            }
-                        });
-                        $.ajax({
-                            type: "POST",
-                            url: "{{ route('admin.payment.token') }}",
-                            data: {
-                                nonce: payload.nonce
-                            },
-                            success: function(data) {
-                                console.log('success', payload.nonce)
-                            },
-                            error: function(data) {
-                                console.log('error', payload.nonce)
-                            }
-                        });
-                    });
-                })(jQuery);
             });
         });
     </script>
