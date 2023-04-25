@@ -78,6 +78,7 @@ class PaymentController extends Controller
             $apartment_sponsor->sponsor_id = $sponsorId;
             $apartment_sponsor->deadline = $currentDateMin;
             $apartment_sponsor->save();
+
         }
 
         return response()->json($status);
