@@ -41,11 +41,17 @@
                 </div>
                 <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4">
                     @if($imageGallery != [])
-                    @forEach($imageGallery as $image)
+                    @forEach($imageGallery as $image_gallery)
                     <div class="col ">
-                        <div class=" ratio ratio-4x3">
-                            <img src="{{ asset('storage/'.$image->path_image) }}" class="rounded  w-100 mb-3 mb-lg-0">
-
+                        <div class=" ratio ratio-4x3 position-relative">
+                            <img src="{{ asset('storage/'.$image_gallery->path_image) }}" class="rounded  w-100 mb-3 mb-lg-0">
+                            <form action="{{ route('admin.image_gallery.destroy',$image_gallery) }}" method="POST" class="position-absolute top-50 start-50 translate-middle d-flex justify-content-center align-items-center btn-hover-hidden">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-outline-danger btn-hover-hidden">
+                                    <i class="fa-solid fa-trash my-color-dark"></i>
+                                </button>
+                            </form>
                         </div>
                     </div>
                     @endforeach
@@ -243,6 +249,7 @@
         // const previewImg = document.getElementById('previewImg');
         // const textPreviewImg = document.getElementById('textPreviewImg');
 
+        if(inputFile != null)
         inputFile.addEventListener('change', () => {
             const file = inputFile.files[0];
             if (file) {

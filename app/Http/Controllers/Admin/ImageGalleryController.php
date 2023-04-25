@@ -43,6 +43,7 @@ class ImageGalleryController extends Controller
      */
     public function store(Request $request)
     {
+       
         $request->validate([
             'path_image' => 'required|image|max:5000',
             'apartment_id' => 'required',
@@ -61,16 +62,15 @@ class ImageGalleryController extends Controller
             // salva l'immagine all'interno di public/storage/apartments
             // */
             $gallery = $apartment->imageGallery;
-            if(count( $gallery) >= 0 || count( $gallery) <= 6 ){
-                
-            $imgPath = Storage::put('apartments', $data['path_image']);
+            if (count($gallery) >= 0 || count($gallery) <= 6) {
 
-            $data['path_image'] = $imgPath;
+                $imgPath = Storage::put('apartments', $data['path_image']);
 
-            $apartment->imageGallery()->create($data);
-            return redirect()->route('admin.apartments.show', $apartment)->with('success', 'Immagine aggiunta con successo');
-            }
-            else{
+                $data['path_image'] = $imgPath;
+
+                $apartment->imageGallery()->create($data);
+                return redirect()->route('admin.apartments.show', $apartment)->with('success', 'Immagine aggiunta con successo');
+            } else {
                 return redirect()->route('admin.apartments.show', $apartment)->with('warning', 'Ci dispiace, non puoi inserire più di 5 immagini.');
             }
         } else {
@@ -118,8 +118,32 @@ class ImageGalleryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(ImageGallery $image_gallery)
     {
-        //
+        $user = Auth::user();
+
+        $apartment = Apartment::where('id', $image_gallery->apartment_id)->first();
+        Storage::delete($apartment->main_img);
+
+        if ($apartment->user_id == $user->id) {
+
+            $gallery = $apartment->imageGallery;
+            if (count($gallery) >= 0 || count($gallery) <= 6) {
+
+                // img file
+                
+                Storage::delete($image_gallery->path_image);
+                
+
+                // Cancella tutto appartamento
+                $image_gallery->delete();
+
+                return redirect()->route('admin.apartments.show', $apartment)->with('success', 'Immagine eliminata con successo');
+            } else {
+                return redirect()->route('admin.apartments.show', $apartment)->with('warning', 'Ci dispiace, non sono state trovate img.');
+            }
+        } else {
+            return redirect()->route('admin.apartments.index')->with('warning', 'Ci dispiace, pagina non trovata.');
+        }
     }
 }
