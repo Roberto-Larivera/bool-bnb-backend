@@ -51,6 +51,9 @@
         // prendiamo il button
         var button = document.querySelector('#submit-button');
         var instance; // define instance variable outside the function
+        const urlParams = new URLSearchParams(window.location.search);
+        let sponsor = urlParams.get('sponsor_id');
+        let apartment = urlParams.get('apartment_id');
     
         // controllo carta + pagamento
         braintree.dropin.create({
@@ -65,7 +68,10 @@
             button.addEventListener('click', function() {
                 instance.requestPaymentMethod(function(err, payload) {
                     $.get('{{ route('admin.payment.process') }}', {
-                        payload
+                        payload,
+                        sponsor,
+                        apartment
+
                     }, function(response) {
                         if (response.success) {
                             alert('Payment successful!');
