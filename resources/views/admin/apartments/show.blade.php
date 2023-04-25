@@ -34,7 +34,7 @@
                 {{-- img url  --}}
                 {{-- <img class="img-fluid rounded" src="{{ $apartment->main_img }}"> --}}
                 {{-- img file  --}}
-                <div class="row py-4">
+                <div class="row pt-4 pb-2">
                     <div class="col">
                         <img class="img-fluid rounded" src="{{ $apartment->full_path_main_img }}">
                     </div>
@@ -42,13 +42,13 @@
                 <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4">
                     @if($imageGallery != [])
                     @forEach($imageGallery as $image_gallery)
-                    <div class="col ">
-                        <div class=" ratio ratio-4x3 position-relative">
+                    <div class="col mb-3">
+                        <div class=" ratio ratio-4x3 position-relative preview-hover-hidden">
                             <img src="{{ asset('storage/'.$image_gallery->path_image) }}" class="rounded  w-100 mb-3 mb-lg-0">
-                            <form action="{{ route('admin.image_gallery.destroy',$image_gallery) }}" method="POST" class="position-absolute top-50 start-50 translate-middle d-flex justify-content-center align-items-center btn-hover-hidden">
+                            <form action="{{ route('admin.image_gallery.destroy',$image_gallery) }}" method="POST" class="position-absolute top-50 start-50 translate-middle d-flex justify-content-center align-items-center ">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn btn-outline-danger btn-hover-hidden">
+                                <button type="submit" class="btn btn-danger btn-hover-hidden">
                                     <i class="fa-solid fa-trash my-color-dark"></i>
                                 </button>
                             </form>

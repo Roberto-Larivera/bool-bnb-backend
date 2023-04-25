@@ -9,11 +9,3 @@
     color: $color_dark;
 }
 
-.btn-hover-hidden{
-    
-    display: none !important;
-    
-    &:hover{
-        display: block;
-    }
-}

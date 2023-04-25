@@ -123,7 +123,6 @@ class ImageGalleryController extends Controller
         $user = Auth::user();
 
         $apartment = Apartment::where('id', $image_gallery->apartment_id)->first();
-        Storage::delete($apartment->main_img);
 
         if ($apartment->user_id == $user->id) {
 
