@@ -75,7 +75,7 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
-        return redirect('http://localhost:5174?login=true&auth='.$user->id);
+        return redirect('http://localhost:5174/login-data?login=true&auth='.$user->id);
         // return redirect(RouteServiceProvider::HOME);
         
     }

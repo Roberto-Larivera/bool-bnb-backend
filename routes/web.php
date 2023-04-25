@@ -39,4 +39,15 @@ Route::prefix('admin')->name('admin.')->middleware('auth', 'verified')->group(fu
     Route::resource('sponsors', SponsorController::class)->only(['index','show']);
 });
 
+Route::post('/login-data', function (Illuminate\Http\Request $request) {
+    // Qui puoi gestire i dati che arrivano tramite POST
+    $login = $request->input('login');
+    $auth = $request->input('auth');
+
+    // Inserisci qui la logica per salvare i dati o fare altro
+
+    // Ritorna la risposta, ad esempio un messaggio di successo
+    return response()->json(['message' => 'Dati ricevuti con successo']);
+});
+
 require __DIR__.'/auth.php';
