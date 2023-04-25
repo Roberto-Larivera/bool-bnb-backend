@@ -34,42 +34,37 @@
                 {{-- img url  --}}
                 {{-- <img class="img-fluid rounded" src="{{ $apartment->main_img }}"> --}}
                 {{-- img file  --}}
-                <div class="row">
+                <div class="row py-4">
                     <div class="col">
                         <img class="img-fluid rounded" src="{{ $apartment->full_path_main_img }}">
                     </div>
                 </div>
                 <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4">
-                    <div class="col">
-                        {{-- input nascoto --}}
-                        <div class="p-3">
-                            <i class="fa-solid fa-square-plus fa-5x color-primary"></i>
-                        </div>
-                        <input type="file" class="d-none" id="main_img"
-                            name="main_img" accept="image/*">
+                    @if($imageGallery != [])
+                    @forEach($imageGallery as $image)
+                    <div class="col ">
+                        <div class=" ratio ratio-4x3">
+                            <img src="{{ asset('storage/'.$image->path_image) }}" class="rounded  w-100 mb-3 mb-lg-0">
 
-                        <img id="previewImg" src="#" class="rounded d-none w-100 mb-3 mb-lg-0">
-                    </div>
-                    <div class="col">
-                        {{-- input nascoto --}}
-                        <div class="p-3">
-                            <i class="fa-solid fa-square-plus fa-5x color-primary"></i>
                         </div>
-                        <input type="file" class="d-none" id="main_img"
-                            name="main_img" accept="image/*">
-
-                        <img id="previewImg" src="#" class="rounded d-none w-100 mb-3 mb-lg-0">
                     </div>
-                    <div class="col">
+                    @endforeach
+                    @endif
+                    @if(count($imageGallery) < 4)
+                    <div class="col align-self-center">
                         {{-- input nascoto --}}
-                        <div class="p-3">
-                            <i class="fa-solid fa-square-plus fa-5x color-primary"></i>
+                        <div class="">
+                            <i  onclick="selectFile()" class="fa-solid fa-square-plus fa-5x color-primary cursor-copy"></i>
                         </div>
-                        <input type="file" class="d-none" id="main_img"
-                            name="main_img" accept="image/*">
+                        <form action="{{ route('admin.image_gallery.store', ['apartment_id' => $apartment->id ]) }}" method="POST"
+                            enctype="multipart/form-data" id="form-imageGallery">
+                            @csrf
+                            {{-- @method('PUT') --}} {{-- serve solo per update --}}
+                            <input type="file" class="d-none" id="path_image" name="path_image" accept="image/*">
+                        </form>
 
-                        <img id="previewImg" src="#" class="rounded d-none w-100 mb-3 mb-lg-0">
                     </div>
+                    @endif
                 </div>
             </div>
             <div class="info-container col col-sm-6 py-3 py-sm-0">
@@ -111,8 +106,7 @@
                     </a>
 
                     {{-- Aggiungere rotta sponsor --}}
-                    <a href="{{ route('admin.sponsors.index', ['apartment_id' => $apartment->id]) }}"
-                        class="secondary-btn">
+                    <a href="{{ route('admin.sponsors.index', ['apartment_id' => $apartment->id]) }}" class="secondary-btn">
                         Sponsorizza
                     </a>
                 </div>
@@ -237,5 +231,59 @@
         </div>
     </div>
 
+
+@endsection
+
+@section('javascript')
+
+    <script>
+        // img prewiew
+        const inputFile = document.getElementById('path_image');
+        const formFile = document.getElementById('form-imageGallery');
+        // const previewImg = document.getElementById('previewImg');
+        // const textPreviewImg = document.getElementById('textPreviewImg');
+
+        inputFile.addEventListener('change', () => {
+            const file = inputFile.files[0];
+            if (file) {
+                // const reader = new FileReader();
+                // reader.onload = () => {
+                //     previewImg.src = reader.result;
+                // }
+                // reader.readAsDataURL(file);
+                // textPreviewImg.classList.add('d-none');
+                // previewImg.classList.remove('d-none');
+                formFile.submit();
+            }
+        });
+
+
+        function selectFile() {
+            inputFile.click(); // simula il click sull'input type file
+            formFile.addEventListener("change", function() {
+                const file = inputFile.files[0];
+                if (file) {
+                    // const reader = new FileReader();
+                    // reader.onload = () => {
+                    //     previewImg.src = reader.result;
+                    // }
+                    // reader.readAsDataURL(file);
+                    // textPreviewImg.classList.add('d-none');
+                    // previewImg.classList.remove('d-none');
+                    formFile.submit();
+                }
+                // var form = document.createElement("form");
+                // form.method = "post";
+                // form.enctype = "multipart/form-data";
+                // var file = uploadFile.files[0];
+                // var formData = new FormData(form);
+                // formData.append("uploadFile", file);
+                // // invio della richiesta ajax
+                // var xhr = new XMLHttpRequest();
+                // xhr.open("POST", "upload.php");
+                // xhr.send(formData);
+            });
+        }
+    </script>
 
 @endsection

@@ -3,14 +3,13 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+// Facades
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 
 //models
-
 use App\Models\Apartment;
-use App\Models\View;
-use App\Models\Message;
 
 class PageController extends Controller
 {
@@ -46,8 +45,7 @@ class PageController extends Controller
                 foreach ($apartments as $apartment) {
                     $totalViews += $apartment->views()->count();
                 }
-            }
-            else{
+            } else {
                 $selectedMonth = $request->input('month');
                 $totalViews = 0;
                 $totalMessages = 0;
@@ -58,9 +56,7 @@ class PageController extends Controller
                     $totalViews += $apartment->views()->whereMonth('created_at', '=', $selectedMonth)->count();
                 }
             }
-        } 
-        else 
-        {
+        } else {
             $totalViews = 0;
             $totalMessages = 0;
             foreach ($apartments as $apartment) {

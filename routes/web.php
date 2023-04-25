@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\ApartmentController;
 use App\Http\Controllers\Admin\MessageController;
 use App\Http\Controllers\Admin\UserDataController;
 use App\Http\Controllers\Admin\SponsorController;
+use App\Http\Controllers\Admin\ImageGalleryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,6 +38,7 @@ Route::prefix('admin')->name('admin.')->middleware('auth', 'verified')->group(fu
     Route::resource('messages', MessageController::class)->only(['index']);
     Route::resource('user_datas', UserDataController::class)->only(['update','edit','index']);
     Route::resource('sponsors', SponsorController::class)->only(['index','show']);
+    Route::resource('image_gallery', ImageGalleryController::class)->only(['store','update','destroy']);
 });
 
 require __DIR__.'/auth.php';
