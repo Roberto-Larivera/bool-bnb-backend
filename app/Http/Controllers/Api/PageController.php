@@ -134,6 +134,7 @@ class PageController extends Controller
                 $query->where('deadline', '>=', $oggi)
                     ->orderBy('deadline', 'asc');
             }])
+            ->where("visible", "1")
             ->orderByRaw('CASE WHEN apartment_sponsor.deadline >= ? THEN 0 ELSE 1 END, apartment_sponsor.deadline ASC', [$oggi])
             ->orderByRaw("(6371 * acos(cos(radians(" . $lat . ")) * cos(radians(latitude)) * cos(radians(longitude) - radians(" . $lon . ")) + sin(radians(" . $lat . ")) * sin(radians(latitude)))) asc")
             ->paginate($itemsPerPage);
