@@ -25,9 +25,11 @@
                 </a>
             </div>
         </div>
+
         @include('admin.partials.errors')
         @include('admin.partials.success')
         @include('admin.partials.warning')
+
 
         <div class="row">
             <div class="col-6 offset-3">
@@ -41,18 +43,33 @@
                         Procedi al pagamento
                     </a>
                 </div>
+
+
+                <div class="modal" id="myModal">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">
+                            
+                        </h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <p>
+                            Pagamento avvenuto con successo
+                        </p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">
+                            Chiudi
+                        </button>
+                    </div>
+                    </div>
+                </div>
+                </div>
             </div>
         </div>
 
-        {{-- toast al pagamento --}}
-        <div class="toast align-items-center text-bg-primary border-0" role="alert" aria-live="assertive" aria-atomic="true">
-            <div class="d-flex">
-              <div class="toast-body">
-                    Pagamento fallito
-              </div>
-              <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
-            </div>
-        </div>
 
 @endsection
 
@@ -87,6 +104,14 @@
                     }, function(response) {
                         if (response.success) {
                             // messaggio di successo
+                            
+                            // window.location.replace('{{ route('admin.sponsors.index') }}'); 
+                            $(document).ready(function(){
+                                $("#submit-button").click(function(){
+                                    $("#myModal").modal();
+                                });
+                            });
+                            
                             
                         }
                         else {
