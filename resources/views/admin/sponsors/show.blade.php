@@ -107,7 +107,7 @@
     <div class="row row-cols-1">
         <div class="col-12 d-flex justify-content-center">
             <div class="button mt-3">
-                <a href="#" class="secondary-btn me-3">
+                <a href="{{ route('admin.payment.token') }}" class="secondary-btn me-3">
                     Procedi al pagamento
                 </a>
             </div>

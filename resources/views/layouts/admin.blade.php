@@ -10,15 +10,18 @@
 
     <title>{{ config('app.name', 'Laravel') }}@yield('title')</title>
 
+    
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-
+    
     {{-- fontawesome  --}}
     <link rel="stylesheet" href="{{ asset('node_modules/@fortawesome/fontawesome-free/css/all.min.css') }}">
-
+    
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
+    
+    
+    @yield('head')
     <!-- Usando Vite -->
     @vite(['resources/js/app.js'])
 </head>
