@@ -229,7 +229,7 @@
                 }
 
             });
-            
+
             const data = {
                 labels: [
                     'Red',

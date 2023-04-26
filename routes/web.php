@@ -28,6 +28,8 @@ Route::get('/', function () {
 });
 Route::get('/prova', [PageController::class, 'prova'])->name('prova');
 
+Route::get('/provaPagamento', [PageController::class, 'provaPagamento'])->name('provaPagamnento');
+
 // Route::middleware('auth')->group(function () {
 //     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
 //     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -40,9 +42,9 @@ Route::prefix('admin')->name('admin.')->middleware('auth', 'verified')->group(fu
     Route::get('/payment/process', [PaymentController::class, 'process'])->name('payment.process');
     Route::resource('apartments', ApartmentController::class);
     Route::resource('messages', MessageController::class)->only(['index']);
-    Route::resource('user_datas', UserDataController::class)->only(['update','edit','index']);
-    Route::resource('sponsors', SponsorController::class)->only(['index','show']);
-    Route::resource('image_gallery', ImageGalleryController::class)->only(['store','update','destroy']);
+    Route::resource('user_datas', UserDataController::class)->only(['update', 'edit', 'index']);
+    Route::resource('sponsors', SponsorController::class)->only(['index', 'show']);
+    Route::resource('image_gallery', ImageGalleryController::class)->only(['store', 'update', 'destroy']);
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

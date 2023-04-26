@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Mails</title>
+    <title>Payment-Success</title>
 </head>
 
 <style>
@@ -120,9 +120,12 @@
                     <img class="h-100" src="{{ asset('assets/logo.svg') }}">
                 </div>
             </a>
+            <h1 class="color">
+                Pagamento effettuato con successo
+            </h1>
             <div class="body">
                 <p>Salve,</p>
-                <p>Abbiamo ricevuto un messaggio dal seguente utente:</p>
+                <p>Abbiamo ricevuto una disposizione di pagamento dal seguente utente:</p>
                 <ul>
                     <li><strong>Nome:</strong> {{ $data['name'] }}</li>
                     <li><strong>Cognome:</strong> {{ $data['surname'] }}</li>
