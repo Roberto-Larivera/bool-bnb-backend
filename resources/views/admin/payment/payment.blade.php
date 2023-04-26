@@ -34,7 +34,6 @@
         <div class="row">
             <div class="col-6 offset-3">
                 @csrf
-                {{-- Stile fornito da Braintree --}}
                 <div id="dropin-container">
 
                 </div>
@@ -43,6 +42,7 @@
                         Procedi al pagamento
                     </a>
                 </div>
+
 
 
                 <div class="modal" id="myModal">
@@ -100,24 +100,27 @@
                         payload,
                         sponsor,
                         apartment
+                    
 
-                    }, function(response) {
+                    },
+                    function(response) {
                         if (response.success) {
                             // messaggio di successo
                             
-                            // window.location.replace('{{ route('admin.sponsors.index') }}'); 
-                            $(document).ready(function(){
-                                $("#submit-button").click(function(){
-                                    $("#myModal").modal();
-                                });
-                            });
+                            // window.location.replace('{{ route('admin.sponsors.index')) 
+                            // $(document).ready(function(){
+                            //     $("#submit-button").click(function(){
+                            //         $("#myModal").modal();
+                            //     });
+                            // });
+
                             
                             
                         }
                         else {
 
                         }
-                    }, 'json');
+                    },'json');
                 });
             });
         });

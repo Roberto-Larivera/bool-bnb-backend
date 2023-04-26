@@ -38,7 +38,7 @@ Route::get('/provaPagamento', [PageController::class, 'provaPagamento'])->name('
 
 Route::prefix('admin')->name('admin.')->middleware('auth', 'verified')->group(function () {
     Route::match(['get', 'post'], '/dashboard', [PageController::class, 'dashboard'])->name('dashboard');
-    Route::any('/payment/token', [PaymentController::class, 'token'])->name('payment.token');
+    Route::get('/payment/token', [PaymentController::class, 'token'])->name('payment.token');
     Route::get('/payment/process', [PaymentController::class, 'process'])->name('payment.process');
     Route::resource('apartments', ApartmentController::class);
     Route::resource('messages', MessageController::class)->only(['index']);

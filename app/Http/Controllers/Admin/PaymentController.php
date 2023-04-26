@@ -70,7 +70,10 @@ class PaymentController extends Controller
         $currentDate = date("Y-m-d H:i:s");
         $currentDateMin = date("Y-m-d H:i:s", strtotime('+'.$sponsor->duration.'hours', strtotime($currentDate)));
 
-        
+        // if($status) {
+        //     // return redirect()->route('admin.sponsors.index')->with('success', 'Pagamento avvenuto con successo');
+        //     return redirect()->route('admin.sponsors.index');
+        // }
 
         if($status){
             $apartment_sponsor = new ApartmentSponsor();
@@ -79,8 +82,13 @@ class PaymentController extends Controller
             $apartment_sponsor->deadline = $currentDateMin;
             $apartment_sponsor->save();
 
+            
         }
+        // else {
+        //     return redirect()->route('admin.payment.token');
+        // }
 
         return response()->json($status);
+        
     }
 }
