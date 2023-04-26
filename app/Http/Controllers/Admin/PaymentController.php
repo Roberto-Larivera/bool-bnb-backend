@@ -8,7 +8,7 @@ use Braintree\Transaction;
 use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Support\Facades\Mail;
-use App\Mail\payment;
+use App\Mail\PaymentMail;
 
 use App\Models\Apartment;
 use App\Models\Sponsor;
@@ -75,8 +75,11 @@ class PaymentController extends Controller
         $currentDate = date("Y-m-d H:i:s");
         $currentDateMin = date("Y-m-d H:i:s", strtotime('+'.$sponsor->duration.'hours', strtotime($currentDate)));
 
+        
+
         if($status){
-            Mail::to($hostEmail)->send(new payment($data));
+            dd('ciao');
+            Mail::to('ciao@email.it')->send(new PaymentMail($data));
             $apartment_sponsor = new ApartmentSponsor();
             $apartment_sponsor->apartment_id = $apartmentId;
             $apartment_sponsor->sponsor_id = $sponsorId;

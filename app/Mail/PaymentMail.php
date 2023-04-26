@@ -8,9 +8,8 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
-use Illuminate\Http\Request;
 
-class payment extends Mailable
+class PaymentMail extends Mailable
 {
     use Queueable, SerializesModels;
     public $data;
@@ -31,30 +30,17 @@ class payment extends Mailable
      */
     public function envelope()
     {
-        return new Envelope();
+        return new Envelope(
+            subject: 'Aquisto sponsor'
+        );
     }
-
-    // public function build(Request $request)
-    // {
-    //     $data = [
-    //         'apartment_name' => $request->input('apartment_name'),
-    //         'sponsor_price' => $request->input('sponsor_price'),
-    //         'sponsor_duration' => $request->input('sponsor_duration'),
-    //         'sponsor_name' => $request->input('sponsor_name'),
-    //     ];
-
-    //     return $this->from($data['email'], $data['name'].' '.$data['surname'])
-    //         ->subject($data['object'])
-    //         ->view('emails.contacthost', compact('data'));
-    // }
 
     public function build()
     {
         $data = $this->data;
 
-        return $this->from('ciao@it', 'ciccio bello')
-        ->subject('prego dio')
-        ->view('emails.contacthost', compact('data'));
+        return $this->from('noreply@example.com')
+                ->view('admin.messages.mail.newpaymentsuccess');
     }
 
     /**
