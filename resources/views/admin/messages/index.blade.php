@@ -43,7 +43,8 @@
                     <div class="modal-body">
                         <form action="{{ route('admin.messages.index') }}" method="GET" class="form-container-small">
                             <div class="mb-3">
-                                <select class="form-select input-data" aria-label="Default select example" name="apartment_id">
+                                <select class="form-select input-data" aria-label="Default select example"
+                                    name="apartment_id">
                                     <option value="">Tutti gli Appartamenti</option>
                                     @foreach ($apartments as $apartment)
                                         <option value="{{ $apartment->id }}"
@@ -79,7 +80,7 @@
         @include('admin.partials.warning')
 
         @if ($messages->isNotEmpty())
-            <table class="table my-4 rounded">
+            <table class="table my-4 rounded-4">
                 <thead>
                     <tr>
                         <th scope="col" class="d-none d-sm-table-cell">
@@ -87,11 +88,11 @@
                             Appartamento
                         </th>
                         <th scope="col">
-                            <i class="fa-solid fa-user"></i> 
+                            <i class="fa-solid fa-user"></i>
                             Mittente
                         </th>
                         <th scope="col" class="d-none d-lg-table-cell">
-                            <i class="fa-solid fa-thumbtack"></i> 
+                            <i class="fa-solid fa-thumbtack"></i>
                             Oggetto
                         </th>
                         <th scope="col" class="d-none d-lg-table-cell">
@@ -106,7 +107,8 @@
                 </thead>
                 <tbody>
                     @forelse ($messages as $message)
-                        <tr data-bs-toggle="modal" data-bs-target="#message-{{ $message->id }}" class="cursor-pointer-message">
+                        <tr data-bs-toggle="modal" data-bs-target="#message-{{ $message->id }}"
+                            class="cursor-pointer-message">
                             <td class="d-none d-sm-table-cell">{{ $message->apartment->title }}</td>
                             <td>{!! str_ireplace(
                                 request('search'),
@@ -148,7 +150,7 @@
                                     </div>
                                     <div class="modal-body">
                                         <p><strong>Appartamento:</strong> {{ $message->apartment->title }}</p>
-                                        <p><strong>Mittente:</strong> 
+                                        <p><strong>Mittente:</strong>
                                             {!! str_ireplace(
                                                 request('search'),
                                                 '<span class="highlight">' . request('search') . '</span>',
@@ -165,9 +167,10 @@
                                                 '<span class="highlight">' . request('search') . '</span>',
                                                 $message->sender_text,
                                             ) !!}
-                                            
+
                                         </p>
-                                        <p><strong>Giorno:</strong> {{ date('Y/m/d H:i', strtotime($message->created_at)) }}</p>
+                                        <p><strong>Giorno:</strong>
+                                            {{ date('Y/m/d H:i', strtotime($message->created_at)) }}</p>
                                     </div>
                                 </div>
                             </div>

@@ -12,8 +12,8 @@
     }
 }
 
-.filter{
-    border:  1px solid black;
+.filter {
+    border: 1px solid black;
     background-color: transparent;
 }
 
@@ -44,15 +44,31 @@
 
 }
 
-.message-img-house img{
+.message-img-house img {
     height: 50px;
     width: 50px;
 }
 
-.highlight{
+.highlight {
     background-color: yellow;
 }
 
-.cursor-pointer-message{
+.cursor-pointer-message {
     cursor: pointer;
+}
+
+
+thead {
+    background-color: $color_primary;
+
+
+}
+
+tbody {
+    background-color: $color_light;
+
+    tr:hover {
+        background-color: $color_light_pink;
+        padding: 5px;
+    }
 }
