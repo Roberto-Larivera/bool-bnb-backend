@@ -38,6 +38,20 @@
 
 }
 
+@mixin buttonDisabled{
+  & {
+    padding: 0.5rem;
+    display: inline-block;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    background-color: $color_light_gray;
+    border: 1px solid $color_dark;
+    color: $color_dark;
+    border-radius: 0.375rem;
+
+  }
+}
+
 @mixin buttonSecondary{
   & {
     padding: 0.5rem;

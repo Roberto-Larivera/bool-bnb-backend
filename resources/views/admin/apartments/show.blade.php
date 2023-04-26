@@ -89,7 +89,8 @@
                 @endif
 
                 <div>
-                    &euro; {{ $apartment->price }} <i class="fa-solid fa-sack-dollar"></i>
+                    &euro; {{ $apartment->price }} 
+                    {{-- <i class="fa-solid fa-sack-dollar"></i> --}}
                 </div>
 
                 {{-- Bottoni Mobile messaggi / sponsor --}}
@@ -99,9 +100,16 @@
                     </a>
 
                     {{-- Aggiungere rotta sponsor --}}
-                    <a href="#" class="secondary-btn">
-                        <i class="fa-solid fa-sack-dollar"></i>
-                    </a>
+                    @if($apartment->sponsored == false)
+                        <a href="{{ route('admin.sponsors.index',  ['apartment_id' => $apartment->id]) }}" class="secondary-btn">
+                            <i class="fa-solid fa-sack-dollar"></i>
+                        </a>
+                    @else
+                        <button class="disabled-btn">
+                            <i class="fa-solid fa-sack-dollar"></i>
+                    </button>
+                    @endif
+
                 </div>
 
                 {{-- Bottoni Tablet messaggi / sponsor --}}
@@ -111,11 +119,17 @@
                         Leggi messaggi
                     </a>
 
-                    {{-- Aggiungere rotta sponsor --}}
-                    <a href="{{ route('admin.sponsors.index', ['apartment_id' => $apartment->id]) }}" class="secondary-btn">
-                        Sponsorizza
-                    </a>
-                </div>
+                   {{-- Aggiungere rotta sponsor --}}
+                   @if($apartment->sponsored == false)
+                   <a href="{{ route('admin.sponsors.index',  ['apartment_id' => $apartment->id]) }}" class="secondary-btn">
+                       Sponsorizza
+                   </a>
+                   @else
+                   <button class="disabled-btn">
+                        Sponsorizzato
+                   </button>
+                @endif
+               </div>
             </div>
         </div>
     </div>

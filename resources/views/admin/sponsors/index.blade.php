@@ -22,7 +22,9 @@
     </div>
 </div>
 
-
+@include('admin.partials.errors')
+        @include('admin.partials.success')
+        @include('admin.partials.warning')
 <div class="container h-100 d-flex align-items-center justify-content-center">
     <div class="row w-100 gy-5 mt-5 mt-md-0">
         @foreach ($sponsors as $sponsor)

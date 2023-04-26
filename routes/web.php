@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\MessageController;
 use App\Http\Controllers\Admin\UserDataController;
 use App\Http\Controllers\Admin\SponsorController;
 use App\Http\Controllers\Admin\ImageGalleryController;
+use App\Http\Controllers\Admin\PaymentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,6 +36,8 @@ Route::get('/prova', [PageController::class, 'prova'])->name('prova');
 
 Route::prefix('admin')->name('admin.')->middleware('auth', 'verified')->group(function () {
     Route::match(['get', 'post'], '/dashboard', [PageController::class, 'dashboard'])->name('dashboard');
+    Route::any('/payment/token', [PaymentController::class, 'token'])->name('payment.token');
+    Route::get('/payment/process', [PaymentController::class, 'process'])->name('payment.process');
     Route::resource('apartments', ApartmentController::class);
     Route::resource('messages', MessageController::class)->only(['index']);
     Route::resource('user_datas', UserDataController::class)->only(['update','edit','index']);

@@ -21,9 +21,12 @@
         </a>
     </div>
 </div>
-
+@include('admin.partials.errors')
+        @include('admin.partials.success')
+        @include('admin.partials.warning')
 <div class="container h-100">
     <div class="row gy-5 mt-5 mt-md-0 d-flex justify-content-center mb-5">
+        {{-- qui se più appartamenti --}}
         @if (isset($apartments))
             <div class="col-xs-12 col-xl-4 d-flex justify-content-center">
                 <div class="my-card p-4">
@@ -46,11 +49,8 @@
                             <th scope="col" class="d-none d-lg-table-cell">
                                 Indirizzo
                             </th>
-                            <th scope="col" class="d-none d-xxl-table-cell">
-                                Prezzo / notte
-                            </th>
                             <th scope="col">
-                                Seleziona
+                                #
                             </th>
                         </tr>
                     </thead>
@@ -60,7 +60,7 @@
                             <tr>
                                 <td class="d-none d-md-table-cell align-middle">
                                     <div class="apartment-img-container">
-                                        <img src="{{ $apartment->main_img }}" alt=" {{ $apartment->title }}" class="img-fluid">
+                                        <img src="{{ $apartment->main_img }}" alt=" {{ $apartment->title }}" class="my-img img-fluid rounded">
                                     </div>
                                 </td>
                                 <td class="align-middle">
@@ -69,24 +69,22 @@
                                 <td class="d-none d-lg-table-cell align-middle">
                                     {{ $apartment->address }}
                                 </td>
-                                <td class="d-none d-xxl-table-cell align-middle">
-                                    {{ $apartment->price }}
-                                </td>
                                 <td class="align-middle">
-                                    <div class="form-check">
-                                        <input class="form-check-input input-radio" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                                    </div>
+                                    <a href="{{ route('admin.payment.token', ['sponsor_id'=>$sponsor->id, 'apartment_id' =>  $apartment->id ]) }}" class="primary-btn me-3">
+                                        Paga
+                                    </a>
                                 </td>
                             </tr>
                         </tbody>
                     @endforeach
-                </table
+                </table>
             </div>
         @else
+        {{-- Qui se appartamento singolo --}}
             <div class="col-md-12 col-lg-6 d-flex justify-content-center">
                 <div class="my-card p-4">
                     <h2 class="card-title text-center fw-bold {{ strtolower(explode(' ', $sponsor->title)[1]) }} px-2 py-3 ">{{ explode(' ', $sponsor->title)[1] }}</h2>
-                    <h5 class="px-2 py-3 py-xxl-5 text-center">Prezzo: {{ $sponsor->price }} €</h5>
+                    <h6 class="px-2 py-3 py-xxl-5 text-center">Prezzo: {{ $sponsor->price }} h</h6>
                     <h6 class="px-2 py-3 py-xxl-5 text-center">Durata: {{ $sponsor->duration }} h</h6>
                     <p class="card-text p-2 text-center">{{ $sponsor->description }}</p>
                 </div>
@@ -95,23 +93,18 @@
             <div class="col-md-12 col-lg-6 d-flex justify-content-center align-items-center">
                 <div class="my-card">
                     <h2 class="text-center px-2 pt-5 ">{{ $apartment->title }}</h2>
-                    <div class="p-5">
+                    <div class="px-5 pt-5">
                         <img class="img-fluid rounded" src="{{ $apartment->main_img }}">
+                    </div>
+                    <div class="text-center my-3">
+                        <a href="{{ route('admin.payment.token', ['sponsor_id'=>$sponsor->id, 'apartment_id' =>  $apartment->id ]) }}" class="secondary-btn">
+                            Procedi al pagamento
+                        </a>
                     </div>
                 </div>
             </div>
                 
         @endif
-    </div>
-
-    <div class="row row-cols-1">
-        <div class="col-12 d-flex justify-content-center">
-            <div class="button mt-3">
-                <a href="#" class="secondary-btn me-3">
-                    Procedi al pagamento
-                </a>
-            </div>
-        </div>
     </div>
 </div>
 
