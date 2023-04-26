@@ -17,7 +17,7 @@ class ImageGallery extends Model
     ];
 
     protected $appends = [
-        'full_path_main_img',
+        'full_path_image_gallery',
         // 'sponsored',
     ];
 

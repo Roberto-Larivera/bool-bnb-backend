@@ -63,7 +63,7 @@ class PageController extends Controller
         }
 
         // apartamenti per pagina
-        $itemsPerPage = 20;
+        $itemsPerPage = 10;
 
 
 
@@ -164,6 +164,7 @@ class PageController extends Controller
         //         ->paginate($itemsPerPage);
         // }
 
+        
 
 
         // aggiunto parametro true e false per sponsored
@@ -190,7 +191,6 @@ class PageController extends Controller
                 'message' => 'Non ci sono sono appartamenti'
             ];
         }
-
         return response()->json($response);
     }
 
