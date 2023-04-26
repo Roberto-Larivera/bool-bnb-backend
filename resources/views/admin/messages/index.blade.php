@@ -82,11 +82,26 @@
             <table class="table my-4 rounded">
                 <thead>
                     <tr>
-                        <th scope="col" class="d-none d-sm-table-cell">Appartamento</th>
-                        <th scope="col">Mittente</th>
-                        <th scope="col" class="d-none d-lg-table-cell">Oggetto</th>
-                        <th scope="col" class="d-none d-lg-table-cell">Messaggio</th>
-                        <th scope="col">Orario</th>
+                        <th scope="col" class="d-none d-sm-table-cell">
+                            <i class="fa-solid fa-building"></i>
+                            Appartamento
+                        </th>
+                        <th scope="col">
+                            <i class="fa-solid fa-user"></i> 
+                            Mittente
+                        </th>
+                        <th scope="col" class="d-none d-lg-table-cell">
+                            <i class="fa-solid fa-thumbtack"></i> 
+                            Oggetto
+                        </th>
+                        <th scope="col" class="d-none d-lg-table-cell">
+                            <i class="fa-solid fa-envelope"></i>
+                            Messaggio
+                        </th>
+                        <th scope="col">
+                            <i class="fa-solid fa-clock"></i>
+                            Orario
+                        </th>
                     </tr>
                 </thead>
                 <tbody>

@@ -42,21 +42,27 @@
                     <thead>
                     <tr>
                         <th scope="col" class="d-none d-md-table-cell">
+                            <i class="fa-solid fa-camera"></i>
                             Foto
                         </th>
                         <th scope="col">
+                            <i class="fa-solid fa-tag"></i>
                             Titolo
                         </th>
                         <th scope="col" class="d-none d-md-table-cell">
+                            <i class="fa-solid fa-location-dot"></i>
                             Indirizzo
                         </th>
                         <th scope="col" class="d-none d-lg-table-cell">
+                            <i class="fa-solid fa-house"></i> 
                             Mq
                         </th>
                         <th scope="col" class="d-none d-lg-table-cell">
+                            <i class="fa-solid fa-sack-dollar"></i>
                             Prezzo / notte
                         </th>
                         <th scope="col">
+                            <i class="fa-solid fa-eye"></i>
                             Azioni
                         </th>
                     </tr>
