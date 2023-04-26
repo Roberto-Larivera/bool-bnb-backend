@@ -75,10 +75,13 @@ class SponsorController extends Controller
             $apartments = Apartment::where('user_id', $user->id)
             ->whereDoesntHave('sponsors', function ($query)  use ($oggi) {
                 $query->where('deadline', '>', $oggi)
-                      ->orWhereNull('deadline');
+                ->orWhereNull('deadline');
             })
             ->get();
-
+            foreach ($apartments as $key => $item) {
+                $item['full_path_main_img'] = asset('storage/'.$item->main_img); 
+            }
+            
             return view('admin.sponsors.show', [
                 'apartments' => $apartments,
                 'sponsor' => $sponsor,

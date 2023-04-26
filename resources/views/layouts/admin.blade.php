@@ -78,10 +78,6 @@
                                     <i class="fa-regular fa-envelope" data-bs-toggle="tooltip"
                                         data-bs-placement="bottom" data-bs-title="Messaggi"></i>
                                 </a>
-                                <a href="#nogo">
-                                    <i class="fa-regular fa-bell" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                                        data-bs-title="Avvisi"></i>
-                                </a>
                                 <a href="{{ route('logout') }}"
                                     onclick="event.preventDefault();
                         document.getElementById('logout-form').submit();">
@@ -102,7 +98,7 @@
         <div class="modal fade w-100" id="navBarModal" tabindex="-1" aria-labelledby="exampleModalLabel"
             aria-hidden="true">
             <div class="modal-dialog">
-                <div class="modal-content p-5">
+                <div class="modal-content py-4 px-5">
                     <div class="modal-header pt-0 ps-0 pe-0 justify-content-center">
                         <button type="button" class="btn-close m-0" data-bs-dismiss="modal"
                             aria-label="Close"></button>
