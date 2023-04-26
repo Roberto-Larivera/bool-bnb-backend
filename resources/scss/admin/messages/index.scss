@@ -1,74 +1,74 @@
-.form-container-large {
-    width: 85%;
-    border: 1px solid $color_gray;
-
-    .form-select {
-        display: inline;
-        width: auto;
-        background-color: $color_light;
-        border: 0;
-        border-radius: 0;
-        height: auto;
-    }
-}
-
-.filter {
-    border: 1px solid black;
-    background-color: transparent;
-}
-
-.no-outline:focus {
-    outline: none;
-}
-
-.modal-content {
-    background-color: $color_light;
-    border-radius: 0.5rem 0.5rem 0 0;
-    border: none;
-
-    .modal-body {
-        border-radius: 0.5rem 0.5rem 0 0;
-
-        .form-check-input {
-
-            &:checked {
-                background-color: $color_primary;
-            }
+#messages_index{
+    .form-container-large {
+        width: 85%;
+        border: 1px solid $color_gray;
+    
+        .form-select {
+            display: inline;
+            width: auto;
+            background-color: $color_light;
+            border: 0;
+            border-radius: 0;
+            height: auto;
         }
     }
-
-}
-
-.modal-footer {
-    background-color: $color_light;
-
-}
-
-.message-img-house img {
-    height: 50px;
-    width: 50px;
-}
-
-.highlight {
-    background-color: yellow;
-}
-
-.cursor-pointer-message {
-    cursor: pointer;
-}
-
-
-thead {
-    background-color: $color_primary;
-
-
-}
-
-tbody {
-    background-color: $color_light;
-
-    tr:hover {
-        background-color: $color_light_pink;
-        padding: 5px;
+    
+    .filter {
+        border: 1px solid black;
+        background-color: transparent;
+    }
+    
+    .no-outline:focus {
+        outline: none;
+    }
+    
+    .modal-content {
+        background-color: $color_light;
+        border-radius: 0.5rem 0.5rem 0 0;
+        border: none;
+    
+        .modal-body {
+            border-radius: 0.5rem 0.5rem 0 0;
+    
+            .form-check-input {
+    
+                &:checked {
+                    background-color: $color_primary;
+                }
+            }
+        }
+    
+    }
+    
+    .modal-footer {
+        background-color: $color_light;
+    
+    }
+    
+    .message-img-house img {
+        height: 50px;
+        width: 50px;
+    }
+    
+    .highlight {
+        background-color: yellow;
+    }
+    
+    .cursor-pointer-message {
+        cursor: pointer;
+    }
+    
+    
+    thead {
+        background-color: $color_light;
+    }
+    
+    tbody {
+        background-color: $color_light;
+    
+        tr:hover {
+            background-color: $color_light_pink;
+            padding: 5px;
+        }
     }
 }

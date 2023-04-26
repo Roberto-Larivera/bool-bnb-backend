@@ -2,7 +2,7 @@
 
 @section('title', ' | Appartamenti')
 @section('content')
-<div class="container-fluid mt-4">
+<div id="apartments_index" class="container-fluid mt-4">
     <div class="row row-cols-1 mb-5">
         <div class="col py-3">
             <h1>
@@ -42,28 +42,36 @@
                     <thead>
                     <tr>
                         <th scope="col" class="d-none d-md-table-cell">
-                            <i class="fa-solid fa-camera"></i>
-                            Foto
+                            <div class="text-center">
+                                <i class="fa-solid fa-camera"></i>
+                            </div>
                         </th>
                         <th scope="col">
                             <i class="fa-solid fa-tag"></i>
                             Titolo
                         </th>
                         <th scope="col" class="d-none d-md-table-cell">
-                            <i class="fa-solid fa-location-dot"></i>
-                            Indirizzo
+                            <div class="text-start">
+                                <i class="fa-solid fa-location-dot"></i>
+                                Indirizzo
+                            </div>
                         </th>
                         <th scope="col" class="d-none d-lg-table-cell">
-                            <i class="fa-solid fa-house"></i> 
+                            <div class="text-center">
+                                <i class="fa-solid fa-house"></i> 
                             Mq
+                            </div>
                         </th>
                         <th scope="col" class="d-none d-lg-table-cell">
-                            <i class="fa-solid fa-sack-dollar"></i>
-                            Prezzo / notte
+                           <div class="text-center">
+                            <i class="fa-solid fa-sack-dollar"></i> / notte
+                           </div>
                         </th>
                         <th scope="col">
-                            <i class="fa-solid fa-eye"></i>
+                            <div class="text-center">
+                                <i class="fa-solid fa-eye"></i>
                             Azioni
+                            </div>
                         </th>
                     </tr>
                     </thead>
@@ -72,7 +80,7 @@
                         <tbody>
                             <tr>
                                 <td class="d-none d-md-table-cell align-middle">
-                                    <div class="apartment-img-container">
+                                    <div class="apartment-img-container mx-auto">
                                         <img src="{{ $apartment->full_path_main_img }}" alt=" {{ $apartment->title }}" class="my-img img-fluid rounded">
                                         {{-- <img src="{{ $apartment->main_img }}" alt=" {{ $apartment->title }}" class="img-fluid"> --}}
                                     </div>
@@ -84,15 +92,21 @@
                                     {{ $apartment->address }}
                                 </td>
                                 <td class="d-none d-lg-table-cell align-middle">
-                                    {{ $apartment->mq }}
+                                    <div class="text-center">
+                                        {{ $apartment->mq }}
+                                    </div>
                                 </td>
                                 <td class="d-none d-lg-table-cell align-middle">
-                                    {{ $apartment->price }}
+                                    <div class="text-center">
+                                        {{ $apartment->price }}
+                                    </div>
                                 </td>
                                 <td class="align-middle">
-                                    <a href="{{ route('admin.apartments.show', $apartment->id) }}" class="primary-btn">
-                                        Dettagli
-                                    </a>
+                                    <div class="text-center">
+                                        <a href="{{ route('admin.apartments.show', $apartment->id) }}" class="primary-btn">
+                                            Dettagli
+                                        </a>
+                                    </div>
                                 </td>
                             </tr>
                         </tbody>

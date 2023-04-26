@@ -3,7 +3,7 @@
 @section('title', ' | Messaggi')
 
 @section('content')
-    <div class="container-fluid mt-4">
+    <div id="messages_index" class="container-fluid mt-4">
         <div class="row row-cols-1 mb-5">
             <div class="col py-3">
                 <h1>
@@ -85,23 +85,24 @@
                     <tr>
                         <th scope="col" class="d-none d-sm-table-cell">
                             <i class="fa-solid fa-building"></i>
-                            Appartamento
+                            App
                         </th>
                         <th scope="col">
                             <i class="fa-solid fa-user"></i>
-                            Mittente
+                            Mit
                         </th>
                         <th scope="col" class="d-none d-lg-table-cell">
                             <i class="fa-solid fa-thumbtack"></i>
-                            Oggetto
+                            Ogg
                         </th>
                         <th scope="col" class="d-none d-lg-table-cell">
                             <i class="fa-solid fa-envelope"></i>
-                            Messaggio
+                            Mss
                         </th>
-                        <th scope="col">
-                            <i class="fa-solid fa-clock"></i>
-                            Orario
+                        <th scope="col ">
+                            <div class="text-center">
+                                <i class="fa-solid fa-clock"></i>
+                            </div>
                         </th>
                     </tr>
                 </thead>
@@ -130,7 +131,7 @@
                                     80,
                                 ) !!}</p>
                             </td>
-                            <td><strong>{{ date('H:i', strtotime($message->created_at)) }}</strong></td>
+                            <td class="text-center"><strong>{{ date('H:i', strtotime($message->created_at)) }}</strong></td>
                         </tr>
 
                         {{-- Modal --}}
