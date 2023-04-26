@@ -57,6 +57,17 @@
     cursor: pointer;
 }
 
+.rounded-top-start {
+    border-top-left-radius: 10px;
+}
+
+.rounded-top-end {
+    border-top-right-radius: 10px;
+}
+
+tr>th {
+    color: $color_light;
+}
 
 thead {
     background-color: $color_primary;

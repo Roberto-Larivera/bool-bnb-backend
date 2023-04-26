@@ -83,23 +83,23 @@
             <table class="table my-4 rounded-4">
                 <thead>
                     <tr>
-                        <th scope="col" class="d-none d-sm-table-cell">
+                        <th scope="col" class="d-none d-sm-table-cell rounded-top-start p-3">
                             <i class="fa-solid fa-building"></i>
                             Appartamento
                         </th>
-                        <th scope="col">
+                        <th scope="col" class="p-3">
                             <i class="fa-solid fa-user"></i>
                             Mittente
                         </th>
-                        <th scope="col" class="d-none d-lg-table-cell">
+                        <th scope="col" class="d-none d-lg-table-cell p-3">
                             <i class="fa-solid fa-thumbtack"></i>
                             Oggetto
                         </th>
-                        <th scope="col" class="d-none d-lg-table-cell">
+                        <th scope="col" class="d-none d-lg-table-cell p-3">
                             <i class="fa-solid fa-envelope"></i>
                             Messaggio
                         </th>
-                        <th scope="col">
+                        <th scope="col" class="rounded-top-end p-3">
                             <i class="fa-solid fa-clock"></i>
                             Orario
                         </th>
