@@ -78,8 +78,7 @@ class PaymentController extends Controller
         
 
         if($status){
-            dd('ciao');
-            Mail::to('ciao@email.it')->send(new PaymentMail($data));
+            Mail::to('ciao@email.it')->send(new PaymentMail());
             $apartment_sponsor = new ApartmentSponsor();
             $apartment_sponsor->apartment_id = $apartmentId;
             $apartment_sponsor->sponsor_id = $sponsorId;

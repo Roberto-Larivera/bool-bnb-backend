@@ -124,13 +124,13 @@
                 <p>Salve,</p>
                 <p>Abbiamo ricevuto un messaggio dal seguente utente:</p>
                 <ul>
-                    <li><strong>Nome:</strong> {{ $data['name'] }}</li>
+                    {{-- <li><strong>Nome:</strong> {{ $data['name'] }}</li>
                     <li><strong>Cognome:</strong> {{ $data['surname'] }}</li>
                     <li><strong>Oggetto:</strong> {{ $data['object'] }}</li>
-                    <li><strong>Email:</strong> {{ $data['email'] }}</li>
+                    <li><strong>Email:</strong> {{ $data['email'] }}</li> --}}
                 </ul>
                 <p><strong>Testo del messaggio:</strong></p>
-                <p>{{ $data['message'] }}</p>
+                {{-- <p>{{ $data['message'] }}</p> --}}
             </div>
             <div class="footer">
                 <p>Questa email è stata generata automaticamente. Non rispondere a questo messaggio.</p>

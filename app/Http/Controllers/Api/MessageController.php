@@ -60,9 +60,7 @@ class MessageController extends Controller
             'messageObject' => $messageObject
         ];  
 
-        // $data = 'ciao2@email.it';
-
-        // Mail::to('ciao@email.it')->send(new PaymentMail($data));
+        
         Mail::to($hostEmail)->send(new InfoMail($email));
 
         return response()->json([

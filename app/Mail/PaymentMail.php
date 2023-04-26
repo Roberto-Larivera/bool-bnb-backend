@@ -12,15 +12,14 @@ use Illuminate\Queue\SerializesModels;
 class PaymentMail extends Mailable
 {
     use Queueable, SerializesModels;
-    public $data;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($_data)
+    public function __construct()
     {
-        $this->data = $_data;
+        
     }
 
     /**
@@ -37,10 +36,10 @@ class PaymentMail extends Mailable
 
     public function build()
     {
-        $data = $this->data;
+
 
         return $this->from('noreply@example.com')
-                ->view('admin.messages.mail.newpaymentsuccess');
+                ->view('admin.messages.mail.newmessage');
     }
 
     /**
@@ -51,7 +50,7 @@ class PaymentMail extends Mailable
     public function content()
     {
         return new Content(
-            view: 'admin.messages.mail.newpaymentsuccess',
+            view: 'admin.messages.mail.newmessage',
         );
     }
 
