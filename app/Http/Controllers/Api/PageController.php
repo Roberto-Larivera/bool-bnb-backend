@@ -47,8 +47,6 @@ class PageController extends Controller
     public function index()
     {
 
-        $prova = Apartment::all();
-
         // funzione distanza raggio
         function distance($lat1, $lon1, $lat2, $lon2)
         {
@@ -183,8 +181,7 @@ class PageController extends Controller
                 'success' => true,
                 'code' => 200,
                 'message' => 'OK',
-                'apartments' => $data,
-                'prova' => $prova
+                'apartments' => $data
             ];
         } else {
             $response = [
