@@ -1,0 +1,33 @@
+#apartments_create, #apartments_update{
+    input{
+        @include inputData
+    }
+    textarea{
+        @include inputData
+    }
+    input[type="radio"]:checked, input[type="checkbox"]:checked {
+        background-color: $color_primary;
+        border-color: $color_primary;
+      }
+      
+    
+
+    #menuAutoComplete{
+        border-radius: 0 0 5px 5px;
+        border-left: 1px solid $color_primary;
+        border-bottom: 1px solid $color_primary;
+        border-right: 1px solid $color_primary;
+        // box-shadow: 0 0 0 0.25rem rgb(255, 56, 92, 0.25);
+        
+        ul{
+            li{
+                cursor: pointer;
+                padding: 0.9rem;
+                &:hover{
+                    background-color: rgb(255, 56, 92, 0.25);
+                }
+            }
+        }
+    }
+
+}

@@ -18,6 +18,10 @@
     {{-- fontawesome  --}}
     <link rel="stylesheet" href="{{ asset('node_modules/@fortawesome/fontawesome-free/css/all.min.css') }}">
 
+    {{-- Import api TomTom --}}
+    <link rel="stylesheet" type="text/css" href="https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.14.0/maps/maps.css">
+    <script src="https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.14.0/maps/maps-web.min.js"></script>
+
     <!-- Usando Vite -->
     @vite(['resources/js/app.js'])
 </head>
@@ -34,7 +38,7 @@
                         <!-- contenitore per il logo  -->
                         <a class="logo_site first-letter:navbar-brand d-flex  align-items-center h-100" href="{{ url('login') }}">
                             <div class=" h-100">
-                                <img src="logo.svg" alt="">
+                                <img src="{{ asset('assets/logo.svg') }}">
                             </div>
                             <span>
                                 BoolBnB
@@ -57,12 +61,12 @@
                                 @else
                                 <li class="dropdown">
                                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                        {{ Auth::user()->name }}
+                                        {{ Auth::user()->user_data->name }}
                                     </a>
                             
                                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                         <a class="dropdown-item" href="{{ route('admin.dashboard') }}">{{__('Dashboard')}}</a>
-                                        <a class="dropdown-item" href="{{ url('profile') }}">{{__('Profile')}}</a>
+                                        {{-- <a class="dropdown-item" href="{{ url('profile') }}">{{__('Profile')}}</a> --}}
                                         <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                             document.getElementById('logout-form').submit();">
                                             {{ __('Logout') }}

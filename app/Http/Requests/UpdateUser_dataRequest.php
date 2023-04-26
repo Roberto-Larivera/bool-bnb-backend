@@ -13,7 +13,7 @@ class UpdateUser_dataRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**

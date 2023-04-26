@@ -1,10 +1,19 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
+
+use App\Http\Controllers\Controller;
 
 use App\Http\Requests\StoreMessageRequest;
 use App\Http\Requests\UpdateMessageRequest;
+use Illuminate\Http\Request;
+
+//Models
 use App\Models\Message;
+use App\Models\Apartment;
+
+// Facades
+use Illuminate\Support\Facades\Auth;
 
 class MessageController extends Controller
 {
@@ -13,10 +22,44 @@ class MessageController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        //
-    }
+
+
+     public function index(Request $request)
+     {
+         $user = Auth::user();
+     
+         $apartment_id = $request->input('apartment_id');
+         $search = $request->input('search');
+     
+         $messages = Message::whereHas('apartment', function ($query) use ($user) {
+             $query->where('user_id', '=',  $user->id);
+         });
+     
+         if ($apartment_id) {
+             $messages = $messages->where('apartment_id', $apartment_id);
+         }
+     
+         if ($search) {
+             $messages = $messages->where(function ($query) use ($search) {
+                 $query->where('sender_name', 'LIKE', '%' . $search . '%')
+                       ->orWhere('object', 'LIKE', '%' . $search . '%')
+                       ->orWhere('sender_surname', 'LIKE', '%' . $search . '%')
+                       ->orWhere('sender_text', 'LIKE', '%' . $search . '%');
+             });
+         }
+     
+         $messages = $messages->get();
+     
+         $apartments = Apartment::where('user_id', $user->id)->get();
+     
+         return view('admin.messages.index', [
+             'messages' => $messages,
+             'apartments' => $apartments,
+             'selected_apartment_id' => $apartment_id,
+             'search' => $search
+         ]);
+     }
+
 
     /**
      * Show the form for creating a new resource.

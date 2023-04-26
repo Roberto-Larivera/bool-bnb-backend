@@ -1,0 +1,17 @@
+#dropin-container {
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+}
+
+.info-payment {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: $color_primary;
+}
+
+
+.my-border {
+    border: 2px solid $color_primary;
+}

@@ -11,13 +11,14 @@ class Apartment extends Model
     
     protected $fillable = [
         'title',
+        'user_id',
         'slug',
         'description',
         'main_img',
         'max_guests',
-        'max_rooms',
-        'max_beds',
-        'max_baths',
+        'rooms',
+        'beds',
+        'baths',
         'mq',
         'address',
         'latitude',
@@ -26,7 +27,24 @@ class Apartment extends Model
         'visible',
     ];
 
+    // colonna fantasma 
+    protected $appends = [
+        'full_path_main_img',
+        // 'sponsored',
+    ];
 
+    public function getFullPathMainImgAttribute(){
+        $fullPath = null;
+        if($this->main_img)
+            $fullPath = asset('storage/'.$this->main_img);
+        return $fullPath;
+    }
+    
+    // public function getSponsoredAttribute(){
+    //     $elemento= 'stringa';
+    //     return $elemento;
+    // }
+    
     public function user(){
         return $this->belongsTo(User::class);
     }
@@ -36,6 +54,9 @@ class Apartment extends Model
     }
     public function views(){
         return $this->hasMany(View::class);
+    }
+    public function imageGallery(){
+        return $this->hasMany(ImageGallery::class);
     }
     public function sponsors(){
         return $this->belongsToMany(Sponsor::class);

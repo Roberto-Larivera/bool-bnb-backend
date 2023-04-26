@@ -1,12 +1,18 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\StoreServiceRequest;
-use App\Http\Requests\UpdateServiceRequest;
-use App\Models\Service;
+use App\Http\Controllers\Controller;
 
-class ServiceController extends Controller
+// Facades
+// Helpers
+use Illuminate\Support\Facades\Auth;
+
+use App\Http\Requests\StoreViewRequest;
+use App\Http\Requests\UpdateViewRequest;
+use App\Models\View;
+
+class ViewController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +21,12 @@ class ServiceController extends Controller
      */
     public function index()
     {
-        //
+        $user = Auth::user();
+        $views = View::all();
+
+        return view('admin.dashboard', [
+            'views' => $views
+        ]);
     }
 
     /**
@@ -31,10 +42,10 @@ class ServiceController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreServiceRequest  $request
+     * @param  \App\Http\Requests\StoreViewRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreServiceRequest $request)
+    public function store(StoreViewRequest $request)
     {
         //
     }
@@ -42,10 +53,10 @@ class ServiceController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Service  $service
+     * @param  \App\Models\View  $view
      * @return \Illuminate\Http\Response
      */
-    public function show(Service $service)
+    public function show(View $view)
     {
         //
     }
@@ -53,10 +64,10 @@ class ServiceController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Service  $service
+     * @param  \App\Models\View  $view
      * @return \Illuminate\Http\Response
      */
-    public function edit(Service $service)
+    public function edit(View $view)
     {
         //
     }
@@ -64,11 +75,11 @@ class ServiceController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateServiceRequest  $request
-     * @param  \App\Models\Service  $service
+     * @param  \App\Http\Requests\UpdateViewRequest  $request
+     * @param  \App\Models\View  $view
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateServiceRequest $request, Service $service)
+    public function update(UpdateViewRequest $request, View $view)
     {
         //
     }
@@ -76,10 +87,10 @@ class ServiceController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Service  $service
+     * @param  \App\Models\View  $view
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Service $service)
+    public function destroy(View $view)
     {
         //
     }

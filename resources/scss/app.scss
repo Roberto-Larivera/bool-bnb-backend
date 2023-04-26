@@ -4,16 +4,105 @@
 // importa il file CSS di Font Awesome
 @import "~fontawesome/fontawesome-free/css/all.css";
 
-// // Import variables
+// // Import partials
 @import './partials/variables.scss';
 @import './partials/mixin.scss';
 @import './partials/reset.scss';
+
+// Import file style
 @import './admin/appLayout.scss';
 @import './admin/admin-layout.scss';
+@import './admin/apartments/index.scss';
+@import './admin/apartments/createUpdate.scss';
+@import './admin/messages/index.scss';
+@import './admin/user_datas/index.scss';
+@import './admin/user_datas/edit.scss';
 
+// Style per sponsors
+@import './admin/sponsors/index.scss';
 
+// Style dashboard
+@import './admin/dashboard.scss';
 
+// REGOLE GENERALI
 body{
     scroll-behavior: smooth;
     background-color: $color_light;
+}
+
+// Bottone chiaro + hover fucsia
+.primary-btn{
+    @include buttonPrimary
+}
+
+// Bottone fucsia
+.secondary-btn{
+    @include buttonSecondary
+}
+
+// Bottone disabilitato
+.disabled-btn{
+    @include buttonDisabled
+}
+
+// Link per tornare a pagina precedente
+.back {
+    @include back
+}
+
+// Bottone "conferma" si usa classe Bootstrap: btn btn-success
+
+
+// Input bordo in focus
+.input-data {
+    @include inputData
+}
+
+
+// Input checks
+.input-check {
+    @include inputCheck
+}
+
+// Input radio
+.input-radio {
+    @include inputRadio
+}
+
+// Icona titoli
+.icon-section {
+    @include iconSection
+}
+
+// Immagine quadrata
+.my-img {
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+}
+
+// colore principale
+.color-primary{
+    color: $color_primary;
+}
+
+// cursor copy
+.cursor-copy{
+    cursor: copy;
+}
+
+// btn destroy gallery show
+.preview-hover-hidden{
+
+    &:hover img{
+        filter: grayscale(.5);
+    }
+    
+    & form button{
+        display: none;
+
+    }
+    
+    &:hover button{
+        display: block;
+    }
 }

@@ -1,94 +1,140 @@
-header{
+header {
     height: 70px;
+
+    a.logo_site {
+        @include logo_page;
+    }
+
+    // burger menu
+    .burger-menu-admin {
+        right: 10%;
+    }
+
+    // img profilo
+    .profile-img-nav img {
+        height: 40px;
+        width: 40px;
+        border-radius: 50%;
+    }
+
+    // avviso online
+    .online-circle {
+        color: rgb(4, 243, 4);
+        position: absolute;
+        bottom: 12%;
+        right: -8%;
+        font-size: 10px;
+    }
+
+
+    // avviso online
+    .online i {
+        color: rgb(33, 201, 33);
+    }
+
+    // img profilo
+    .profile-text {
+        font-weight: bold;
+        color: $color_dark;
+    }
+
+    // button navigazione header: messaggi, notigiche, logout
+    .my-nav-link {
+        a {
+            text-decoration: none;
+            color: $color_dark ;
+            padding: 1rem;
+        }
+    }
 }
 
-.aside-navbar {
+// bg aside e header
+.aside-navbar, #sidebarMenu {
     background-color: #ffffff;
 }
 
+// bg main container
 .main-admin {
-    background-color: #f2edf3;
+    background-color: $color_light_pink;
+    overflow: auto;
 }
 
-.admin-h{
+// altezza parte inferioriore (no header)
+.admin-h {
     height: calc(100vh - 70px)
 }
 
-// .logo-name {
-//     font-size: 30px;
-//     font-weight: bold;
-//     background: #FF385C;
-//     background: linear-gradient(to right, #FF385C 0%, #8729CF 100%);
-//     background-clip: text;
-//     -webkit-background-clip: text;
-//     -webkit-text-fill-color: transparent;
-// }
 
-a.logo_site {
-    @include logo_page;
-}
+// sider menu laterale - parte inferiore
+#sidebarMenu, #sidebarMenu2 {
+    overflow: hidden;
 
-.profile-option{
-    text-decoration: none;
-    color: black;
-}
+    // link rotte: dashboard , appartamenti ...
+    .nav-item:not(.my-home) {
+        font-size: 1rem;
+        cursor: pointer;
 
-.profile-option:hover{
-    color: black;
-}
+        a {
+            height: 100%;
+            padding: 2rem 0;
+        }
 
-.profile-img img{
-    height: 50px;
-    width: 50px;
-    border-radius: 50%;
-}
-.profile-img-nav img{
-    height: 40px;
-    width: 40px;
-    border-radius: 50%;
-}
+        & span {
+            transition: 0.5s ease-in-out;
+            color: $color_dark;
+            font-weight: 500;
+        }
 
-.online i{
-    color: rgb(33, 201, 33);
-}
+        & i {
+            transition: 0.5s ease-in-out;
+            color: $color_gray;
+        }
 
-.nav-right-item{
-    font-size: 20px;
-    color: rgb(53, 53, 53);
-}
+        & a.active-aside-link span,
+        & a.active-aside-link i,
+        & a:hover span,
+        & a:hover i {
+            color: $color_primary;
+        }
 
-.nav-item {
-    font-size: 20px;
-    cursor: pointer;
-}
+    }
 
-.aside-item .nav-item:hover span,
-.aside-item .nav-item:hover i{
-    color: #FF385C;
-}
+    .my-home {
+        font-size: 0.9rem;
+        cursor: pointer;
 
-.nav-item i {
-    color: rgb(155, 155, 155);
-}
+        a {
+            border-color: $color_purple;
+            padding: 1rem;
+            transition: 0.5s ease;
+        }
 
-.nav-item span {
-    color: rgb(53, 53, 53);
-    font-weight: 500;
-}
+        & span {
+            transition: 0.5s ease;
+            color: $color_purple;
+            font-weight: 500;
+        }
 
-.active-aside-link span,
-.active-aside-link i {
-    color: #FF385C;
-}
+        & i {
+            transition: 0.5s ease;
+            color: $color_purple;
 
-.burger-menu-admin{
-    right: 10%;
+        }
+        & a:hover{
+            background-color: $color_purple;
+
+        }
+        & a.active-aside-link span,
+        & a.active-aside-link i,
+        & a:hover span,
+        & a:hover i {
+            color: $color_light_pink;
+        }
+    }
 }
 
-.online-circle{
-    color: rgb(4, 243, 4);
-    position: absolute;
-    bottom: 12%;
-    right: -8%;
-    font-size: 10px;
+// Dashboard card statistiche
+.statistics {
+    background-image: radial-gradient(circle at 50% -20.71%, #a4d8ec 0, #a7d7ef 6.25%, #abd6f1 12.5%, #b0d5f3 18.75%, #b5d3f4 25%, #bbd2f4 31.25%, #c1d0f4 37.5%, #c7cff3 43.75%, #cdcdf2 50%, #d3cbf0 56.25%, #d9caed 62.5%, #dec8ea 68.75%, #e3c7e7 75%, #e8c6e3 81.25%, #ecc5df 87.5%, #efc4da 93.75%, #f2c4d6 100%);
 }
+
