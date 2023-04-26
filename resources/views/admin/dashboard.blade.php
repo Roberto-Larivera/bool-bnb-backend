@@ -154,14 +154,14 @@
                     <div>
                         <h3 class="mb-3">Statistiche generali</h3>
                     </div>
-                    <canvas class="" id="viewsChart"></canvas>
-                    <canvas class="d-none" id="viewsChartMobile"></canvas>
-                    <canvas class="" id="viewsChartHorizontal"></canvas>
+                    <canvas class="d-none d-lg-block" id="viewsChart"></canvas>
+                    <canvas class="d-block d-lg-none" id="viewsChartMobile"></canvas>
                 </div>
             </div>
         </div>
 
         <script>
+
             var ctx = document.getElementById('viewsChart').getContext('2d');
             var viewsChart = new Chart(ctx, {
                 type: 'bar',
@@ -169,7 +169,6 @@
                     labels: ['Gen', 'Feb', 'Mar', 'Apr', 'Mag', 'Giu', 'Lug', 'Ago',
                         'Set', 'Ott', 'Nov', 'Dic'
                     ],
-                    axis: 'y',
                     datasets: [{
 
                             label: 'Visualizzazioni Totali',
@@ -199,26 +198,35 @@
                 }
 
             });
+
+
             var ctxMobile = document.getElementById('viewsChartMobile').getContext('2d');
             var viewsChartMobile = new Chart(ctxMobile, {
-                type: 'doughnut',
+                type: 'bar',
                 data: {
-                    labels: ['Visualizzazioni', 'Messaggi'],
+                    labels: ['Gen', 'Feb', 'Mar', 'Apr', 'Mag', 'Giu', 'Lug', 'Ago',
+                        'Set', 'Ott', 'Nov', 'Dic'
+                    ],
                     datasets: [{
-                        label: 'Totali',
 
-                        data: [{!! json_encode($totalViews) !!},
-                            {!! json_encode($totalMessages) !!}
+                            label: 'Visualizzazioni Totali',
+                            data: {!! json_encode($viewsByMonth) !!},
+                            backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                            borderColor: 'rgba(255, 99, 132, 1)',
+                            borderWidth: 5
+                        },
+                        {
 
-                        ],
-                        backgroundColor: [
-                            'rgba(255, 99, 132, 0.2)',
-                            'rgba(27, 130, 209, 0.3)'
-
-                        ]
-                    }]
+                            label: 'Messaggi Totali',
+                            data: {!! json_encode($messagesByMonth) !!},
+                            backgroundColor: 'rgba(27, 130, 209, 0.3)',
+                            borderColor: 'rgba(27, 130, 209, 1)',
+                            borderWidth: 5
+                        }
+                    ]
                 },
                 options: {
+                    indexAxis: 'y',
                     scales: {
                         yAxes: [{
                             ticks: {
@@ -229,61 +237,36 @@
                 }
 
             });
-            
-            const data = {
-                labels: [
-                    'Red',
-                    'Blue',
-                    'Yellow'
-                ],
-                datasets: [{
-                    label: 'My First Dataset',
-                    data: [300, 50, 100],
-                    backgroundColor: [
-                        'rgb(255, 99, 132)',
-                        'rgb(54, 162, 235)',
-                        'rgb(255, 205, 86)'
-                    ],
-                    hoverOffset: 4
-                }]
-            };
-            const labels = Utils.months({
-                count: 7
-            });
-            const config = {
-                type: 'bar',
-                data,
-                options: {
-                    indexAxis: 'y',
-                }
-            };
-            const data = {
-                labels: labels,
-                datasets: [{
-                    axis: 'y',
-                    label: 'My First Dataset',
-                    data: [65, 59, 80, 81, 56, 55, 40],
-                    fill: false,
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(255, 159, 64, 0.2)',
-                        'rgba(255, 205, 86, 0.2)',
-                        'rgba(75, 192, 192, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(153, 102, 255, 0.2)',
-                        'rgba(201, 203, 207, 0.2)'
-                    ],
-                    borderColor: [
-                        'rgb(255, 99, 132)',
-                        'rgb(255, 159, 64)',
-                        'rgb(255, 205, 86)',
-                        'rgb(75, 192, 192)',
-                        'rgb(54, 162, 235)',
-                        'rgb(153, 102, 255)',
-                        'rgb(201, 203, 207)'
-                    ],
-                    borderWidth: 1
-                }]
-            };
+
+            // var ctxMobile = document.getElementById('viewsChartMobile').getContext('2d');
+            // var viewsChartMobile = new Chart(ctxMobile, {
+            //     type: 'doughnut',
+            //     data: {
+            //         labels: ['Visualizzazioni', 'Messaggi'],
+            //         datasets: [{
+            //             label: 'Totali',
+
+            //             data: [{!! json_encode($totalViews) !!},
+            //                 {!! json_encode($totalMessages) !!}
+
+            //             ],
+            //             backgroundColor: [
+            //                 'rgba(255, 99, 132, 0.2)',
+            //                 'rgba(27, 130, 209, 0.3)'
+
+            //             ]
+            //         }]
+            //     },
+            //     options: {
+            //         scales: {
+            //             yAxes: [{
+            //                 ticks: {
+            //                     beginAtZero: true
+            //                 }
+            //             }]
+            //         }
+            //     }
+
+            // });
         </script>
     @endsection
