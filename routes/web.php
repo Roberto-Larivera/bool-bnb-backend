@@ -24,6 +24,7 @@ use App\Http\Controllers\Admin\SponsorController;
 Route::get('/', function () {
     return redirect()->route('admin.dashboard');
 });
+Route::get('/prova', [PageController::class, 'prova'])->name('prova');
 
 // Route::middleware('auth')->group(function () {
 //     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

@@ -51,11 +51,11 @@
     }
 
     a {
-        color: #0066cc;
+        color: #FF385C;
     }
 
     .header {
-        background-color: #0066cc;
+        background-color: #FF385C;
         color: #ffffff;
         padding: 10px;
         border-radius: 10px 10px 0 0;
@@ -69,6 +69,9 @@
 
     .body {
         padding: 20px;
+        display: flex;
+        flex-direction: column;
+        font-size: large;
     }
 
     .footer {
@@ -82,6 +85,13 @@
         text-align: center;
         margin-top: 0;
     }
+
+    ul {
+        display: flex;
+        flex-direction: column;
+        padding: 0;
+        list-style: none;
+    }
 </style>
 </head>
 
@@ -91,17 +101,22 @@
             <div class="header">
                 <h1>Informazioni appartamenti</h1>
             </div>
+            <a class="logo_site first-letter:navbar-brand d-flex  align-items-center h-100" href="{{ url('login') }}">
+                <div class=" h-100">
+                    <img src="{{ asset('assets/logo.svg') }}">
+                </div>
+            </a>
             <div class="body">
                 <p>Salve,</p>
                 <p>Abbiamo ricevuto un messaggio dal seguente utente:</p>
                 <ul>
                     <li><strong>Nome:</strong> {{ $data['name'] }}</li>
                     <li><strong>Cognome:</strong> {{ $data['surname'] }}</li>
+                    <li><strong>Oggetto:</strong> {{ $data['object'] }}</li>
                     <li><strong>Email:</strong> {{ $data['email'] }}</li>
                 </ul>
                 <p><strong>Testo del messaggio:</strong></p>
                 <p>{{ $data['message'] }}</p>
-                <p>Grazie per averci contattato.</p>
             </div>
             <div class="footer">
                 <p>Questa email è stata generata automaticamente. Non rispondere a questo messaggio.</p>

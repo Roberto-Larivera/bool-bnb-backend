@@ -46,8 +46,7 @@ class PageController extends Controller
                 foreach ($apartments as $apartment) {
                     $totalViews += $apartment->views()->count();
                 }
-            }
-            else{
+            } else {
                 $selectedMonth = $request->input('month');
                 $totalViews = 0;
                 $totalMessages = 0;
@@ -58,9 +57,7 @@ class PageController extends Controller
                     $totalViews += $apartment->views()->whereMonth('created_at', '=', $selectedMonth)->count();
                 }
             }
-        } 
-        else 
-        {
+        } else {
             $totalViews = 0;
             $totalMessages = 0;
             foreach ($apartments as $apartment) {
@@ -100,6 +97,22 @@ class PageController extends Controller
             'messagesByMonth' => $messagesByMonth,
             'allApartments' => $allApartments,
             'request' => $request
+        ]);
+    }
+    public function prova()
+    {
+        $data = [
+            'name' => 'Paolo',
+            'surname' => 'Escobar',
+            'object' => 'Alloggio Centro Storico',
+            'message' => 'Buongiorno, Vorrei soggiornare nel suo stupendisssssssssimo Alloggio lussssurioso sono un po brillo ma vorrei vedere se crea problemi scrivere tutte queste cose coseoijag0ershkh scusa piccolo spasmo',
+            'email' => 'Bhe forse ma tuttavia perche privarsi poi di una cosa in cui puoi anche non farne a meno perche pèraticamente poi comef ai cerca la soluzione su internet e non ce e poi bho'
+        ];
+
+
+
+        return view('admin.messages.mail.newmessage', [
+            'data' => $data
         ]);
     }
 }
