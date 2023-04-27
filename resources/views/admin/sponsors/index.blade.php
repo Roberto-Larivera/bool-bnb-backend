@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', ' | Messaggi')
+@section('title', ' | Sponsorships')
 
 @section('content')
 
@@ -25,10 +25,10 @@
     @include('admin.partials.errors')
     @include('admin.partials.success')
     @include('admin.partials.warning')
-    <div class="container h-100 d-flex align-items-center justify-content-center">
+    <div class="container h-100 d-flex align-items-center justify-content-center p-lg-0">
         <div class="row w-100 gy-5 mt-5 mt-md-0">
             @foreach ($sponsors as $sponsor)
-                <div class="col-12 col-lg-4 d-flex justify-content-center">
+                <div class="col-12 col-lg-4  d-flex justify-content-center">
                     {{-- <a href="{{ route('admin.sponsors.show', [$sponsor->id, 'apartment_id' => $apartment_id]) }}"
                         class="text-decoration-none">
                         <div class="my-card p-4">
@@ -41,19 +41,18 @@
                         </div>
                     </a> --}}
                     <a href="{{ route('admin.sponsors.show', [$sponsor->id, 'apartment_id' => $apartment_id]) }}"
-                        class="text-decoration-none">
+                        class="text-decoration-none w-100">
                         <div class="my-card">
-                            <div class="content d-flex flex-column align-items-center">
-
-                                <div class="details">
-                                    <h2
-                                        class="card-title text-center fw-bold my-5  {{ strtolower(explode(' ', $sponsor->title)[1]) }} px-2 py-5 ">
-                                        {{ explode(' ', $sponsor->title)[1] }}
-                                    </h2>
-                                    <div class="data pt-3">
-                                        <h5 class="p-3 text-center">Prezzo: {{ $sponsor->price }} €</h5>
-                                        <h6 class="p-3 pb-4 mb-2 text-center">Durata: {{ $sponsor->duration }} h</h6>
-                                        <p class="card-text text-center">{{ $sponsor->description }}</p>
+                            <div class="content d-flex flex-column">
+                                <h2
+                                    class="card-title text-center fw-bold  {{ strtolower(explode(' ', $sponsor->title)[1]) }} px-2 ">
+                                    {{ explode(' ', $sponsor->title)[1] }}
+                                </h2>
+                                <div class="details ">
+                                    <div class="data">
+                                        <h5 class=" text-center py-2">Prezzo: {{ $sponsor->price }} €</h5>
+                                        <h6 class=" text-center py-2">Durata: {{ $sponsor->duration }} h</h6>
+                                        <p class="card-text text-center py-2 px-3">{{ $sponsor->description }}</p>
                                     </div>
                                 </div>
                             </div>
