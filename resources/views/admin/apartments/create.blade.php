@@ -30,39 +30,193 @@
                 <form action="{{ route('admin.apartments.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="row">
+                        {{-- titolo, indirizzo, ospiti, letti, camere, bagni, mq, prezzo --}}
                         <div class="col-12 col-lg-6">
-                            {{-- titolo  --}}
-                            <div class="mb-3">
-                                <label for="title" class="form-label  @error('title') text-danger @enderror ">Titolo
-                                    <span class="text-danger fw-bold">*</span></label>
-                                <input type="text" class="form-control @error('title') is-invalid @enderror"
-                                    id="title" name="title" placeholder="Esempio titolo" maxlength="70"
-                                    value="{{ old('title') }}" required>
-                                @error('title')
-                                    <p class="text-danger fw-bold">{{ $message }}</p>
-                                @enderror
-                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    {{-- titolo  --}}
+                                    <div class="mb-3">
+                                        <label for="title"
+                                            class="form-label  @error('title') text-danger @enderror ">Titolo
+                                            <span class="text-danger fw-bold">*</span></label>
+                                        <input type="text" class="form-control @error('title') is-invalid @enderror"
+                                            id="title" name="title" placeholder="Esempio titolo" maxlength="70"
+                                            value="{{ old('title') }}" required>
+                                        @error('title')
+                                            <p class="text-danger fw-bold">{{ $message }}</p>
+                                        @enderror
+                                    </div>
 
-                            {{-- address  --}}
-                            <div class="mb-3 position-relative">
-                                <label for="address" class="form-label  @error('address') text-danger @enderror ">Indirizzo
-                                    completo <span class="text-danger fw-bold">*</span></label>
-                                <input type="text" class="form-control @error('address') is-invalid @enderror"
-                                    id="address" name="address"
-                                    placeholder="Esempio Via Mario Rossi, 74, Milano (MI), Italia" maxlength="255"
-                                    value="{{ old('address') }}" autocomplete="off">
-                                @error('address')
-                                    <p class="text-danger fw-bold">{{ $message }}</p>
-                                @enderror
-                                <div id="menuAutoComplete" class="card position-absolute w-100 radius d-none">
-                                    <ul class="list">
+                                    {{-- address  --}}
+                                    <div class="mb-3 position-relative">
+                                        <label for="address"
+                                            class="form-label  @error('address') text-danger @enderror ">Indirizzo
+                                            completo <span class="text-danger fw-bold">*</span></label>
+                                        <input type="text" class="form-control @error('address') is-invalid @enderror"
+                                            id="address" name="address"
+                                            placeholder="Esempio Via Mario Rossi, 74, Milano (MI), Italia" maxlength="255"
+                                            value="{{ old('address') }}" autocomplete="off">
+                                        @error('address')
+                                            <p class="text-danger fw-bold">{{ $message }}</p>
+                                        @enderror
+                                        <div id="menuAutoComplete" class="card position-absolute w-100 radius d-none">
+                                            <ul class="list">
 
-                                    </ul>
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+                                <div class="col-12">
+                                    <div class="row">
+                                        <div class="col-12  col-md-6">
+                                            {{-- max ospiti --}}
+                                            <div class="mb-3">
+                                                <label for="max_guests"
+                                                    class="form-label  @error('max_guests') text-danger @enderror">Massimo
+                                                    ospiti <span class="text-danger fw-bold">*</span></label>
+                                                <input type="number"
+                                                    class="form-control @error('max_guests') is-invalid @enderror"
+                                                    id="max_guests" name="max_guests" placeholder="Esempio 5" min="0"
+                                                    max="30" value="{{ old('max_guests') }}" required>
+                                                @error('max_guests')
+                                                    <p class="text-danger fw-bold">{{ $message }}</p>
+                                                @enderror
+                                            </div>
+
+                                            {{-- stanze da letto --}}
+                                            <div class="mb-3">
+                                                <label for="rooms"
+                                                    class="form-label  @error('rooms') text-danger @enderror">Stanze
+                                                    da letto <span class="text-danger fw-bold">*</span></label>
+                                                <input type="number"
+                                                    class="form-control @error('rooms') is-invalid @enderror" id="rooms"
+                                                    name="rooms" placeholder="Esempio 2" min="0" max="30"
+                                                    value="{{ old('rooms') }}" required>
+                                                @error('rooms')
+                                                    <p class="text-danger fw-bold">{{ $message }}</p>
+                                                @enderror
+                                            </div>
+
+                                        </div>
+                                        <div class="col-12 col-md-6">
+
+                                            {{-- letti --}}
+                                            <div class="mb-3">
+                                                <label for="beds"
+                                                    class="form-label  @error('beds') text-danger @enderror">Numero
+                                                    letti
+                                                    <span class="text-danger fw-bold">*</span></label>
+                                                <input type="number"
+                                                    class="form-control @error('beds') is-invalid @enderror" id="beds"
+                                                    name="beds" placeholder="Esempio 3" min="0" max="30"
+                                                    value="{{ old('beds') }}" required>
+                                                @error('beds')
+                                                    <p class="text-danger fw-bold">{{ $message }}</p>
+                                                @enderror
+                                            </div>
+                                            {{-- bagni --}}
+                                            <div class="mb-3">
+                                                <label for="baths"
+                                                    class="form-label  @error('baths') text-danger @enderror">Numero
+                                                    bagni <span class="text-danger fw-bold">*</span></label>
+                                                <input type="number"
+                                                    class="form-control @error('baths') is-invalid @enderror"
+                                                    id="baths" name="baths" placeholder="Esempio 1" min="0"
+                                                    max="30" value="{{ old('baths') }}" required>
+                                                @error('baths')
+                                                    <p class="text-danger fw-bold">{{ $message }}</p>
+                                                @enderror
+                                            </div>
+
+                                        </div>
+                                        <div class="col-12 col-md-6">
+                                            {{-- mq --}}
+                                            <div class="mb-3">
+                                                <label for="mq"
+                                                    class="form-label  @error('mq') text-danger @enderror">Numero mq
+                                                    <span class="text-danger fw-bold">*</span></label>
+                                                <input type="number"
+                                                    class="form-control @error('mq') is-invalid @enderror" id="mq"
+                                                    name="mq" placeholder="Esempio 40" min="0"
+                                                    max="65535" value="{{ old('mq') }}" required>
+                                                @error('mq')
+                                                    <p class="text-danger fw-bold">{{ $message }}</p>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-md-6">
+                                            {{-- prezzo a notte --}}
+                                            <div class="mb-3">
+                                                <label for="price"
+                                                    class="form-label  @error('price') text-danger @enderror">Prezzo a
+                                                    notte <span class="text-danger fw-bold">*</span></label>
+                                                <input type="number"
+                                                    class="form-control @error('price') is-invalid @enderror"
+                                                    id="price" name="price" placeholder="Esempio 55"
+                                                    step="0.01" min="0.01" max="9999.99"
+                                                    value="{{ old('price') }}" required>
+                                                @error('price')
+                                                    <p class="text-danger fw-bold">{{ $message }}</p>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-
                         </div>
+
+                        {{-- img --}}
                         <div class="col-12 col-lg-6">
+                            <div class="row h-100">
+                                <div class="col-12">
+                                    {{-- Immagine principale file --}}
+                                    <div class="row h-100">
+                                        <div class="col-12 align-self-start">
+                                            <div class="mb-3">
+                                                <label for="main_img"
+                                                    class="form-label  @error('main_img') text-danger @enderror">Immagine
+                                                    in
+                                                    evidenza <span class="text-danger fw-bold">*</span></label>
+                                                <input type="file"
+                                                    class="form-control @error('main_img') is-invalid @enderror"
+                                                    id="main_img" name="main_img" accept="image/*" required>
+                                                @error('main_img')
+                                                    <p class="text-danger fw-bold">{{ $message }}</p>
+                                                @enderror
+                                            </div>
+
+
+                                        </div>
+                                        <div class="col-12 align-self-start text-center">
+                                            <p id="textPreviewImg" class="text-center mt-5 color-primary fw-bold">
+                                                Anteprima
+                                            </p>
+
+                                            <img id="previewImg" src="#"
+                                                class="rounded d-none w-75 mb-3 mb-lg-0 mx-auto">
+                                        </div>
+                                    </div>
+
+                                    {{-- Immagine principale url --}}
+                                    {{-- <div class="mb-3">
+                                       <label for="main_img" class="form-label  @error('main_img') text-danger @enderror">Immagine
+                                           in
+                                           evidenza <span class="text-danger fw-bold">*</span></label>
+                                       <input type="string" class="form-control @error('main_img') is-invalid @enderror"
+                                           id="main_img" name="main_img" value="{{ old('main_img') }}" maxlength="255"
+                                           placeholder="https://bollbnb.com/img-default" required>
+                                       @error('main_img')
+                                           <p class="text-danger fw-bold">{{ $message }}</p>
+                                       @enderror
+                                   </div> --}}
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-12">
                             {{-- descrizione  --}}
                             <div class="mb-3">
                                 <label for="description"
@@ -74,130 +228,6 @@
                                     <p class="text-danger fw-bold">{{ $message }}</p>
                                 @enderror
                             </div>
-                        </div>
-
-                        <div class="col-12 col-lg-6">
-                            <div class="row">
-                                <div class="col-12  col-md-6">
-                                    {{-- max ospiti --}}
-                                    <div class="mb-3">
-                                        <label for="max_guests"
-                                            class="form-label  @error('max_guests') text-danger @enderror">Massimo
-                                            ospiti <span class="text-danger fw-bold">*</span></label>
-                                        <input type="number" class="form-control @error('max_guests') is-invalid @enderror"
-                                            id="max_guests" name="max_guests" placeholder="Esempio 5" min="0"
-                                            max="30" value="{{ old('max_guests') }}" required>
-                                        @error('max_guests')
-                                            <p class="text-danger fw-bold">{{ $message }}</p>
-                                        @enderror
-                                    </div>
-
-                                    {{-- stanze da letto --}}
-                                    <div class="mb-3">
-                                        <label for="rooms"
-                                            class="form-label  @error('rooms') text-danger @enderror">Stanze
-                                            da letto <span class="text-danger fw-bold">*</span></label>
-                                        <input type="number" class="form-control @error('rooms') is-invalid @enderror"
-                                            id="rooms" name="rooms" placeholder="Esempio 2" min="0"
-                                            max="30" value="{{ old('rooms') }}" required>
-                                        @error('rooms')
-                                            <p class="text-danger fw-bold">{{ $message }}</p>
-                                        @enderror
-                                    </div>
-
-                                </div>
-                                <div class="col-12 col-md-6">
-
-                                    {{-- letti --}}
-                                    <div class="mb-3">
-                                        <label for="beds"
-                                            class="form-label  @error('beds') text-danger @enderror">Numero
-                                            letti
-                                            <span class="text-danger fw-bold">*</span></label>
-                                        <input type="number" class="form-control @error('beds') is-invalid @enderror"
-                                            id="beds" name="beds" placeholder="Esempio 3" min="0"
-                                            max="30" value="{{ old('beds') }}" required>
-                                        @error('beds')
-                                            <p class="text-danger fw-bold">{{ $message }}</p>
-                                        @enderror
-                                    </div>
-                                    {{-- bagni --}}
-                                    <div class="mb-3">
-                                        <label for="baths"
-                                            class="form-label  @error('baths') text-danger @enderror">Numero
-                                            bagni <span class="text-danger fw-bold">*</span></label>
-                                        <input type="number" class="form-control @error('baths') is-invalid @enderror"
-                                            id="baths" name="baths" placeholder="Esempio 1" min="0"
-                                            max="30" value="{{ old('baths') }}" required>
-                                        @error('baths')
-                                            <p class="text-danger fw-bold">{{ $message }}</p>
-                                        @enderror
-                                    </div>
-
-                                </div>
-                                <div class="col-12 col-md-6">
-                                    {{-- mq --}}
-                                    <div class="mb-3">
-                                        <label for="mq"
-                                            class="form-label  @error('mq') text-danger @enderror">Numero mq
-                                            <span class="text-danger fw-bold">*</span></label>
-                                        <input type="number" class="form-control @error('mq') is-invalid @enderror"
-                                            id="mq" name="mq" placeholder="Esempio 40" min="0"
-                                            max="65535" value="{{ old('mq') }}" required>
-                                        @error('mq')
-                                            <p class="text-danger fw-bold">{{ $message }}</p>
-                                        @enderror
-                                    </div>
-                                </div>
-                                <div class="col-12 col-md-6">
-                                    {{-- prezzo a notte --}}
-                                    <div class="mb-3">
-                                        <label for="price"
-                                            class="form-label  @error('price') text-danger @enderror">Prezzo a
-                                            notte <span class="text-danger fw-bold">*</span></label>
-                                        <input type="number" class="form-control @error('price') is-invalid @enderror"
-                                            id="price" name="price" placeholder="Esempio 55" step="0.01"
-                                            min="0.01" max="9999.99" value="{{ old('price') }}" required>
-                                        @error('price')
-                                            <p class="text-danger fw-bold">{{ $message }}</p>
-                                        @enderror
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-12 col-lg-6">
-                            {{-- Immagine principale file --}}
-                            <div class="mb-3">
-                                <label for="main_img"
-                                    class="form-label  @error('main_img') text-danger @enderror">Immagine
-                                    in
-                                    evidenza <span class="text-danger fw-bold">*</span></label>
-                                <input type="file" class="form-control @error('main_img') is-invalid @enderror"
-                                    id="main_img" name="main_img" accept="image/*" required>
-                                @error('main_img')
-                                    <p class="text-danger fw-bold">{{ $message }}</p>
-                                @enderror
-                            </div>
-
-                            <p id="textPreviewImg" class="text-center mt-5 color-primary fw-bold">
-                                Anteprima
-                            </p>
-
-                            <img id="previewImg" src="#" class="rounded d-none w-100 mb-3 mb-lg-0">
-
-                            {{-- Immagine principale url --}}
-                            {{-- <div class="mb-3">
-                               <label for="main_img" class="form-label  @error('main_img') text-danger @enderror">Immagine
-                                   in
-                                   evidenza <span class="text-danger fw-bold">*</span></label>
-                               <input type="string" class="form-control @error('main_img') is-invalid @enderror"
-                                   id="main_img" name="main_img" value="{{ old('main_img') }}" maxlength="255"
-                                   placeholder="https://bollbnb.com/img-default" required>
-                               @error('main_img')
-                                   <p class="text-danger fw-bold">{{ $message }}</p>
-                               @enderror
-                           </div> --}}
                         </div>
 
                         <div class="d-none">
