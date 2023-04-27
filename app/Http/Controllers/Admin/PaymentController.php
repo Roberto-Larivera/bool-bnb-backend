@@ -55,15 +55,7 @@ class PaymentController extends Controller
         $sponsorId = request()->input('sponsor');
         $apartmentId = request()->input('apartment');
         $sponsor = Sponsor::where('id',$sponsorId)->first();
-        $apartment = Sponsor::where('id',$apartmentId)->first();
-        $hostEmail = $apartment->user->email;
-        $data = [
-            'apartment_name' => $apartment->title,
-            'sponsor_price' => $sponsor->price,
-            'sponsor_duration' => $sponsor->duration,
-            'sponsor_name' => $sponsor->title,
-            'object' => 'ciao tante care cose'
-        ];
+
         $status = Transaction::sale([
             'amount' => $sponsor->price,
             'paymentMethodNonce' => $nonce,
@@ -78,8 +70,6 @@ class PaymentController extends Controller
         
 
         if($status){
-            dd('ciao');
-            Mail::to('ciao@email.it')->send(new PaymentMail($data));
             $apartment_sponsor = new ApartmentSponsor();
             $apartment_sponsor->apartment_id = $apartmentId;
             $apartment_sponsor->sponsor_id = $sponsorId;
