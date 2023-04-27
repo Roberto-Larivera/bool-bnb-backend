@@ -184,7 +184,7 @@
                                                     evidenza <span class="text-danger fw-bold">*</span></label>
                                                 <input type="file"
                                                     class="form-control @error('main_img') is-invalid @enderror"
-                                                    id="main_img" name="main_img" accept="image/*" required>
+                                                    id="main_img" name="main_img" accept="image/*">
                                                 @error('main_img')
                                                     <p class="text-danger fw-bold">{{ $message }}</p>
                                                 @enderror
