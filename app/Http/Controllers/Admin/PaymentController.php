@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 use Braintree\Transaction;
 use Illuminate\Support\Facades\Auth;
 
+use Illuminate\Support\Facades\Mail;
+use App\Mail\PaymentMail;
+
 use App\Models\Apartment;
 use App\Models\Sponsor;
 use App\Models\ApartmentSponsor;
@@ -47,17 +50,11 @@ class PaymentController extends Controller
 
     public function process(Request $request)
     {
-
-                        
-
-
         $payload = $request->input('payload', false);
         $nonce = $payload['nonce'];
         $sponsorId = request()->input('sponsor');
         $apartmentId = request()->input('apartment');
         $sponsor = Sponsor::where('id',$sponsorId)->first();
-
-
 
         $status = Transaction::sale([
             'amount' => $sponsor->price,
@@ -78,7 +75,6 @@ class PaymentController extends Controller
             $apartment_sponsor->sponsor_id = $sponsorId;
             $apartment_sponsor->deadline = $currentDateMin;
             $apartment_sponsor->save();
-
         }
 
         return response()->json($status);

@@ -3,6 +3,7 @@
 
 @section('title', ' | Il mio appartamento')
 @section('content')
+<div id="apartments_show">
     <div class="container-fluid mt-4">
         <div class="row row-cols-1 mb-5">
             <div class="col py-3">
@@ -250,6 +251,8 @@
             </div>
         </div>
     </div>
+</div>
+    
 
 
 @endsection

@@ -69,7 +69,7 @@ class InfoMail extends Mailable
 
         return $this->from($data['email'], $data['name'].' '.$data['surname'])
             ->subject($data['object'])
-            ->view('emails.contacthost', compact('data'));
+            ->view('admin.messages.mail.newmessage', compact('data'));
     }
 
 
