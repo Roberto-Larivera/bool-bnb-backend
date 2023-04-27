@@ -24,7 +24,7 @@
         @include('admin.partials.errors')
         @include('admin.partials.success')
         @include('admin.partials.warning')
-<div class="container h-100">
+<div id="sponsor_show" class="container h-100">
     <div class="row gy-5 mt-5 mt-md-0 d-flex justify-content-center mb-5">
         {{-- qui se più appartamenti --}}
         @if (isset($apartments))
@@ -36,6 +36,7 @@
                     <p class="card-text p-2 text-center">{{ $sponsor->description }}</p>
                 </div>
             </div>
+            {{-- tabella appartamenti --}}
             <div class="col-xs-12 col-xl-8 d-flex justify-content-center align-items-center">
                 <table class="table rounded">
                     <thead>
@@ -60,7 +61,7 @@
                             <tr>
                                 <td class="d-none d-md-table-cell align-middle">
                                     <div class="apartment-img-container">
-                                        <img src="{{ $apartment->full_path_main_img }}" alt=" {{ $apartment->title }}" class="ratio ratio-4x3 rounded">
+                                        <img src="{{ $apartment->full_path_main_img }}" alt=" {{ $apartment->title }}" class="my-img img-fluid rounded">
                                     </div>
                                 </td>
                                 <td class="align-middle">
