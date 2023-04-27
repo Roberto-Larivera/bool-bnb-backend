@@ -21,12 +21,13 @@ class ViewSeeder extends Seeder
      */
     public function run(Faker $faker)
     {
-        for ($i = 0; $i  < 500; $i++) {
+        for ($i = 0; $i  < 5000; $i++) {
             $apartment_id = Apartment::inRandomOrder()->first()->id;
             $view = [
 
                 "apartment_id" => $apartment_id,
-                "ip_address" => $faker->ipv4()
+                "ip_address" => $faker->ipv4(),
+                "created_at" => $faker->dateTimeBetween('-12 months', '-1 days')
 
             ];
             View::create($view);

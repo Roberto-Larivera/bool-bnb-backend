@@ -15,7 +15,8 @@ class Message extends Model
         'sender_name',
         'sender_surname',
         'object',
-        'sender_text'
+        'sender_text',
+        'created_at',
     ];
 
     public function apartment(){
