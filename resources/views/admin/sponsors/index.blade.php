@@ -40,22 +40,25 @@
                             <p class="card-text p-2 text-center">{{ $sponsor->description }}</p>
                         </div>
                     </a> --}}
-                    <div class="my-card">
-                        <div class="content d-flex flex-column align-items-center">
+                    <a href="{{ route('admin.sponsors.show', [$sponsor->id, 'apartment_id' => $apartment_id]) }}"
+                        class="text-decoration-none">
+                        <div class="my-card">
+                            <div class="content d-flex flex-column align-items-center">
 
-                            <div class="details">
-                                <h2
-                                    class="card-title text-center fw-bold mb-3 {{ strtolower(explode(' ', $sponsor->title)[1]) }} px-2 py-3 ">
-                                    {{ explode(' ', $sponsor->title)[1] }}
-                                </h2>
-                                <div class="data">
-                                    <h5 class="p-3 text-center">Prezzo: {{ $sponsor->price }} €</h5>
-                                    <h6 class="p-3 pb-4 mb-2 text-center">Durata: {{ $sponsor->duration }} h</h6>
-                                    <p class="card-text text-center">{{ $sponsor->description }}</p>
+                                <div class="details">
+                                    <h2
+                                        class="card-title text-center fw-bold my-5  {{ strtolower(explode(' ', $sponsor->title)[1]) }} px-2 py-5 ">
+                                        {{ explode(' ', $sponsor->title)[1] }}
+                                    </h2>
+                                    <div class="data pt-3">
+                                        <h5 class="p-3 text-center">Prezzo: {{ $sponsor->price }} €</h5>
+                                        <h6 class="p-3 pb-4 mb-2 text-center">Durata: {{ $sponsor->duration }} h</h6>
+                                        <p class="card-text text-center">{{ $sponsor->description }}</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
             @endforeach
 
