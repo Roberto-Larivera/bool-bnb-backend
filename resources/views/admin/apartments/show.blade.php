@@ -29,12 +29,166 @@
     @include('admin.partials.warning')
 
     <div class="container-fluid mt-4">
+        <div class="row">
+            <div class="d-flex justify-content-between align-items-center">
+                 {{-- suddivisione principale in col-11 --}}
+                <div class="col-11">
+                    <div class="row">
+                        <div class="col">
+                            <h2>
+                                {{ $apartment->title }}
+                            </h2>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col">
+                            <p class="mt-2">
+                                <span class="pe-2">
+                                    {{ $apartment->address }}  <strong>|</strong> 
+                                </span>
+                                <span class="pe-2">
+                                    @if ($apartment->visible == 1)
+                                        Pubblico
+                                    @elseif ($apartment->visible == 0)
+                                        Privato
+                                    @endif
+                                    <strong>|</strong> 
+                                </span>
+                                <span>
+                                    &euro; {{ $apartment->price }}
+                                </span>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col img-container">
+                            <div class="row pt-4 pb-2">
+                                <div class="col">
+                                    <img class="img-fluid rounded" src="{{ $apartment->full_path_main_img }}">
+                                </div>
+                            </div>
+                            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-6">
+                                @if($imageGallery != [])
+                                @forEach($imageGallery as $image_gallery)
+                                <div class="col mb-3">
+                                    <div class=" ratio ratio-4x3 position-relative preview-hover-hidden">
+                                        <img src="{{ asset('storage/'.$image_gallery->path_image) }}" class="rounded  w-70 mb-3 mb-lg-0">
+                                        <form action="{{ route('admin.image_gallery.destroy',$image_gallery) }}" method="POST" class="position-absolute top-50 start-50 translate-middle d-flex justify-content-center align-items-center ">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn-hover-hidden">
+                                                <i class="fa-solid fa-trash fa-xl my-color-dark"></i>
+                                            </button>
+                                        </form>
+                                    </div>
+                                </div>
+                                @endforeach
+                                @endif
+                                @if(count($imageGallery) < 4)
+                                <div class="col align-self-center">
+                                    
+                                    <div class="add-img">
+                                        <button class="plus cursor-copy primary-btn" onclick="selectFile()">
+                                            <strong>+</strong>
+                                        </button>
+                                    </div>
+                                    <form action="{{ route('admin.image_gallery.store', ['apartment_id' => $apartment->id ]) }}" method="POST"
+                                        enctype="multipart/form-data" id="form-imageGallery">
+                                        @csrf
+                                        
+                                        <input type="file" class="d-none" id="path_image" name="path_image" accept="image/*">
+                                    </form>
+            
+                                </div>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row pt-4">
+                        <div class="col-2">
+                            <h2 class="mb-3">
+                                Dettagli
+                            </h2>
+                            <ul>
+                                <li class="ps-2 mb-1">
+                                    <i class="fa-solid fa-house"></i>
+                                    {{ $apartment->mq }} mq
+                                </li>
+                                <li class="ps-2 mb-1">
+                                    <i class="fa-solid fa-door-closed"></i>
+                                    {{ $apartment->rooms }} stanze
+                                </li>
+                                <li class="ps-2 mb-1">
+                                    <i class="fa-solid fa-bed"></i>
+                                    {{ $apartment->beds }} letti
+                                </li>
+                                <li class="ps-2 mb-1">
+                                    <i class="fa-solid fa-toilet-paper"></i>
+                                    {{ $apartment->baths }} bagni
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="col-5">
+                            <h2>
+                                Descrizione
+                            </h2>
+                            <p>
+                                {{ $apartment->description }}
+                            </p>
+                        </div>
+                        
+                        <div class="col-5">
+                            <h2 class="mb-3">
+                                Servizi
+                            </h2>
+                            @if (count($apartment->services) > 0)
+                                <div class="services-container">
+                                    @foreach ($apartment->services as $service)
+                                        <span class="my-badge bg-light me-2">
+                                            {{ $service->name }}
+                                        </span>
+                                    @endforeach
+                                </div>
+                            @else
+                                Nessun servizio aggiunto
+                            @endif
+            
+                        </div>
+                    </div>
+                </div>
+
+                {{-- suddivisione principale in col-1 --}}
+                <div class="col-1">
+                    <div class="d-flex flex-column align-items-center p-3 rounded" style="background-color: rgba(221, 204, 224, 0.5); margin-left: 50%;">
+                        <div class="aside-edit text-end py-4">
+                            <i class="fa-regular fa-pen-to-square fa-2xl"></i>
+                        </div>
+                        <div class="aside-delete text-end py-4">
+                            <i class="fa-solid fa-trash fa-2xl"></i>
+                        </div>
+                        <div class="aside-sponsor text-end py-4">
+                            <i class="fa-solid fa-sack-dollar fa-2xl"></i>
+                        </div>
+                        <div class="aside-messages text-end py-4">
+                            <i class="fa-solid fa-envelope fa-2xl"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            </div>
+    </div>
+
+    {{-- codice precedente --}}
+{{-- 
+    <div class="container-fluid mt-4">
         <div class="row row-cols-1 mb-5 align-items-center">
-            {{-- Info generali appartamento --}}
+            
             <div class="img-container col col-sm-6">
-                {{-- img url  --}}
-                {{-- <img class="img-fluid rounded" src="{{ $apartment->main_img }}"> --}}
-                {{-- img file  --}}
                 <div class="row pt-4 pb-2">
                     <div class="col">
                         <img class="img-fluid rounded" src="{{ $apartment->full_path_main_img }}">
@@ -59,14 +213,14 @@
                     @endif
                     @if(count($imageGallery) < 4)
                     <div class="col align-self-center">
-                        {{-- input nascoto --}}
+                        
                         <div class="">
                             <i  onclick="selectFile()" class="fa-solid fa-square-plus fa-5x color-primary cursor-copy"></i>
                         </div>
                         <form action="{{ route('admin.image_gallery.store', ['apartment_id' => $apartment->id ]) }}" method="POST"
                             enctype="multipart/form-data" id="form-imageGallery">
                             @csrf
-                            {{-- @method('PUT') --}} {{-- serve solo per update --}}
+                            
                             <input type="file" class="d-none" id="path_image" name="path_image" accept="image/*">
                         </form>
 
@@ -91,16 +245,16 @@
 
                 <div>
                     &euro; {{ $apartment->price }} 
-                    {{-- <i class="fa-solid fa-sack-dollar"></i> --}}
+                   
                 </div>
 
-                {{-- Bottoni Mobile messaggi / sponsor --}}
+               
                 <div class="buttons d-lg-none mt-3">
                     <a href="{{ route('admin.messages.index') }}" class="secondary-btn me-3">
                         <i class="fa-regular fa-envelope"></i>
                     </a>
 
-                    {{-- Aggiungere rotta sponsor --}}
+                    
                     @if($apartment->sponsored == false)
                         <a href="{{ route('admin.sponsors.index',  ['apartment_id' => $apartment->id]) }}" class="secondary-btn">
                             <i class="fa-solid fa-sack-dollar"></i>
@@ -113,14 +267,14 @@
 
                 </div>
 
-                {{-- Bottoni Tablet messaggi / sponsor --}}
+               
                 <div class="buttons d-none d-lg-block mt-3">
                     <a href="{{ route('admin.messages.index', ['apartment_id' => $apartment->id]) }}"
                         class="secondary-btn me-3">
                         Leggi messaggi
                     </a>
 
-                   {{-- Aggiungere rotta sponsor --}}
+                   
                    @if($apartment->sponsored == false)
                    <a href="{{ route('admin.sponsors.index',  ['apartment_id' => $apartment->id]) }}" class="secondary-btn">
                        Sponsorizza
@@ -137,7 +291,7 @@
 
     <div class="container-fluid mt-4">
         <div class="row row-cols-1 mb-5 align-items-center">
-            {{-- Descrizione appartamento --}}
+           
             <div class="col">
                 <h2>
                     Descrizione
@@ -151,7 +305,7 @@
 
     <div class="container-fluid mt-4">
         <div class="row row-cols-1 mb-5">
-            {{-- Descrizione appartamento --}}
+           
             <div class="col-12 col-sm-6">
                 <h2 class="mb-3">
                     Dettagli
@@ -216,7 +370,7 @@
                             <i class="fa-solid fa-trash my-color-dark"></i>
                         </button>
 
-                        <!-- Modal -->
+                        
                         <div class="modal fade" id="modal-delete" tabindex="-1" aria-labelledby="exampleModalLabel"
                             aria-hidden="true">
                             <div class="modal-dialog">
@@ -250,7 +404,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 </div>
     
 

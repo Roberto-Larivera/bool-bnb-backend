@@ -94,7 +94,7 @@ body{
 .preview-hover-hidden{
 
     &:hover img{
-        filter: grayscale(.5);
+        filter: blur(2px) grayscale(99%);
     }
     
     & form button{
@@ -104,6 +104,9 @@ body{
     
     &:hover button{
         display: block;
+        background-color: transparent;
+        border: 0px;
+        color: $color_dark;
     }
 }
 
