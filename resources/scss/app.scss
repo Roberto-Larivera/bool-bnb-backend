@@ -17,6 +17,7 @@
 @import './admin/messages/index.scss';
 @import './admin/user_datas/index.scss';
 @import './admin/user_datas/edit.scss';
+@import './admin/apartments/show.scss';
 
 // Style per sponsors
 @import './admin/sponsors/index.scss';
@@ -116,39 +117,39 @@ body{
 }
 
 // Per aside
-.main-show {
+// .main-show {
 
-    overflow-y: scroll;
-    -ms-overflow-style: none; /* for Internet Explorer, Edge */
-    scrollbar-width: none; /* for Firefox */
-}
+//     overflow-y: scroll;
+//     -ms-overflow-style: none; /* for Internet Explorer, Edge */
+//     scrollbar-width: none; /* for Firefox */
+// }
 
-.main-show::-webkit-scrollbar {
-        display: none; /* for Chrome, Safari, and Opera */
-}
+// .main-show::-webkit-scrollbar {
+//         display: none; /* for Chrome, Safari, and Opera */
+// }
 
-.aside-show {
-    position: fixed;
-    top: 45%;  
-    right: 0;
-    background-color: rgba(221, 204, 224, 0.5);
-    margin-left: 50%
-}
+// .aside-show {
+//     position: fixed;
+//     top: 45%;  
+//     right: 0;
+//     background-color: rgba(221, 204, 224, 0.5);
+//     margin-left: 50%
+// }
 
-// Per aside mediaquery 
-@media screen and (max-width: 768px) {
-    .main-show {
+// // Per aside mediaquery 
+// @media screen and (max-width: 768px) {
+//     .main-show {
 
-        // height: calc(100vh - 198px);
-        overflow-y: hidden;
-    }
+//         // height: calc(100vh - 198px);
+//         overflow-y: hidden;
+//     }
     
-    .aside-show {
-        position: sticky;
-        bottom: 0; 
-        left: 0; 
-        height: auto;
-        background-color: rgb(221, 204, 224);
-        margin-left: 0%;
-    }
-}
+//     .aside-show {
+//         position: sticky;
+//         bottom: 0; 
+//         left: 0; 
+//         height: auto;
+//         background-color: rgb(221, 204, 224);
+//         margin-left: 0%;
+//     }
+// }
