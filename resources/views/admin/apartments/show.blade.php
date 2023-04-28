@@ -168,6 +168,37 @@
                             @endif
             
                         </div>
+
+                        {{-- Modale --}}
+                        <div class="modal" id="modal-delete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="exampleModalLabel">
+                                            Cancella appartamento
+                                        </h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>
+                                            Ricorda che se cancelli questo appartamento <strong>tutti i messaggi
+                                                ricevuti</strong> verranno cancellati.
+                                            <br>
+                                            Vuoi procedere alla cancellazione?
+                                        </p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="primary-btn" data-bs-dismiss="modal">
+                                            Chiudi
+                                        </button>
+                                        <button type="submit" class="secondary-btn">
+                                            Cancella
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -187,47 +218,16 @@
                                 <button type="button" class="btn-modal" data-bs-toggle="modal" data-bs-target="#modal-delete" style="border: 0; background-color: transparent;">
                                     <i class="fa-solid fa-trash fa-xl"></i>
                                 </button>
-
-                                {{-- Modale --}}
-                                <div class="modal fade" id="modal-delete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h1 class="modal-title fs-5" id="exampleModalLabel">
-                                                    Cancella appartamento
-                                                </h1>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                    aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <p>
-                                                    Ricorda che se cancelli questo appartamento <strong>tutti i messaggi
-                                                        ricevuti</strong> verranno cancellati.
-                                                    <br>
-                                                    Vuoi procedere alla cancellazione?
-                                                </p>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="primary-btn" data-bs-dismiss="modal">
-                                                    Chiudi
-                                                </button>
-                                                <button type="submit" class="secondary-btn">
-                                                    Cancella
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
                             </form>
                         </div>
                         <div class="aside-sponsor text-end py-4" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-title="Sponsorizza">
                             @if($apartment->sponsored == false)
                                 <a href="{{ route('admin.sponsors.index',  ['apartment_id' => $apartment->id]) }}">
-                                    <i class="fa-solid fa-sack-dollar fa-xl"></i>
+                                    <i class="fa-solid fa-rocket fa-xl"></i>
                                 </a>
                             @else
                                 <a class="disabled-link">
-                                    <i class="fa-solid fa-sack-dollar fa-xl"></i>
+                                    <i class="fa-solid fa-rocket fa-xl"></i>
                                 </a>
                             @endif
                         </div>

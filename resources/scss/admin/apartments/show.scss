@@ -45,7 +45,7 @@
 
         .aside-show {
             position: fixed;
-            top: 45%;  
+            top: 40%;  
             right: 0;
             background-color: rgba(221, 204, 224, 0.5);
             width: 70px;
@@ -83,6 +83,14 @@
 
                 .disabled-link {
                     color: gray;
+                }
+
+                .modal-backdrop {
+                    z-index: -1;
+                  }
+
+                .modal-dialog {
+                    margin-top: 80px;
                 }
             }
         }
