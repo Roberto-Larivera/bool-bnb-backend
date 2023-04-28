@@ -99,7 +99,7 @@
                             <i class="fa-solid fa-envelope"></i>
                             Mss
                         </th>
-                        <th scope="col ">
+                        <th scope="col " class="p-3">
                             <div class="text-center">
                                 <i class="fa-solid fa-clock"></i>
                             </div>

@@ -43,17 +43,19 @@
                     <table class="table rounded">
                         <thead>
                             <tr>
-                                <th scope="col" class="d-none d-md-table-cell">
-                                    Foto
+                                <th scope="col" class="d-none text-center d-md-table-cell p-3">
+                                    <i class="fa-solid fa-camera"></i>
                                 </th>
-                                <th scope="col">
+                                <th scope="col" class="p-3">
+                                    <i class="fa-solid fa-tag"></i>
                                     Titolo
                                 </th>
-                                <th scope="col" class="d-none d-lg-table-cell">
+                                <th scope="col" class="d-none d-lg-table-cell p-3">
+                                    <i class="fa-solid fa-location-dot"></i>
                                     Indirizzo
                                 </th>
-                                <th scope="col">
-                                    #
+                                <th scope="col" class="text-center p-3">
+                                    <i class="fa-solid fa-rocket"></i>
                                 </th>
                             </tr>
                         </thead>
@@ -73,9 +75,9 @@
                                     <td class="d-none d-lg-table-cell align-middle">
                                         {{ $apartment->address }}
                                     </td>
-                                    <td class="align-middle">
+                                    <td class="align-middle text-center">
                                         <a href="{{ route('admin.payment.token', ['sponsor_id' => $sponsor->id, 'apartment_id' => $apartment->id]) }}"
-                                            class="primary-btn me-3">
+                                            class="primary-btn">
                                             Paga
                                         </a>
                                     </td>
