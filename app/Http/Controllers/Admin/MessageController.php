@@ -31,8 +31,9 @@ class MessageController extends Controller
          $apartment_id = $request->input('apartment_id');
          $search = $request->input('search');
      
+        //  prova query per ordinare date messaggi
          $messages = Message::whereHas('apartment', function ($query) use ($user) {
-             $query->where('user_id', '=',  $user->id);
+             $query->where('user_id', '=',  $user->id)->orderBy('created_at', 'desc');
          });
      
          if ($apartment_id) {
