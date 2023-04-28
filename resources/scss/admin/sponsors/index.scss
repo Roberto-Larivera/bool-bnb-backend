@@ -2,8 +2,26 @@
     border-radius: 20px;
     border: 1px solid lightgrey;
     background-color: $color_light;
-    transition: background-color 0.5s ease-in;
     color: black;
+    position: relative;
+    width: 100%;
+    height: 70px;
+    box-shadow: 0 35px 80px rgba(0, 0, 0, 0.15);
+
+    h2 {
+        margin-top: 200px;
+        margin-bottom: 80px;
+    }
+
+    &:hover {
+        transition: 0.5s;
+        height: 450px;
+
+
+        h2 {
+            margin-top: 0px;
+        }
+    }
 
     h6,
     h5,
@@ -47,5 +65,238 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
+    }
+}
+
+.my-card-2 {
+    border-radius: 20px;
+    border: 1px solid lightgrey;
+    background-color: $color_light;
+    color: black;
+
+    box-shadow: 0 35px 80px rgba(0, 0, 0, 0.15);
+
+    h6,
+    h5,
+    p,
+    h2 {
+        transition: 0.5s;
+
+    }
+
+    h2 {
+        color: $color_primary;
+    }
+
+
+    &:hover {
+        background: $color_light;
+        transition: 0.5s;
+        background: linear-gradient(150deg, $color_light 82%, rgb(231, 231, 231) 100%);
+
+        h6,
+        h5,
+        p {
+            color: $color_primary;
+        }
+
+        .silver {
+            background: -webkit-linear-gradient(#eee, #333);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .gold {
+            background: -webkit-radial-gradient(#FEDB37, #8A6E2F);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+
+        }
+
+        .platinum {
+            background: -webkit-radial-gradient(rgb(78, 215, 169), rgb(57, 185, 70));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    }
+
+}
+
+// .card {}
+
+// .card:hover {
+//     height: 450px;
+// }
+
+// .card .imgBx {
+//     position: absolute;
+//     left: 50%;
+//     top: -50px;
+//     transform: translateX(-50%);
+//     width: 150px;
+//     height: 150px;
+//     border-radius: 20px;
+//     box-shadow: 0 15px 50px rgba(0, 0, 0, 0.35);
+//     overflow: hidden;
+//     transition: 0.5s;
+//     z-index: 10;
+// }
+
+
+.my-card .imgBx img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.my-card .content {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.my-card .details {
+    text-align: center;
+    width: 100%;
+    transition: 0.5s;
+    // transform: translateY(100px);
+}
+
+// .card:hover .details {
+//     transform: translateY(0px);
+// }
+
+// .card .details h2 {
+//     font-size: 1.25em;
+//     font-weight: 600;
+//     color: #555;
+//     line-height: 1.2em;
+// }
+
+// .card .details h2 span {
+//     font-size: 0.75em;
+//     font-weight: 500;
+//     opacity: 0.5;
+// }
+
+// .card .details .data {
+//     display: flex;
+//     justify-content: space-between;
+//     margin: 20px 0;
+// }
+
+// .card .details .data h3 {
+//     font-size: 1em;
+//     color: #555;
+//     line-height: 1.2em;
+//     font-weight: 600;
+// }
+
+// .card .details .data h3 span {
+//     font-size: 0.85em;
+//     font-weight: 400;
+//     opacity: 0.5;
+// }
+
+// .card .details .actionBtn {
+//     display: flex;
+//     justify-content: space-between;
+//     gap: 20px;
+// }
+
+// .card .details .actionBtn button {
+//     padding: 10px 30px;
+//     border: none;
+//     outline: none;
+//     border-radius: 5px;
+//     font-size: 1em;
+//     font-weight: 500;
+//     background: #ff5f95;
+//     color: #fff;
+//     cursor: pointer;
+// }
+
+// .card .details .actionBtn button:nth-child(2) {
+//     border: 1px solid #999;
+//     color: #999;
+//     background: #fff;
+// }
+
+// MEDIAQUERY
+@media screen and (min-width: 320px) {
+
+    .my-card {
+
+        h2 {
+            margin-top: 260px;
+            margin-bottom: 50px;
+        }
+
+    }
+
+}
+
+@media screen and (min-width: 375px) {
+
+    .my-card {
+
+        h2 {
+            margin-top: 250px;
+            margin-bottom: 50px;
+        }
+
+    }
+}
+
+@media screen and (min-width: 425px) {
+
+    .my-card {
+
+        h2 {
+            margin-top: 250px;
+            margin-bottom: 80px;
+        }
+
+    }
+}
+
+@media screen and (min-width: 768px) {
+
+    .my-card {
+
+        h2 {
+            margin-top: 250px;
+            margin-bottom: 80px;
+        }
+
+    }
+}
+
+@media screen and (min-width: 1024px) {
+
+    .my-card {
+
+        h2 {
+            margin-top: 300px;
+            margin-bottom: 50px;
+        }
+
+    }
+}
+
+@media screen and (min-width: 1440px) {
+
+    .my-card {
+        h2 {
+            margin-top: 250px;
+            margin-bottom: 80px;
+        }
+
     }
 }
