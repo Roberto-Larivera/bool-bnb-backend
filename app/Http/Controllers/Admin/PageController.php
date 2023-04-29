@@ -114,7 +114,7 @@ class PageController extends Controller
             'data' => $data
         ]);
     }
-    public function provaPagamento()
+   public function provaPagamento()
     {
         $data = [
             'name' => 'Paolo',
@@ -124,7 +124,7 @@ class PageController extends Controller
             'email' => 'Bhe forse ma tuttavia perche privarsi poi di una cosa in cui puoi anche non farne a meno perche pèraticamente poi comef ai cerca la soluzione su internet e non ce e poi bho comunque ho pagato'
         ];
 
-
+ 
 
         return view('admin.messages.mail.newpaymentsuccess', [
             'data' => $data

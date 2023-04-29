@@ -4,9 +4,6 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 
-use App\Http\Requests\StoreUser_dataRequest;
-use App\Http\Requests\UpdateUser_dataRequest;
-
 // Models
 use App\Models\User_data;
 use App\Models\User;
@@ -48,7 +45,7 @@ class UserDataController extends Controller
      * @param  \App\Http\Requests\StoreUser_dataRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreUser_dataRequest $request)
+    public function store()
     {
         //
     }

@@ -7,8 +7,6 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
-use App\Http\Requests\StoreSponsorRequest;
-use App\Http\Requests\UpdateSponsorRequest;
 use App\Models\Sponsor;
 use App\Models\User;
 use App\Models\Apartment;
@@ -49,7 +47,7 @@ class SponsorController extends Controller
      * @param  \App\Http\Requests\StoreSponsorRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreSponsorRequest $request)
+    public function store()
     {
         //
     }
@@ -127,7 +125,7 @@ class SponsorController extends Controller
      * @param  \App\Models\Sponsor  $sponsor
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateSponsorRequest $request, Sponsor $sponsor)
+    public function update( Sponsor $sponsor)
     {
         //
     }

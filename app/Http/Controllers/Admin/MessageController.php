@@ -4,8 +4,6 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 
-use App\Http\Requests\StoreMessageRequest;
-use App\Http\Requests\UpdateMessageRequest;
 use Illuminate\Http\Request;
 
 //Models
@@ -78,7 +76,7 @@ class MessageController extends Controller
      * @param  \App\Http\Requests\StoreMessageRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreMessageRequest $request)
+    public function store()
     {
         //
     }
@@ -112,7 +110,7 @@ class MessageController extends Controller
      * @param  \App\Models\Message  $message
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateMessageRequest $request, Message $message)
+    public function update( Message $message)
     {
         //
     }
