@@ -98,36 +98,4 @@ class PageController extends Controller
             'request' => $request
         ]);
     }
-    public function prova()
-    {
-        $data = [
-            'name' => 'Paolo',
-            'surname' => 'Escobar',
-            'object' => 'Alloggio Centro Storico',
-            'message' => 'Buongiorno, Vorrei soggiornare nel suo stupendisssssssssimo Alloggio lussssurioso sono un po brillo ma vorrei vedere se crea problemi scrivere tutte queste cose coseoijag0ershkh scusa piccolo spasmo',
-            'email' => 'Bhe forse ma tuttavia perche privarsi poi di una cosa in cui puoi anche non farne a meno perche pèraticamente poi comef ai cerca la soluzione su internet e non ce e poi bho'
-        ];
-
-
-
-        return view('admin.messages.mail.newmessage', [
-            'data' => $data
-        ]);
-    }
-   public function provaPagamento()
-    {
-        $data = [
-            'name' => 'Paolo',
-            'surname' => 'Escobar',
-            'object' => 'Alloggio Centro Storico',
-            'message' => 'Buongiorno, ho pagato tutto apposto va bene lo stessoooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo',
-            'email' => 'Bhe forse ma tuttavia perche privarsi poi di una cosa in cui puoi anche non farne a meno perche pèraticamente poi comef ai cerca la soluzione su internet e non ce e poi bho comunque ho pagato'
-        ];
-
- 
-
-        return view('admin.messages.mail.newpaymentsuccess', [
-            'data' => $data
-        ]);
-    }
 }
