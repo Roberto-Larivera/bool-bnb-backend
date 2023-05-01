@@ -92,6 +92,12 @@
                 .modal-dialog {
                     margin-top: 80px;
                 }
+
+                @media (max-width: 767px) {
+                    [data-bs-toggle="tooltip"] {
+                      display: none;
+                    }
+                  }
             }
         }
       
