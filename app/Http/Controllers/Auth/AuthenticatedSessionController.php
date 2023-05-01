@@ -9,6 +9,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
+use Illuminate\Support\Facades\Http;
 
 class AuthenticatedSessionController extends Controller
 {
@@ -29,8 +30,27 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect()->intended(RouteServiceProvider::HOME);
+        $user = Auth::user();
+        return redirect('http://localhost:5174/login-data?login=true&auth=' . $user->id);
+        // return redirect()->intended(RouteServiceProvider::HOME);
     }
+
+    // public function store(LoginRequest $request): RedirectResponse
+    // {
+    //     $request->authenticate();
+
+    //     $request->session()->regenerate();
+
+    //     $user = Auth::user();
+
+    //     // Invia i dati tramite richiesta POST
+    //     Http::post('http://localhost:5174/login-data', [
+    //         'login' => true,
+    //         'auth' => $user->id,
+    //     ]);
+
+    //     return redirect('http://localhost:5174');
+    // }
 
     /**
      * Destroy an authenticated session.
@@ -43,6 +63,7 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerateToken();
 
-        return redirect('/');
+        return redirect('http://localhost:5174/login-data?login=false');
+        // return redirect('/');
     }
 }
