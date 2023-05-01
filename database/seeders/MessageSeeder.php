@@ -30,7 +30,6 @@ class MessageSeeder extends Seeder
                 "sender_surname" => $faker->lastName(),
                 "object" => "Interessato a Appartamento",
                 "sender_text" => "Salve, sono interessato al vostro appartamento, quando sarebbe disponibile? Grazie arrivederci ",
-                "read" => "0",
             ],
             [
                 "apartment_id" => "2",
@@ -39,7 +38,6 @@ class MessageSeeder extends Seeder
                 "sender_surname" => $faker->lastName(),
                 "object" => "Interesse a Appartamento",
                 "sender_text" => "Buongiorno, quando sarebbe disponibile il suo appartamento? Cordiali saluti ",
-                "read" => "0",
             ],
             [
                 "apartment_id" => "3",
@@ -48,7 +46,6 @@ class MessageSeeder extends Seeder
                 "sender_surname" => $faker->lastName(),
                 "object" => "Prenotazione Appartamento",
                 "sender_text" => "Buonasera, vorrei sapere la disponibilità sul suo appartamento, Cordiali saluti ",
-                "read" => "0",
             ],
             [
                 "apartment_id" => "4",
@@ -57,7 +54,6 @@ class MessageSeeder extends Seeder
                 "sender_surname" => $faker->lastName(),
                 "object" => "Appartamento",
                 "sender_text" => "Buongiorno, ho visto il suo appartamento e vorrei effetturare un soggiorno, quando sarebbe disponibile? Grazie e arrivederci ",
-                "read" => "0",
             ],
             [
                 "apartment_id" => "5",
@@ -66,7 +62,6 @@ class MessageSeeder extends Seeder
                 "sender_surname" => $faker->lastName(),
                 "object" => "Soggiorno appartamento",
                 "sender_text" => "Salve,Vorrei passare il weekend nel suo appartamento, è disponibile? ",
-                "read" => "0",
             ],
             [
                 "apartment_id" => "6",
@@ -75,7 +70,6 @@ class MessageSeeder extends Seeder
                 "sender_surname" => $faker->lastName(),
                 "object" => "Appartamento per stasera",
                 "sender_text" => "Salve, volevo sapere se per stasera l' appartamento è disponibile, Grazie ",
-                "read" => "0",
             ],
             [
                 "apartment_id" => "7",
@@ -84,7 +78,6 @@ class MessageSeeder extends Seeder
                 "sender_surname" => $faker->lastName(),
                 "object" => "Appartamento",
                 "sender_text" => "Salve, sono interessato al vostro appartamento, in quali giorni sarebbe disponibile? Grazie e arrivederci ",
-                "read" => "0",
             ],
             [
                 "apartment_id" => "8",
@@ -93,7 +86,6 @@ class MessageSeeder extends Seeder
                 "sender_surname" => $faker->lastName(),
                 "object" => "Interessato a Appartamento",
                 "sender_text" => "Buongiorno, mi piacerebbe molto soggiornare nel suo appartamento, è disponibile Martedi? Grazie arrivederci ",
-                "read" => "0",
             ],
             [
                 "apartment_id" => "9",
@@ -102,7 +94,6 @@ class MessageSeeder extends Seeder
                 "sender_surname" => $faker->lastName(),
                 "object" => "Interessato a Appartamento",
                 "sender_text" => "Salve, sono interessato al vostro appartamento, quando sarebbe disponibile?? ",
-                "read" => "0",
             ],
             [
                 "apartment_id" => "10",
@@ -111,7 +102,6 @@ class MessageSeeder extends Seeder
                 "sender_surname" => $faker->lastName(),
                 "object" => "Week-end Appartamento",
                 "sender_text" => "Salve, vorrei soggiornare nel suo appartamento questo week-end, è disponibile? Grazie arrivederci ",
-                "read" => "0",
             ],
             [
                 "apartment_id" => "11",
@@ -120,7 +110,6 @@ class MessageSeeder extends Seeder
                 "sender_surname" => $faker->lastName(),
                 "object" => "Interessato a Appartamento",
                 "sender_text" => "Salve, sono interessato al vostro appartamento, quando sarebbe disponibile? Grazie arrivederci ",
-                "read" => "0",
             ],
             [
                 "apartment_id" => "12",
@@ -129,7 +118,6 @@ class MessageSeeder extends Seeder
                 "sender_surname" => $faker->lastName(),
                 "object" => "Interessato a Appartamento",
                 "sender_text" => "Buonasera, sono interessato al vostro appartamento, quando sarebbe disponibile? ",
-                "read" => "0",
             ],
             [
                 "apartment_id" => "13",
@@ -138,7 +126,6 @@ class MessageSeeder extends Seeder
                 "sender_surname" => $faker->lastName(),
                 "object" => "Disponibilità Appartamento",
                 "sender_text" => "Salve, sono interessato al vostro appartamento, quando sarebbe disponibile? Grazie ",
-                "read" => "0",
             ],
             [
                 "apartment_id" => "14",
@@ -147,7 +134,6 @@ class MessageSeeder extends Seeder
                 "sender_surname" => $faker->lastName(),
                 "object" => " Appartamento ",
                 "sender_text" => "Buongiorno, sono interessato al vostro appartamento, quando sarebbe disponibile? Grazie arrivederci ",
-                "read" => "0",
             ],
             [
                 "apartment_id" => "15",
@@ -156,7 +142,6 @@ class MessageSeeder extends Seeder
                 "sender_surname" => $faker->lastName(),
                 "object" => "Interessato a Appartamento",
                 "sender_text" => "Salve, sono interessato al vostro appartamento, quando sarebbe disponibile?",
-                "read" => "0",
             ],
             [
                 "apartment_id" => "16",
@@ -165,7 +150,6 @@ class MessageSeeder extends Seeder
                 "sender_surname" => $faker->lastName(),
                 "object" => "Interessato a Appartamento",
                 "sender_text" => "Buongiorno,sono interessato al vostro appartamento, quando sarebbe disponibile? Grazie ",
-                "read" => "0",
             ],
             
             [
@@ -175,7 +159,6 @@ class MessageSeeder extends Seeder
                 "sender_surname" => $faker->lastName(),
                 "object" => "Interessato a Appartamento",
                 "sender_text" => "Salve, sono interessato al vostro appartamento, quando sarebbe disponibile? Grazie arrivederci ",
-                "read" => "0",
             ],
             [
                 "apartment_id" => "2",
@@ -184,7 +167,6 @@ class MessageSeeder extends Seeder
                 "sender_surname" => $faker->lastName(),
                 "object" => "Interesse a Appartamento",
                 "sender_text" => "Buongiorno, quando sarebbe disponibile il suo appartamento? Cordiali saluti ",
-                "read" => "0",
             ],
             [
                 "apartment_id" => "3",
@@ -193,7 +175,6 @@ class MessageSeeder extends Seeder
                 "sender_surname" => $faker->lastName(),
                 "object" => "Prenotazione Appartamento",
                 "sender_text" => "Buonasera, vorrei sapere la disponibilità sul suo appartamento, Cordiali saluti ",
-                "read" => "0",
             ],
             [
                 "apartment_id" => "4",
@@ -202,7 +183,6 @@ class MessageSeeder extends Seeder
                 "sender_surname" => $faker->lastName(),
                 "object" => "Appartamento",
                 "sender_text" => "Buongiorno, ho visto il suo appartamento e vorrei effetturare un soggiorno, quando sarebbe disponibile? Grazie e arrivederci ",
-                "read" => "0",
             ],
             [
                 "apartment_id" => "5",
@@ -211,7 +191,6 @@ class MessageSeeder extends Seeder
                 "sender_surname" => $faker->lastName(),
                 "object" => "Soggiorno appartamento",
                 "sender_text" => "Salve,Vorrei passare il weekend nel suo appartamento, è disponibile? ",
-                "read" => "0",
             ],
             [
                 "apartment_id" => "6",
@@ -220,7 +199,6 @@ class MessageSeeder extends Seeder
                 "sender_surname" => $faker->lastName(),
                 "object" => "Appartamento per stasera",
                 "sender_text" => "Salve, volevo sapere se per stasera l' appartamento è disponibile, Grazie ",
-                "read" => "0",
             ],
             [
                 "apartment_id" => "7",
@@ -229,7 +207,6 @@ class MessageSeeder extends Seeder
                 "sender_surname" => $faker->lastName(),
                 "object" => "Appartamento",
                 "sender_text" => "Salve, sono interessato al vostro appartamento, in quali giorni sarebbe disponibile? Grazie e arrivederci ",
-                "read" => "0",
             ],
             [
                 "apartment_id" => "8",
@@ -238,7 +215,6 @@ class MessageSeeder extends Seeder
                 "sender_surname" => $faker->lastName(),
                 "object" => "Interessato a Appartamento",
                 "sender_text" => "Buongiorno, mi piacerebbe molto soggiornare nel suo appartamento, è disponibile Martedi? Grazie arrivederci ",
-                "read" => "0",
             ],
             [
                 "apartment_id" => "9",
@@ -247,7 +223,6 @@ class MessageSeeder extends Seeder
                 "sender_surname" => $faker->lastName(),
                 "object" => "Interessato a Appartamento",
                 "sender_text" => "Salve, sono interessato al vostro appartamento, quando sarebbe disponibile?? ",
-                "read" => "0",
             ],
             [
                 "apartment_id" => "10",
@@ -256,7 +231,6 @@ class MessageSeeder extends Seeder
                 "sender_surname" => $faker->lastName(),
                 "object" => "Week-end Appartamento",
                 "sender_text" => "Salve, vorrei soggiornare nel suo appartamento questo week-end, è disponibile? Grazie arrivederci ",
-                "read" => "0",
             ],
             [
                 "apartment_id" => "11",
@@ -265,7 +239,6 @@ class MessageSeeder extends Seeder
                 "sender_surname" => $faker->lastName(),
                 "object" => "Interessato a Appartamento",
                 "sender_text" => "Salve, sono interessato al vostro appartamento, quando sarebbe disponibile? Grazie arrivederci ",
-                "read" => "0",
             ],
             [
                 "apartment_id" => "12",
@@ -274,7 +247,6 @@ class MessageSeeder extends Seeder
                 "sender_surname" => $faker->lastName(),
                 "object" => "Interessato a Appartamento",
                 "sender_text" => "Buonasera, sono interessato al vostro appartamento, quando sarebbe disponibile? ",
-                "read" => "0",
             ],
             [
                 "apartment_id" => "13",
@@ -283,7 +255,6 @@ class MessageSeeder extends Seeder
                 "sender_surname" => $faker->lastName(),
                 "object" => "Disponibilità Appartamento",
                 "sender_text" => "Salve, sono interessato al vostro appartamento, quando sarebbe disponibile? Grazie ",
-                "read" => "0",
             ],
             [
                 "apartment_id" => "14",
@@ -292,7 +263,6 @@ class MessageSeeder extends Seeder
                 "sender_surname" => $faker->lastName(),
                 "object" => " Appartamento ",
                 "sender_text" => "Buongiorno, sono interessato al vostro appartamento, quando sarebbe disponibile? Grazie arrivederci ",
-                "read" => "0",
             ],
             [
                 "apartment_id" => "15",
@@ -301,7 +271,6 @@ class MessageSeeder extends Seeder
                 "sender_surname" => $faker->lastName(),
                 "object" => "Interessato a Appartamento",
                 "sender_text" => "Salve, sono interessato al vostro appartamento, quando sarebbe disponibile?",
-                "read" => "0",
             ],
             [
                 "apartment_id" => "16",
@@ -310,7 +279,6 @@ class MessageSeeder extends Seeder
                 "sender_surname" => $faker->lastName(),
                 "object" => "Interessato a Appartamento",
                 "sender_text" => "Buongiorno,sono interessato al vostro appartamento, quando sarebbe disponibile? Grazie ",
-                "read" => "0",
             ],
 
         ];
@@ -323,7 +291,6 @@ class MessageSeeder extends Seeder
                 "sender_surname" => $faker->lastName(),
                 "object" => $message['object'],
                 "sender_text" => $message['sender_text'],
-                "read" => "0",
                 "created_at" => $faker->dateTimeBetween('-4 months', '-1 days')
 
             ]);
