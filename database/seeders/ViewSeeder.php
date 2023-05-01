@@ -27,7 +27,7 @@ class ViewSeeder extends Seeder
 
                 "apartment_id" => $apartment_id,
                 "ip_address" => $faker->ipv4(),
-                "created_at" => $faker->dateTimeBetween('-12 months', '-1 days')
+                "created_at" => $faker->dateTimeBetween('-4 months', '-1 days')
 
             ];
             View::create($view);

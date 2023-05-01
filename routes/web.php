@@ -26,10 +26,6 @@ use App\Http\Controllers\Admin\PaymentController;
 Route::get('/', function () {
     return redirect()->route('admin.dashboard');
 });
-Route::get('/prova', [PageController::class, 'prova'])->name('prova');
-
-Route::get('/provaPagamento', [PageController::class, 'provaPagamento'])->name('provaPagamnento');
-
 // Route::middleware('auth')->group(function () {
 //     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
 //     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
