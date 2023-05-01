@@ -30,10 +30,12 @@ class MessageController extends Controller
          $search = $request->input('search');
      
         //  prova query per ordinare date messaggi
-         $messages = Message::whereHas('apartment', function ($query) use ($user) {
-             $query->where('user_id', '=',  $user->id)->orderBy('created_at', 'desc');
-         });
-     
+        $messages = Message::whereHas('apartment', function ($query) use ($user) {
+            $query->where('user_id', '=', $user->id)
+                ->orderBy('created_at', 'desc');
+        })->get();
+        $messages = $messages->sortByDesc('created_at');
+        
          if ($apartment_id) {
              $messages = $messages->where('apartment_id', $apartment_id);
          }
@@ -47,8 +49,7 @@ class MessageController extends Controller
              });
          }
      
-         $messages = $messages->get();
-     
+        //  $messages = $messages->get();
          $apartments = Apartment::where('user_id', $user->id)->get();
      
          return view('admin.messages.index', [
