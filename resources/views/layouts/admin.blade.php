@@ -18,7 +18,7 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     
     {{-- fontawesome  --}}
-    <link rel="stylesheet" href="{{ asset('node_modules/@fortawesome/fontawesome-free/css/all.min.css') }}">
+    {{-- <link rel="stylesheet" href="{{ asset('node_modules/@fortawesome/fontawesome-free/css/all.min.css') }}"> --}}
 
      {{-- prevent Braintree stylesheet  --}}
      {{-- <link rel="stylesheet" id="braintree-dropin-stylesheet"> --}}
