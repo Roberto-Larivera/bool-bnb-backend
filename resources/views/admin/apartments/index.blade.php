@@ -118,7 +118,10 @@
             </div>
     </div>
 @else
-    Nessun appartamento inserito
+    <div class="d-flex justify-content-center gap-3 align-items-center fs-4 mt-5">
+        <i class="fa-solid fa-home"></i>
+        <p class="m-0">Non hai appartamenti registrati!</p>
+    </div>
     @endif
 
     </div>
