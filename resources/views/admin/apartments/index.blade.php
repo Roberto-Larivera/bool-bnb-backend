@@ -119,7 +119,7 @@
     </div>
 @else
     <div class="d-flex justify-content-center gap-3 align-items-center fs-4 mt-5">
-        <i class="fa-solid fa-home"></i>
+        <i class="fa-solid fa-building"></i>
         <p class="m-0">Non hai appartamenti registrati!</p>
     </div>
     @endif
