@@ -4,9 +4,6 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 
-use App\Http\Requests\StoreUser_dataRequest;
-use App\Http\Requests\UpdateUser_dataRequest;
-
 // Models
 use App\Models\User_data;
 use App\Models\User;
@@ -48,7 +45,7 @@ class UserDataController extends Controller
      * @param  \App\Http\Requests\StoreUser_dataRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreUser_dataRequest $request)
+    public function store()
     {
         //
     }
@@ -99,9 +96,9 @@ class UserDataController extends Controller
 
         // Validazione dati
         $validator = Validator::make($request->all(), [
-            'name' => ['required', 'string', 'max:50'],
-            'surname' => ['required', 'string', 'max:50'],
-            'date_of_birth' => ['required', 'date_format:Y-m-d', 'before_or_equal:' . $currentDateMin]
+            'name' => ['nullable', 'string', 'max:50'],
+            'surname' => ['nullable', 'string', 'max:50'],
+            'date_of_birth' => ['nullable', 'date_format:Y-m-d', 'before_or_equal:' . $currentDateMin]
         ], [
             'date_of_birth.before_or_equal' => 'Devi avere almeno 18 anni per registrarti.'
         ]);

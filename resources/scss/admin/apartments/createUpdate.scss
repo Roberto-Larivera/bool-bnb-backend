@@ -9,10 +9,9 @@
         background-color: $color_primary;
         border-color: $color_primary;
       }
+      
     
-      .radius {
-        
-    }
+
     #menuAutoComplete{
         border-radius: 0 0 5px 5px;
         border-left: 1px solid $color_primary;
@@ -29,6 +28,10 @@
                 }
             }
         }
+    }
+    img{
+        object-fit: cover;
+        max-height: 300px;
     }
 
 }

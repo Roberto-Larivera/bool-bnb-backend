@@ -45,9 +45,9 @@ class RegisteredUserController extends Controller
         $currentDateMin = date('Y-m-d', strtotime('-18 years', strtotime($currentDate)));
 
         $validator = Validator::make($request->all(), [
-            'name' => ['required', 'string', 'max:50'],
-            'surname' => ['required', 'string', 'max:50'],
-            'date_of_birth' => ['required', 'date_format:Y-m-d', 'before_or_equal:' . $currentDateMin],
+            'name' => ['nullable', 'string', 'max:50'],
+            'surname' => ['nullable', 'string', 'max:50'],
+            'date_of_birth' => ['nullable', 'date_format:Y-m-d', 'before_or_equal:' . $currentDateMin],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:' . User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ], [

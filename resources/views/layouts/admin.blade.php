@@ -5,20 +5,28 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <link rel="icon" href="{{ url('assets/favicon.png') }}">
+
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Laravel') }}@yield('title')</title>
 
+    
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-
+    
     {{-- fontawesome  --}}
     <link rel="stylesheet" href="{{ asset('node_modules/@fortawesome/fontawesome-free/css/all.min.css') }}">
 
-
-
+     {{-- prevent Braintree stylesheet  --}}
+     {{-- <link rel="stylesheet" id="braintree-dropin-stylesheet"> --}}
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    
+    @yield('head')
     <!-- Usando Vite -->
     @vite(['resources/js/app.js'])
 </head>
@@ -60,7 +68,8 @@
                                     @if (Auth::user()->user_data->name != null)
                                         {{ Auth::user()->user_data->name }}
                                     @else
-                                        {{ Auth::user()->email }}
+                                        {{-- {{ Auth::user()->email }} --}}
+                                        profilo personale
                                     @endif
                                 </span>
                             </a>
@@ -68,10 +77,6 @@
                                 <a href="{{ route('admin.messages.index') }}">
                                     <i class="fa-regular fa-envelope" data-bs-toggle="tooltip"
                                         data-bs-placement="bottom" data-bs-title="Messaggi"></i>
-                                </a>
-                                <a href="#nogo">
-                                    <i class="fa-regular fa-bell" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                                        data-bs-title="Avvisi"></i>
                                 </a>
                                 <a href="{{ route('logout') }}"
                                     onclick="event.preventDefault();
@@ -93,7 +98,7 @@
         <div class="modal fade w-100" id="navBarModal" tabindex="-1" aria-labelledby="exampleModalLabel"
             aria-hidden="true">
             <div class="modal-dialog">
-                <div class="modal-content p-5">
+                <div class="modal-content py-4 px-5">
                     <div class="modal-header pt-0 ps-0 pe-0 justify-content-center">
                         <button type="button" class="btn-close m-0" data-bs-dismiss="modal"
                             aria-label="Close"></button>

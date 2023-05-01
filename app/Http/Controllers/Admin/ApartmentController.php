@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Mail;
+use Carbon\Carbon;
 
 // Models
 use App\Models\User;
@@ -35,6 +36,9 @@ class ApartmentController extends Controller
 
         $apartments = Apartment::where('user_id', $user->id)->get();
 
+        foreach ($apartments as $key => $item) {
+            $item['full_path_main_img'] = asset('storage/'.$item->main_img); 
+        }
         return view('admin.apartments.index', [
             'apartments' => $apartments
         ]);
@@ -67,10 +71,10 @@ class ApartmentController extends Controller
         // */
 
         // img file
-        // if (array_key_exists('main_img', $data)) {
-        //     $imgPath = Storage::put('apartments', $data['main_img']);
-        //     $data['main_img'] = $imgPath;
-        // }
+        if (array_key_exists('main_img', $data)) {
+            $imgPath = Storage::put('apartments', $data['main_img']);
+            $data['main_img'] = $imgPath;
+        }
 
 
         // crea uno slug dal titolo e e lo ricerca nel db per controllare che non esiste, in caso esiste la variabile $existSlug ritorna un true e attiva il ciclo while
@@ -117,12 +121,25 @@ class ApartmentController extends Controller
     public function show(Apartment $apartment)
     {
         $user = Auth::user();
+        $oggi = Carbon::today();
+
+
+        $apartment['sponsored'] = false;
+        
+        $boll = $apartment->sponsors()->where('deadline', '>', $oggi)->first();
+
+        if($boll)
+            $apartment['sponsored'] = true;
+
 
         if ($apartment->user_id == $user->id) {
             $services = Service::all();
+            $gallery = $apartment->imageGallery;
+            // dd($gallery);
 
             return view('admin.apartments.show', [
                 'apartment' => $apartment,
+                'imageGallery' => $gallery,
                 'services' => $services
             ]);
         } else {
@@ -141,6 +158,7 @@ class ApartmentController extends Controller
         $user = Auth::user();
         if ($apartment->user_id == $user->id) {
             $services = Service::all();
+            $apartment['full_path_main_img'] = asset('storage/'.$apartment->main_img);
             return view('admin.apartments.edit', compact('apartment', 'services'));
         } else {
             return redirect()->route('admin.apartments.index', $apartment->id)->with('warning', 'Ci dispiace, non abbiamo trovato questo appartamento.');
@@ -173,11 +191,11 @@ class ApartmentController extends Controller
         $longitudeOld = $apartment->longitude;
 
         // richiesta di rimozione o modifica img file
-        // $featuredDeleteImage = false;
+        $featuredDeleteImage = false;
 
         // verifica eliminazione o modifica img file
-        // if (array_key_exists('main_img', $data))
-        //     $featuredDeleteImage = true;
+        if (array_key_exists('main_img', $data))
+            $featuredDeleteImage = true;
 
         if(!array_key_exists('services', $data)){
             $data['services']=[];
@@ -187,10 +205,10 @@ class ApartmentController extends Controller
             $titleOld == $data['title'] &&
             $descriptionOld == $data['description'] &&
             // img file
-            // $featuredDeleteImage == false &&
+            $featuredDeleteImage == false &&
             
             // img url
-            $main_imgOld == $data['main_img'] &&
+            // $main_imgOld == $data['main_img'] &&
             $servicesOld == $data['services'] &&
             $max_guestsOld == $data['max_guests'] &&
             $roomsOld == $data['rooms'] &&
@@ -205,14 +223,14 @@ class ApartmentController extends Controller
         } else {
 
             // img file
-            // if (array_key_exists('main_img', $data)){
-            //     $imgPath = Storage::put('apartments', $data['main_img']);
-            //     $data['main_img'] = $imgPath;
-            //     if ($main_imgOld) {
-            //         // Controllo se ce un immagine vecchia è la cancello
-            //         Storage::delete($main_imgOld);
-            //     }
-            // }
+            if (array_key_exists('main_img', $data)){
+                $imgPath = Storage::put('apartments', $data['main_img']);
+                $data['main_img'] = $imgPath;
+                if ($main_imgOld) {
+                    // Controllo se ce un immagine vecchia è la cancello
+                    Storage::delete($main_imgOld);
+                }
+            }
 
             if (!isset($data['latitude']) && !isset($data['longitude'])) {
                 $data['latitude'] = $latitudeOld;
@@ -260,9 +278,9 @@ class ApartmentController extends Controller
     {
         // Se esiste già apartment->main_img allora cancella l'immagine 
         // img file
-        // if ($apartment->main_img) {
-        //     Storage::delete($apartment->main_img);
-        // }
+        if ($apartment->main_img) {
+            Storage::delete($apartment->main_img);
+        }
 
         // Cancella tutto appartamento
         $apartment->delete();

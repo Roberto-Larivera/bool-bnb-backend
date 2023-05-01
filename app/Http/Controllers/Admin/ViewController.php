@@ -8,8 +8,6 @@ use App\Http\Controllers\Controller;
 // Helpers
 use Illuminate\Support\Facades\Auth;
 
-use App\Http\Requests\StoreViewRequest;
-use App\Http\Requests\UpdateViewRequest;
 use App\Models\View;
 
 class ViewController extends Controller
@@ -45,7 +43,7 @@ class ViewController extends Controller
      * @param  \App\Http\Requests\StoreViewRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreViewRequest $request)
+    public function store()
     {
         //
     }
@@ -79,7 +77,7 @@ class ViewController extends Controller
      * @param  \App\Models\View  $view
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateViewRequest $request, View $view)
+    public function update(View $view)
     {
         //
     }

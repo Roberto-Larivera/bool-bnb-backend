@@ -1,0 +1,67 @@
+#payment_container{
+    #dropin-container {
+        display: flex; 
+        justify-content: center; 
+        align-items: center;
+    }
+
+    .info-payment {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: $color_primary;
+    }
+    
+    
+    .my-border {
+        border: 2px solid $color_primary;
+    }
+    .message {
+        position: absolute;
+        top: 10%;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px;
+        border-radius: 5px;
+        z-index: 9999;
+        // &.success {
+        //     background-color: #28a745;
+        //     color: #fff;
+        //   }
+        // &.danger {
+        //     background-color: #28a745;
+        //     color: #fff;
+        //   }
+      }
+      div[data-braintree-id="toggle"]{
+        display: none !important;
+      }
+      .message i {
+        font-size: 24px;
+        margin-right: 10px;
+      }
+      
+      .message span {
+        font-size: 18px;
+        font-weight: 600;
+      }
+      
+      .close {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        background-color: transparent;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        padding: 0;
+      }
+      
+      .close .close-icon {
+        font-size: 16px;
+        color: #fff;
+      }
+}

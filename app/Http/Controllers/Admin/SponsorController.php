@@ -7,11 +7,10 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
-use App\Http\Requests\StoreSponsorRequest;
-use App\Http\Requests\UpdateSponsorRequest;
 use App\Models\Sponsor;
 use App\Models\User;
 use App\Models\Apartment;
+use Carbon\Carbon;
 
 
 class SponsorController extends Controller
@@ -48,7 +47,7 @@ class SponsorController extends Controller
      * @param  \App\Http\Requests\StoreSponsorRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreSponsorRequest $request)
+    public function store()
     {
         //
     }
@@ -62,14 +61,25 @@ class SponsorController extends Controller
     public function show(Apartment $apartment, Sponsor $sponsor, Request $request)
     {
 
+        // usoo di carbon per prendere la data attuale
+        $oggi = Carbon::today();
+
         $id = $request->query('apartment_id');
 
         $user = Auth::user();
 
         if ($id == null) {
 
-            $apartments = Apartment::where('user_id', $user->id)->get();
-
+            $apartments = Apartment::where('user_id', $user->id)
+            ->whereDoesntHave('sponsors', function ($query)  use ($oggi) {
+                $query->where('deadline', '>', $oggi)
+                ->orWhereNull('deadline');
+            })
+            ->get();
+            foreach ($apartments as $key => $item) {
+                $item['full_path_main_img'] = asset('storage/'.$item->main_img); 
+            }
+            
             return view('admin.sponsors.show', [
                 'apartments' => $apartments,
                 'sponsor' => $sponsor,
@@ -115,7 +125,7 @@ class SponsorController extends Controller
      * @param  \App\Models\Sponsor  $sponsor
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateSponsorRequest $request, Sponsor $sponsor)
+    public function update( Sponsor $sponsor)
     {
         //
     }

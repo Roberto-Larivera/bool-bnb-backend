@@ -21,7 +21,6 @@ return new class extends Migration
             $table->string('sender_surname',50);
             $table->string('object',70);
             $table->text('sender_text');
-            $table->boolean('read')->default(0);
             $table->foreign('apartment_id')->references('id')->on('apartments')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });

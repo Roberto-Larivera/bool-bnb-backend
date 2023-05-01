@@ -17,24 +17,34 @@
 @import './admin/messages/index.scss';
 @import './admin/user_datas/index.scss';
 @import './admin/user_datas/edit.scss';
+@import './admin/apartments/show.scss';
+@import './admin/payment/show.scss';
 
 // Style per sponsors
 @import './admin/sponsors/index.scss';
 
+// Style dashboard
+@import './admin/dashboard.scss';
+
 // REGOLE GENERALI
-body{
+body {
     scroll-behavior: smooth;
     background-color: $color_light;
 }
 
 // Bottone chiaro + hover fucsia
-.primary-btn{
+.primary-btn {
     @include buttonPrimary
 }
 
 // Bottone fucsia
-.secondary-btn{
+.secondary-btn {
     @include buttonSecondary
+}
+
+// Bottone disabilitato
+.disabled-btn {
+    @include buttonDisabled
 }
 
 // Link per tornare a pagina precedente
@@ -64,4 +74,104 @@ body{
 // Icona titoli
 .icon-section {
     @include iconSection
+}
+
+// Immagine quadrata
+.my-img {
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+}
+
+// colore principale
+.color-primary {
+    color: $color_primary;
+}
+
+// cursor copy
+.cursor-copy {
+    cursor: copy;
+}
+
+// btn destroy gallery show
+.preview-hover-hidden {
+
+    &:hover img{
+        filter: blur(2px) grayscale(99%);
+    }
+
+    & form button {
+        display: none;
+
+    }
+
+    &:hover button {
+        display: block;
+        background-color: transparent;
+        border: 0px;
+        color: $color_dark;
+    }
+}
+
+// Per width apartment index -> da tenere in scss specifico 
+.apartment-img-container {
+    width: 50px;
+}
+
+thead {
+    background-color: rgba(255, 56, 92, 0.9);
+    color: $color_light;
+
+    th:first-child {
+        border-top-left-radius: 20px;
+    }
+
+    th:last-child {
+        border-top-right-radius: 20px;
+    }
+}
+
+@media screen and (min-width: 20px) {
+
+    thead {
+
+
+        th:nth-child(2) {
+            border-top-left-radius: 20px;
+        }
+    }
+
+}
+
+@media screen and (min-width: 425px) {
+    thead {
+
+
+
+
+        th:nth-child(2) {
+            border-top-left-radius: 20px;
+        }
+    }
+}
+
+@media screen and (min-width: 576px) {
+    thead {
+
+
+
+
+        th:nth-child(2) {
+            border-top-left-radius: 0px;
+        }
+    }
+}
+
+@media screen and (min-width: 768px) {
+    thead {
+
+
+        th:nth-child(2) {
+            border-top-left-radius: 0px;
+        }
+    }
 }
