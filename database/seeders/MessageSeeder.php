@@ -324,7 +324,7 @@ class MessageSeeder extends Seeder
                 "object" => $message['object'],
                 "sender_text" => $message['sender_text'],
                 "read" => "0",
-                "created_at" => $faker->dateTimeBetween('-10 months', '-1 days')
+                "created_at" => $faker->dateTimeBetween('-4 months', '-1 days')
 
             ]);
         }
