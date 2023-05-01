@@ -169,7 +169,7 @@
                                 <li class="my-home mt-5">
                                     {{-- collegamento frontend --}}
                                     <a class="btn d-flex justify-content-center align-items-center"
-                                        href="http://localhost:5174/" target="_blank">
+                                        href="http://localhost:5174/">
                                         <span>Home</span> <i class="fa-solid fa-house fa-lg fa-fw ms-3"></i>
                                     </a>
                                 </li>
@@ -238,7 +238,7 @@
                         <li class="my-home mt-5">
                             {{-- collegamento frontend --}}
                             <a class="btn d-flex justify-content-center align-items-center"
-                                href="http://localhost:5174/" target="_blank">
+                                href="http://localhost:5174/">
                                 <span>Home</span> <i class="fa-solid fa-house fa-lg fa-fw ms-3"></i>
                             </a>
                         </li>
