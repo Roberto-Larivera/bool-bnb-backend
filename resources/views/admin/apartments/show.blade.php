@@ -206,9 +206,12 @@
                 <div class="col-12 col-lg-1 aside-show rounded-top">
                     <div class="d-flex justify-content-between flex-lg-column align-items-lg-center px-3 py-1 rounded-lg">
                         {{-- <div class="aside-edit text-end py-4" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-title="Modifica appartamento"> --}}
-                        <div class="py-4">
-                            <a href="{{ route('admin.apartments.edit', $apartment->id) }}" class="aside-edit" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-title="Modifica appartamento">
-                                <i class="fa-regular fa-pen-to-square fa-xl"></i>
+                        <div class="py-4 tooltip">
+                            <a href="{{ route('admin.apartments.edit', $apartment->id) }}" class="aside-edit">
+                                <i class="fa-solid fa-file-pen fa-xl"></i>
+                                <span class="tooltiptext">
+                                    Modifica appartamento
+                                </span>
                             </a>
                         </div>
                         {{-- </div> --}}
