@@ -93,7 +93,7 @@
                         <h2
                             class="card-title text-center fw-bold {{ strtolower(explode(' ', $sponsor->title)[1]) }} px-2 py-3 ">
                             {{ explode(' ', $sponsor->title)[1] }}</h2>
-                        <h6 class="px-2 py-3 py-xxl-5 text-center">Prezzo: {{ $sponsor->price }} h</h6>
+                        <h6 class="px-2 py-3 py-xxl-5 text-center">Prezzo: {{ $sponsor->price }} &euro;/h</h6>
                         <h6 class="px-2 py-3 py-xxl-5 text-center">Durata: {{ $sponsor->duration }} h</h6>
                         <p class="card-text p-2 text-center">{{ $sponsor->description }}</p>
                     </div>
