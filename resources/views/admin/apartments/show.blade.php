@@ -220,17 +220,19 @@
                                 </button>
                             </form>
                         </div>
-                        <div class="aside-sponsor text-end py-4" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-title="Sponsorizza">
                             @if($apartment->sponsored == false)
-                                <a href="{{ route('admin.sponsors.index',  ['apartment_id' => $apartment->id]) }}">
-                                    <i class="fa-solid fa-rocket fa-xl"></i>
-                                </a>
+                                <div class="aside-sponsor text-end py-4" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-title="Sponsorizza">
+                                    <a href="{{ route('admin.sponsors.index',  ['apartment_id' => $apartment->id]) }}">
+                                        <i class="fa-solid fa-rocket fa-xl"></i>
+                                    </a>
+                                </div>
                             @else
-                                <a class="disabled-link">
-                                    <i class="fa-solid fa-rocket fa-xl"></i>
-                                </a>
+                                <div class="aside-sponsor text-end py-4" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-title="Sponsorizzato">
+                                    <a class="disabled-link">
+                                        <i class="fa-solid fa-rocket fa-xl"></i>
+                                    </a>
+                                </div>
                             @endif
-                        </div>
                         <div class="aside-messages text-end py-4" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-title="Leggi messaggi">
                             <a href="{{ route('admin.messages.index', ['apartment_id' => $apartment->id]) }}">
                                 <i class="fa-solid fa-envelope fa-xl"></i>
