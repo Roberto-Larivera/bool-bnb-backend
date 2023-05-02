@@ -16,21 +16,21 @@
         </div>
 
         <div class="container-fluid mt-4">
-            <div class="row row-cols-1">
+            <div class="row row-cols-1 text-center fs-4">
                 <div class="col">
                     <div>
-                        Filtra in base all'appartamento e al mese:
+                        Filtra in base all'appartamento:
                     </div>
                 </div>
             </div>
         </div>
 
         <div class="container-fluid">
-            <div class="row row-cols-2 mb-5">
+            <div class="row row-cols-2 mb-5 justify-content-center">
                 <div class="col-12 col-md-6 py-3">
                     <form action="{{ route('admin.dashboard') }}" method="POST" id="formApartment">
                         @csrf
-                        <select class="form-select" aria-label="Default select example" name="selectApartment"
+                        <select class="form-select input-data" aria-label="Default select example" name="selectApartment"
                             onchange="document.getElementById('formApartment').submit()">
                             <option value="tutti" {{ $request->input('selectApartment') == 'tutti' ? 'selected' : '' }}>
                                 Tutti
@@ -46,7 +46,7 @@
                     </form>
                 </div>
 
-                <div class="col-12 col-md-6 py-3">
+                {{-- <div class="col-12 col-md-6 py-3">
                     <form action="{{ route('admin.dashboard') }}" method="POST" id="dateFilterForm">
                         @csrf
                         <select class="form-select" aria-label="Default select example" name="month"
@@ -73,7 +73,7 @@
                         </select>
                         <input type="hidden" name="selectApartment" value="{{ $request->input('selectApartment') }}">
                     </form>
-                </div>
+                </div> --}}
             </div>
 
 
