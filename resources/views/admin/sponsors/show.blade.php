@@ -29,7 +29,7 @@
             {{-- qui se più appartamenti --}}
             @if (isset($apartments))
                 <div class="col-xs-12 col-xl-4 d-flex align-items-start justify-content-center">
-                    <div class="my-card-2 p-4">
+                    <div class="my-card-special p-4">
                         <h2
                             class="card-title text-center fw-bold {{ strtolower(explode(' ', $sponsor->title)[1]) }} px-2 py-3 ">
                             {{ explode(' ', $sponsor->title)[1] }}</h2>
@@ -89,7 +89,7 @@
             @else
                 {{-- Qui se appartamento singolo --}}
                 <div class="col-md-12 col-lg-6 d-flex justify-content-center">
-                    <div class="my-card p-4">
+                    <div class="my-card-special p-4">
                         <h2
                             class="card-title text-center fw-bold {{ strtolower(explode(' ', $sponsor->title)[1]) }} px-2 py-3 ">
                             {{ explode(' ', $sponsor->title)[1] }}</h2>
@@ -100,8 +100,8 @@
                 </div>
 
                 <div class="col-md-12 col-lg-6 d-flex justify-content-center align-items-center">
-                    <div class="my-card">
-                        <h2 class="text-center px-2 pt-5 ">{{ $apartment->title }}</h2>
+                    <div class="my-card-special p-4">
+                        <h2 class="text-center px-2 py-3">{{ $apartment->title }}</h2>
                         <div class="px-5 pt-5">
                             <img class="img-fluid rounded" src="{{ $apartment->full_path_main_img }}">
                         </div>
