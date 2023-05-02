@@ -28,6 +28,7 @@
         <div class="row gy-5 mt-5 mt-md-0 d-flex justify-content-center mb-5">
             {{-- qui se più appartamenti --}}
             @if (isset($apartments))
+                @if(count($apartments) > 0)
                 <div class="col-xs-12 col-xl-4 d-flex align-items-start justify-content-center">
                     <div class="my-card-special p-4">
                         <h2
@@ -86,6 +87,14 @@
                         @endforeach
                     </table>
                 </div>
+                @else
+                <div class="col">
+                    <div class="d-flex justify-content-center gap-3 align-items-center fs-4 mt-5">
+                        <i class="fa-solid fa-building"></i>
+                        <p class="m-0">Non ci sono appartamenti da poter sponzorizzare!</p>
+                    </div>
+                </div>
+                @endif
             @else
                 {{-- Qui se appartamento singolo --}}
                 <div class="col-md-12 col-lg-6 d-flex justify-content-center">
