@@ -90,6 +90,12 @@
                         </div>
 
                         <div class="mb-4 row">
+                            <div class="col fst-italic">
+                                I campi contrassegnati con <span class="fw-bold">*</span> sono obbligatori.
+                            </div>
+                        </div>
+
+                        <div class="mb-4 row">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn">
                                     {{ __('Register') }}
