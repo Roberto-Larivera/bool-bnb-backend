@@ -49,7 +49,6 @@
             right: 0;
             background-color: rgba(221, 204, 224, 0.5);
             width: 70px;
-            // margin-left: 50%
 
             a {
                 color: $color_dark;
@@ -58,13 +57,35 @@
             .disabled-link {
                 color: gray;
             }
+
+            .tooltip {
+                position: relative;
+                display: inline-block;
+                border-bottom: 1px dotted black;
+            }
+              
+            .tooltip .tooltiptext {
+                visibility: hidden;
+                width: 120px;
+                background-color: black;
+                color: #fff;
+                text-align: center;
+                border-radius: 6px;
+                padding: 5px 0;
+              
+                /* Position the tooltip */
+                position: absolute;
+                z-index: 1;
+            }
+              
+              .tooltip:hover .tooltiptext {
+                visibility: visible;
+            }
         }
 
         // Per aside mediaquery 
-        @media screen and (max-width: 768px) {
+        @media screen and (max-width: 991px) {
             .main-show {
-
-                // height: calc(100vh - 198px);
                 overflow-y: hidden;
             }
             
@@ -75,7 +96,6 @@
                 height: auto;
                 background-color: rgb(221, 204, 224);
                 width: 100%;
-                // margin-left: 0%;
 
                 a {
                     color: $color_dark;
@@ -92,6 +112,8 @@
                 .modal-dialog {
                     margin-top: 80px;
                 }
+
+               
             }
         }
       
