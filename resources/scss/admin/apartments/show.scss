@@ -4,7 +4,7 @@
 
         .main-show {
 
-            overflow-y: scroll;
+            // overflow-y: hidden;
             -ms-overflow-style: none; /* for Internet Explorer, Edge */
             scrollbar-width: none; /* for Firefox */
 
@@ -85,9 +85,9 @@
 
         // Per aside mediaquery 
         @media screen and (max-width: 991px) {
-            .main-show {
-                overflow-y: hidden;
-            }
+            // .main-show {
+            //     overflow-y: hidden;
+            // }
             
             .aside-show {
                 position: sticky;
