@@ -93,7 +93,7 @@ class PageController extends Controller
         }
 
         // usoo di carbon per prendere la data attuale
-        $oggi = Carbon::today();
+        $oggi = Carbon::now();
 
         // NON SI TOCCA, SENNNNNO VIENE ...? ********
 
