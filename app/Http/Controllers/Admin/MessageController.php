@@ -33,8 +33,7 @@ class MessageController extends Controller
         $messages = Message::whereHas('apartment', function ($query) use ($user) {
             $query->where('user_id', '=', $user->id)
                 ->orderBy('created_at', 'desc');
-        })->get();
-        $messages = $messages->sortByDesc('created_at');
+        });
         
          if ($apartment_id) {
              $messages = $messages->where('apartment_id', $apartment_id);
@@ -47,10 +46,11 @@ class MessageController extends Controller
                        ->orWhere('sender_surname', 'LIKE', '%' . $search . '%')
                        ->orWhere('sender_text', 'LIKE', '%' . $search . '%');
              });
-         }
+        }
      
-        //  $messages = $messages->get();
-         $apartments = Apartment::where('user_id', $user->id)->get();
+        $messages = $messages->get();
+        $messages = $messages->sortByDesc('created_at');
+        $apartments = Apartment::where('user_id', $user->id)->get();
      
          return view('admin.messages.index', [
              'messages' => $messages,

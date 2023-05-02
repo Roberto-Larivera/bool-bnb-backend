@@ -91,9 +91,6 @@
                                 <h2 class="card-subtitle  text-body-secondary mb-3 fw-bold">
                                     {{ $totalViews }}
                                 </h2>
-                                <p class="card-text mb-4">
-                                    Lorem ipsum dolor sit.
-                                </p>
                             </div>
                         </div>
                     </div>
@@ -112,9 +109,6 @@
                                 <h2 class="card-subtitle text-body-secondary mb-3 fw-bold">
                                     {{ $totalMessages }}
                                 </h2>
-                                <p class="card-text mb-4">
-                                    Lorem ipsum dolor sit.
-                                </p>
                             </div>
                         </div>
                     </div>
