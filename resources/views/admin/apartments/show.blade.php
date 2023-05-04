@@ -192,9 +192,13 @@
                                         <button type="button" class="primary-btn" data-bs-dismiss="modal">
                                             Chiudi
                                         </button>
+                                        <form action="{{ route('admin.apartments.destroy', $apartment->id) }}" method="POST" class="d-inline">
+                                            @csrf
+                                            @method('DELETE')
                                         <button type="submit" class="secondary-btn">
                                             Cancella
                                         </button>
+                                    </form>
                                     </div>
                                 </div>
                             </div>
@@ -211,14 +215,12 @@
                             </a>
                         </div>
                         <div class="aside-delete text-end py-4" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-title="Cancella appartamento">
-                            <form action="{{ route('admin.apartments.destroy', $apartment->id) }}" method="POST" class="d-inline">
-                                @csrf
-                                @method('DELETE')
+                           
         
                                 <button type="button" class="btn-modal" data-bs-toggle="modal" data-bs-target="#modal-delete" style="border: 0; background-color: transparent;">
                                     <i class="fa-solid fa-trash fa-xl"></i>
                                 </button>
-                            </form>
+                           
                         </div>
                             @if($apartment->sponsored == false)
                                 <div class="aside-sponsor text-end py-4" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-title="Sponsorizza">
