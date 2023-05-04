@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 // Controllers
 use App\Http\Controllers\Api\PageController;
+use App\Http\Controllers\Api\LoginController;
 use App\Http\Controllers\Api\MessageController;
 use App\Http\Controllers\Api\ViewController;
 
@@ -28,6 +29,7 @@ Route::name('api.')->group(function (){
     //     'index','show','home'
     // ]);
     Route::get('/home', [PageController::class, 'home'])->name('home');
+    Route::get('/login', [LoginController::class, 'login'])->name('login');
     Route::get('/apartments', [PageController::class, 'index'])->name('apartments.index');
     Route::get('/apartments/services', [PageController::class, 'services'])->name('apartments.services');
     Route::get('/apartments/{slug}', [PageController::class, 'show'])->name('apartments.show');

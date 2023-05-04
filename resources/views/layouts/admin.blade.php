@@ -5,6 +5,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <link rel="icon" href="{{ url('assets/favicon.png') }}">
+
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -16,7 +18,7 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     
     {{-- fontawesome  --}}
-    <link rel="stylesheet" href="{{ asset('node_modules/@fortawesome/fontawesome-free/css/all.min.css') }}">
+    {{-- <link rel="stylesheet" href="{{ asset('node_modules/@fortawesome/fontawesome-free/css/all.min.css') }}"> --}}
 
      {{-- prevent Braintree stylesheet  --}}
      {{-- <link rel="stylesheet" id="braintree-dropin-stylesheet"> --}}
@@ -76,10 +78,6 @@
                                     <i class="fa-regular fa-envelope" data-bs-toggle="tooltip"
                                         data-bs-placement="bottom" data-bs-title="Messaggi"></i>
                                 </a>
-                                <a href="#nogo">
-                                    <i class="fa-regular fa-bell" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                                        data-bs-title="Avvisi"></i>
-                                </a>
                                 <a href="{{ route('logout') }}"
                                     onclick="event.preventDefault();
                         document.getElementById('logout-form').submit();">
@@ -100,7 +98,7 @@
         <div class="modal fade w-100" id="navBarModal" tabindex="-1" aria-labelledby="exampleModalLabel"
             aria-hidden="true">
             <div class="modal-dialog">
-                <div class="modal-content p-5">
+                <div class="modal-content py-4 px-5">
                     <div class="modal-header pt-0 ps-0 pe-0 justify-content-center">
                         <button type="button" class="btn-close m-0" data-bs-dismiss="modal"
                             aria-label="Close"></button>
@@ -171,7 +169,7 @@
                                 <li class="my-home mt-5">
                                     {{-- collegamento frontend --}}
                                     <a class="btn d-flex justify-content-center align-items-center"
-                                        href="http://localhost:5174/" target="_blank">
+                                        href="http://localhost:5174/">
                                         <span>Home</span> <i class="fa-solid fa-house fa-lg fa-fw ms-3"></i>
                                     </a>
                                 </li>
@@ -240,7 +238,7 @@
                         <li class="my-home mt-5">
                             {{-- collegamento frontend --}}
                             <a class="btn d-flex justify-content-center align-items-center"
-                                href="http://localhost:5174/" target="_blank">
+                                href="http://localhost:5174/">
                                 <span>Home</span> <i class="fa-solid fa-house fa-lg fa-fw ms-3"></i>
                             </a>
                         </li>

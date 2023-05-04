@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\InfoMail;
+use App\Mail\PaymentMail;
 use Illuminate\Support\Facades\Validator;
 // Models
 use App\Models\Message;
@@ -57,8 +58,11 @@ class MessageController extends Controller
             'contactName' => $contactName,
             'messageContent' => $messageContent,
             'messageObject' => $messageObject
-        ];
+        ];  
 
+        // $data = 'ciao2@email.it';
+
+        // Mail::to('ciao@email.it')->send(new PaymentMail($data));
         Mail::to($hostEmail)->send(new InfoMail($email));
 
         return response()->json([

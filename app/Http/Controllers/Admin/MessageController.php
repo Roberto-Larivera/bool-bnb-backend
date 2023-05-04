@@ -4,8 +4,6 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 
-use App\Http\Requests\StoreMessageRequest;
-use App\Http\Requests\UpdateMessageRequest;
 use Illuminate\Http\Request;
 
 //Models
@@ -31,10 +29,12 @@ class MessageController extends Controller
          $apartment_id = $request->input('apartment_id');
          $search = $request->input('search');
      
-         $messages = Message::whereHas('apartment', function ($query) use ($user) {
-             $query->where('user_id', '=',  $user->id);
-         });
-     
+        //  prova query per ordinare date messaggi
+        $messages = Message::whereHas('apartment', function ($query) use ($user) {
+            $query->where('user_id', '=', $user->id)
+                ->orderBy('created_at', 'desc');
+        });
+        
          if ($apartment_id) {
              $messages = $messages->where('apartment_id', $apartment_id);
          }
@@ -46,11 +46,11 @@ class MessageController extends Controller
                        ->orWhere('sender_surname', 'LIKE', '%' . $search . '%')
                        ->orWhere('sender_text', 'LIKE', '%' . $search . '%');
              });
-         }
+        }
      
-         $messages = $messages->get();
-     
-         $apartments = Apartment::where('user_id', $user->id)->get();
+        $messages = $messages->get();
+        $messages = $messages->sortByDesc('created_at');
+        $apartments = Apartment::where('user_id', $user->id)->get();
      
          return view('admin.messages.index', [
              'messages' => $messages,
@@ -77,7 +77,7 @@ class MessageController extends Controller
      * @param  \App\Http\Requests\StoreMessageRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreMessageRequest $request)
+    public function store()
     {
         //
     }
@@ -111,7 +111,7 @@ class MessageController extends Controller
      * @param  \App\Models\Message  $message
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateMessageRequest $request, Message $message)
+    public function update( Message $message)
     {
         //
     }

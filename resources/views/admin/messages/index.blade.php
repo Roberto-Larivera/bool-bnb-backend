@@ -3,7 +3,7 @@
 @section('title', ' | Messaggi')
 
 @section('content')
-    <div class="container-fluid mt-4">
+    <div id="messages_index" class="container-fluid mt-4">
         <div class="row row-cols-1 mb-5">
             <div class="col py-3">
                 <h1>
@@ -43,7 +43,8 @@
                     <div class="modal-body">
                         <form action="{{ route('admin.messages.index') }}" method="GET" class="form-container-small">
                             <div class="mb-3">
-                                <select class="form-select input-data" aria-label="Default select example" name="apartment_id">
+                                <select class="form-select input-data" aria-label="Default select example"
+                                    name="apartment_id">
                                     <option value="">Tutti gli Appartamenti</option>
                                     @foreach ($apartments as $apartment)
                                         <option value="{{ $apartment->id }}"
@@ -79,34 +80,36 @@
         @include('admin.partials.warning')
 
         @if ($messages->isNotEmpty())
-            <table class="table my-4 rounded">
+            <table class="table my-4 rounded-4">
                 <thead>
                     <tr>
-                        <th scope="col" class="d-none d-sm-table-cell">
+                        <th scope="col" class="d-none d-sm-table-cell rounded-top-start p-3">
                             <i class="fa-solid fa-building"></i>
-                            Appartamento
+                            App
                         </th>
-                        <th scope="col">
-                            <i class="fa-solid fa-user"></i> 
-                            Mittente
+                        <th scope="col" class="p-3">
+                            <i class="fa-solid fa-user"></i>
+                            Mit
                         </th>
-                        <th scope="col" class="d-none d-lg-table-cell">
-                            <i class="fa-solid fa-thumbtack"></i> 
-                            Oggetto
+                        <th scope="col" class="d-none d-lg-table-cell p-3">
+                            <i class="fa-solid fa-thumbtack"></i>
+                            Ogg
                         </th>
-                        <th scope="col" class="d-none d-lg-table-cell">
+                        <th scope="col" class="d-none d-lg-table-cell p-3">
                             <i class="fa-solid fa-envelope"></i>
-                            Messaggio
+                            Mss
                         </th>
-                        <th scope="col">
-                            <i class="fa-solid fa-clock"></i>
-                            Orario
+                        <th scope="col " class="p-3">
+                            <div class="text-center">
+                                <i class="fa-solid fa-clock"></i>
+                            </div>
                         </th>
                     </tr>
                 </thead>
                 <tbody>
                     @forelse ($messages as $message)
-                        <tr data-bs-toggle="modal" data-bs-target="#message-{{ $message->id }}" class="cursor-pointer-message">
+                        <tr data-bs-toggle="modal" data-bs-target="#message-{{ $message->id }}"
+                            class="cursor-pointer-message">
                             <td class="d-none d-sm-table-cell">{{ $message->apartment->title }}</td>
                             <td>{!! str_ireplace(
                                 request('search'),
@@ -128,7 +131,7 @@
                                     80,
                                 ) !!}</p>
                             </td>
-                            <td><strong>{{ date('H:i', strtotime($message->created_at)) }}</strong></td>
+                            <td class="text-center"><strong>{{ date('H:i', strtotime($message->created_at)) }}</strong></td>
                         </tr>
 
                         {{-- Modal --}}
@@ -148,7 +151,7 @@
                                     </div>
                                     <div class="modal-body">
                                         <p><strong>Appartamento:</strong> {{ $message->apartment->title }}</p>
-                                        <p><strong>Mittente:</strong> 
+                                        <p><strong>Mittente:</strong>
                                             {!! str_ireplace(
                                                 request('search'),
                                                 '<span class="highlight">' . request('search') . '</span>',
@@ -165,9 +168,10 @@
                                                 '<span class="highlight">' . request('search') . '</span>',
                                                 $message->sender_text,
                                             ) !!}
-                                            
+
                                         </p>
-                                        <p><strong>Giorno:</strong> {{ date('Y/m/d H:i', strtotime($message->created_at)) }}</p>
+                                        <p><strong>Giorno:</strong>
+                                            {{ date('Y/m/d H:i', strtotime($message->created_at)) }}</p>
                                     </div>
                                 </div>
                             </div>

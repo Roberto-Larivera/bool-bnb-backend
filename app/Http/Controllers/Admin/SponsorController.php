@@ -7,8 +7,6 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
-use App\Http\Requests\StoreSponsorRequest;
-use App\Http\Requests\UpdateSponsorRequest;
 use App\Models\Sponsor;
 use App\Models\User;
 use App\Models\Apartment;
@@ -49,7 +47,7 @@ class SponsorController extends Controller
      * @param  \App\Http\Requests\StoreSponsorRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreSponsorRequest $request)
+    public function store()
     {
         //
     }
@@ -75,10 +73,13 @@ class SponsorController extends Controller
             $apartments = Apartment::where('user_id', $user->id)
             ->whereDoesntHave('sponsors', function ($query)  use ($oggi) {
                 $query->where('deadline', '>', $oggi)
-                      ->orWhereNull('deadline');
+                ->orWhereNull('deadline');
             })
             ->get();
-
+            foreach ($apartments as $key => $item) {
+                $item['full_path_main_img'] = asset('storage/'.$item->main_img); 
+            }
+            
             return view('admin.sponsors.show', [
                 'apartments' => $apartments,
                 'sponsor' => $sponsor,
@@ -124,7 +125,7 @@ class SponsorController extends Controller
      * @param  \App\Models\Sponsor  $sponsor
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateSponsorRequest $request, Sponsor $sponsor)
+    public function update( Sponsor $sponsor)
     {
         //
     }

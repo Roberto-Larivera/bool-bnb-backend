@@ -130,10 +130,9 @@ class ImageGalleryController extends Controller
             if (count($gallery) >= 0 || count($gallery) <= 6) {
 
                 // img file
-                
+               
                 Storage::delete($image_gallery->path_image);
                 
-
                 // Cancella tutto appartamento
                 $image_gallery->delete();
 

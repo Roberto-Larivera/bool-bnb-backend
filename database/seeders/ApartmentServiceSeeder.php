@@ -17,7 +17,7 @@ class ApartmentServiceSeeder extends Seeder
      */
     public function run()
     {
-        for ($i = 0; $i  < 100; $i++) {
+        for ($i = 0; $i  < 700; $i++) {
             $apartment_id = Apartment::inRandomOrder()->first()->id;
             $service_id = Service::inRandomOrder()->first()->id;
 
